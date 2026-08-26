@@ -21,37 +21,30 @@
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen antialiased selection:bg-blue-600 selection:text-white pb-20">
 
-  <!-- Header Web (Layar Browser) -->
+  <!-- Header Navigasi -->
   <header class="bg-white border-b border-slate-200 sticky top-0 z-50 backdrop-blur-md bg-white/95 no-print">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-2.5 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <!-- Logo Resmi SMA Muhammadiyah 18 Jakarta -->
+        <!-- Logo Image Container (Desain tanpa judul (16).png) -->
         <div class="h-12 w-12 rounded-full border-2 border-amber-400 bg-blue-900 flex items-center justify-center shadow-sm overflow-hidden shrink-0">
-          <svg viewBox="0 0 100 100" class="w-full h-full">
-            <circle cx="50" cy="50" r="48" fill="#133E87" stroke="#F5C443" stroke-width="3"/>
-            <circle cx="50" cy="50" r="38" fill="white" stroke="#F5C443" stroke-width="1.5"/>
-            <g fill="#D4AF37">
-              <polygon points="50,15 53,26 62,20 58,30 69,28 61,36 72,38 62,43 71,48 60,50 71,52 62,57 72,62 61,64 69,72 58,70 62,80 53,74 50,85 47,74 38,80 42,70 31,72 39,64 28,62 38,57 29,52 40,50 29,48 38,43 28,38 39,36 31,28 42,30 38,20 47,26"/>
-              <circle cx="50" cy="50" r="14" fill="#F5C443"/>
-            </g>
-          </svg>
+          <img src="Desain tanpa judul (16).png" alt="Logo SMA Muhammadiyah 18 Jakarta" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-amber-400 font-black text-xs\'>M18</div>';">
         </div>
         <div>
           <div class="flex items-center gap-2">
             <h1 class="text-sm sm:text-base font-black text-blue-950 leading-tight tracking-tight">SMA MUHAMMADIYAH 18 JAKARTA</h1>
             <span class="px-2 py-0.5 bg-amber-100 border border-amber-300 text-amber-900 text-[10px] font-black rounded">SCHOOL OF CHAMPION</span>
           </div>
-          <p class="text-[11px] text-slate-500 font-medium">EduAnalytics PTN • Database Terintegrasi Rapor & Track Record Alumni</p>
+          <p class="text-[11px] text-slate-500 font-medium">EduAnalytics PTN • Portal Sukses SNBP & Roadmap 7 Subtes UTBK-SNBT</p>
         </div>
       </div>
       
       <div class="flex items-center gap-3">
         <span class="hidden md:inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full text-xs font-semibold">
-          <span class="h-2 w-2 rounded-full bg-emerald-500"></span> Data Riil Alumni & Siswa Terhubung
+          <span class="h-2 w-2 rounded-full bg-emerald-500"></span> Database Terintegrasi M18
         </span>
         <button onclick="window.print()" class="px-4 py-2 bg-blue-900 hover:bg-blue-950 text-white text-xs font-bold rounded-xl transition shadow flex items-center gap-2">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
-          Cetak Rekomendasi PDF
+          Cetak Lembar Rekomendasi
         </button>
       </div>
     </div>
@@ -65,25 +58,9 @@
       <!-- Top Card Banner -->
       <div class="bg-gradient-to-r from-blue-950 via-slate-900 to-blue-900 rounded-2xl p-6 text-white shadow-md">
         <div class="max-w-3xl">
-          <span class="px-2.5 py-1 bg-amber-400 text-blue-950 text-[11px] font-black rounded-md uppercase tracking-wider">Portal Koordinator Tim PTN</span>
-          <h2 class="text-xl sm:text-2xl font-black mt-2 tracking-tight">Sistem Analisis Peluang SNBP & Strategi Belajar SNBT</h2>
-          <p class="text-slate-300 text-xs sm:text-sm mt-1 leading-relaxed">Pilih langsung nama siswa terdaftar dari data pemetaan sekolah atau masukkan data mandiri untuk menghitung peluang berdasarkan bobot mapel pendukung dan track record alumni.</p>
-        </div>
-      </div>
-
-      <!-- Quick Selector Data Siswa Terdaftar -->
-      <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div class="flex items-center gap-2">
-            <span class="flex h-6 w-6 items-center justify-center rounded-lg bg-blue-100 text-blue-900 text-xs font-black">⚡</span>
-            <div>
-              <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Pilih Cepat Profil Siswa Terdaftar (47 Siswa)</h3>
-              <p class="text-[11px] text-slate-500">Pilih nama siswa untuk memuat otomatis data pilihan prodi dan rata-rata nilainya.</p>
-            </div>
-          </div>
-          <select id="selectQuickSiswa" onchange="loadQuickSiswa(this.value)" class="bg-slate-50 border border-slate-300 rounded-xl px-4 py-2 text-xs font-semibold text-slate-800 focus:bg-white focus:border-blue-700 focus:outline-none max-w-xs">
-            <option value="">-- Pilih Nama Siswa Terdaftar --</option>
-          </select>
+          <span class="px-2.5 py-1 bg-amber-400 text-blue-950 text-[11px] font-black rounded-md uppercase tracking-wider">Modul Sukses PTN Kelas 12</span>
+          <h2 class="text-xl sm:text-2xl font-black mt-2 tracking-tight">Kalkulator Diagnostik Rapor & Roadmap Drilling UTBK</h2>
+          <p class="text-slate-300 text-xs sm:text-sm mt-1 leading-relaxed">Masukkan nilai rapor semester 1–4 serta target semester 5. Sistem otomatis menguji keselarasan mata pelajaran pendukung, menghitung peluang SNBP berbasis data alumni, dan menyusun strategi belajar 7 subtes SNBT.</p>
         </div>
       </div>
 
@@ -106,8 +83,8 @@
               <input id="inKelas" type="text" placeholder="Contoh: XII - 1 (MIPA)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-blue-700 focus:outline-none" />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-slate-600 mb-1">Guru Konselor / BK</label>
-              <input id="inKonselor" type="text" placeholder="Contoh: Ririn Aprilia, S.Pd., Gr" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-blue-700 focus:outline-none" />
+              <label class="block text-xs font-semibold text-slate-600 mb-1">Guru Pembimbing / Konselor</label>
+              <input id="inKonselor" type="text" placeholder="Contoh: Tim Sukses PTN M18" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-blue-700 focus:outline-none" />
             </div>
           </div>
 
@@ -132,12 +109,15 @@
         <div class="lg:col-span-8">
           <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm">
             <div class="flex flex-wrap items-center justify-between pb-3 mb-4 border-b border-slate-100 gap-2">
-              <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
-                <span class="flex h-5 w-5 items-center justify-center rounded bg-blue-900 text-white text-[10px]">3</span>
-                Nilai Rapor Semester 1 s/d 5
-              </h3>
+              <div>
+                <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+                  <span class="flex h-5 w-5 items-center justify-center rounded bg-blue-900 text-white text-[10px]">3</span>
+                  Nilai Rapor Semester 1 s/d 5
+                </h3>
+                <p class="text-[11px] text-slate-400">Semester 5 dapat diisi dengan target/proyeksi nilai yang ingin dicapai.</p>
+              </div>
               <button type="button" onclick="isiContohNilai()" class="text-xs text-blue-700 hover:text-blue-900 font-bold underline">
-                + Isi Simulasi Nilai Cepat
+                + Isi Simulasi Contoh
               </button>
             </div>
 
@@ -150,7 +130,7 @@
                     <th class="py-2 text-center font-bold">Smt 2</th>
                     <th class="py-2 text-center font-bold">Smt 3</th>
                     <th class="py-2 text-center font-bold">Smt 4</th>
-                    <th class="py-2 text-center font-bold">Smt 5</th>
+                    <th class="py-2 text-center font-bold text-amber-800 bg-amber-50 rounded">Target Smt 5</th>
                     <th class="py-2 text-center font-bold text-blue-900 bg-blue-50/80 rounded">Rata-Rata</th>
                   </tr>
                 </thead>
@@ -164,7 +144,7 @@
                 <p class="text-[11px] text-slate-500">Dihitung otomatis dari seluruh semester aktif.</p>
               </div>
               <button onclick="jalankanAnalisis()" class="px-6 py-2.5 bg-blue-900 hover:bg-blue-950 text-white text-xs font-bold rounded-xl transition shadow">
-                Jalankan Analisis & Cetak Rapor
+                Jalankan Analisis & Cetak Rekomendasi
               </button>
             </div>
           </div>
@@ -181,14 +161,7 @@
         <div class="flex items-center justify-between border-b-2 border-blue-950 pb-4 mb-4">
           <div class="flex items-center gap-4">
             <div class="h-16 w-16 rounded-full border-2 border-amber-400 bg-blue-900 flex items-center justify-center overflow-hidden shrink-0 shadow-sm">
-              <svg viewBox="0 0 100 100" class="w-full h-full">
-                <circle cx="50" cy="50" r="48" fill="#133E87" stroke="#F5C443" stroke-width="3"/>
-                <circle cx="50" cy="50" r="38" fill="white" stroke="#F5C443" stroke-width="1.5"/>
-                <g fill="#D4AF37">
-                  <polygon points="50,15 53,26 62,20 58,30 69,28 61,36 72,38 62,43 71,48 60,50 71,52 62,57 72,62 61,64 69,72 58,70 62,80 53,74 50,85 47,74 38,80 42,70 31,72 39,64 28,62 38,57 29,52 40,50 29,48 38,43 28,38 39,36 31,28 42,30 38,20 47,26"/>
-                  <circle cx="50" cy="50" r="14" fill="#F5C443"/>
-                </g>
-              </svg>
+              <img src="Desain tanpa judul (16).png" alt="Logo M18" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-amber-400 font-black text-sm\'>M18</div>';">
             </div>
             <div>
               <h2 class="text-base sm:text-lg font-black text-blue-950 uppercase tracking-tight leading-tight">SMA MUHAMMADIYAH 18 JAKARTA</h2>
@@ -199,7 +172,7 @@
           </div>
           <div class="text-right shrink-0">
             <span class="px-2.5 py-1 bg-blue-50 border border-blue-200 rounded text-[10px] font-bold text-blue-950 uppercase block">Rapor Analisis PTN</span>
-            <span class="text-[10px] text-slate-500 mt-1 block">T.A. 2025/2026</span>
+            <span class="text-[10px] text-slate-500 mt-1 block">T.A. 2026/2027</span>
           </div>
         </div>
 
@@ -214,7 +187,7 @@
             <p id="outKelas" class="font-bold text-slate-900">-</p>
           </div>
           <div>
-            <span class="text-[10px] text-slate-400 block font-semibold">GURU KONSELOR</span>
+            <span class="text-[10px] text-slate-400 block font-semibold">GURU PEMBIMBING</span>
             <p id="outKonselor" class="font-bold text-slate-900">-</p>
           </div>
           <div>
@@ -252,9 +225,7 @@
 
             <div>
               <span class="text-[10px] text-slate-400 font-semibold block">PILIHAN UTAMA:</span>
-              <div class="flex items-center justify-between">
-                <p id="outProdi1" class="font-bold text-slate-900 text-xs"></p>
-              </div>
+              <p id="outProdi1" class="font-bold text-slate-900 text-xs"></p>
               <div id="outAlumniBadge1" class="mt-1"></div>
               <p id="outStat1" class="text-[10px] text-slate-500 mt-1"></p>
               
@@ -282,12 +253,12 @@
           <!-- Box SNBT -->
           <div class="p-4 rounded-xl border border-slate-200 bg-white print-card space-y-3">
             <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-              <span class="text-xs font-bold text-amber-800 uppercase tracking-wide">2. Panduan 7 Subtes UTBK</span>
+              <span class="text-xs font-bold text-amber-800 uppercase tracking-wide">2. Panduan & Roadmap 7 Subtes UTBK</span>
               <span id="outScoreUTBK" class="text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200 px-2 py-0.5 rounded"></span>
             </div>
 
-            <p class="text-[11px] text-slate-600">Prioritas subtes yang wajib dimaksimalkan (*High Yield*) berdasarkan modal akademik:</p>
-            <div id="outSubtesList" class="space-y-1"></div>
+            <p class="text-[11px] text-slate-600">Prioritas & rekomendasi materi drilling subtes:</p>
+            <div id="outSubtesList" class="space-y-1.5"></div>
 
             <div class="pt-2 border-t border-slate-100">
               <span class="text-[10px] font-bold text-slate-600 uppercase block mb-1.5">Alternatif PTN dengan Passing Grade Rasional:</span>
@@ -299,7 +270,7 @@
 
         <!-- Disclaimer Akademik Resmi -->
         <div class="p-3 bg-slate-50 rounded-lg border border-slate-200 text-[10px] text-slate-500 leading-relaxed mb-6">
-          <strong>Klausul Akademik:</strong> Dokumen ini adalah instrumen Sistem Pendukung Keputusan Konseling (DSS) berbasis pembobotan mata pelajaran pendukung Permendikbudristek No. 48/2022, Kepmendikbudristek No. 345/M/2022, serta <strong>Track Record Penerimaan Riil Alumni SMA Muhammadiyah 18 Jakarta</strong>. Keputusan akhir sepenuhnya merupakan hak prerogatif panitia SNPMB BPPP dan masing-masing PTN.
+          <strong>Klausul Akademik:</strong> Dokumen ini adalah instrumen Sistem Pendukung Keputusan Konseling (DSS) berbasis pembobotan mata pelajaran pendukung Permendikbudristek No. 48/2022, Kepmendikbudristek No. 345/M/2022, serta Track Record Penerimaan Riil Alumni SMA Muhammadiyah 18 Jakarta. Keputusan akhir sepenuhnya merupakan hak prerogatif panitia SNPMB BPPP dan masing-masing PTN.
         </div>
 
         <!-- Area Tanda Tangan Konseling BK -->
@@ -325,7 +296,7 @@
   </main>
 
   <script>
-    // 10 Mata Pelajaran Standar Kurikulum Nasional
+    // 10 Mata Pelajaran Standar
     const listMapel = [
       { id: "mtk_umum", name: "Matematika Umum" },
       { id: "mtk_lanjut", name: "Matematika Tingkat Lanjut" },
@@ -339,26 +310,7 @@
       { id: "bing", name: "Bahasa Inggris" }
     ];
 
-    // DATA 47 SISWA PEMETAAN ANGKATAN SMA MUHAMMADIYAH 18 JAKARTA
-    const dataPemetaanSiswa = [
-      { nama: "FARISAH NAVARRA PUTRI", kelas: "XII - 2", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 90.42, ptn1: "UNAIR_GIZI", ptn2: "UPNVJ_GIZI" },
-      { nama: "HADID IMANI RIFA'I", kelas: "XII - 1", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 90.29, ptn1: "UI_SIPIL", ptn2: "UB_SIPIL" },
-      { nama: "MOHAMMAD ERIQ FAHREZI", kelas: "XII - 1", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 90.11, ptn1: "UI_PERKAPALAN", ptn2: "UNILA_MESIN" },
-      { nama: "NADYA SYAFIQ", kelas: "XII - 1", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 89.55, ptn1: "IPB_STAT", ptn2: "UPNVJ_DATA" },
-      { nama: "PANDU FATHURRIZQI", kelas: "XII - 1", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 89.55, ptn1: "UB_INST", ptn2: "UNAIR_FISIKA" },
-      { nama: "AILA SHAFA SHALEHA", kelas: "XII - 1", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 89.15, ptn1: "UNAIR_FARM", ptn2: "UPNVJ_FARM" },
-      { nama: "CHAIRUNNISA AMALIA", kelas: "XII - 2", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 88.94, ptn1: "UI_ARS", ptn2: "UPNVJ_ARS" },
-      { nama: "AKASYA PUTRI GHANIA", kelas: "XII - 2", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 88.79, ptn1: "UPNJT_MED", ptn2: "UINJKT_MED" },
-      { nama: "IRSYAD FATHI", kelas: "XII - 1", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 88.48, ptn1: "UNAIR_SI", ptn2: "UPNVJ_SI" },
-      { nama: "ISYA NURUL RASYIDAH", kelas: "XII - 1", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 88.36, ptn1: "UNDIP_PWK", ptn2: "UNS_PWK" },
-      { nama: "SYARIFAH ANNISA", kelas: "XII - 1", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 88.13, ptn1: "UINJKT_MTK", ptn2: "UNJ_MTK" },
-      { nama: "RATU FILWA AZ-ZAHRA", kelas: "XII - 2", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 87.80, ptn1: "UB_TIP", ptn2: "UNS_TIP" },
-      { nama: "NAIRA CHANDRANINGTYAS", kelas: "XII - 3", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 87.76, ptn1: "UINJKT_HI", ptn2: "UPNVJ_HI" },
-      { nama: "SINTIA HAIRUDDIN", kelas: "XII - 2", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 87.47, ptn1: "IPB_VET", ptn2: "UNAIR_VET" },
-      { nama: "HELGA GENDIS SEKAR AYU PUTRI", kelas: "XII - 4", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 86.74, ptn1: "UINJKT_POL", ptn2: "UPNVJ_POL" }
-    ];
-
-    // DATABASE RIIL TRACK RECORD PENERIMAAN ALUMNI SMA MUHAMMADIYAH 18 JAKARTA (38 DATA RIIL)
+    // DATABASE HISTORIS PENERIMAAN ALUMNI M18
     const alumniTrackRecord = [
       { ptn: "UPN VETERAN JAWA TIMUR", prodi: "KEDOKTERAN", avg: 89.23, tahun: "SNBP 2026" },
       { ptn: "AIRLANGGA", prodi: "ILMU GIZI", avg: 91.18, tahun: "SNBP 2026" },
@@ -376,8 +328,6 @@
       { ptn: "UIN JAKARTA", prodi: "ILMU POLITIK", avg: 86.95, tahun: "SNBP 2026" },
       { ptn: "UIN JAKARTA", prodi: "JURNALISTIK", avg: 89.42, tahun: "SNBP 2024" },
       { ptn: "UIN JAKARTA", prodi: "MANAJEMEN", avg: 89.15, tahun: "SNBP 2024" },
-      { ptn: "UIN JAKARTA", prodi: "ILMU EKONOMI & STUDI PEMBANGUNAN", avg: 89.06, tahun: "SNBP 2024" },
-      { ptn: "UIN JAKARTA", prodi: "SOSIAL EKONOMI PERTANIAN/AGRIBISNIS", avg: 89.65, tahun: "SNBP 2025" },
       { ptn: "UPN VETERAN JAKARTA", prodi: "SISTEM INFORMASI", avg: 91.80, tahun: "SNBP 2025" },
       { ptn: "UPN VETERAN JAKARTA", prodi: "ILMU POLITIK", avg: 90.83, tahun: "SNBP 2025" },
       { ptn: "UNIVERSITAS INDONESIA", prodi: "ADMINISTRASI RUMAH SAKIT", avg: 89.30, tahun: "SNBP 2025" },
@@ -386,18 +336,10 @@
       { ptn: "UNIVERSITAS NEGERI SEMARANG", prodi: "ILMU HUKUM", avg: 90.11, tahun: "SNBP 2025" },
       { ptn: "UNIVERSITAS PENDIDIKAN INDONESIA", prodi: "TEKNOLOGI PENDIDIKAN", avg: 88.70, tahun: "SNBP 2025" },
       { ptn: "UNIVERSITAS PENDIDIKAN INDONESIA", prodi: "TEKNIK LOGISTIK", avg: 89.08, tahun: "SNBP 2025" },
-      { ptn: "UNIVERSITAS PENDIDIKAN INDONESIA", prodi: "PEND. MANAJEMEN PERKANTORAN", avg: 89.04, tahun: "SNBP 2024" },
-      { ptn: "UNS", prodi: "ILMU HUKUM", avg: 89.69, tahun: "SNBP 2024" },
-      { ptn: "UNIVERSITAS PADJADJARAN", prodi: "ILMU PERPUSTAKAAN", avg: 88.78, tahun: "SNBP 2024" },
-      { ptn: "UNIVERSITAS TIDAR", prodi: "TEKNIK ELEKTRO", avg: 88.88, tahun: "SNBP 2024" },
-      { ptn: "UNIVERSITAS TIDAR", prodi: "AKUNTANSI", avg: 88.19, tahun: "SNBP 2025" },
-      { ptn: "UPN VETERAN YOGYAKARTA", prodi: "TEKNIK GEOFISIKA", avg: 89.93, tahun: "SNBP 2025" },
-      { ptn: "UPN VETERAN YOGYAKARTA", prodi: "TEKNIK INDUSTRI", avg: 89.86, tahun: "SNBP 2025" },
-      { ptn: "UIN SUNAN KALIJAGA", prodi: "PSIKOLOGI", avg: 88.67, tahun: "SNBP 2025" },
-      { ptn: "POLIMEDIA", prodi: "SENI KULINER", avg: 88.42, tahun: "SNBP 2025" }
+      { ptn: "UNS", prodi: "ILMU HUKUM", avg: 89.69, tahun: "SNBP 2024" }
     ];
 
-    // DATABASE NASIONAL 80+ PRODI PTN
+    // DATABASE NASIONAL PRODI PTN
     const databasePTN = [
       { id: "UPNJT_MED", ptn: "UPN Veteran Jawa Timur", prodi: "Kedokteran", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 50, peminat: 1650, passingUTBK: 675 },
       { id: "UNAIR_GIZI", ptn: "Universitas Airlangga", prodi: "Ilmu Gizi", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 40, peminat: 850, passingUTBK: 660 },
@@ -416,7 +358,6 @@
       { id: "UI_MED", ptn: "Universitas Indonesia", prodi: "Pendidikan Dokter", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 75, peminat: 3820, passingUTBK: 735 },
       { id: "UGM_MED", ptn: "Universitas Gadjah Mada", prodi: "Kedokteran", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 62, peminat: 3540, passingUTBK: 730 },
       { id: "UNAIR_MED", ptn: "Universitas Airlangga", prodi: "Kedokteran", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 75, peminat: 3150, passingUTBK: 725 },
-      { id: "UNPAD_MED", ptn: "Universitas Padjadjaran", prodi: "Pendidikan Dokter", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 78, peminat: 3050, passingUTBK: 715 },
       { id: "UNDIP_MED", ptn: "Universitas Diponegoro", prodi: "Kedokteran", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 65, peminat: 2890, passingUTBK: 710 },
       { id: "UPNVJ_MED", ptn: "UPN Veteran Jakarta", prodi: "Kedokteran", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 50, peminat: 2400, passingUTBK: 690 },
       { id: "ITB_STEI", ptn: "Institut Teknologi Bandung", prodi: "STEI - Komputasi", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Fisika", dayaTampung: 130, peminat: 3450, passingUTBK: 720 },
@@ -424,10 +365,7 @@
       { id: "ITS_IF", ptn: "Institut Teknologi Sepuluh Nopember", prodi: "Teknik Informatika", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Fisika", dayaTampung: 90, peminat: 2580, passingUTBK: 695 },
       { id: "UI_SIPIL", ptn: "Universitas Indonesia", prodi: "Teknik Sipil", rumpun: "Saintek", mapel1: "Fisika", mapel2: "Matematika Umum", dayaTampung: 50, peminat: 1200, passingUTBK: 665 },
       { id: "UB_SIPIL", ptn: "Universitas Brawijaya", prodi: "Teknik Sipil", rumpun: "Saintek", mapel1: "Fisika", mapel2: "Matematika Umum", dayaTampung: 65, peminat: 1100, passingUTBK: 635 },
-      { id: "UI_PERKAPALAN", ptn: "Universitas Indonesia", prodi: "Teknik Perkapalan", rumpun: "Saintek", mapel1: "Fisika", mapel2: "Matematika Tingkat Lanjut", dayaTampung: 35, peminat: 750, passingUTBK: 645 },
-      { id: "UNILA_MESIN", ptn: "Universitas Lampung", prodi: "Teknik Mesin", rumpun: "Saintek", mapel1: "Fisika", mapel2: "Matematika Umum", dayaTampung: 60, peminat: 550, passingUTBK: 595 },
       { id: "IPB_STAT", ptn: "IPB University", prodi: "Statistika & Sains Data", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum", dayaTampung: 40, peminat: 1150, passingUTBK: 670 },
-      { id: "UPNVJ_DATA", ptn: "UPN Veteran Jakarta", prodi: "Sains Data", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum", dayaTampung: 35, peminat: 890, passingUTBK: 640 },
 
       { id: "UINJKT_HI", ptn: "UIN Syarif Hidayatullah Jakarta", prodi: "Hubungan Internasional", rumpun: "Soshum", mapel1: "Sosiologi", mapel2: "Bahasa Inggris", dayaTampung: 40, peminat: 950, passingUTBK: 625 },
       { id: "UINJKT_POL", ptn: "UIN Syarif Hidayatullah Jakarta", prodi: "Ilmu Politik", rumpun: "Soshum", mapel1: "Sosiologi", mapel2: "Bahasa Indonesia", dayaTampung: 45, peminat: 820, passingUTBK: 615 },
@@ -449,7 +387,7 @@
           <td class="py-1 px-1 text-center"><input id="${m.id}_s2" oninput="hitungRataRow('${m.id}')" type="number" step="0.1" class="w-11 text-center bg-slate-50 border border-slate-200 rounded py-1 text-xs focus:bg-white focus:border-blue-700 focus:outline-none" placeholder="0" /></td>
           <td class="py-1 px-1 text-center"><input id="${m.id}_s3" oninput="hitungRataRow('${m.id}')" type="number" step="0.1" class="w-11 text-center bg-slate-50 border border-slate-200 rounded py-1 text-xs focus:bg-white focus:border-blue-700 focus:outline-none" placeholder="0" /></td>
           <td class="py-1 px-1 text-center"><input id="${m.id}_s4" oninput="hitungRataRow('${m.id}')" type="number" step="0.1" class="w-11 text-center bg-slate-50 border border-slate-200 rounded py-1 text-xs focus:bg-white focus:border-blue-700 focus:outline-none" placeholder="0" /></td>
-          <td class="py-1 px-1 text-center"><input id="${m.id}_s5" oninput="hitungRataRow('${m.id}')" type="number" step="0.1" class="w-11 text-center bg-slate-50 border border-slate-200 rounded py-1 text-xs focus:bg-white focus:border-blue-700 focus:outline-none" placeholder="0" /></td>
+          <td class="py-1 px-1 text-center bg-amber-50/50"><input id="${m.id}_s5" oninput="hitungRataRow('${m.id}')" type="number" step="0.1" class="w-11 text-center bg-white border border-amber-300 rounded py-1 text-xs focus:border-blue-700 focus:outline-none font-bold text-amber-900" placeholder="Target" /></td>
           <td class="py-1 px-2 text-center font-bold text-blue-900 bg-blue-50/80 rounded text-xs" id="${m.id}_avg">0.0</td>
         </tr>
       `).join('');
@@ -494,39 +432,34 @@
         p2.add(new Option(label, p.id));
       });
       if (p2.options.length > 1) p2.selectedIndex = 1;
-
-      // Quick Selector Siswa
-      const selectQuick = document.getElementById('selectQuickSiswa');
-      dataPemetaanSiswa.forEach((s, idx) => {
-        selectQuick.add(new Option(`${s.nama} (${s.kelas}) - ${s.rata}`, idx));
-      });
-    }
-
-    function loadQuickSiswa(index) {
-      if (index === "") return;
-      const s = dataPemetaanSiswa[index];
-      document.getElementById('inNama').value = s.nama;
-      document.getElementById('inKelas').value = s.kelas;
-      document.getElementById('inKonselor').value = s.konselor;
-
-      if (s.ptn1 && databasePTN.some(p => p.id === s.ptn1)) document.getElementById('selectProdi1').value = s.ptn1;
-      if (s.ptn2 && databasePTN.some(p => p.id === s.ptn2)) document.getElementById('selectProdi2').value = s.ptn2;
-
-      // Auto distribute estimasi nilai berdasarkan rata-rata rapor
-      const base = s.rata;
-      listMapel.forEach((m, mIdx) => {
-        const delta = (mIdx % 2 === 0 ? 1.2 : -0.8);
-        for (let i = 1; i <= 5; i++) {
-          const semesterTrend = (i - 3) * 0.5;
-          const score = (base + delta + semesterTrend).toFixed(1);
-          document.getElementById(`${m.id}_s${i}`).value = Math.min(99, Math.max(75, score));
-        }
-        hitungRataRow(m.id);
-      });
     }
 
     function isiContohNilai() {
-      loadQuickSiswa(0);
+      const sample = [
+        { id: "mtk_umum", val: [88, 89, 90, 92, 94] },
+        { id: "mtk_lanjut", val: [86, 88, 89, 91, 93] },
+        { id: "fisika", val: [87, 88, 90, 93, 95] },
+        { id: "kimia", val: [84, 85, 86, 88, 89] },
+        { id: "biologi", val: [82, 83, 85, 86, 87] },
+        { id: "ekonomi", val: [80, 82, 83, 84, 85] },
+        { id: "sosiologi", val: [83, 84, 85, 86, 87] },
+        { id: "geografi", val: [80, 81, 82, 84, 85] },
+        { id: "bindo", val: [88, 89, 90, 91, 92] },
+        { id: "bing", val: [86, 87, 89, 90, 92] }
+      ];
+
+      sample.forEach(s => {
+        for (let i = 1; i <= 5; i++) {
+          document.getElementById(`${s.id}_s${i}`).value = s.val[i - 1];
+        }
+        hitungRataRow(s.id);
+      });
+
+      document.getElementById('inNama').value = "Muhammad Umar";
+      document.getElementById('inKelas').value = "XII - 1 (MIPA)";
+      document.getElementById('inKonselor').value = "Tim Sukses PTN M18";
+      document.getElementById('selectProdi1').value = "UI_SIPIL";
+      document.getElementById('selectProdi2').value = "UB_SIPIL";
     }
 
     function checkAlumniTrack(ptnName, prodiName) {
@@ -549,7 +482,7 @@
 
       const nama = document.getElementById('inNama').value.trim() || "Siswa Muhammadiyah 18";
       const kelas = document.getElementById('inKelas').value.trim() || "XII SMA";
-      const konselor = document.getElementById('inKonselor').value.trim() || "Ririn Aprilia, S.Pd., Gr";
+      const konselor = document.getElementById('inKonselor').value.trim() || "Tim Sukses PTN M18";
 
       const p1Id = document.getElementById('selectProdi1').value;
       const p2Id = document.getElementById('selectProdi2').value;
@@ -564,7 +497,7 @@
       const top1 = calculated[0];
       const top2 = calculated[1];
 
-      // Isi Kop & Profil Siswa
+      // Isi Profil Siswa
       document.getElementById('outNama').innerText = nama;
       document.getElementById('outKelas').innerText = kelas;
       document.getElementById('outKonselor').innerText = konselor;
@@ -583,7 +516,7 @@
         </div>
       `;
 
-      // Hitung Peluang SNBP dengan Bobot Track Record Alumni M18
+      // Hitung Peluang SNBP
       function calcSNBP(target) {
         const ketetatan = (target.dayaTampung / target.peminat) * 100;
         let matchScore = 0;
@@ -640,37 +573,41 @@
         alertBox.className = "p-3.5 rounded-xl border bg-emerald-50 border-emerald-200 text-emerald-900 text-xs mb-6 print-card";
         document.getElementById('outAlertIcon').innerText = "✅";
         document.getElementById('outAlertTitle').innerText = "Kesesuaian Pilihan: Linear & Sangat Strategis";
-        document.getElementById('outAlertDesc').innerText = `Mapel unggulan (${top1.name} & ${top2.name}) selaras dengan mapel pendukung resmi prodi ${prodi1.prodi} (${prodi1.mapel1} & ${prodi1.mapel2}) sesuai Kepmendikbudristek No. 345/M/2022. Rekam jejak alumni di kampus ini juga memperkuat portofolio sekolah.`;
+        document.getElementById('outAlertDesc').innerText = `Mapel unggulan (${top1.name} & ${top2.name}) selaras dengan mapel pendukung resmi prodi ${prodi1.prodi} (${prodi1.mapel1} & ${prodi1.mapel2}) sesuai Kepmendikbudristek No. 345/M/2022. Pastikan target nilai semester 5 tetap stabil.`;
       } else {
         alertBox.className = "p-3.5 rounded-xl border bg-amber-50 border-amber-200 text-amber-900 text-xs mb-6 print-card";
         document.getElementById('outAlertIcon').innerText = "⚠️";
-        document.getElementById('outAlertTitle').innerText = "Catatan Penting Tim Konseling BK: Potensi Ketidakselarasan";
-        document.getElementById('outAlertDesc').innerText = `Pilihan utama (${prodi1.prodi}) membutuhkan pembobotan pada ${prodi1.mapel1} & ${prodi1.mapel2}. Sementara nilai unggulan ananda berada pada ${top1.name} & ${top2.name}. Disarankan mempertimbangkan PTN yang memiliki rekam jejak alumni M18 yang lebih terbuka.`;
+        document.getElementById('outAlertTitle').innerText = "Catatan Penting Tim Konseling BK: Evaluasi Pilihan SNBP";
+        document.getElementById('outAlertDesc').innerText = `Pilihan utama (${prodi1.prodi}) memerlukan pembobotan tinggi pada ${prodi1.mapel1} & ${prodi1.mapel2}. Jika nilai semester 5 belum mencukupi, persiapkan alternatif prodi linear atau fokus maksimalkan persiapan SNBT.`;
       }
 
-      // 7 Subtes UTBK
+      // 7 Subtes UTBK SNBT & Roadmap Drilling
+      const isEksak = top1.name.includes("Matematika") || top1.name.includes("Fisika") || top1.name.includes("Kimia");
       const subtes = [
-        { name: "Penalaran Matematika (PM)", target: "700+", p: top1.name.includes("Matematika") || top1.name.includes("Fisika") ? "Prioritas Utama (Tier 1)" : "Tier 3" },
-        { name: "Pengetahuan Kuantitatif (PK)", target: "690+", p: top1.name.includes("Matematika") || top2.name.includes("Matematika") ? "Prioritas Utama (Tier 1)" : "Tier 3" },
-        { name: "Penalaran Umum (PU)", target: "680+", p: "Tier 2" },
-        { name: "Pemahaman Bacaan & Menulis (PBM)", target: "665+", p: top1.name.includes("Sosiologi") || top1.name.includes("Bahasa") ? "Prioritas Utama (Tier 1)" : "Tier 2" },
-        { name: "Pengetahuan & Pemahaman Umum (PPU)", target: "650+", p: "Tier 2" },
-        { name: "Literasi Bahasa Indonesia", target: "675+", p: top1.name.includes("Bahasa") ? "Prioritas Utama (Tier 1)" : "Tier 2" },
-        { name: "Literasi Bahasa Inggris", target: "660+", p: top1.name.includes("Bahasa") ? "Prioritas Utama (Tier 1)" : "Tier 2" }
+        { name: "Penalaran Matematika (PM)", target: isEksak ? "710+" : "650+", p: isEksak ? "Tier 1 - High Yield" : "Tier 3", roadmap: "Fokus ke materi Aljabar Terapan, Geometri Spasial, dan Analisis Data Tabel/Grafik." },
+        { name: "Pengetahuan Kuantitatif (PK)", target: isEksak ? "700+" : "640+", p: isEksak ? "Tier 1 - High Yield" : "Tier 3", roadmap: "Drill hitung cepat operasi bilangan, fungsi komposisi, matriks dasar, dan kecukupan data (P vs Q)." },
+        { name: "Penalaran Umum (PU)", target: "680+", p: "Tier 2", roadmap: "Latih logika silogisme deduktif, pola deret angka kombinasi, dan penalaran analitis kasus sebab-akibat." },
+        { name: "Pemahaman Bacaan & Menulis (PBM)", target: !isEksak ? "690+" : "650+", p: !isEksak ? "Tier 1 - High Yield" : "Tier 2", roadmap: "Perkuat pemahaman PUEBI, konjungsi bertingkat, perbaikan kalimat efektif, dan simpulan paragraf." },
+        { name: "Pengetahuan & Pemahaman Umum (PPU)", target: "660+", p: "Tier 2", roadmap: "Perbanyak perbendaharaan kosakata baku, relasi makna kata (sinonim/antonim kontekstual), dan ide pokok." },
+        { name: "Literasi Bahasa Indonesia", target: !isEksak ? "700+" : "670+", p: !isEksak ? "Tier 1 - High Yield" : "Tier 2", roadmap: "Latih membaca kritis teks saintifik/opini panjang dan teknik *skimming* menemukan argumen implisit." },
+        { name: "Literasi Bahasa Inggris", target: "660+", p: "Tier 2", roadmap: "Fokus pada *main idea identification*, *author's purpose*, *inference*, serta latihan kosakata kontekstual." }
       ];
 
       document.getElementById('outScoreUTBK').innerText = `Passing Grade Target: ${prodi1.passingUTBK}`;
       document.getElementById('outSubtesList').innerHTML = subtes.map(s => `
-        <div class="flex justify-between items-center p-1.5 rounded bg-slate-50 border border-slate-200 text-[11px]">
-          <div>
-            <span class="font-semibold text-slate-800">${s.name}</span>
-            <span class="ml-1 text-[9px] ${s.p.includes('Tier 1') ? 'text-blue-700 font-bold' : 'text-slate-400'}">(${s.p})</span>
+        <div class="p-2 rounded-lg bg-slate-50 border border-slate-200 text-[11px]">
+          <div class="flex justify-between items-center mb-0.5">
+            <div>
+              <span class="font-bold text-slate-800">${s.name}</span>
+              <span class="ml-1 text-[9px] ${s.p.includes('Tier 1') ? 'text-blue-700 font-black' : 'text-slate-500'}">(${s.p})</span>
+            </div>
+            <span class="font-mono text-amber-800 font-bold">${s.target}</span>
           </div>
-          <span class="font-mono text-amber-700 font-bold">${s.target}</span>
+          <p class="text-[10px] text-slate-500 leading-tight">${s.roadmap}</p>
         </div>
       `).join('');
 
-      // Rekomendasi
+      // Rekomendasi Linear & Rasional
       const linear = databasePTN.filter(p => p.id !== p1Id && (p.mapel1 === top1.name || p.mapel2 === top1.name || p.mapel1 === top2.name)).slice(0, 2);
 
       document.getElementById('outRekomSNBP').innerHTML = linear.map(r => `
@@ -679,7 +616,7 @@
             <p class="font-bold text-slate-800">${r.prodi}</p>
             <p class="text-[10px] text-slate-500">${r.ptn}</p>
           </div>
-          <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 rounded font-extrabold text-[10px]">${calcSNBP(r)}% Peluang</span>
+          <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded font-extrabold text-[10px]">${calcSNBP(r)}% Peluang</span>
         </div>
       `).join('');
 
