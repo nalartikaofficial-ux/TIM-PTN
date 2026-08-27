@@ -26,20 +26,20 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-2.5 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <div class="h-12 w-12 rounded-full border-2 border-amber-400 bg-blue-900 flex items-center justify-center shadow-sm overflow-hidden shrink-0">
-          <img src="Desain tanpa judul (16).png" alt="Logo SMA Muhammadiyah 18 Jakarta" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-amber-400 font-black text-xs\'>M18</div>';">
+          <img src="logo.png" alt="Logo SMA Muhammadiyah 18 Jakarta" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-amber-400 font-black text-xs\'>M18</div>';">
         </div>
         <div>
           <div class="flex items-center gap-2">
             <h1 class="text-sm sm:text-base font-black text-blue-950 leading-tight tracking-tight">SMA MUHAMMADIYAH 18 JAKARTA</h1>
             <span class="px-2 py-0.5 bg-amber-100 border border-amber-300 text-amber-900 text-[10px] font-black rounded">SCHOOL OF CHAMPION</span>
           </div>
-          <p class="text-[11px] text-slate-500 font-medium">EduAnalytics PTN • Portal Rasionalisasi SNBP, TKA & Strategi SNBT</p>
+          <p class="text-[11px] text-slate-500 font-medium">EduAnalytics PTN • Portal Validasi SNBP Sesuai Kepmendikbudristek No. 345/M/2022</p>
         </div>
       </div>
       
       <div class="flex items-center gap-3">
         <span class="hidden md:inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full text-xs font-semibold">
-          <span class="h-2 w-2 rounded-full bg-emerald-500"></span> Regulasi Permendikbud 48/2022
+          <span class="h-2 w-2 rounded-full bg-emerald-500"></span> Validasi Strict Aktif
         </span>
         <button onclick="window.print()" class="px-4 py-2 bg-blue-900 hover:bg-blue-950 text-white text-xs font-bold rounded-xl transition shadow flex items-center gap-2">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
@@ -57,14 +57,14 @@
       <div class="bg-gradient-to-r from-blue-950 via-slate-900 to-blue-900 rounded-2xl p-6 text-white shadow-md">
         <div class="max-w-3xl">
           <span class="px-2.5 py-1 bg-amber-400 text-blue-950 text-[11px] font-black rounded-md uppercase tracking-wider">Modul Tim PTN M18</span>
-          <h2 class="text-xl sm:text-2xl font-black mt-2 tracking-tight">Kalkulator Diagnostik Rapor, Filter Rumpun & Komparasi TKA</h2>
-          <p class="text-slate-300 text-xs sm:text-sm mt-1 leading-relaxed">Cari prodi berdasarkan kategori Saintek/Soshum/Pendidikan atau gunakan kolom pencarian langsung. Nilai TKA opsional untuk menguji konsistensi akademik.</p>
+          <h2 class="text-xl sm:text-2xl font-black mt-2 tracking-tight">Kalkulator Diagnostik Rapor & Validasi Keselarasan Mapel SNBP</h2>
+          <p class="text-slate-300 text-xs sm:text-sm mt-1 leading-relaxed">Sistem memverifikasi kesesuaian nilai rapor siswa dengan mapel pendukung resmi kementerian. Gunakan fitur pencarian atau filter rumpun prodi.</p>
         </div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         
-        <!-- Kolom Kiri: Biodata Siswa & Target PTN (Dilengkapi Search & Filter Rumpun) -->
+        <!-- Kolom Kiri: Biodata Siswa & Target PTN (Filter Rumpun & Search Bar) -->
         <div class="lg:col-span-4 space-y-6">
           <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-4">
             <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
@@ -86,7 +86,7 @@
             </div>
           </div>
 
-          <!-- Section 2: Target PTN (Filter Rumpun & Search Bar) -->
+          <!-- Section 2: Target PTN -->
           <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-4">
             <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
               <span class="flex h-5 w-5 items-center justify-center rounded bg-blue-900 text-white text-[10px]">2</span>
@@ -108,7 +108,7 @@
             <div>
               <label class="block text-[11px] font-semibold text-slate-500 mb-1">Cari Nama Jurusan / Kampus:</label>
               <div class="relative">
-                <input id="searchProdiInput" oninput="filterDropdownBySearch()" type="text" placeholder="🔍 Ketik cth: Kedokteran, UI, Brawijaya..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-blue-700 focus:outline-none pr-8" />
+                <input id="searchProdiInput" oninput="filterDropdownBySearch()" type="text" placeholder="🔍 Ketik cth: Pertanian, UI, Brawijaya..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-blue-700 focus:outline-none pr-8" />
                 <span id="searchCountBadge" class="absolute right-2.5 top-2.5 text-[10px] text-slate-400 font-bold"></span>
               </div>
             </div>
@@ -138,7 +138,7 @@
                 <p class="text-[11px] text-slate-400">Termasuk Pendidikan Pancasila / PKn & Sejarah sebagai mapel pendukung resmi kementerian.</p>
               </div>
               <button type="button" onclick="isiContohSimulasi()" class="text-xs text-blue-700 hover:text-blue-900 font-bold underline">
-                + Isi Simulasi Contoh Cepat
+                + Isi Simulasi Contoh
               </button>
             </div>
 
@@ -210,7 +210,7 @@
         <div class="flex items-center justify-between border-b-2 border-blue-950 pb-4 mb-4">
           <div class="flex items-center gap-4">
             <div class="h-16 w-16 rounded-full border-2 border-amber-400 bg-blue-900 flex items-center justify-center overflow-hidden shrink-0 shadow-sm">
-              <img src="Desain tanpa judul (16).png" alt="Logo M18" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-amber-400 font-black text-sm\'>M18</div>';">
+              <img src="logo.png" alt="Logo M18" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-amber-400 font-black text-sm\'>M18</div>';">
             </div>
             <div>
               <h2 class="text-base sm:text-lg font-black text-blue-950 uppercase tracking-tight leading-tight">SMA MUHAMMADIYAH 18 JAKARTA</h2>
@@ -249,13 +249,13 @@
           </div>
         </div>
 
-        <!-- Dua Mapel Unggulan Tertinggi -->
+        <!-- Dua Mapel Unggulan Tertinggi Siswa -->
         <div class="mb-4">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">Mata Pelajaran Unggulan Tertinggi (Smt 1–5):</span>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">Mata Pelajaran Nilai Tertinggi Siswa (Smt 1–5):</span>
           <div id="outTopMapel" class="grid grid-cols-2 gap-3 text-xs"></div>
         </div>
 
-        <!-- Catatan Evaluasi Keselarasan -->
+        <!-- Catatan Evaluasi Keselarasan (Strict Validation) -->
         <div id="outAlertBox" class="p-3.5 rounded-xl border text-xs mb-4">
           <div class="flex items-start gap-2">
             <span id="outAlertIcon" class="text-base"></span>
@@ -282,6 +282,7 @@
                 <span class="text-[10px] text-slate-400 font-semibold block">PILIHAN UTAMA:</span>
                 <p id="outProdi1" class="font-bold text-slate-900 text-xs"></p>
                 <div id="outAlumniBadge1" class="mt-0.5"></div>
+                <p id="outMapelWajib1" class="text-[9.5px] text-blue-950 font-bold bg-blue-50 px-2 py-1 rounded mt-1 border border-blue-200"></p>
                 <p id="outStat1" class="text-[9.5px] text-slate-500 mt-0.5"></p>
                 
                 <div class="flex items-baseline gap-1 mt-1">
@@ -298,6 +299,7 @@
                 </div>
                 <p id="outProdi2" class="font-bold text-slate-900 text-xs mt-0.5"></p>
                 <div id="outAlumniBadge2" class="mt-0.5"></div>
+                <p id="outMapelWajib2" class="text-[9.5px] text-blue-950 font-bold bg-blue-50 px-2 py-1 rounded mt-1 border border-blue-200"></p>
                 <p id="outStat2" class="text-[9.5px] text-slate-500 mt-0.5"></p>
               </div>
 
@@ -441,7 +443,7 @@
       { ptn: "UNS", prodi: "ILMU HUKUM", avg: 89.69, tahun: "SNBP 2024" }
     ];
 
-    // Database Komprehensif (Top 10 PTN + Se-Jabodetabek)
+    // Database Lengkap PTN Top 10 + Se-Jabodetabek dengan Mapel Pendukung Resmi Kepmendikbudristek 345/M/2022
     const databasePTN = [
       // UI
       { id: "UI_MED", ptn: "Universitas Indonesia", prodi: "Pendidikan Dokter", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 75, peminat: 3820, passingUTBK: 735, mandiri: "SIMAK UI" },
@@ -468,7 +470,6 @@
       { id: "UINJKT_MTK", ptn: "UIN Syarif Hidayatullah Jakarta", prodi: "Matematika", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum", dayaTampung: 45, peminat: 580, passingUTBK: 610, mandiri: "SPMB UIN Jakarta" },
       { id: "UINJKT_HI", ptn: "UIN Syarif Hidayatullah Jakarta", prodi: "Hubungan Internasional", rumpun: "Soshum", mapel1: "Pendidikan Pancasila / PKn", mapel2: "Bahasa Inggris", dayaTampung: 40, peminat: 950, passingUTBK: 625, mandiri: "SPMB UIN Jakarta" },
       { id: "UINJKT_POL", ptn: "UIN Syarif Hidayatullah Jakarta", prodi: "Ilmu Politik", rumpun: "Soshum", mapel1: "Pendidikan Pancasila / PKn", mapel2: "Sosiologi", dayaTampung: 45, peminat: 820, passingUTBK: 615, mandiri: "SPMB UIN Jakarta" },
-      { id: "UINJKT_SEJARAH", ptn: "UIN Syarif Hidayatullah Jakarta", prodi: "Sejarah & Kebudayaan Islam", rumpun: "Soshum", mapel1: "Sejarah", mapel2: "Sosiologi", dayaTampung: 50, peminat: 620, passingUTBK: 600, mandiri: "SPMB UIN Jakarta" },
 
       // UNJ & POLITEKNIK JAKARTA
       { id: "UNJ_FISIKA", ptn: "Universitas Negeri Jakarta", prodi: "Pendidikan Fisika", rumpun: "Pendidikan", mapel1: "Fisika", mapel2: "Matematika Umum", dayaTampung: 45, peminat: 620, passingUTBK: 605, mandiri: "PENMABA UNJ" },
@@ -492,7 +493,9 @@
       { id: "UNAIR_SI", ptn: "Universitas Airlangga", prodi: "Sistem Informasi", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Fisika", dayaTampung: 45, peminat: 1250, passingUTBK: 665, mandiri: "SMUA Mandiri" },
       { id: "UNDIP_PWK", ptn: "Universitas Diponegoro", prodi: "Perencanaan Wilayah dan Kota", rumpun: "Saintek", mapel1: "Matematika Umum", mapel2: "Geografi", dayaTampung: 60, peminat: 1350, passingUTBK: 655, mandiri: "UM UNDIP" },
       { id: "UNDIP_HUKUM", ptn: "Universitas Diponegoro", prodi: "Hukum", rumpun: "Soshum", mapel1: "Pendidikan Pancasila / PKn", mapel2: "Sosiologi", dayaTampung: 210, peminat: 3900, passingUTBK: 650, mandiri: "UM UNDIP" },
-      { id: "UB_TIP", ptn: "Universitas Brawijaya", prodi: "Teknik Industri Pertanian", rumpun: "Saintek", mapel1: "Kimia", mapel2: "Matematika Umum", dayaTampung: 70, peminat: 1100, passingUTBK: 625, mandiri: "SMUB Brawijaya" },
+      
+      // TEKNIK INDUSTRI PERTANIAN (MAPEL PENDUKUNG RESMI: BIOLOGI / KIMIA)
+      { id: "UB_TIP", ptn: "Universitas Brawijaya", prodi: "Teknik Industri Pertanian", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 70, peminat: 1100, passingUTBK: 625, mandiri: "SMUB Brawijaya" },
       { id: "UB_INST", ptn: "Universitas Brawijaya", prodi: "Instrumentasi", rumpun: "Saintek", mapel1: "Fisika", mapel2: "Matematika Tingkat Lanjut", dayaTampung: 35, peminat: 620, passingUTBK: 630, mandiri: "SMUB Brawijaya" },
       { id: "UNS_HUKUM", ptn: "Universitas Sebelas Maret", prodi: "Ilmu Hukum", rumpun: "Soshum", mapel1: "Pendidikan Pancasila / PKn", mapel2: "Sosiologi", dayaTampung: 120, peminat: 2800, passingUTBK: 640, mandiri: "SM UNS" },
       { id: "UPNJT_MED", ptn: "UPN Veteran Jawa Timur", prodi: "Kedokteran", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 50, peminat: 1650, passingUTBK: 675, mandiri: "Jalur Mandiri UPN Jatim" }
@@ -574,7 +577,10 @@
       });
 
       if (curVal1 && filtered.some(p => p.id === curVal1)) p1.value = curVal1;
+      else if (filtered.some(p => p.id === "UB_TIP")) p1.value = "UB_TIP";
+
       if (curVal2 && filtered.some(p => p.id === curVal2)) p2.value = curVal2;
+      else if (filtered.some(p => p.id === "ITS_IF")) p2.value = "ITS_IF";
       else if (p2.options.length > 1) p2.selectedIndex = 1;
     }
 
@@ -597,15 +603,15 @@
 
     function isiContohSimulasi() {
       const sample = [
-        { id: "mtk_umum", val: [88, 89, 90, 92, 94] },
+        { id: "mtk_umum", val: [90, 91, 92, 92, 95] },
         { id: "mtk_lanjut", val: [86, 88, 89, 91, 93] },
-        { id: "fisika", val: [87, 88, 90, 93, 95] },
+        { id: "fisika", val: [87, 88, 90, 93, 94] },
         { id: "kimia", val: [84, 85, 86, 88, 89] },
         { id: "biologi", val: [82, 83, 85, 86, 87] },
         { id: "ekonomi", val: [80, 82, 83, 84, 85] },
         { id: "sosiologi", val: [83, 84, 85, 86, 87] },
         { id: "geografi", val: [80, 81, 82, 84, 85] },
-        { id: "ppkn", val: [89, 90, 91, 92, 93] },
+        { id: "ppkn", val: [92, 93, 93, 94, 95] },
         { id: "sejarah", val: [85, 86, 87, 88, 89] },
         { id: "bindo", val: [88, 89, 90, 91, 92] },
         { id: "bing", val: [86, 87, 89, 90, 92] }
@@ -684,18 +690,23 @@
         </div>
       `;
 
-      // Kalkulasi Peluang SNBP Murni Rapor
+      // Kalkulasi Peluang SNBP (Strict Mapel Matching)
       function calcSNBP(target, baseScore) {
         const ketetatan = (target.dayaTampung / target.peminat) * 100;
         let matchScore = 0;
+        
+        // Cek apakah nilai tertinggi siswa benar-benar linear dengan mapel pendukung resmi kementerian
         if (target.mapel1 === top1.name || target.mapel1 === top2.name) matchScore += 18;
         if (target.mapel2 === top1.name || target.mapel2 === top2.name) matchScore += 14;
         
+        // Penalti jika kedua mapel tertinggi sama sekali tidak mendukung prodi tersebut
+        let penalty = (matchScore === 0) ? -12 : 0;
+
         const track = checkAlumniTrack(target.ptn, target.prodi);
         let alumniBonus = 0;
         if (track.hasAlumni) alumniBonus = track.direct ? 8 : 4;
         
-        const raw = (baseScore * 0.38) + matchScore + (ketetatan * 2.0) + alumniBonus;
+        const raw = (baseScore * 0.38) + matchScore + penalty + (ketetatan * 2.0) + alumniBonus;
         return Math.max(12, Math.min(Math.round(raw), 95));
       }
 
@@ -704,10 +715,12 @@
 
       // Render Pilihan 1 & 2
       document.getElementById('outProdi1').innerText = `${prodi1.prodi} - ${prodi1.ptn}`;
+      document.getElementById('outMapelWajib1').innerText = `📌 Mapel Pendukung Resmi: ${prodi1.mapel1} & ${prodi1.mapel2}`;
       document.getElementById('outStat1').innerText = `Daya Tampung: ${prodi1.dayaTampung} | Peminat: ${prodi1.peminat} (Keketatan: ${(prodi1.dayaTampung / prodi1.peminat * 100).toFixed(2)}%)`;
       document.getElementById('outScore1').innerText = `${score1}%`;
 
       document.getElementById('outProdi2').innerText = `${prodi2.prodi} (${prodi2.ptn})`;
+      document.getElementById('outMapelWajib2').innerText = `📌 Mapel Pendukung Resmi: ${prodi2.mapel1} & ${prodi2.mapel2}`;
       document.getElementById('outStat2').innerText = `Daya Tampung: ${prodi2.dayaTampung} | Peminat: ${prodi2.peminat} (Keketatan: ${(prodi2.dayaTampung / prodi2.peminat * 100).toFixed(2)}%)`;
       document.getElementById('outScore2').innerText = `${score2}% Peluang`;
 
@@ -769,24 +782,24 @@
         document.getElementById('outCatatanTKA').innerText = `💡 Nilai TKA riil belum keluar. Untuk mengamankan peluang di pilihan 1, siswa ditargetkan mencapai skor TKA minimal ${targetTKA} pada try out mendatang.`;
       }
 
-      // Alert Keselarasan
-      const isLinear = (prodi1.mapel1 === top1.name || prodi1.mapel1 === top2.name || prodi1.mapel2 === top1.name || prodi1.mapel2 === top2.name);
+      // STRICT VALIDATION (MEMPERBAIKI ERROR LAMPIRAN KE-2)
+      const isLinearProdi1 = (prodi1.mapel1 === top1.name || prodi1.mapel1 === top2.name || prodi1.mapel2 === top1.name || prodi1.mapel2 === top2.name);
       const alertBox = document.getElementById('outAlertBox');
 
-      if (isLinear && score1 >= 60) {
+      if (isLinearProdi1 && score1 >= 60) {
         alertBox.className = "p-3 rounded-xl border bg-emerald-50 border-emerald-200 text-emerald-900 text-xs mb-4 print-card";
         document.getElementById('outAlertIcon').innerText = "✅";
         document.getElementById('outAlertTitle').innerText = "Kesesuaian Pilihan: Linear & Sangat Strategis";
-        document.getElementById('outAlertDesc').innerText = `Mapel unggulan (${top1.name} & ${top2.name}) selaras dengan kriteria resmi prodi ${prodi1.prodi}. Pastikan konsistensi nilai target semester 5 dan TKA.`;
+        document.getElementById('outAlertDesc').innerText = `Nilai unggulan ananda (${top1.name} & ${top2.name}) selaras kuat dengan mapel pendukung resmi kementerian untuk ${prodi1.prodi} (${prodi1.mapel1} & ${prodi1.mapel2}). Pertahankan konsistensi nilai.`;
       } else {
         alertBox.className = "p-3 rounded-xl border bg-amber-50 border-amber-200 text-amber-900 text-xs mb-4 print-card";
         document.getElementById('outAlertIcon').innerText = "⚠️";
-        document.getElementById('outAlertTitle').innerText = "Catatan Penting Tim Konseling: Mitigasi Pilihan";
-        document.getElementById('outAlertDesc').innerText = `Pilihan utama (${prodi1.prodi}) membutuhkan pembobotan tinggi pada ${prodi1.mapel1} & ${prodi1.mapel2}. Siapkan alternatif SNBP atau manfaatkan jalur seleksi mandiri.`;
+        document.getElementById('outAlertTitle').innerText = "Peringatan Evaluasi: Mapel Unggulan Belum Sinkron";
+        document.getElementById('outAlertDesc').innerText = `Berdasarkan Kepmendikbudristek No. 345/M/2022, prodi ${prodi1.prodi} membutuhkan pembobotan pada [${prodi1.mapel1} & ${prodi1.mapel2}]. Sementara nilai puncak ananda saat ini adalah [${top1.name}: ${top1.avg.toFixed(1)} & ${top2.name}: ${top2.avg.toFixed(1)}]. Jika memaksakan di SNBP, ada risiko kalah bersaing di pembobotan mapel kunci. Disarankan memperkuat nilai mapel pendukung di Smt 5 atau menyiapkan prodi cadangan.`;
       }
 
       // 7 Subtes UTBK
-      const isEksak = top1.name.includes("Matematika") || top1.name.includes("Fisika") || top1.name.includes("Kimia");
+      const isEksak = top1.name.includes("Matematika") || top1.name.includes("Fisika") || top1.name.includes("Kimia") || top1.name.includes("Biologi");
       const subtes = [
         { name: "Penalaran Matematika (PM)", target: isEksak ? "710+" : "650+", p: isEksak ? "Tier 1" : "Tier 3", roadmap: "Aljabar Terapan & Analisis Grafik." },
         { name: "Pengetahuan Kuantitatif (PK)", target: isEksak ? "700+" : "640+", p: isEksak ? "Tier 1" : "Tier 3", roadmap: "Hitung cepat operasi bilangan & kecukupan data (P vs Q)." },
