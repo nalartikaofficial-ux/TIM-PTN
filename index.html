@@ -21,12 +21,12 @@
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen antialiased selection:bg-blue-600 selection:text-white pb-20">
 
-  <!-- Header Navigasi Web -->
+  <!-- Header Navigasi -->
   <header class="bg-white border-b border-slate-200 sticky top-0 z-50 backdrop-blur-md bg-white/95 no-print">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-2.5 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <div class="h-12 w-12 rounded-full border-2 border-amber-400 bg-blue-900 flex items-center justify-center shadow-sm overflow-hidden shrink-0">
-          <img src="Desain tanpa judul (16).png" alt="Logo SMA Muhammadiyah 18 Jakarta" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-amber-400 font-black text-xs\'>M18</div>';">
+          <img src="logo.png" alt="Logo SMA Muhammadiyah 18 Jakarta" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-amber-400 font-black text-xs\'>M18</div>';">
         </div>
         <div>
           <div class="flex items-center gap-2">
@@ -57,14 +57,14 @@
       <div class="bg-gradient-to-r from-blue-950 via-slate-900 to-blue-900 rounded-2xl p-6 text-white shadow-md">
         <div class="max-w-3xl">
           <span class="px-2.5 py-1 bg-amber-400 text-blue-950 text-[11px] font-black rounded-md uppercase tracking-wider">Modul Tim PTN M18</span>
-          <h2 class="text-xl sm:text-2xl font-black mt-2 tracking-tight">Kalkulator Diagnostik Rapor, Komparasi TKA & Pemetaan PTN</h2>
-          <p class="text-slate-300 text-xs sm:text-sm mt-1 leading-relaxed">Masukkan nilai rapor semester 1–4 dan target semester 5. Nilai TKA bersifat opsional untuk menguji konsistensi kemampuan akademik siswa.</p>
+          <h2 class="text-xl sm:text-2xl font-black mt-2 tracking-tight">Kalkulator Diagnostik Rapor, Filter Rumpun & Komparasi TKA</h2>
+          <p class="text-slate-300 text-xs sm:text-sm mt-1 leading-relaxed">Cari prodi berdasarkan kategori Saintek/Soshum/Pendidikan atau gunakan kolom pencarian langsung. Nilai TKA opsional untuk menguji konsistensi akademik.</p>
         </div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         
-        <!-- Kolom Kiri: Biodata Siswa & Pilihan PTN -->
+        <!-- Kolom Kiri: Biodata Siswa & Target PTN (Dilengkapi Search & Filter Rumpun) -->
         <div class="lg:col-span-4 space-y-6">
           <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-4">
             <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
@@ -86,36 +86,59 @@
             </div>
           </div>
 
+          <!-- Section 2: Target PTN (Filter Rumpun & Search Bar) -->
           <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-4">
             <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
               <span class="flex h-5 w-5 items-center justify-center rounded bg-blue-900 text-white text-[10px]">2</span>
               Target Jurusan & PTN Impian
             </h3>
 
+            <!-- Tombol Filter Rumpun -->
             <div>
-              <label class="block text-xs font-semibold text-slate-600 mb-1">Pilihan 1 (Prioritas Utama)</label>
-              <select id="selectProdi1" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-blue-700 focus:outline-none font-medium"></select>
+              <label class="block text-[11px] font-semibold text-slate-500 mb-1.5">Filter Kategori Rumpun:</label>
+              <div class="grid grid-cols-4 gap-1">
+                <button type="button" onclick="setRumpunFilter('ALL')" class="btn-rumpun px-2 py-1.5 bg-blue-900 text-white text-[10.5px] font-bold rounded-lg transition" data-rumpun="ALL">Semua</button>
+                <button type="button" onclick="setRumpunFilter('Saintek')" class="btn-rumpun px-2 py-1.5 bg-slate-100 text-slate-700 text-[10.5px] font-semibold rounded-lg hover:bg-slate-200 transition" data-rumpun="Saintek">Saintek</button>
+                <button type="button" onclick="setRumpunFilter('Soshum')" class="btn-rumpun px-2 py-1.5 bg-slate-100 text-slate-700 text-[10.5px] font-semibold rounded-lg hover:bg-slate-200 transition" data-rumpun="Soshum">Soshum</button>
+                <button type="button" onclick="setRumpunFilter('Pendidikan')" class="btn-rumpun px-2 py-1.5 bg-slate-100 text-slate-700 text-[10.5px] font-semibold rounded-lg hover:bg-slate-200 transition" data-rumpun="Pendidikan">Pendidikan</button>
+              </div>
             </div>
+
+            <!-- Kolom Search Jurusan / Kampus -->
             <div>
-              <label class="block text-xs font-semibold text-slate-600 mb-1">Pilihan 2 (Cadangan)</label>
-              <select id="selectProdi2" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-blue-700 focus:outline-none font-medium"></select>
+              <label class="block text-[11px] font-semibold text-slate-500 mb-1">Cari Nama Jurusan / Kampus:</label>
+              <div class="relative">
+                <input id="searchProdiInput" oninput="filterDropdownBySearch()" type="text" placeholder="🔍 Ketik cth: Kedokteran, UI, Brawijaya..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-blue-700 focus:outline-none pr-8" />
+                <span id="searchCountBadge" class="absolute right-2.5 top-2.5 text-[10px] text-slate-400 font-bold"></span>
+              </div>
+            </div>
+
+            <div class="space-y-3 pt-1">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Pilihan 1 (Prioritas Utama)</label>
+                <select id="selectProdi1" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-blue-700 focus:outline-none font-medium"></select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1">Pilihan 2 (Cadangan)</label>
+                <select id="selectProdi2" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-blue-700 focus:outline-none font-medium"></select>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Kolom Kanan: Input Nilai 10 Mapel & TKA -->
+        <!-- Kolom Kanan: Input Nilai 12 Mapel Lengkap & TKA -->
         <div class="lg:col-span-8 space-y-6">
           <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm">
             <div class="flex flex-wrap items-center justify-between pb-3 mb-4 border-b border-slate-100 gap-2">
               <div>
                 <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
                   <span class="flex h-5 w-5 items-center justify-center rounded bg-blue-900 text-white text-[10px]">3</span>
-                  Nilai Rapor Semester 1 s/d 5
+                  Nilai Rapor Semester 1 s/d 5 (Sesuai Permendikbud)
                 </h3>
-                <p class="text-[11px] text-slate-400">Semester 5 dapat diisi target nilai akhir.</p>
+                <p class="text-[11px] text-slate-400">Termasuk Pendidikan Pancasila / PKn & Sejarah sebagai mapel pendukung resmi kementerian.</p>
               </div>
               <button type="button" onclick="isiContohSimulasi()" class="text-xs text-blue-700 hover:text-blue-900 font-bold underline">
-                + Isi Simulasi Contoh
+                + Isi Simulasi Contoh Cepat
               </button>
             </div>
 
@@ -136,7 +159,7 @@
               </table>
             </div>
 
-            <!-- Pengaturan Status Nilai TKA (Opsi Ada / Belum Ada) -->
+            <!-- Opsi Nilai TKA -->
             <div class="mt-4 p-4 rounded-xl bg-indigo-50/60 border border-indigo-200">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2">
                 <span class="text-xs font-bold text-indigo-950 uppercase tracking-wide flex items-center gap-1.5">
@@ -156,7 +179,7 @@
               </div>
 
               <div id="boxInputTKA" class="hidden mt-3 pt-3 border-t border-indigo-100 flex items-center justify-between gap-3">
-                <p class="text-[11px] text-indigo-800">Masukkan nilai rata-rata TKA yang sudah diperoleh:</p>
+                <p class="text-[11px] text-indigo-800">Masukkan rata-rata nilai TKA yang telah diperoleh:</p>
                 <div class="flex items-center gap-2">
                   <input id="inNilaiTKA" type="number" step="0.1" placeholder="0-100" class="w-24 text-center bg-white border border-indigo-300 rounded-xl py-1.5 text-sm font-extrabold text-indigo-950 focus:border-blue-700 focus:outline-none" />
                   <span class="text-xs text-indigo-900 font-bold">/ 100</span>
@@ -187,7 +210,7 @@
         <div class="flex items-center justify-between border-b-2 border-blue-950 pb-4 mb-4">
           <div class="flex items-center gap-4">
             <div class="h-16 w-16 rounded-full border-2 border-amber-400 bg-blue-900 flex items-center justify-center overflow-hidden shrink-0 shadow-sm">
-              <img src="Desain tanpa judul (16).png" alt="Logo M18" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-amber-400 font-black text-sm\'>M18</div>';">
+              <img src="logo.png" alt="Logo M18" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-amber-400 font-black text-sm\'>M18</div>';">
             </div>
             <div>
               <h2 class="text-base sm:text-lg font-black text-blue-950 uppercase tracking-tight leading-tight">SMA MUHAMMADIYAH 18 JAKARTA</h2>
@@ -373,6 +396,7 @@
   </main>
 
   <script>
+    // 12 MATA PELAJARAN LENGKAP STANDAR KEPUTUSAN KEMENTERIAN PENDIDIKAN
     const listMapel = [
       { id: "mtk_umum", name: "Matematika Umum" },
       { id: "mtk_lanjut", name: "Matematika Tingkat Lanjut" },
@@ -382,11 +406,13 @@
       { id: "ekonomi", name: "Ekonomi" },
       { id: "sosiologi", name: "Sosiologi" },
       { id: "geografi", name: "Geografi" },
+      { id: "ppkn", name: "Pendidikan Pancasila / PKn" },
+      { id: "sejarah", name: "Sejarah" },
       { id: "bindo", name: "Bahasa Indonesia" },
       { id: "bing", name: "Bahasa Inggris" }
     ];
 
-    // Data Rekam Jejak Alumni Bekerja Murni di Balik Layar (Indeks Sekolah)
+    // Rekam Jejak Alumni Bekerja di Balik Layar
     const alumniTrackRecord = [
       { ptn: "UPN VETERAN JAWA TIMUR", prodi: "KEDOKTERAN", avg: 89.23, tahun: "SNBP 2026" },
       { ptn: "AIRLANGGA", prodi: "ILMU GIZI", avg: 91.18, tahun: "SNBP 2026" },
@@ -415,45 +441,64 @@
       { ptn: "UNS", prodi: "ILMU HUKUM", avg: 89.69, tahun: "SNBP 2024" }
     ];
 
-    // Database Lengkap PTN Top 10 + Se-Jabodetabek
+    // Database Komprehensif (Top 10 PTN + Se-Jabodetabek)
     const databasePTN = [
+      // UI
       { id: "UI_MED", ptn: "Universitas Indonesia", prodi: "Pendidikan Dokter", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 75, peminat: 3820, passingUTBK: 735, mandiri: "SIMAK UI" },
       { id: "UI_CS", ptn: "Universitas Indonesia", prodi: "Ilmu Komputer", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Fisika", dayaTampung: 45, peminat: 1980, passingUTBK: 715, mandiri: "SIMAK UI" },
       { id: "UI_SIPIL", ptn: "Universitas Indonesia", prodi: "Teknik Sipil", rumpun: "Saintek", mapel1: "Fisika", mapel2: "Matematika Umum", dayaTampung: 50, peminat: 1200, passingUTBK: 665, mandiri: "SIMAK UI" },
       { id: "UI_ARS", ptn: "Universitas Indonesia", prodi: "Arsitektur", rumpun: "Saintek", mapel1: "Matematika Umum", mapel2: "Fisika", dayaTampung: 35, peminat: 1350, passingUTBK: 665, mandiri: "SIMAK UI" },
-      { id: "UI_HUKUM", ptn: "Universitas Indonesia", prodi: "Ilmu Hukum", rumpun: "Soshum", mapel1: "Sosiologi", mapel2: "Bahasa Indonesia", dayaTampung: 150, peminat: 3600, passingUTBK: 685, mandiri: "SIMAK UI" },
+      { id: "UI_HUKUM", ptn: "Universitas Indonesia", prodi: "Ilmu Hukum", rumpun: "Soshum", mapel1: "Pendidikan Pancasila / PKn", mapel2: "Sosiologi", dayaTampung: 150, peminat: 3600, passingUTBK: 685, mandiri: "SIMAK UI" },
       { id: "UI_MANAJEMEN", ptn: "Universitas Indonesia", prodi: "Manajemen", rumpun: "Soshum", mapel1: "Ekonomi", mapel2: "Matematika Umum", dayaTampung: 60, peminat: 2850, passingUTBK: 695, mandiri: "SIMAK UI" },
-      
+      { id: "UI_HI", ptn: "Universitas Indonesia", prodi: "Hubungan Internasional", rumpun: "Soshum", mapel1: "Pendidikan Pancasila / PKn", mapel2: "Bahasa Inggris", dayaTampung: 25, peminat: 1650, passingUTBK: 700, mandiri: "SIMAK UI" },
+      { id: "UI_SEJARAH", ptn: "Universitas Indonesia", prodi: "Ilmu Sejarah", rumpun: "Soshum", mapel1: "Sejarah", mapel2: "Bahasa Indonesia", dayaTampung: 35, peminat: 750, passingUTBK: 635, mandiri: "SIMAK UI" },
+      { id: "UI_ARS_D3", ptn: "Universitas Indonesia", prodi: "Administrasi Rumah Sakit (D3)", rumpun: "Soshum", mapel1: "Ekonomi", mapel2: "Biologi", dayaTampung: 40, peminat: 1100, passingUTBK: 630, mandiri: "PPKB UI & SIMAK" },
+
+      // UPNVJ
       { id: "UPNVJ_MED", ptn: "UPN Veteran Jakarta", prodi: "Kedokteran", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 50, peminat: 2400, passingUTBK: 690, mandiri: "SEMA UPNVJ" },
       { id: "UPNVJ_SI", ptn: "UPN Veteran Jakarta", prodi: "Sistem Informasi", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Fisika", dayaTampung: 60, peminat: 1850, passingUTBK: 650, mandiri: "SEMA UPNVJ" },
       { id: "UPNVJ_GIZI", ptn: "UPN Veteran Jakarta", prodi: "Ilmu Gizi", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 45, peminat: 1100, passingUTBK: 645, mandiri: "SEMA UPNVJ" },
       { id: "UPNVJ_DATA", ptn: "UPN Veteran Jakarta", prodi: "Sains Data", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum", dayaTampung: 35, peminat: 890, passingUTBK: 640, mandiri: "SEMA UPNVJ" },
-      
+      { id: "UPNVJ_HUKUM", ptn: "UPN Veteran Jakarta", prodi: "Hukum", rumpun: "Soshum", mapel1: "Pendidikan Pancasila / PKn", mapel2: "Sosiologi", dayaTampung: 100, peminat: 2600, passingUTBK: 635, mandiri: "SEMA UPNVJ" },
+      { id: "UPNVJ_POL", ptn: "UPN Veteran Jakarta", prodi: "Ilmu Politik", rumpun: "Soshum", mapel1: "Pendidikan Pancasila / PKn", mapel2: "Sosiologi", dayaTampung: 60, peminat: 1450, passingUTBK: 630, mandiri: "SEMA UPNVJ" },
+      { id: "UPNVJ_HI", ptn: "UPN Veteran Jakarta", prodi: "Hubungan Internasional", rumpun: "Soshum", mapel1: "Pendidikan Pancasila / PKn", mapel2: "Bahasa Inggris", dayaTampung: 60, peminat: 1700, passingUTBK: 640, mandiri: "SEMA UPNVJ" },
+
+      // UIN JAKARTA
       { id: "UINJKT_MED", ptn: "UIN Syarif Hidayatullah Jakarta", prodi: "Pendidikan Dokter", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 40, peminat: 1850, passingUTBK: 680, mandiri: "SPMB UIN Jakarta" },
       { id: "UINJKT_MTK", ptn: "UIN Syarif Hidayatullah Jakarta", prodi: "Matematika", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum", dayaTampung: 45, peminat: 580, passingUTBK: 610, mandiri: "SPMB UIN Jakarta" },
-      { id: "UINJKT_HI", ptn: "UIN Syarif Hidayatullah Jakarta", prodi: "Hubungan Internasional", rumpun: "Soshum", mapel1: "Sosiologi", mapel2: "Bahasa Inggris", dayaTampung: 40, peminat: 950, passingUTBK: 625, mandiri: "SPMB UIN Jakarta" },
-      
+      { id: "UINJKT_HI", ptn: "UIN Syarif Hidayatullah Jakarta", prodi: "Hubungan Internasional", rumpun: "Soshum", mapel1: "Pendidikan Pancasila / PKn", mapel2: "Bahasa Inggris", dayaTampung: 40, peminat: 950, passingUTBK: 625, mandiri: "SPMB UIN Jakarta" },
+      { id: "UINJKT_POL", ptn: "UIN Syarif Hidayatullah Jakarta", prodi: "Ilmu Politik", rumpun: "Soshum", mapel1: "Pendidikan Pancasila / PKn", mapel2: "Sosiologi", dayaTampung: 45, peminat: 820, passingUTBK: 615, mandiri: "SPMB UIN Jakarta" },
+      { id: "UINJKT_SEJARAH", ptn: "UIN Syarif Hidayatullah Jakarta", prodi: "Sejarah & Kebudayaan Islam", rumpun: "Soshum", mapel1: "Sejarah", mapel2: "Sosiologi", dayaTampung: 50, peminat: 620, passingUTBK: 600, mandiri: "SPMB UIN Jakarta" },
+
+      // UNJ & POLITEKNIK JAKARTA
       { id: "UNJ_FISIKA", ptn: "Universitas Negeri Jakarta", prodi: "Pendidikan Fisika", rumpun: "Pendidikan", mapel1: "Fisika", mapel2: "Matematika Umum", dayaTampung: 45, peminat: 620, passingUTBK: 605, mandiri: "PENMABA UNJ" },
       { id: "UNJ_MTK", ptn: "Universitas Negeri Jakarta", prodi: "Pendidikan Matematika", rumpun: "Pendidikan", mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum", dayaTampung: 45, peminat: 820, passingUTBK: 615, mandiri: "PENMABA UNJ" },
+      { id: "UNJ_PPKN", ptn: "Universitas Negeri Jakarta", prodi: "Pendidikan Pancasila & Kewarganegaraan", rumpun: "Pendidikan", mapel1: "Pendidikan Pancasila / PKn", mapel2: "Sosiologi", dayaTampung: 45, peminat: 690, passingUTBK: 605, mandiri: "PENMABA UNJ" },
+      { id: "UNJ_SEJARAH", ptn: "Universitas Negeri Jakarta", prodi: "Pendidikan Sejarah", rumpun: "Pendidikan", mapel1: "Sejarah", mapel2: "Sosiologi", dayaTampung: 45, peminat: 710, passingUTBK: 605, mandiri: "PENMABA UNJ" },
       { id: "PNJ_TI", ptn: "Politeknik Negeri Jakarta", prodi: "Teknik Informatika (D4)", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Fisika", dayaTampung: 60, peminat: 1500, passingUTBK: 630, mandiri: "SIMANDIRI PNJ" },
       { id: "POLIMEDIA_KULINER", ptn: "Politeknik Negeri Media Kreatif", prodi: "Seni Kuliner (D3)", rumpun: "Soshum", mapel1: "Ekonomi", mapel2: "Biologi", dayaTampung: 50, peminat: 610, passingUTBK: 595, mandiri: "Mandiri Polimedia" },
-      
+
+      // IPB
       { id: "IPB_STAT", ptn: "IPB University", prodi: "Statistika & Sains Data", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum", dayaTampung: 40, peminat: 1150, passingUTBK: 670, mandiri: "SM-IPB" },
       { id: "IPB_KOMP", ptn: "IPB University", prodi: "Teknologi Rekayasa Komputer (D4)", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Fisika", dayaTampung: 50, peminat: 950, passingUTBK: 635, mandiri: "SM-IPB Vokasi" },
       { id: "IPB_VET", ptn: "IPB University", prodi: "Paramedik Veteriner (D4)", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 55, peminat: 820, passingUTBK: 620, mandiri: "SM-IPB Vokasi" },
-      
+
+      // TOP 10 NASIONAL LAINNYA
       { id: "ITB_STEI", ptn: "Institut Teknologi Bandung", prodi: "STEI - Komputasi", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Fisika", dayaTampung: 130, peminat: 3450, passingUTBK: 720, mandiri: "SM-ITB" },
       { id: "UGM_MED", ptn: "Universitas Gadjah Mada", prodi: "Kedokteran", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 62, peminat: 3540, passingUTBK: 730, mandiri: "UM-CBT UGM" },
+      { id: "UGM_HUKUM", ptn: "Universitas Gadjah Mada", prodi: "Hukum", rumpun: "Soshum", mapel1: "Pendidikan Pancasila / PKn", mapel2: "Sosiologi", dayaTampung: 100, peminat: 3100, passingUTBK: 680, mandiri: "UM-CBT UGM" },
       { id: "ITS_IF", ptn: "Institut Teknologi Sepuluh Nopember", prodi: "Teknik Informatika", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Fisika", dayaTampung: 90, peminat: 2580, passingUTBK: 695, mandiri: "SM-ITS" },
       { id: "UNAIR_GIZI", ptn: "Universitas Airlangga", prodi: "Ilmu Gizi", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 40, peminat: 850, passingUTBK: 660, mandiri: "SMUA Mandiri" },
       { id: "UNAIR_SI", ptn: "Universitas Airlangga", prodi: "Sistem Informasi", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Fisika", dayaTampung: 45, peminat: 1250, passingUTBK: 665, mandiri: "SMUA Mandiri" },
       { id: "UNDIP_PWK", ptn: "Universitas Diponegoro", prodi: "Perencanaan Wilayah dan Kota", rumpun: "Saintek", mapel1: "Matematika Umum", mapel2: "Geografi", dayaTampung: 60, peminat: 1350, passingUTBK: 655, mandiri: "UM UNDIP" },
-      { id: "UB_INST", ptn: "Universitas Brawijaya", prodi: "Instrumentasi", rumpun: "Saintek", mapel1: "Fisika", mapel2: "Matematika Tingkat Lanjut", dayaTampung: 35, peminat: 620, passingUTBK: 630, mandiri: "SMUB Brawijaya" },
+      { id: "UNDIP_HUKUM", ptn: "Universitas Diponegoro", prodi: "Hukum", rumpun: "Soshum", mapel1: "Pendidikan Pancasila / PKn", mapel2: "Sosiologi", dayaTampung: 210, peminat: 3900, passingUTBK: 650, mandiri: "UM UNDIP" },
       { id: "UB_TIP", ptn: "Universitas Brawijaya", prodi: "Teknik Industri Pertanian", rumpun: "Saintek", mapel1: "Kimia", mapel2: "Matematika Umum", dayaTampung: 70, peminat: 1100, passingUTBK: 625, mandiri: "SMUB Brawijaya" },
-      { id: "UB_SIPIL", ptn: "Universitas Brawijaya", prodi: "Teknik Sipil", rumpun: "Saintek", mapel1: "Fisika", mapel2: "Matematika Umum", dayaTampung: 65, peminat: 1100, passingUTBK: 635, mandiri: "SMUB Brawijaya" },
-      { id: "UNS_HUKUM", ptn: "Universitas Sebelas Maret", prodi: "Ilmu Hukum", rumpun: "Soshum", mapel1: "Sosiologi", mapel2: "Bahasa Indonesia", dayaTampung: 120, peminat: 2800, passingUTBK: 640, mandiri: "SM UNS" },
+      { id: "UB_INST", ptn: "Universitas Brawijaya", prodi: "Instrumentasi", rumpun: "Saintek", mapel1: "Fisika", mapel2: "Matematika Tingkat Lanjut", dayaTampung: 35, peminat: 620, passingUTBK: 630, mandiri: "SMUB Brawijaya" },
+      { id: "UNS_HUKUM", ptn: "Universitas Sebelas Maret", prodi: "Ilmu Hukum", rumpun: "Soshum", mapel1: "Pendidikan Pancasila / PKn", mapel2: "Sosiologi", dayaTampung: 120, peminat: 2800, passingUTBK: 640, mandiri: "SM UNS" },
       { id: "UPNJT_MED", ptn: "UPN Veteran Jawa Timur", prodi: "Kedokteran", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 50, peminat: 1650, passingUTBK: 675, mandiri: "Jalur Mandiri UPN Jatim" }
     ];
+
+    let currentFilterRumpun = "ALL";
 
     function toggleTKAInput(show) {
       document.getElementById('boxInputTKA').classList.toggle('hidden', !show);
@@ -501,18 +546,53 @@
       document.getElementById('labelGrandTotal').innerText = grand.toFixed(1);
     }
 
-    function populateDropdowns() {
+    // Filter & Search Dropdown
+    function populateDropdowns(searchQuery = "") {
       const p1 = document.getElementById('selectProdi1');
       const p2 = document.getElementById('selectProdi2');
+      const curVal1 = p1.value;
+      const curVal2 = p2.value;
+
       p1.innerHTML = "";
       p2.innerHTML = "";
 
-      databasePTN.forEach(p => {
+      const q = searchQuery.toLowerCase().trim();
+      const filtered = databasePTN.filter(p => {
+        const matchRumpun = (currentFilterRumpun === "ALL" || p.rumpun === currentFilterRumpun);
+        const matchSearch = q === "" || 
+                            p.prodi.toLowerCase().includes(q) || 
+                            p.ptn.toLowerCase().includes(q);
+        return matchRumpun && matchSearch;
+      });
+
+      document.getElementById('searchCountBadge').innerText = `${filtered.length} Prodi`;
+
+      filtered.forEach(p => {
         const label = `[${p.rumpun}] ${p.prodi} - ${p.ptn}`;
         p1.add(new Option(label, p.id));
         p2.add(new Option(label, p.id));
       });
-      if (p2.options.length > 1) p2.selectedIndex = 1;
+
+      if (curVal1 && filtered.some(p => p.id === curVal1)) p1.value = curVal1;
+      if (curVal2 && filtered.some(p => p.id === curVal2)) p2.value = curVal2;
+      else if (p2.options.length > 1) p2.selectedIndex = 1;
+    }
+
+    function setRumpunFilter(rumpun) {
+      currentFilterRumpun = rumpun;
+      document.querySelectorAll('.btn-rumpun').forEach(btn => {
+        if (btn.getAttribute('data-rumpun') === rumpun) {
+          btn.className = "btn-rumpun px-2 py-1.5 bg-blue-900 text-white text-[10.5px] font-bold rounded-lg transition";
+        } else {
+          btn.className = "btn-rumpun px-2 py-1.5 bg-slate-100 text-slate-700 text-[10.5px] font-semibold rounded-lg hover:bg-slate-200 transition";
+        }
+      });
+      populateDropdowns(document.getElementById('searchProdiInput').value);
+    }
+
+    function filterDropdownBySearch() {
+      const q = document.getElementById('searchProdiInput').value;
+      populateDropdowns(q);
     }
 
     function isiContohSimulasi() {
@@ -525,6 +605,8 @@
         { id: "ekonomi", val: [80, 82, 83, 84, 85] },
         { id: "sosiologi", val: [83, 84, 85, 86, 87] },
         { id: "geografi", val: [80, 81, 82, 84, 85] },
+        { id: "ppkn", val: [89, 90, 91, 92, 93] },
+        { id: "sejarah", val: [85, 86, 87, 88, 89] },
         { id: "bindo", val: [88, 89, 90, 91, 92] },
         { id: "bing", val: [86, 87, 89, 90, 92] }
       ];
