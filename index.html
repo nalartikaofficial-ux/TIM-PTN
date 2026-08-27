@@ -21,25 +21,25 @@
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen antialiased selection:bg-blue-600 selection:text-white pb-20">
 
-  <!-- Header Navigasi -->
+  <!-- Header Navigasi Web -->
   <header class="bg-white border-b border-slate-200 sticky top-0 z-50 backdrop-blur-md bg-white/95 no-print">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-2.5 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <div class="h-12 w-12 rounded-full border-2 border-amber-400 bg-blue-900 flex items-center justify-center shadow-sm overflow-hidden shrink-0">
-          <img src="logo.png" alt="Logo SMA Muhammadiyah 18 Jakarta" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-amber-400 font-black text-xs\'>M18</div>';">
+          <img src="Desain tanpa judul (16).png" alt="Logo SMA Muhammadiyah 18 Jakarta" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-amber-400 font-black text-xs\'>M18</div>';">
         </div>
         <div>
           <div class="flex items-center gap-2">
             <h1 class="text-sm sm:text-base font-black text-blue-950 leading-tight tracking-tight">SMA MUHAMMADIYAH 18 JAKARTA</h1>
             <span class="px-2 py-0.5 bg-amber-100 border border-amber-300 text-amber-900 text-[10px] font-black rounded">SCHOOL OF CHAMPION</span>
           </div>
-          <p class="text-[11px] text-slate-500 font-medium">EduAnalytics PTN • Komparasi Rapor, Tes Kemampuan Akademik (TKA) & UTBK</p>
+          <p class="text-[11px] text-slate-500 font-medium">EduAnalytics PTN • Portal Rasionalisasi SNBP, TKA & Strategi SNBT</p>
         </div>
       </div>
       
       <div class="flex items-center gap-3">
         <span class="hidden md:inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full text-xs font-semibold">
-          <span class="h-2 w-2 rounded-full bg-emerald-500"></span> Fitur Komparasi TKA Aktif
+          <span class="h-2 w-2 rounded-full bg-emerald-500"></span> Regulasi Permendikbud 48/2022
         </span>
         <button onclick="window.print()" class="px-4 py-2 bg-blue-900 hover:bg-blue-950 text-white text-xs font-bold rounded-xl transition shadow flex items-center gap-2">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
@@ -58,23 +58,7 @@
         <div class="max-w-3xl">
           <span class="px-2.5 py-1 bg-amber-400 text-blue-950 text-[11px] font-black rounded-md uppercase tracking-wider">Modul Tim PTN M18</span>
           <h2 class="text-xl sm:text-2xl font-black mt-2 tracking-tight">Kalkulator Diagnostik Rapor, Komparasi TKA & Pemetaan PTN</h2>
-          <p class="text-slate-300 text-xs sm:text-sm mt-1 leading-relaxed">Sistem membandingkan nilai rapor murni semester 1–5 dengan nilai Tes Kemampuan Akademik (TKA) siswa untuk memvalidasi kesiapan masuk kampus impian.</p>
-        </div>
-      </div>
-
-      <!-- Quick Selector Siswa Terdaftar -->
-      <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div class="flex items-center gap-2">
-            <span class="flex h-6 w-6 items-center justify-center rounded-lg bg-blue-100 text-blue-900 text-xs font-black">⚡</span>
-            <div>
-              <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Pilih Cepat Siswa Terdaftar (Data Pemetaan M18)</h3>
-              <p class="text-[11px] text-slate-500">Pilih nama siswa untuk memuat otomatis data pilihan prodi dan rata-rata nilainya.</p>
-            </div>
-          </div>
-          <select id="selectQuickSiswa" onchange="loadQuickSiswa(this.value)" class="bg-slate-50 border border-slate-300 rounded-xl px-4 py-2 text-xs font-semibold text-slate-800 focus:bg-white focus:border-blue-700 focus:outline-none max-w-xs">
-            <option value="">-- Pilih Nama Siswa Terdaftar --</option>
-          </select>
+          <p class="text-slate-300 text-xs sm:text-sm mt-1 leading-relaxed">Masukkan nilai rapor semester 1–4 dan target semester 5. Nilai TKA bersifat opsional untuk menguji konsistensi kemampuan akademik siswa.</p>
         </div>
       </div>
 
@@ -90,7 +74,7 @@
 
             <div>
               <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Lengkap Siswa</label>
-              <input id="inNama" type="text" placeholder="Contoh: Muhammad Umar" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-blue-700 focus:outline-none" />
+              <input id="inNama" type="text" placeholder="Masukkan nama siswa..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-blue-700 focus:outline-none" />
             </div>
             <div>
               <label class="block text-xs font-semibold text-slate-600 mb-1">Kelas / Peminatan</label>
@@ -119,19 +103,19 @@
           </div>
         </div>
 
-        <!-- Kolom Kanan: Input Nilai Rapor & Nilai TKA -->
+        <!-- Kolom Kanan: Input Nilai 10 Mapel & TKA -->
         <div class="lg:col-span-8 space-y-6">
           <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm">
             <div class="flex flex-wrap items-center justify-between pb-3 mb-4 border-b border-slate-100 gap-2">
               <div>
                 <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
                   <span class="flex h-5 w-5 items-center justify-center rounded bg-blue-900 text-white text-[10px]">3</span>
-                  Nilai Rapor Semester 1 s/d 5 & Tes TKA
+                  Nilai Rapor Semester 1 s/d 5
                 </h3>
-                <p class="text-[11px] text-slate-400">Semester 5 dapat diisi target, lalu masukkan nilai rata-rata TKA untuk komparasi.</p>
+                <p class="text-[11px] text-slate-400">Semester 5 dapat diisi target nilai akhir.</p>
               </div>
-              <button type="button" onclick="isiContohNilai()" class="text-xs text-blue-700 hover:text-blue-900 font-bold underline">
-                + Isi Simulasi Nilai Cepat
+              <button type="button" onclick="isiContohSimulasi()" class="text-xs text-blue-700 hover:text-blue-900 font-bold underline">
+                + Isi Simulasi Contoh
               </button>
             </div>
 
@@ -152,17 +136,31 @@
               </table>
             </div>
 
-            <!-- Input Nilai Tes Kemampuan Akademik (TKA) -->
-            <div class="mt-4 p-4 rounded-xl bg-indigo-50/60 border border-indigo-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div>
+            <!-- Pengaturan Status Nilai TKA (Opsi Ada / Belum Ada) -->
+            <div class="mt-4 p-4 rounded-xl bg-indigo-50/60 border border-indigo-200">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2">
                 <span class="text-xs font-bold text-indigo-950 uppercase tracking-wide flex items-center gap-1.5">
-                  <span>🎯</span> Nilai Rata-Rata Tes Kemampuan Akademik (TKA) / Try Out
+                  <span>🎯</span> Tes Kemampuan Akademik (TKA / Try Out)
                 </span>
-                <p class="text-[11px] text-indigo-800 mt-0.5">Nilai TKA akan dikomparasi dengan nilai rapor untuk menguji peluang kelulusan riil.</p>
+                
+                <div class="flex items-center gap-4 text-xs">
+                  <label class="flex items-center gap-1.5 cursor-pointer">
+                    <input type="radio" name="optTKA" value="belum" checked onchange="toggleTKAInput(false)" class="text-blue-600">
+                    <span class="font-medium text-slate-700">Belum Ada Nilai TKA</span>
+                  </label>
+                  <label class="flex items-center gap-1.5 cursor-pointer">
+                    <input type="radio" name="optTKA" value="ada" onchange="toggleTKAInput(true)" class="text-blue-600">
+                    <span class="font-bold text-indigo-950">Sudah Ada Nilai TKA</span>
+                  </label>
+                </div>
               </div>
-              <div class="flex items-center gap-2">
-                <input id="inNilaiTKA" type="number" step="0.1" placeholder="0-100" class="w-24 text-center bg-white border border-indigo-300 rounded-xl py-2 text-sm font-extrabold text-indigo-950 focus:border-blue-700 focus:outline-none" />
-                <span class="text-xs text-indigo-900 font-bold">/ 100</span>
+
+              <div id="boxInputTKA" class="hidden mt-3 pt-3 border-t border-indigo-100 flex items-center justify-between gap-3">
+                <p class="text-[11px] text-indigo-800">Masukkan nilai rata-rata TKA yang sudah diperoleh:</p>
+                <div class="flex items-center gap-2">
+                  <input id="inNilaiTKA" type="number" step="0.1" placeholder="0-100" class="w-24 text-center bg-white border border-indigo-300 rounded-xl py-1.5 text-sm font-extrabold text-indigo-950 focus:border-blue-700 focus:outline-none" />
+                  <span class="text-xs text-indigo-900 font-bold">/ 100</span>
+                </div>
               </div>
             </div>
 
@@ -189,12 +187,12 @@
         <div class="flex items-center justify-between border-b-2 border-blue-950 pb-4 mb-4">
           <div class="flex items-center gap-4">
             <div class="h-16 w-16 rounded-full border-2 border-amber-400 bg-blue-900 flex items-center justify-center overflow-hidden shrink-0 shadow-sm">
-              <img src="logo.png" alt="Logo M18" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-amber-400 font-black text-sm\'>M18</div>';">
+              <img src="Desain tanpa judul (16).png" alt="Logo M18" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-amber-400 font-black text-sm\'>M18</div>';">
             </div>
             <div>
               <h2 class="text-base sm:text-lg font-black text-blue-950 uppercase tracking-tight leading-tight">SMA MUHAMMADIYAH 18 JAKARTA</h2>
               <p class="text-xs font-bold text-amber-700 tracking-wider">SCHOOL OF CHAMPION</p>
-              <p class="text-[10px] text-slate-500">Bimbingan & Konseling Peminatan Masuk PTN (SNBP • KOMPARASI TKA • UTBK • MANDIRI)</p>
+              <p class="text-[10px] text-slate-500">Bimbingan & Konseling Peminatan Masuk PTN (SNBP • EVALUASI TKA • UTBK • MANDIRI)</p>
               <p class="text-[9px] text-slate-400">Jl. Cipulir I No.15, Kebayoran Lama, Jakarta Selatan 12230</p>
             </div>
           </div>
@@ -223,8 +221,8 @@
             <p id="outRataRapor" class="font-black text-blue-900 text-sm">-</p>
           </div>
           <div>
-            <span class="text-[10px] text-slate-400 block font-semibold">SKOR TKA / TO</span>
-            <p id="outSkorTKA" class="font-black text-indigo-700 text-sm">-</p>
+            <span class="text-[10px] text-slate-400 block font-semibold">STATUS TKA</span>
+            <p id="outStatusTKA" class="font-black text-indigo-700 text-sm">-</p>
           </div>
         </div>
 
@@ -245,10 +243,10 @@
           </div>
         </div>
 
-        <!-- 3 KOLOM ANALISIS: SNBP • SNBT • MANDIRI -->
+        <!-- 3 KOLOM ANALISIS LENGKAP -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
           
-          <!-- Box 1: SNBP & KOMPARASI LENGKAP PILIHAN 1 & 2 -->
+          <!-- Box 1: SNBP -->
           <div class="p-3.5 rounded-xl border border-slate-200 bg-white print-card space-y-2.5 flex flex-col justify-between">
             <div>
               <div class="flex justify-between items-center border-b border-slate-100 pb-1.5">
@@ -265,11 +263,11 @@
                 
                 <div class="flex items-baseline gap-1 mt-1">
                   <span id="outScore1" class="text-2xl font-black text-emerald-600">0%</span>
-                  <span class="text-[10px] text-slate-500 font-medium">Estimasi Probabilitas</span>
+                  <span class="text-[10px] text-slate-500 font-medium">Peluang SNBP</span>
                 </div>
               </div>
 
-              <!-- PILIHAN KEDUA (LENGKAP DENGAN DAYA TAMPUNG, PEMINAT & KEKETATAN) -->
+              <!-- PILIHAN KEDUA (LENGKAP) -->
               <div class="pt-2 border-t border-slate-100 mt-2">
                 <div class="flex justify-between items-center">
                   <span class="text-[10px] text-slate-400 font-semibold block">PILIHAN KEDUA:</span>
@@ -280,19 +278,19 @@
                 <p id="outStat2" class="text-[9.5px] text-slate-500 mt-0.5"></p>
               </div>
 
-              <!-- KOMPARASI NILAI TKA (SESUAI REQUEST) -->
+              <!-- KOMPARASI TKA -->
               <div class="mt-3 p-2.5 rounded-xl bg-indigo-50/70 border border-indigo-200">
                 <div class="flex items-center justify-between">
-                  <span class="text-[10px] font-bold text-indigo-950 uppercase tracking-wide">🎯 Simulasi Komparasi TKA</span>
+                  <span class="text-[10px] font-bold text-indigo-950 uppercase tracking-wide">🎯 Evaluasi / Target TKA</span>
                   <span id="badgeKesiapanTKA" class="px-1.5 py-0.5 rounded text-[9px] font-bold"></span>
                 </div>
                 <div class="grid grid-cols-2 gap-2 mt-1 text-[9.5px]">
                   <div>
-                    <span class="text-slate-500 block">Pilihan 1 (+TKA):</span>
+                    <span class="text-slate-500 block">Pilihan 1:</span>
                     <span id="outPeluangTKA1" class="font-extrabold text-indigo-900 text-xs"></span>
                   </div>
                   <div>
-                    <span class="text-slate-500 block">Pilihan 2 (+TKA):</span>
+                    <span class="text-slate-500 block">Pilihan 2:</span>
                     <span id="outPeluangTKA2" class="font-extrabold text-indigo-900 text-xs"></span>
                   </div>
                 </div>
@@ -349,7 +347,7 @@
 
         <!-- Disclaimer Akademik Resmi -->
         <div class="p-2.5 bg-slate-50 rounded-lg border border-slate-200 text-[9.5px] text-slate-500 leading-relaxed mb-4">
-          <strong>Klausul Akademik:</strong> Dokumen ini adalah instrumen Sistem Pendukung Keputusan Konseling (DSS) berbasis pembobotan mata pelajaran pendukung Permendikbudristek No. 48/2022, Kepmendikbudristek No. 345/M/2022, Nilai TKA / Try Out, serta Track Record Penerimaan Riil Alumni SMA Muhammadiyah 18 Jakarta. Keputusan akhir sepenuhnya merupakan hak prerogatif panitia SNPMB BPPP dan masing-masing PTN.
+          <strong>Klausul Akademik:</strong> Dokumen ini adalah instrumen Sistem Pendukung Keputusan Konseling (DSS) berbasis pembobotan mata pelajaran pendukung Permendikbudristek No. 48/2022, Kepmendikbudristek No. 345/M/2022, serta Indeks Rekam Jejak Sekolah SMA Muhammadiyah 18 Jakarta. Keputusan akhir sepenuhnya merupakan hak prerogatif panitia SNPMB BPPP dan masing-masing PTN.
         </div>
 
         <!-- Area Tanda Tangan Konseling BK -->
@@ -388,24 +386,7 @@
       { id: "bing", name: "Bahasa Inggris" }
     ];
 
-    const dataPemetaanSiswa = [
-      { nama: "FARISAH NAVARRA PUTRI", kelas: "XII - 2", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 90.42, ptn1: "UNAIR_GIZI", ptn2: "UPNVJ_GIZI" },
-      { nama: "HADID IMANI RIFA'I", kelas: "XII - 1", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 90.29, ptn1: "UI_SIPIL", ptn2: "UB_SIPIL" },
-      { nama: "MOHAMMAD ERIQ FAHREZI", kelas: "XII - 1", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 90.11, ptn1: "UI_PERKAPALAN", ptn2: "UNILA_MESIN" },
-      { nama: "NADYA SYAFIQ", kelas: "XII - 1", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 89.55, ptn1: "IPB_STAT", ptn2: "UPNVJ_DATA" },
-      { nama: "PANDU FATHURRIZQI", kelas: "XII - 1", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 89.55, ptn1: "UB_INST", ptn2: "UNAIR_SI" },
-      { nama: "AILA SHAFA SHALEHA", kelas: "XII - 1", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 89.15, ptn1: "UNAIR_FARM", ptn2: "UPNVJ_MED" },
-      { nama: "CHAIRUNNISA AMALIA", kelas: "XII - 2", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 88.94, ptn1: "UI_ARS", ptn2: "UNDIP_PWK" },
-      { nama: "AKASYA PUTRI GHANIA", kelas: "XII - 2", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 88.79, ptn1: "UPNJT_MED", ptn2: "UINJKT_MED" },
-      { nama: "IRSYAD FATHI", kelas: "XII - 1", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 88.48, ptn1: "UNAIR_SI", ptn2: "UPNVJ_SI" },
-      { nama: "ISYA NURUL RASYIDAH", kelas: "XII - 1", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 88.36, ptn1: "UNDIP_PWK", ptn2: "UB_TIP" },
-      { nama: "SYARIFAH ANNISA", kelas: "XII - 1", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 88.13, ptn1: "UINJKT_MTK", ptn2: "IPB_KOMP" },
-      { nama: "RATU FILWA AZ-ZAHRA", kelas: "XII - 2", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 87.80, ptn1: "UB_TIP", ptn2: "IPB_VET" },
-      { nama: "NAIRA CHANDRANINGTYAS", kelas: "XII - 3", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 87.76, ptn1: "UINJKT_HI", ptn2: "UPNVJ_POL" },
-      { nama: "SINTIA HAIRUDDIN", kelas: "XII - 2", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 87.47, ptn1: "IPB_VET", ptn2: "UNAIR_GIZI" },
-      { nama: "HELGA GENDIS SEKAR AYU PUTRI", kelas: "XII - 4", konselor: "Ririn Aprilia, S.Pd., Gr", rata: 86.74, ptn1: "UINJKT_POL", ptn2: "UPNVJ_POL" }
-    ];
-
+    // Data Rekam Jejak Alumni Bekerja Murni di Balik Layar (Indeks Sekolah)
     const alumniTrackRecord = [
       { ptn: "UPN VETERAN JAWA TIMUR", prodi: "KEDOKTERAN", avg: 89.23, tahun: "SNBP 2026" },
       { ptn: "AIRLANGGA", prodi: "ILMU GIZI", avg: 91.18, tahun: "SNBP 2026" },
@@ -434,57 +415,49 @@
       { ptn: "UNS", prodi: "ILMU HUKUM", avg: 89.69, tahun: "SNBP 2024" }
     ];
 
-    // DATABASE LENGKAP TOP 10 NASIONAL + SE-JABODETABEK
+    // Database Lengkap PTN Top 10 + Se-Jabodetabek
     const databasePTN = [
-      // UI
       { id: "UI_MED", ptn: "Universitas Indonesia", prodi: "Pendidikan Dokter", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 75, peminat: 3820, passingUTBK: 735, mandiri: "SIMAK UI" },
       { id: "UI_CS", ptn: "Universitas Indonesia", prodi: "Ilmu Komputer", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Fisika", dayaTampung: 45, peminat: 1980, passingUTBK: 715, mandiri: "SIMAK UI" },
       { id: "UI_SIPIL", ptn: "Universitas Indonesia", prodi: "Teknik Sipil", rumpun: "Saintek", mapel1: "Fisika", mapel2: "Matematika Umum", dayaTampung: 50, peminat: 1200, passingUTBK: 665, mandiri: "SIMAK UI" },
       { id: "UI_ARS", ptn: "Universitas Indonesia", prodi: "Arsitektur", rumpun: "Saintek", mapel1: "Matematika Umum", mapel2: "Fisika", dayaTampung: 35, peminat: 1350, passingUTBK: 665, mandiri: "SIMAK UI" },
       { id: "UI_HUKUM", ptn: "Universitas Indonesia", prodi: "Ilmu Hukum", rumpun: "Soshum", mapel1: "Sosiologi", mapel2: "Bahasa Indonesia", dayaTampung: 150, peminat: 3600, passingUTBK: 685, mandiri: "SIMAK UI" },
       { id: "UI_MANAJEMEN", ptn: "Universitas Indonesia", prodi: "Manajemen", rumpun: "Soshum", mapel1: "Ekonomi", mapel2: "Matematika Umum", dayaTampung: 60, peminat: 2850, passingUTBK: 695, mandiri: "SIMAK UI" },
-      { id: "UI_PERKAPALAN", ptn: "Universitas Indonesia", prodi: "Teknik Perkapalan", rumpun: "Saintek", mapel1: "Fisika", mapel2: "Matematika Tingkat Lanjut", dayaTampung: 35, peminat: 750, passingUTBK: 645, mandiri: "SIMAK UI" },
-      { id: "UI_ARS_D3", ptn: "Universitas Indonesia", prodi: "Administrasi Rumah Sakit (D3)", rumpun: "Soshum", mapel1: "Ekonomi", mapel2: "Biologi", dayaTampung: 40, peminat: 1100, passingUTBK: 630, mandiri: "PPKB UI & SIMAK" },
-
-      // UPNVJ
+      
       { id: "UPNVJ_MED", ptn: "UPN Veteran Jakarta", prodi: "Kedokteran", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 50, peminat: 2400, passingUTBK: 690, mandiri: "SEMA UPNVJ" },
       { id: "UPNVJ_SI", ptn: "UPN Veteran Jakarta", prodi: "Sistem Informasi", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Fisika", dayaTampung: 60, peminat: 1850, passingUTBK: 650, mandiri: "SEMA UPNVJ" },
       { id: "UPNVJ_GIZI", ptn: "UPN Veteran Jakarta", prodi: "Ilmu Gizi", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 45, peminat: 1100, passingUTBK: 645, mandiri: "SEMA UPNVJ" },
       { id: "UPNVJ_DATA", ptn: "UPN Veteran Jakarta", prodi: "Sains Data", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum", dayaTampung: 35, peminat: 890, passingUTBK: 640, mandiri: "SEMA UPNVJ" },
-      { id: "UPNVJ_POL", ptn: "UPN Veteran Jakarta", prodi: "Ilmu Politik", rumpun: "Soshum", mapel1: "Sosiologi", mapel2: "Bahasa Indonesia", dayaTampung: 60, peminat: 1450, passingUTBK: 630, mandiri: "SEMA UPNVJ" },
-
-      // UIN JAKARTA
+      
       { id: "UINJKT_MED", ptn: "UIN Syarif Hidayatullah Jakarta", prodi: "Pendidikan Dokter", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 40, peminat: 1850, passingUTBK: 680, mandiri: "SPMB UIN Jakarta" },
       { id: "UINJKT_MTK", ptn: "UIN Syarif Hidayatullah Jakarta", prodi: "Matematika", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum", dayaTampung: 45, peminat: 580, passingUTBK: 610, mandiri: "SPMB UIN Jakarta" },
       { id: "UINJKT_HI", ptn: "UIN Syarif Hidayatullah Jakarta", prodi: "Hubungan Internasional", rumpun: "Soshum", mapel1: "Sosiologi", mapel2: "Bahasa Inggris", dayaTampung: 40, peminat: 950, passingUTBK: 625, mandiri: "SPMB UIN Jakarta" },
-      { id: "UINJKT_POL", ptn: "UIN Syarif Hidayatullah Jakarta", prodi: "Ilmu Politik", rumpun: "Soshum", mapel1: "Sosiologi", mapel2: "Bahasa Indonesia", dayaTampung: 45, peminat: 820, passingUTBK: 615, mandiri: "SPMB UIN Jakarta" },
-
-      // UNJ & POLITEKNIK JAKARTA
+      
       { id: "UNJ_FISIKA", ptn: "Universitas Negeri Jakarta", prodi: "Pendidikan Fisika", rumpun: "Pendidikan", mapel1: "Fisika", mapel2: "Matematika Umum", dayaTampung: 45, peminat: 620, passingUTBK: 605, mandiri: "PENMABA UNJ" },
       { id: "UNJ_MTK", ptn: "Universitas Negeri Jakarta", prodi: "Pendidikan Matematika", rumpun: "Pendidikan", mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum", dayaTampung: 45, peminat: 820, passingUTBK: 615, mandiri: "PENMABA UNJ" },
       { id: "PNJ_TI", ptn: "Politeknik Negeri Jakarta", prodi: "Teknik Informatika (D4)", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Fisika", dayaTampung: 60, peminat: 1500, passingUTBK: 630, mandiri: "SIMANDIRI PNJ" },
       { id: "POLIMEDIA_KULINER", ptn: "Politeknik Negeri Media Kreatif", prodi: "Seni Kuliner (D3)", rumpun: "Soshum", mapel1: "Ekonomi", mapel2: "Biologi", dayaTampung: 50, peminat: 610, passingUTBK: 595, mandiri: "Mandiri Polimedia" },
-
-      // IPB
+      
       { id: "IPB_STAT", ptn: "IPB University", prodi: "Statistika & Sains Data", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum", dayaTampung: 40, peminat: 1150, passingUTBK: 670, mandiri: "SM-IPB" },
       { id: "IPB_KOMP", ptn: "IPB University", prodi: "Teknologi Rekayasa Komputer (D4)", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Fisika", dayaTampung: 50, peminat: 950, passingUTBK: 635, mandiri: "SM-IPB Vokasi" },
       { id: "IPB_VET", ptn: "IPB University", prodi: "Paramedik Veteriner (D4)", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 55, peminat: 820, passingUTBK: 620, mandiri: "SM-IPB Vokasi" },
-
-      // TOP 10 NASIONAL (ITB, UGM, ITS, UNAIR, UNDIP, UNPAD, UB, UNS)
+      
       { id: "ITB_STEI", ptn: "Institut Teknologi Bandung", prodi: "STEI - Komputasi", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Fisika", dayaTampung: 130, peminat: 3450, passingUTBK: 720, mandiri: "SM-ITB" },
       { id: "UGM_MED", ptn: "Universitas Gadjah Mada", prodi: "Kedokteran", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 62, peminat: 3540, passingUTBK: 730, mandiri: "UM-CBT UGM" },
       { id: "ITS_IF", ptn: "Institut Teknologi Sepuluh Nopember", prodi: "Teknik Informatika", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Fisika", dayaTampung: 90, peminat: 2580, passingUTBK: 695, mandiri: "SM-ITS" },
       { id: "UNAIR_GIZI", ptn: "Universitas Airlangga", prodi: "Ilmu Gizi", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 40, peminat: 850, passingUTBK: 660, mandiri: "SMUA Mandiri" },
       { id: "UNAIR_SI", ptn: "Universitas Airlangga", prodi: "Sistem Informasi", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Fisika", dayaTampung: 45, peminat: 1250, passingUTBK: 665, mandiri: "SMUA Mandiri" },
-      { id: "UNAIR_FARM", ptn: "Universitas Airlangga", prodi: "Farmasi", rumpun: "Saintek", mapel1: "Kimia", mapel2: "Biologi", dayaTampung: 80, peminat: 1890, passingUTBK: 670, mandiri: "SMUA Mandiri" },
       { id: "UNDIP_PWK", ptn: "Universitas Diponegoro", prodi: "Perencanaan Wilayah dan Kota", rumpun: "Saintek", mapel1: "Matematika Umum", mapel2: "Geografi", dayaTampung: 60, peminat: 1350, passingUTBK: 655, mandiri: "UM UNDIP" },
       { id: "UB_INST", ptn: "Universitas Brawijaya", prodi: "Instrumentasi", rumpun: "Saintek", mapel1: "Fisika", mapel2: "Matematika Tingkat Lanjut", dayaTampung: 35, peminat: 620, passingUTBK: 630, mandiri: "SMUB Brawijaya" },
       { id: "UB_TIP", ptn: "Universitas Brawijaya", prodi: "Teknik Industri Pertanian", rumpun: "Saintek", mapel1: "Kimia", mapel2: "Matematika Umum", dayaTampung: 70, peminat: 1100, passingUTBK: 625, mandiri: "SMUB Brawijaya" },
       { id: "UB_SIPIL", ptn: "Universitas Brawijaya", prodi: "Teknik Sipil", rumpun: "Saintek", mapel1: "Fisika", mapel2: "Matematika Umum", dayaTampung: 65, peminat: 1100, passingUTBK: 635, mandiri: "SMUB Brawijaya" },
       { id: "UNS_HUKUM", ptn: "Universitas Sebelas Maret", prodi: "Ilmu Hukum", rumpun: "Soshum", mapel1: "Sosiologi", mapel2: "Bahasa Indonesia", dayaTampung: 120, peminat: 2800, passingUTBK: 640, mandiri: "SM UNS" },
-      { id: "UPNJT_MED", ptn: "UPN Veteran Jawa Timur", prodi: "Kedokteran", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 50, peminat: 1650, passingUTBK: 675, mandiri: "Jalur Mandiri UPN Jatim" },
-      { id: "UNILA_MESIN", ptn: "Universitas Lampung", prodi: "Teknik Mesin", rumpun: "Saintek", mapel1: "Fisika", mapel2: "Matematika Umum", dayaTampung: 60, peminat: 550, passingUTBK: 595, mandiri: "SM UNILA" }
+      { id: "UPNJT_MED", ptn: "UPN Veteran Jawa Timur", prodi: "Kedokteran", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 50, peminat: 1650, passingUTBK: 675, mandiri: "Jalur Mandiri UPN Jatim" }
     ];
+
+    function toggleTKAInput(show) {
+      document.getElementById('boxInputTKA').classList.toggle('hidden', !show);
+    }
 
     function renderTabel() {
       const tbody = document.getElementById('tableBodyInput');
@@ -540,40 +513,34 @@
         p2.add(new Option(label, p.id));
       });
       if (p2.options.length > 1) p2.selectedIndex = 1;
-
-      const selectQuick = document.getElementById('selectQuickSiswa');
-      selectQuick.innerHTML = '<option value="">-- Pilih Nama Siswa Terdaftar --</option>';
-      dataPemetaanSiswa.forEach((s, idx) => {
-        selectQuick.add(new Option(`${s.nama} (${s.kelas}) - Rata: ${s.rata}`, idx));
-      });
     }
 
-    function loadQuickSiswa(index) {
-      if (index === "") return;
-      const s = dataPemetaanSiswa[index];
-      document.getElementById('inNama').value = s.nama;
-      document.getElementById('inKelas').value = s.kelas;
-      document.getElementById('inKonselor').value = s.konselor;
+    function isiContohSimulasi() {
+      const sample = [
+        { id: "mtk_umum", val: [88, 89, 90, 92, 94] },
+        { id: "mtk_lanjut", val: [86, 88, 89, 91, 93] },
+        { id: "fisika", val: [87, 88, 90, 93, 95] },
+        { id: "kimia", val: [84, 85, 86, 88, 89] },
+        { id: "biologi", val: [82, 83, 85, 86, 87] },
+        { id: "ekonomi", val: [80, 82, 83, 84, 85] },
+        { id: "sosiologi", val: [83, 84, 85, 86, 87] },
+        { id: "geografi", val: [80, 81, 82, 84, 85] },
+        { id: "bindo", val: [88, 89, 90, 91, 92] },
+        { id: "bing", val: [86, 87, 89, 90, 92] }
+      ];
 
-      if (s.ptn1 && databasePTN.some(p => p.id === s.ptn1)) document.getElementById('selectProdi1').value = s.ptn1;
-      if (s.ptn2 && databasePTN.some(p => p.id === s.ptn2)) document.getElementById('selectProdi2').value = s.ptn2;
-
-      const base = s.rata;
-      listMapel.forEach((m, mIdx) => {
-        const delta = (mIdx % 2 === 0 ? 1.2 : -0.8);
+      sample.forEach(s => {
         for (let i = 1; i <= 5; i++) {
-          const semesterTrend = (i - 3) * 0.5;
-          const score = (base + delta + semesterTrend).toFixed(1);
-          document.getElementById(`${m.id}_s${i}`).value = Math.min(99, Math.max(75, score));
+          document.getElementById(`${s.id}_s${i}`).value = s.val[i - 1];
         }
-        hitungRataRow(m.id);
+        hitungRataRow(s.id);
       });
 
-      document.getElementById('inNilaiTKA').value = (base - 2.5).toFixed(1);
-    }
-
-    function isiContohNilai() {
-      loadQuickSiswa(0);
+      document.getElementById('inNama').value = "Muhammad Umar";
+      document.getElementById('inKelas').value = "XII - 1 (MIPA)";
+      document.getElementById('inKonselor').value = "Tim Sukses PTN M18";
+      document.getElementById('selectProdi1').value = "UB_TIP";
+      document.getElementById('selectProdi2').value = "ITS_IF";
     }
 
     function checkAlumniTrack(ptnName, prodiName) {
@@ -594,7 +561,10 @@
       const grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText) || 0;
       if (grandAvg === 0) return alert('Mohon isi nilai rapor terlebih dahulu!');
 
-      const nilaiTKA = parseFloat(document.getElementById('inNilaiTKA').value) || (grandAvg - 3.0);
+      const isTKAAda = document.querySelector('input[name="optTKA"]:checked').value === "ada";
+      const valTKA = parseFloat(document.getElementById('inNilaiTKA').value);
+      const nilaiTKA = (isTKAAda && !isNaN(valTKA) && valTKA > 0) ? valTKA : null;
+
       const nama = document.getElementById('inNama').value.trim() || "Siswa Muhammadiyah 18";
       const kelas = document.getElementById('inKelas').value.trim() || "XII SMA";
       const konselor = document.getElementById('inKonselor').value.trim() || "Tim Sukses PTN M18";
@@ -617,7 +587,7 @@
       document.getElementById('outKelas').innerText = kelas;
       document.getElementById('outKonselor').innerText = konselor;
       document.getElementById('outRataRapor').innerText = grandAvg.toFixed(2);
-      document.getElementById('outSkorTKA').innerText = nilaiTKA.toFixed(1);
+      document.getElementById('outStatusTKA').innerText = nilaiTKA ? `${nilaiTKA.toFixed(1)} (Valid)` : "Belum Ada Nilai";
       document.getElementById('outTanggalCetak').innerText = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
 
       // Top Mapel
@@ -650,17 +620,11 @@
       const score1 = calcSNBP(prodi1, grandAvg);
       const score2 = calcSNBP(prodi2, grandAvg);
 
-      // Kalkulasi Peluang Gabungan Rapor + TKA
-      const combinedScore = (grandAvg + nilaiTKA) / 2;
-      const scoreTKA1 = calcSNBP(prodi1, combinedScore);
-      const scoreTKA2 = calcSNBP(prodi2, combinedScore);
-
-      // Render Pilihan 1
+      // Render Pilihan 1 & 2
       document.getElementById('outProdi1').innerText = `${prodi1.prodi} - ${prodi1.ptn}`;
       document.getElementById('outStat1').innerText = `Daya Tampung: ${prodi1.dayaTampung} | Peminat: ${prodi1.peminat} (Keketatan: ${(prodi1.dayaTampung / prodi1.peminat * 100).toFixed(2)}%)`;
       document.getElementById('outScore1').innerText = `${score1}%`;
 
-      // Render Pilihan 2 (Lengkap Sesuai Request)
       document.getElementById('outProdi2').innerText = `${prodi2.prodi} (${prodi2.ptn})`;
       document.getElementById('outStat2').innerText = `Daya Tampung: ${prodi2.dayaTampung} | Peminat: ${prodi2.peminat} (Keketatan: ${(prodi2.dayaTampung / prodi2.peminat * 100).toFixed(2)}%)`;
       document.getElementById('outScore2').innerText = `${score2}% Peluang`;
@@ -690,25 +654,37 @@
         badge.className = "px-2 py-0.5 rounded text-[10px] font-extrabold bg-rose-100 text-rose-800 border border-rose-300";
       }
 
-      // Render Komparasi Nilai TKA (Lampiran 2 Baru)
-      document.getElementById('outPeluangTKA1').innerText = `${scoreTKA1}% Peluang`;
-      document.getElementById('outPeluangTKA2').innerText = `${scoreTKA2}% Peluang`;
-
+      // Evaluasi / Komparasi TKA
       const badgeTKA = document.getElementById('badgeKesiapanTKA');
-      const gap = grandAvg - nilaiTKA;
+      if (nilaiTKA) {
+        const combinedScore = (grandAvg + nilaiTKA) / 2;
+        const scoreTKA1 = calcSNBP(prodi1, combinedScore);
+        const scoreTKA2 = calcSNBP(prodi2, combinedScore);
 
-      if (gap <= 2.0) {
-        badgeTKA.innerText = "TKA Sangat Konsisten";
-        badgeTKA.className = "px-1.5 py-0.5 rounded text-[9px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300";
-        document.getElementById('outCatatanTKA').innerText = `✨ Nilai TKA (${nilaiTKA.toFixed(1)}) selaras kuat dengan rapor (${grandAvg.toFixed(1)}). Potensi kelulusan di jalur SNBP dan kesiapan SNBT sangat prima!`;
-      } else if (gap <= 5.0) {
-        badgeTKA.innerText = "TKA Perlu Penguatan";
-        badgeTKA.className = "px-1.5 py-0.5 rounded text-[9px] font-extrabold bg-amber-100 text-amber-800 border border-amber-300";
-        document.getElementById('outCatatanTKA').innerText = `⚠️ Terdapat selisih ${gap.toFixed(1)} poin antara rapor dan TKA. Peluang gabungan turun menjadi ${scoreTKA1}%. Perbanyak drilling soal TKA agar nilai riil tetap kompetitif.`;
+        document.getElementById('outPeluangTKA1').innerText = `${scoreTKA1}% Peluang`;
+        document.getElementById('outPeluangTKA2').innerText = `${scoreTKA2}% Peluang`;
+
+        const gap = grandAvg - nilaiTKA;
+        if (gap <= 2.0) {
+          badgeTKA.innerText = "TKA Sangat Konsisten";
+          badgeTKA.className = "px-1.5 py-0.5 rounded text-[9px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300";
+          document.getElementById('outCatatanTKA').innerText = `✨ Nilai TKA (${nilaiTKA.toFixed(1)}) selaras kuat dengan rapor (${grandAvg.toFixed(1)}). Potensi kelulusan di jalur SNBP dan kesiapan SNBT sangat prima!`;
+        } else if (gap <= 5.0) {
+          badgeTKA.innerText = "TKA Perlu Penguatan";
+          badgeTKA.className = "px-1.5 py-0.5 rounded text-[9px] font-extrabold bg-amber-100 text-amber-800 border border-amber-300";
+          document.getElementById('outCatatanTKA').innerText = `⚠️ Terdapat selisih ${gap.toFixed(1)} poin antara rapor dan TKA. Peluang gabungan menjadi ${scoreTKA1}%. Maksimalkan latihan soal TKA agar nilai riil tetap bersaing.`;
+        } else {
+          badgeTKA.innerText = "Waspada Kesenjangan TKA";
+          badgeTKA.className = "px-1.5 py-0.5 rounded text-[9px] font-extrabold bg-rose-100 text-rose-800 border border-rose-300";
+          document.getElementById('outCatatanTKA').innerText = `🚨 Nilai TKA (${nilaiTKA.toFixed(1)}) tertinggal cukup jauh dari rapor (${grandAvg.toFixed(1)}). Tingkatkan jam belajar intensif TKA!`;
+        }
       } else {
-        badgeTKA.innerText = "Waspada Kesenjangan TKA";
-        badgeTKA.className = "px-1.5 py-0.5 rounded text-[9px] font-extrabold bg-rose-100 text-rose-800 border border-rose-300";
-        document.getElementById('outCatatanTKA').innerText = `🚨 Nilai TKA (${nilaiTKA.toFixed(1)}) tertinggal cukup jauh dari rapor (${grandAvg.toFixed(1)}). Jika kampus target memvalidasi nilai dengan tes akademik, peluang turun drastis ke ${scoreTKA1}%. Tingkatkan jam belajar intensif!`;
+        const targetTKA = (grandAvg - 1.5).toFixed(1);
+        document.getElementById('outPeluangTKA1').innerText = `Target: ${targetTKA}+`;
+        document.getElementById('outPeluangTKA2').innerText = `Target: ${targetTKA}+`;
+        badgeTKA.innerText = "Simulasi Target TKA";
+        badgeTKA.className = "px-1.5 py-0.5 rounded text-[9px] font-extrabold bg-blue-100 text-blue-800 border border-blue-300";
+        document.getElementById('outCatatanTKA').innerText = `💡 Nilai TKA riil belum keluar. Untuk mengamankan peluang di pilihan 1, siswa ditargetkan mencapai skor TKA minimal ${targetTKA} pada try out mendatang.`;
       }
 
       // Alert Keselarasan
