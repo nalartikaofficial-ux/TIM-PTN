@@ -15,7 +15,7 @@
       @page { size: A4 portrait; margin: 8mm 10mm; }
       body { background: white !important; color: #0f172a !important; font-size: 8.5pt !important; padding-bottom: 0 !important; }
       .no-print { display: none !important; }
-      .print-only { display: block !important; }
+      #reportSection { display: block !important; }
       .print-card { border: 1px solid #cbd5e1 !important; box-shadow: none !important; background: white !important; break-inside: avoid; }
     }
   </style>
@@ -34,7 +34,7 @@
             <h1 class="text-sm sm:text-base font-black text-blue-950 leading-tight tracking-tight">SMA MUHAMMADIYAH 18 JAKARTA</h1>
             <span class="px-2 py-0.5 bg-amber-100 border border-amber-300 text-amber-900 text-[10px] font-black rounded">SCHOOL OF CHAMPION</span>
           </div>
-          <p class="text-[11px] text-slate-500 font-medium">EduAnalytics PTN • Modul Analisis Khusus SNBP, SNBT, & Mandiri</p>
+          <p class="text-[11px] text-slate-500 font-medium">EduAnalytics PTN • Multi-Pathway Decision Support System</p>
         </div>
       </div>
       
@@ -79,7 +79,7 @@
             </div>
             <span class="inline-block mt-4 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800 uppercase tracking-wide">Jalur Prestasi Rapor</span>
             <h3 class="text-xl font-black text-slate-900 mt-2 group-hover:text-emerald-700 transition-colors">Analisis Khusus SNBP & TKA</h3>
-            <p class="text-slate-500 text-xs mt-2 leading-relaxed">Rasionalisasi rapor semester 1–5, validasi ketat 2 mapel pendukung resmi (Kepmen 345), komparasi nilai TKA, dan indeks rekam jejak 38 alumni M18.</p>
+            <p class="text-slate-500 text-xs mt-2 leading-relaxed">Rasionalisasi rapor semester 1–5, validasi ketat 2 mapel pendukung resmi (Kepmen 345), komparasi nilai TKA, tren kurva nilai, dan indeks rekam jejak 38 alumni M18.</p>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-emerald-700">
             <span>Buka Modul SNBP</span>
@@ -148,15 +148,15 @@
             </h3>
             <div>
               <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Lengkap Siswa</label>
-              <input id="inNama" type="text" placeholder="Masukkan nama siswa..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none" />
+              <input id="inNama" oninput="saveDraft()" type="text" placeholder="Masukkan nama siswa..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none" />
             </div>
             <div>
               <label class="block text-xs font-semibold text-slate-600 mb-1">Kelas / Peminatan</label>
-              <input id="inKelas" type="text" placeholder="Contoh: XII - 1 (MIPA)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none" />
+              <input id="inKelas" oninput="saveDraft()" type="text" placeholder="Contoh: XII - 1 (MIPA)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none" />
             </div>
             <div>
               <label class="block text-xs font-semibold text-slate-600 mb-1">Guru Pembimbing / Konselor</label>
-              <input id="inKonselor" type="text" placeholder="Contoh: Tim Sukses PTN M18" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none" />
+              <input id="inKonselor" oninput="saveDraft()" type="text" placeholder="Contoh: Tim Sukses PTN M18" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none" />
             </div>
           </div>
 
@@ -187,11 +187,11 @@
             <div class="space-y-3 pt-1">
               <div>
                 <label class="block text-xs font-semibold text-slate-600 mb-1">Pilihan 1 (Prioritas Utama)</label>
-                <select id="selectProdi1" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none font-medium"></select>
+                <select id="selectProdi1" onchange="saveDraft()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none font-medium"></select>
               </div>
               <div>
                 <label class="block text-xs font-semibold text-slate-600 mb-1">Pilihan 2 (Cadangan)</label>
-                <select id="selectProdi2" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none font-medium"></select>
+                <select id="selectProdi2" onchange="saveDraft()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none font-medium"></select>
               </div>
             </div>
           </div>
@@ -239,11 +239,11 @@
                 
                 <div class="flex items-center gap-4 text-xs">
                   <label class="flex items-center gap-1.5 cursor-pointer">
-                    <input type="radio" name="optTKA" value="belum" checked onchange="toggleTKAInput(false)" class="text-emerald-600">
+                    <input type="radio" name="optTKA" value="belum" checked onchange="toggleTKAInput(false); saveDraft();" class="text-emerald-600">
                     <span class="font-medium text-slate-700">Belum Ada Nilai TKA</span>
                   </label>
                   <label class="flex items-center gap-1.5 cursor-pointer">
-                    <input type="radio" name="optTKA" value="ada" onchange="toggleTKAInput(true)" class="text-emerald-600">
+                    <input type="radio" name="optTKA" value="ada" onchange="toggleTKAInput(true); saveDraft();" class="text-emerald-600">
                     <span class="font-bold text-indigo-950">Sudah Ada Nilai TKA</span>
                   </label>
                 </div>
@@ -252,7 +252,7 @@
               <div id="boxInputTKA" class="hidden mt-3 pt-3 border-t border-indigo-100 flex items-center justify-between gap-3">
                 <p class="text-[11px] text-indigo-800">Masukkan rata-rata nilai TKA yang telah diperoleh:</p>
                 <div class="flex items-center gap-2">
-                  <input id="inNilaiTKA" type="number" step="0.1" placeholder="0-100" class="w-24 text-center bg-white border border-indigo-300 rounded-xl py-1.5 text-sm font-extrabold text-indigo-950 focus:border-emerald-700 focus:outline-none" />
+                  <input id="inNilaiTKA" oninput="saveDraft()" type="number" step="0.1" placeholder="0-100" class="w-24 text-center bg-white border border-indigo-300 rounded-xl py-1.5 text-sm font-extrabold text-indigo-950 focus:border-emerald-700 focus:outline-none" />
                   <span class="text-xs text-indigo-900 font-bold">/ 100</span>
                 </div>
               </div>
@@ -769,11 +769,11 @@
       tbody.innerHTML = listMapel.map(m => `
         <tr class="hover:bg-slate-50">
           <td class="py-1.5 font-semibold text-slate-700 text-xs">${m.name}</td>
-          <td class="py-1 px-1 text-center"><input id="${m.id}_s1" oninput="hitungRataRow('${m.id}')" type="number" step="0.1" class="w-11 text-center bg-slate-50 border border-slate-200 rounded py-1 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none" placeholder="0" /></td>
-          <td class="py-1 px-1 text-center"><input id="${m.id}_s2" oninput="hitungRataRow('${m.id}')" type="number" step="0.1" class="w-11 text-center bg-slate-50 border border-slate-200 rounded py-1 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none" placeholder="0" /></td>
-          <td class="py-1 px-1 text-center"><input id="${m.id}_s3" oninput="hitungRataRow('${m.id}')" type="number" step="0.1" class="w-11 text-center bg-slate-50 border border-slate-200 rounded py-1 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none" placeholder="0" /></td>
-          <td class="py-1 px-1 text-center"><input id="${m.id}_s4" oninput="hitungRataRow('${m.id}')" type="number" step="0.1" class="w-11 text-center bg-slate-50 border border-slate-200 rounded py-1 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none" placeholder="0" /></td>
-          <td class="py-1 px-1 text-center bg-amber-50/50"><input id="${m.id}_s5" oninput="hitungRataRow('${m.id}')" type="number" step="0.1" class="w-11 text-center bg-white border border-amber-300 rounded py-1 text-xs focus:border-emerald-700 focus:outline-none font-bold text-amber-900" placeholder="Target" /></td>
+          <td class="py-1 px-1 text-center"><input id="${m.id}_s1" oninput="hitungRataRow('${m.id}'); saveDraft();" type="number" step="0.1" class="w-11 text-center bg-slate-50 border border-slate-200 rounded py-1 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none" placeholder="0" /></td>
+          <td class="py-1 px-1 text-center"><input id="${m.id}_s2" oninput="hitungRataRow('${m.id}'); saveDraft();" type="number" step="0.1" class="w-11 text-center bg-slate-50 border border-slate-200 rounded py-1 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none" placeholder="0" /></td>
+          <td class="py-1 px-1 text-center"><input id="${m.id}_s3" oninput="hitungRataRow('${m.id}'); saveDraft();" type="number" step="0.1" class="w-11 text-center bg-slate-50 border border-slate-200 rounded py-1 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none" placeholder="0" /></td>
+          <td class="py-1 px-1 text-center"><input id="${m.id}_s4" oninput="hitungRataRow('${m.id}'); saveDraft();" type="number" step="0.1" class="w-11 text-center bg-slate-50 border border-slate-200 rounded py-1 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none" placeholder="0" /></td>
+          <td class="py-1 px-1 text-center bg-amber-50/50"><input id="${m.id}_s5" oninput="hitungRataRow('${m.id}'); saveDraft();" type="number" step="0.1" class="w-11 text-center bg-white border border-amber-300 rounded py-1 text-xs focus:border-emerald-700 focus:outline-none font-bold text-amber-900" placeholder="Target" /></td>
           <td class="py-1 px-2 text-center font-bold text-emerald-950 bg-emerald-50/80 rounded text-xs" id="${m.id}_avg">0.0</td>
         </tr>
       `).join('');
@@ -894,6 +894,7 @@
       document.getElementById('inKonselor').value = "Tim Sukses PTN M18";
       document.getElementById('selectProdi1').value = "UB_TIP";
       document.getElementById('selectProdi2').value = "ITS_IF";
+      saveDraft();
     }
 
     function isiContohUTBK() {
@@ -945,10 +946,6 @@
       const nama = document.getElementById('inNama').value.trim() || "Muhammad Umar";
       const kelas = document.getElementById('inKelas').value.trim() || "XII - 1 (MIPA)";
       const konselor = document.getElementById('inKonselor').value.trim() || "Tim Sukses PTN M18";
-
-      const isTKAAda = document.querySelector('input[name="optTKA"]:checked').value === "ada";
-      const valTKA = parseFloat(document.getElementById('inNilaiTKA').value);
-      const nilaiTKA = (isTKAAda && !isNaN(valTKA) && valTKA > 0) ? valTKA : null;
 
       const p1Id = document.getElementById('selectProdi1').value || "UB_TIP";
       const p2Id = document.getElementById('selectProdi2').value || "ITS_IF";
@@ -1213,8 +1210,35 @@
       }, 300);
     }
 
+    // Auto-Save Draft Input ke LocalStorage
+    function saveDraft() {
+      const draft = {
+        nama: document.getElementById('inNama').value,
+        kelas: document.getElementById('inKelas').value,
+        konselor: document.getElementById('inKonselor').value,
+        p1: document.getElementById('selectProdi1').value,
+        p2: document.getElementById('selectProdi2').value,
+        tkaVal: document.getElementById('inNilaiTKA').value,
+        tkaOpt: document.querySelector('input[name="optTKA"]:checked').value
+      };
+      localStorage.setItem('m18_eduanalytics_draft', JSON.stringify(draft));
+    }
+
+    function loadDraft() {
+      const raw = localStorage.getItem('m18_eduanalytics_draft');
+      if (!raw) return;
+      try {
+        const d = JSON.parse(raw);
+        if (d.nama) document.getElementById('inNama').value = d.nama;
+        if (d.kelas) document.getElementById('inKelas').value = d.kelas;
+        if (d.konselor) document.getElementById('inKonselor').value = d.konselor;
+        if (d.tkaVal) document.getElementById('inNilaiTKA').value = d.tkaVal;
+      } catch (e) {}
+    }
+
     renderTabel();
     populateDropdowns();
+    loadDraft();
   </script>
 </body>
 </html>
