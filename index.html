@@ -13,7 +13,7 @@
     body { font-family: 'Plus Jakarta Sans', sans-serif; }
     @media print {
       @page { size: A4 portrait; margin: 8mm 10mm; }
-      body { background: white !important; color: #0f172a !important; font-size: 8.5pt !important; padding-bottom: 0 !important; }
+      body { background: white !important; color: #0f172a !important; font-size: 8pt !important; padding-bottom: 0 !important; }
       .no-print { display: none !important; }
       #reportSection { display: block !important; }
       .print-card { border: 1px solid #cbd5e1 !important; box-shadow: none !important; background: white !important; break-inside: avoid; }
@@ -47,7 +47,7 @@
         <label class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition shadow-sm border border-slate-300 cursor-pointer flex items-center gap-1.5" title="Unggah file data pemetaan siswa (CSV/Excel)">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l4-4m0 0l4 4m-4-4v12"></path></svg>
           <span class="hidden sm:inline">Import CSV</span>
-          <input type="file" id="inputCsvFile" accept=".csv" onchange="importDataCsv(event)" class="hidden" />
+          <input type="file" id="inputCsvFile" accept=".csv,.xlsx" onchange="importDataCsv(event)" class="hidden" />
         </label>
 
         <!-- Tombol Export Excel/CSV -->
@@ -78,7 +78,7 @@
             <span>Official Portal Sukses PTN</span> • <span>Kelas XII</span>
           </div>
           <h2 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">Pilih Modul Analisis Masuk PTN</h2>
-          <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">Sistem cerdas Tim PTN SMA Muhammadiyah 18 Jakarta untuk memetakan kelulusan secara presisi melalui SNBP (Rapor & TKA), SNBT (7 Subtes UTBK), dan Seleksi Mandiri.</p>
+          <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">Sistem cerdas Tim PTN SMA Muhammadiyah 18 Jakarta untuk memetakan kelulusan secara presisi melalui SNBP (Rapor, TKA & Regresi Kurva Tren), SNBT (7 Subtes UTBK), dan Seleksi Mandiri.</p>
         </div>
       </div>
 
@@ -92,7 +92,7 @@
             </div>
             <span class="inline-block mt-4 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800 uppercase tracking-wide">Jalur Prestasi Rapor</span>
             <h3 class="text-xl font-black text-slate-900 mt-2 group-hover:text-emerald-700 transition-colors">Analisis Khusus SNBP & TKA</h3>
-            <p class="text-slate-500 text-xs mt-2 leading-relaxed">Rasionalisasi rapor Smt 1–5, validasi 2 mapel wajib (Kepmen 345), analisis kurva tren nilai, audit tabrakan pilihan internal, dan indeks 38 alumni M18.</p>
+            <p class="text-slate-500 text-xs mt-2 leading-relaxed">Rasionalisasi rapor Smt 1–5, validasi 2 mapel wajib (Kepmen 345), analisis kurva regresi tren nilai, audit tabrakan pilihan internal, dan indeks 38 alumni M18.</p>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-emerald-700">
             <span>Buka Modul SNBP</span>
@@ -149,7 +149,7 @@
         </button>
       </div>
 
-      <!-- Banner Peringatan Audit Tabrakan Pilihan Internal (Anti-Collision Warning) -->
+      <!-- Banner Peringatan Audit Tabrakan Pilihan Internal -->
       <div id="boxTabrakanWarning" class="hidden p-4 rounded-2xl bg-amber-50 border-2 border-amber-400 text-amber-950 text-xs animate-pulse">
         <div class="flex items-start gap-3">
           <span class="text-2xl">⚠️</span>
@@ -492,7 +492,7 @@
         <!-- ============================== -->
         <div id="contentReportSNBP" class="space-y-4">
           
-          <!-- Indikator Kurva Tren Rapor (Slope) & Rekap 5 Semester (Tervalidasi) -->
+          <!-- Indikator Kurva Tren Rapor (Slope) & Rekap 5 Semester -->
           <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
             <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
               <span class="text-[10px] font-bold uppercase tracking-wider text-slate-700">Analisis Konsistensi Akademik (Kurva Tren Rapor):</span>
@@ -557,6 +557,13 @@
           <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50 print-card">
             <span class="text-[10px] font-bold text-slate-700 uppercase block mb-1.5">Rekomendasi Alternatif Prodi Linear (Kepmendikbudristek No. 345/M/2022):</span>
             <div id="outRekomLinearSNBP" class="grid grid-cols-1 sm:grid-cols-2 gap-2"></div>
+          </div>
+
+          <!-- RINCIAN FORMULA MATEMATIS & SUMBER REGULASI (TERTRANSPARANSI) -->
+          <div class="p-3 rounded-xl border border-indigo-200 bg-indigo-50/50 text-[10px] text-indigo-950 space-y-1.5">
+            <p class="font-bold uppercase tracking-wide">⚖️ Rincian Transparansi Formula & Sumber Regulasi Pemerintah:</p>
+            <p id="outFormulaDetail" class="font-mono text-[9.5px] leading-relaxed"></p>
+            <p class="text-[9px] text-slate-600 mt-1 italic"><b>Sumber Kebijakan:</b> Permendikbudristek No. 48/2022 (Pasal 5 tentang Komponen Seleksi Rapor), Kepmendikbudristek No. 345/M/2022 (Daftar Mapel Pendukung), dan Pangkalan Data BPPP SNPMB.</p>
           </div>
 
         </div>
@@ -705,7 +712,7 @@
       { nama: "MOHAMMAD ERIQ FAHREZI", kelas: "XII - 1", rata: 90.11, ptn1: "UI_PERKAPALAN", ptn2: "UNILA_MESIN" },
       { nama: "NADYA SYAFIQ", kelas: "XII - 1", rata: 89.55, ptn1: "IPB_STAT", ptn2: "UPNVJ_DATA" },
       { nama: "PANDU FATHURRIZQI", kelas: "XII - 1", rata: 89.55, ptn1: "UB_INST", ptn2: "UNAIR_SI" },
-      { id: "AILA", nama: "AILA SHAFA SHALEHA", kelas: "XII - 1", rata: 89.15, ptn1: "UNAIR_FARM", ptn2: "UPNVJ_MED" },
+      { nama: "AILA SHAFA SHALEHA", kelas: "XII - 1", rata: 89.15, ptn1: "UNAIR_FARM", ptn2: "UPNVJ_MED" },
       { nama: "CHAIRUNNISA AMALIA", kelas: "XII - 2", rata: 88.94, ptn1: "UI_ARS", ptn2: "UNDIP_PWK" },
       { nama: "AKASYA PUTRI GHANIA", kelas: "XII - 2", rata: 88.79, ptn1: "UPNJT_MED", ptn2: "UINJKT_MED" },
       { nama: "IRSYAD FATHI", kelas: "XII - 1", rata: 88.48, ptn1: "UNAIR_SI", ptn2: "UPNVJ_SI" },
@@ -890,7 +897,6 @@
     function checkCollisionInternal() {
       const curNama = document.getElementById('inNama').value.trim().toUpperCase();
       const p1Id = document.getElementById('selectProdi1').value;
-      const grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText) || 0;
       const box = document.getElementById('boxTabrakanWarning');
       const desc = document.getElementById('descTabrakanWarning');
 
@@ -1151,7 +1157,7 @@
       document.getElementById('outStatSNBP1').innerText = `Daya Tampung: ${prodi1.dayaTampung} | Peminat: ${prodi1.peminat} (Keketatan: ${(prodi1.dayaTampung / prodi1.peminat * 100).toFixed(2)}%)`;
       document.getElementById('outScoreSNBP1').innerText = `${score1}%`;
 
-      document.getElementById('outProdiSNBP2').innerText = `${prodi2.prodi} (${prodi2.ptn})`;
+      document.getElementById('outProdiSNBP2').innerText = `${prodi2.prodi} - ${prodi2.ptn}`;
       document.getElementById('outMapelWajibSNBP2').innerText = `📌 Mapel Pendukung Resmi: ${prodi2.mapel1} & ${prodi2.mapel2}`;
       document.getElementById('outStatSNBP2').innerText = `Daya Tampung: ${prodi2.dayaTampung} | Peminat: ${prodi2.peminat} (Keketatan: ${(prodi2.dayaTampung / prodi2.peminat * 100).toFixed(2)}%)`;
       document.getElementById('outScoreSNBP2').innerText = `${score2}%`;
@@ -1166,6 +1172,17 @@
 
       document.getElementById('outBadgeSNBP2').innerText = score2 >= 75 ? "Peluang Tinggi" : (score2 >= 50 ? "Kompetitif" : "Risiko Tinggi");
       document.getElementById('outBadgeSNBP2').className = score2 >= 75 ? "px-2 py-0.5 rounded text-[10px] font-extrabold bg-blue-100 text-blue-800" : "px-2 py-0.5 rounded text-[10px] font-extrabold bg-slate-100 text-slate-800";
+
+      // Render Transparansi Formula & Sumber Regulasi Pemerintah
+      let matchDesc = (prodi1.mapel1 === top1.name || prodi1.mapel1 === top2.name || prodi1.mapel2 === top1.name || prodi1.mapel2 === top2.name) ? "+32 Poin (Mapel Wajib Sinkron)" : "-12 Poin (Mapel Wajib Tidak Sinkron)";
+      let alumniDesc = track1.hasAlumni ? (track1.direct ? "+8 Poin (Alumni Langsung)" : "+4 Poin (Alumni Kampus)") : "+0 Poin";
+      document.getElementById('outFormulaDetail').innerHTML = `
+        • Komponen Nilai Rata-Rata Rapor (38%): <b>${(grandAvg * 0.38).toFixed(2)}</b> (Permendikbudristek No. 48/2022 Ps. 5)<br>
+        • Keselarasan 2 Mapel Pendukung Wajib: <b>${matchDesc}</b> (Kepmendikbudristek No. 345/M/2022)<br>
+        • Rasio Keketatan Prodi (${(prodi1.dayaTampung/prodi1.peminat*100).toFixed(2)}%): <b>+${(prodi1.dayaTampung/prodi1.peminat*200).toFixed(2)} Poin</b> (Data Rasionalisasi SNPMB)<br>
+        • Indeks Rekam Jejak Sekolah M18: <b>${alumniDesc}</b> (Database Historis Kelulusan)<br>
+        • Kurva Tren Konsistensi Rapor (Slope m = ${slope.toFixed(2)}): <b>+${slopeBonus} Poin</b> (Evaluasi Progresif Semester 1–5)
+      `;
 
       // Alert Strict Validation
       const isLinear = (prodi1.mapel1 === top1.name || prodi1.mapel1 === top2.name || prodi1.mapel2 === top1.name || prodi1.mapel2 === top2.name);
@@ -1183,7 +1200,7 @@
       }
 
       // Rekomendasi Linear
-      const linear = databasePTN.filter(p => p.id !== p1Id && (p.mapel1 === top1.name || p.mapel2 === top1.name || p.mapel1 === top2.name || p.mapel2 === top2.name)).slice(0, 2);
+      const linear = databasePTN.filter(p => p.id !== p1Id && (p.mapel1 === top1.name || p.mapel1 === top2.name || p.mapel2 === top1.name || p.mapel2 === top2.name)).slice(0, 2);
       document.getElementById('outRekomLinearSNBP').innerHTML = linear.map(r => `
         <div class="p-2 bg-white rounded-lg border border-slate-200 flex justify-between items-center text-[10px]">
           <div><p class="font-bold text-slate-800">${r.prodi}</p><p class="text-[9px] text-slate-500">${r.ptn}</p></div>
