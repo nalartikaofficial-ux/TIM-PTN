@@ -38,13 +38,28 @@
         </div>
       </div>
       
-      <div class="flex items-center gap-3">
-        <button onclick="showView('viewLanding')" class="text-xs font-bold text-slate-600 hover:text-blue-900 px-3 py-1.5 rounded-lg hover:bg-slate-100 transition flex items-center gap-1">
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button onclick="showView('viewLanding')" class="text-xs font-bold text-slate-600 hover:text-blue-900 px-2.5 py-1.5 rounded-lg hover:bg-slate-100 transition flex items-center gap-1">
           <span>🏠 Beranda</span>
         </button>
+
+        <!-- Tombol Import Excel/CSV -->
+        <label class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition shadow-sm border border-slate-300 cursor-pointer flex items-center gap-1.5" title="Unggah file data pemetaan siswa (CSV/Excel)">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l4-4m0 0l4 4m-4-4v12"></path></svg>
+          <span class="hidden sm:inline">Import CSV</span>
+          <input type="file" id="inputCsvFile" accept=".csv" onchange="importDataCsv(event)" class="hidden" />
+        </label>
+
+        <!-- Tombol Export Excel/CSV -->
+        <button onclick="exportDataExcel()" class="px-3 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold rounded-xl transition shadow flex items-center gap-1.5" title="Download Rekap Data Pemetaan Angkatan ke Excel">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+          <span class="hidden sm:inline">Export Excel</span>
+        </button>
+
+        <!-- Tombol Cetak PDF -->
         <button onclick="cetakLaporanAktif()" class="px-4 py-2 bg-blue-900 hover:bg-blue-950 text-white text-xs font-bold rounded-xl transition shadow flex items-center gap-2">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
-          Cetak PDF Laporan
+          Cetak PDF
         </button>
       </div>
     </div>
@@ -53,25 +68,23 @@
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
 
     <!-- ========================================== -->
-    <!-- 1. LANDING PAGE UTAMA (PILIH JALUR SELEKSI) -->
+    <!-- 1. LANDING PAGE UTAMA                      -->
     <!-- ========================================== -->
     <div id="viewLanding" class="no-print space-y-8 animate-fade">
       
-      <!-- Hero Banner -->
       <div class="bg-gradient-to-r from-blue-950 via-slate-900 to-blue-900 rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden text-center sm:text-left">
         <div class="max-w-3xl relative z-10">
           <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-400 text-blue-950 text-xs font-black rounded-full uppercase tracking-wider mb-4">
             <span>Official Portal Sukses PTN</span> • <span>Kelas XII</span>
           </div>
           <h2 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">Pilih Modul Analisis Masuk PTN</h2>
-          <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">Setiap jalur seleksi memiliki instrumen diagnostik, regulasi kementerian, dan lembar laporan resmi tersendiri yang presisi dan tidak tercampur.</p>
+          <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">Sistem cerdas Tim PTN SMA Muhammadiyah 18 Jakarta untuk memetakan kelulusan secara presisi melalui SNBP (Rapor & TKA), SNBT (7 Subtes UTBK), dan Seleksi Mandiri.</p>
         </div>
       </div>
 
-      <!-- 3 Kartu Pilihan Jalur -->
+      <!-- 3 Pilihan Jalur -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        <!-- Card 1: SNBP -->
         <div onclick="showView('viewSNBP')" class="bg-white border-2 border-slate-200 hover:border-emerald-500 rounded-3xl p-7 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer group flex flex-col justify-between">
           <div>
             <div class="h-14 w-14 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
@@ -79,7 +92,7 @@
             </div>
             <span class="inline-block mt-4 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800 uppercase tracking-wide">Jalur Prestasi Rapor</span>
             <h3 class="text-xl font-black text-slate-900 mt-2 group-hover:text-emerald-700 transition-colors">Analisis Khusus SNBP & TKA</h3>
-            <p class="text-slate-500 text-xs mt-2 leading-relaxed">Rasionalisasi rapor semester 1–5, validasi ketat 2 mapel pendukung resmi (Kepmen 345), komparasi nilai TKA, tren kurva nilai, dan indeks rekam jejak 38 alumni M18.</p>
+            <p class="text-slate-500 text-xs mt-2 leading-relaxed">Rasionalisasi rapor Smt 1–5, validasi 2 mapel wajib (Kepmen 345), analisis kurva tren nilai, audit tabrakan pilihan internal, dan indeks 38 alumni M18.</p>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-emerald-700">
             <span>Buka Modul SNBP</span>
@@ -87,7 +100,6 @@
           </div>
         </div>
 
-        <!-- Card 2: SNBT -->
         <div onclick="showView('viewSNBT')" class="bg-white border-2 border-slate-200 hover:border-amber-500 rounded-3xl p-7 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer group flex flex-col justify-between">
           <div>
             <div class="h-14 w-14 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
@@ -103,7 +115,6 @@
           </div>
         </div>
 
-        <!-- Card 3: MANDIRI -->
         <div onclick="showView('viewMandiri')" class="bg-white border-2 border-slate-200 hover:border-indigo-500 rounded-3xl p-7 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer group flex flex-col justify-between">
           <div>
             <div class="h-14 w-14 rounded-2xl bg-indigo-50 border border-indigo-200 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
@@ -131,11 +142,22 @@
       <div class="flex items-center justify-between bg-emerald-900 rounded-2xl p-5 text-white shadow-md">
         <div>
           <span class="text-[10px] font-extrabold bg-emerald-400 text-emerald-950 px-2.5 py-0.5 rounded uppercase">Modul Khusus SNBP</span>
-          <h2 class="text-xl font-black mt-1">Diagnostik Rapor & Keselarasan Mapel SNBP</h2>
+          <h2 class="text-xl font-black mt-1">Diagnostik Rapor, Keketatan & Anti-Tabrakan SNBP</h2>
         </div>
         <button onclick="showView('viewLanding')" class="px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-xl text-xs font-bold border border-white/20 transition">
           ← Ganti Jalur
         </button>
+      </div>
+
+      <!-- Banner Peringatan Audit Tabrakan Pilihan Internal (Anti-Collision Warning) -->
+      <div id="boxTabrakanWarning" class="hidden p-4 rounded-2xl bg-amber-50 border-2 border-amber-400 text-amber-950 text-xs animate-pulse">
+        <div class="flex items-start gap-3">
+          <span class="text-2xl">⚠️</span>
+          <div>
+            <h4 class="font-extrabold text-sm text-amber-900 uppercase">Peringatan Benturan Pilihan Internal (Tabrakan Prodi di M18):</h4>
+            <p id="descTabrakanWarning" class="mt-1 leading-relaxed"></p>
+          </div>
+        </div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -148,7 +170,7 @@
             </h3>
             <div>
               <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Lengkap Siswa</label>
-              <input id="inNama" oninput="saveDraft()" type="text" placeholder="Masukkan nama siswa..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none" />
+              <input id="inNama" oninput="saveDraft(); checkCollisionInternal();" type="text" placeholder="Masukkan nama siswa..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none" />
             </div>
             <div>
               <label class="block text-xs font-semibold text-slate-600 mb-1">Kelas / Peminatan</label>
@@ -187,7 +209,7 @@
             <div class="space-y-3 pt-1">
               <div>
                 <label class="block text-xs font-semibold text-slate-600 mb-1">Pilihan 1 (Prioritas Utama)</label>
-                <select id="selectProdi1" onchange="saveDraft()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none font-medium"></select>
+                <select id="selectProdi1" onchange="saveDraft(); checkCollisionInternal();" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none font-medium"></select>
               </div>
               <div>
                 <label class="block text-xs font-semibold text-slate-600 mb-1">Pilihan 2 (Cadangan)</label>
@@ -206,7 +228,7 @@
                   <span class="flex h-5 w-5 items-center justify-center rounded bg-emerald-700 text-white text-[10px]">3</span>
                   Nilai Rapor Semester 1 s/d 5 (Sesuai Permendikbud)
                 </h3>
-                <p class="text-[11px] text-slate-400">Termasuk Pendidikan Pancasila / PKn & Sejarah sebagai mapel pendukung resmi.</p>
+                <p class="text-[11px] text-slate-400">Data otomatis tersimpan (Auto-Save) di peramban saat diketik.</p>
               </div>
               <button type="button" onclick="isiContohSimulasi()" class="text-xs text-emerald-700 hover:text-emerald-900 font-bold underline">
                 + Isi Simulasi Nilai Cepat
@@ -470,6 +492,15 @@
         <!-- ============================== -->
         <div id="contentReportSNBP" class="space-y-4">
           
+          <!-- Indikator Kurva Tren Rapor (Slope) & Rekap 5 Semester (Tervalidasi) -->
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-slate-700">Analisis Konsistensi Akademik (Kurva Tren Rapor):</span>
+              <span id="outBadgeTrenSlope" class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold"></span>
+            </div>
+            <div id="outGrid5Semester" class="grid grid-cols-5 gap-2 text-center text-xs"></div>
+          </div>
+
           <!-- Komparasi 4 Kolom -->
           <div>
             <span class="text-[10px] font-bold uppercase tracking-wider text-slate-600 block mb-1.5">Komparasi Nilai Tertinggi Siswa vs Mapel Pendukung Wajib SNBP (Kepmen 345/M/2022):</span>
@@ -651,7 +682,7 @@
   </main>
 
   <script>
-    // 12 MATA PELAJARAN LENGKAP STANDAR KEPUTUSAN KEMENTERIAN PENDIDIKAN
+    // 12 MATA PELAJARAN LENGKAP
     const listMapel = [
       { id: "mtk_umum", name: "Matematika Umum" },
       { id: "mtk_lanjut", name: "Matematika Tingkat Lanjut" },
@@ -667,7 +698,26 @@
       { id: "bing", name: "Bahasa Inggris" }
     ];
 
-    // Rekam Jejak Alumni Bekerja di Balik Layar
+    // DATA PEMETAAN INTERNAL ANGKATAN AKTIF M18 (UNTUK FITUR ANTI-COLLISION CHECK)
+    const pemetaanAngkatanM18 = [
+      { nama: "FARISAH NAVARRA PUTRI", kelas: "XII - 2", rata: 90.42, ptn1: "UNAIR_GIZI", ptn2: "UPNVJ_GIZI" },
+      { nama: "HADID IMANI RIFA'I", kelas: "XII - 1", rata: 90.29, ptn1: "UI_SIPIL", ptn2: "UB_SIPIL" },
+      { nama: "MOHAMMAD ERIQ FAHREZI", kelas: "XII - 1", rata: 90.11, ptn1: "UI_PERKAPALAN", ptn2: "UNILA_MESIN" },
+      { nama: "NADYA SYAFIQ", kelas: "XII - 1", rata: 89.55, ptn1: "IPB_STAT", ptn2: "UPNVJ_DATA" },
+      { nama: "PANDU FATHURRIZQI", kelas: "XII - 1", rata: 89.55, ptn1: "UB_INST", ptn2: "UNAIR_SI" },
+      { id: "AILA", nama: "AILA SHAFA SHALEHA", kelas: "XII - 1", rata: 89.15, ptn1: "UNAIR_FARM", ptn2: "UPNVJ_MED" },
+      { nama: "CHAIRUNNISA AMALIA", kelas: "XII - 2", rata: 88.94, ptn1: "UI_ARS", ptn2: "UNDIP_PWK" },
+      { nama: "AKASYA PUTRI GHANIA", kelas: "XII - 2", rata: 88.79, ptn1: "UPNJT_MED", ptn2: "UINJKT_MED" },
+      { nama: "IRSYAD FATHI", kelas: "XII - 1", rata: 88.48, ptn1: "UNAIR_SI", ptn2: "UPNVJ_SI" },
+      { nama: "ISYA NURUL RASYIDAH", kelas: "XII - 1", rata: 88.36, ptn1: "UNDIP_PWK", ptn2: "UB_TIP" },
+      { nama: "SYARIFAH ANNISA", kelas: "XII - 1", rata: 88.13, ptn1: "UINJKT_MTK", ptn2: "IPB_KOMP" },
+      { nama: "RATU FILWA AZ-ZAHRA", kelas: "XII - 2", rata: 87.80, ptn1: "UB_TIP", ptn2: "IPB_VET" },
+      { nama: "NAIRA CHANDRANINGTYAS", kelas: "XII - 3", rata: 87.76, ptn1: "UINJKT_HI", ptn2: "UPNVJ_POL" },
+      { nama: "SINTIA HAIRUDDIN", kelas: "XII - 2", rata: 87.47, ptn1: "IPB_VET", ptn2: "UNAIR_GIZI" },
+      { nama: "HELGA GENDIS SEKAR AYU PUTRI", kelas: "XII - 4", rata: 86.74, ptn1: "UINJKT_POL", ptn2: "UPNVJ_POL" }
+    ];
+
+    // Rekam Jejak Alumni M18
     const alumniTrackRecord = [
       { ptn: "UPN VETERAN JAWA TIMUR", prodi: "KEDOKTERAN", avg: 89.23, tahun: "SNBP 2026" },
       { ptn: "AIRLANGGA", prodi: "ILMU GIZI", avg: 91.18, tahun: "SNBP 2026" },
@@ -696,7 +746,7 @@
       { ptn: "UNS", prodi: "ILMU HUKUM", avg: 89.69, tahun: "SNBP 2024" }
     ];
 
-    // Database Lengkap PTN Top 10 + Se-Jabodetabek
+    // Database Lengkap PTN
     const databasePTN = [
       { id: "UI_MED", ptn: "Universitas Indonesia", prodi: "Pendidikan Dokter", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 75, peminat: 3820, passingUTBK: 735, mandiri: "SIMAK UI" },
       { id: "UI_CS", ptn: "Universitas Indonesia", prodi: "Ilmu Komputer", rumpun: "Saintek", mapel1: "Matematika Tingkat Lanjut", mapel2: "Fisika", dayaTampung: 45, peminat: 1980, passingUTBK: 715, mandiri: "SIMAK UI" },
@@ -806,6 +856,61 @@
       document.getElementById('labelGrandTotal').innerText = grand.toFixed(1);
     }
 
+    // Hitung Kemiringan Nilai (Slope Regresi Linear) Semester 1-5
+    function hitungSlopeSemester() {
+      let semAvg = [];
+      for (let s = 1; s <= 5; s++) {
+        let sum = 0, cnt = 0;
+        listMapel.forEach(m => {
+          const val = parseFloat(document.getElementById(`${m.id}_s${s}`).value);
+          if (!isNaN(val) && val > 0) { sum += val; cnt++; }
+        });
+        semAvg.push(cnt > 0 ? (sum / cnt) : 85);
+      }
+
+      const n = 5;
+      const x = [1, 2, 3, 4, 5];
+      const xMean = 3;
+      const yMean = semAvg.reduce((a, b) => a + b, 0) / n;
+
+      let num = 0, den = 0;
+      for (let i = 0; i < n; i++) {
+        num += (x[i] - xMean) * (semAvg[i] - yMean);
+        den += Math.pow(x[i] - xMean, 2);
+      }
+      const slope = den !== 0 ? (num / den) : 0;
+
+      return {
+        slope: slope,
+        semesters: semAvg
+      };
+    }
+
+    // AUDIT TABRAKAN PILIHAN INTERNAL (ANTI-COLLISION CHECK)
+    function checkCollisionInternal() {
+      const curNama = document.getElementById('inNama').value.trim().toUpperCase();
+      const p1Id = document.getElementById('selectProdi1').value;
+      const grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText) || 0;
+      const box = document.getElementById('boxTabrakanWarning');
+      const desc = document.getElementById('descTabrakanWarning');
+
+      if (!p1Id) return;
+
+      const rivals = pemetaanAngkatanM18.filter(s => 
+        s.ptn1 === p1Id && s.nama.toUpperCase() !== curNama
+      );
+
+      if (rivals.length > 0) {
+        const rivalNames = rivals.map(r => `${r.nama} (${r.kelas} - Rata: ${r.rata})`).join(', ');
+        const prodiObj = databasePTN.find(p => p.id === p1Id);
+        
+        box.classList.remove('hidden');
+        desc.innerHTML = `Pilihan utama <b>${prodiObj.prodi} (${prodiObj.ptn})</b> saat ini juga dipilih oleh siswa lain di angkatan aktif: <br><span class="font-bold text-amber-900">• ${rivalNames}</span>.<br>Di jalur SNBP, PTN jarang menerima lebih dari 1 siswa pada prodi yang sama dari satu sekolah. Disarankan berkoordinasi dengan Tim BK atau menyiapkan opsi cadangan rasional!`;
+      } else {
+        box.classList.add('hidden');
+      }
+    }
+
     function populateDropdowns(searchQuery = "") {
       const p1 = document.getElementById('selectProdi1');
       const p2 = document.getElementById('selectProdi2');
@@ -868,15 +973,15 @@
 
     function isiContohSimulasi() {
       const sample = [
-        { id: "mtk_umum", val: [90, 91, 92, 92, 95] },
+        { id: "mtk_umum", val: [88, 89, 91, 92, 95] },
         { id: "mtk_lanjut", val: [86, 88, 89, 91, 93] },
-        { id: "fisika", val: [87, 88, 90, 93, 94] },
-        { id: "kimia", val: [84, 85, 86, 88, 89] },
-        { id: "biologi", val: [82, 83, 85, 86, 87] },
+        { id: "fisika", val: [86, 88, 90, 92, 94] },
+        { id: "kimia", val: [84, 85, 87, 88, 90] },
+        { id: "biologi", val: [83, 85, 86, 88, 90] },
         { id: "ekonomi", val: [80, 82, 83, 84, 85] },
-        { id: "sosiologi", val: [91, 92, 92, 93, 95] },
+        { id: "sosiologi", val: [90, 91, 92, 93, 94] },
         { id: "geografi", val: [80, 81, 82, 84, 85] },
-        { id: "ppkn", val: [93, 94, 94, 95, 96] },
+        { id: "ppkn", val: [91, 92, 93, 94, 96] },
         { id: "sejarah", val: [85, 86, 87, 88, 89] },
         { id: "bindo", val: [88, 89, 90, 91, 92] },
         { id: "bing", val: [86, 87, 89, 90, 92] }
@@ -895,6 +1000,7 @@
       document.getElementById('selectProdi1').value = "UB_TIP";
       document.getElementById('selectProdi2').value = "ITS_IF";
       saveDraft();
+      checkCollisionInternal();
     }
 
     function isiContohUTBK() {
@@ -947,6 +1053,10 @@
       const kelas = document.getElementById('inKelas').value.trim() || "XII - 1 (MIPA)";
       const konselor = document.getElementById('inKonselor').value.trim() || "Tim Sukses PTN M18";
 
+      const isTKAAda = document.querySelector('input[name="optTKA"]:checked').value === "ada";
+      const valTKA = parseFloat(document.getElementById('inNilaiTKA').value);
+      const nilaiTKA = (isTKAAda && !isNaN(valTKA) && valTKA > 0) ? valTKA : null;
+
       const p1Id = document.getElementById('selectProdi1').value || "UB_TIP";
       const p2Id = document.getElementById('selectProdi2').value || "ITS_IF";
       const prodi1 = databasePTN.find(p => p.id === p1Id);
@@ -962,6 +1072,34 @@
       const top2 = calculated[1];
       const req1Obj = calculated.find(m => m.name === prodi1.mapel1) || { name: prodi1.mapel1, avg: 0 };
       const req2Obj = calculated.find(m => m.name === prodi1.mapel2) || { name: prodi1.mapel2, avg: 0 };
+
+      // Kalkulasi Kurva Tren Kemiringan Nilai (Slope)
+      const slopeData = hitungSlopeSemester();
+      const slope = slopeData.slope;
+      let slopeBonus = 0;
+      const badgeSlope = document.getElementById('outBadgeTrenSlope');
+
+      if (slope > 0.3) {
+        slopeBonus = 5;
+        badgeSlope.innerText = "📈 Kurva Meningkat Positif (+5 Poin)";
+        badgeSlope.className = "px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300";
+      } else if (slope >= -0.3) {
+        slopeBonus = 0;
+        badgeSlope.innerText = "📊 Kurva Stabil (+0 Poin)";
+        badgeSlope.className = "px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-blue-100 text-blue-800 border border-blue-300";
+      } else {
+        slopeBonus = -5;
+        badgeSlope.innerText = "📉 Kurva Menurun (-5 Poin Peringatan)";
+        badgeSlope.className = "px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-rose-100 text-rose-800 border border-rose-300";
+      }
+
+      // Render 5 Semester Grid
+      document.getElementById('outGrid5Semester').innerHTML = slopeData.semesters.map((val, idx) => `
+        <div class="p-2 rounded-lg bg-white border border-slate-200">
+          <span class="text-[9px] text-slate-400 font-bold block">Smt ${idx + 1}${idx === 4 ? ' (Target)' : ''}</span>
+          <span class="font-extrabold text-slate-800">${val.toFixed(1)}</span>
+        </div>
+      `).join('');
 
       // Set Header Laporan
       document.getElementById('outReportBadgeJalur').innerText = "Rapor Analisis Khusus SNBP";
@@ -993,7 +1131,7 @@
         </div>
       `;
 
-      // Hitung Peluang SNBP
+      // Hitung Peluang SNBP Terintegrasi Bobot Slope Tren
       function calcSNBP(target) {
         const ketetatan = (target.dayaTampung / target.peminat) * 100;
         let match = 0;
@@ -1002,7 +1140,7 @@
         let penalty = (match === 0) ? -12 : 0;
         const track = checkAlumniTrack(target.ptn, target.prodi);
         let bonus = track.hasAlumni ? (track.direct ? 8 : 4) : 0;
-        return Math.max(12, Math.min(Math.round((grandAvg * 0.38) + match + penalty + (ketetatan * 2.0) + bonus), 95));
+        return Math.max(12, Math.min(Math.round((grandAvg * 0.38) + match + penalty + (ketetatan * 2.0) + bonus + slopeBonus), 95));
       }
 
       const score1 = calcSNBP(prodi1);
@@ -1053,7 +1191,6 @@
         </div>
       `).join('');
 
-      // Tampilkan Konten SNBP, Sembunyikan Lainnya
       document.getElementById('contentReportSNBP').classList.remove('hidden');
       document.getElementById('contentReportSNBT').classList.add('hidden');
       document.getElementById('contentReportMandiri').classList.add('hidden');
@@ -1138,7 +1275,6 @@
         </div>
       `).join('');
 
-      // Tampilkan Konten SNBT
       document.getElementById('contentReportSNBP').classList.add('hidden');
       document.getElementById('contentReportSNBT').classList.remove('hidden');
       document.getElementById('contentReportMandiri').classList.add('hidden');
@@ -1189,7 +1325,6 @@
       document.getElementById('outProdiMandiriReport2').innerText = `${prodi2.prodi} - ${prodi2.ptn}`;
       document.getElementById('outSkemaMandiri2').innerText = `Skema Ujian: ${prodi2.mandiri || 'Jalur Mandiri Terbuka'}`;
 
-      // Tampilkan Konten Mandiri
       document.getElementById('contentReportSNBP').classList.add('hidden');
       document.getElementById('contentReportSNBT').classList.add('hidden');
       document.getElementById('contentReportMandiri').classList.remove('hidden');
@@ -1197,7 +1332,7 @@
       document.getElementById('reportSection').scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Fungsi Cetak Cerdas (Mencegah Blank Putih)
+    // Fungsi Cetak Cerdas
     function cetakLaporanAktif() {
       const report = document.getElementById('reportSection');
       if (report.classList.contains('hidden')) {
@@ -1234,6 +1369,52 @@
         if (d.konselor) document.getElementById('inKonselor').value = d.konselor;
         if (d.tkaVal) document.getElementById('inNilaiTKA').value = d.tkaVal;
       } catch (e) {}
+    }
+
+    // Fitur Export ke Excel / CSV
+    function exportDataExcel() {
+      const nama = document.getElementById('inNama').value || "Siswa M18";
+      const kelas = document.getElementById('inKelas').value || "XII SMA";
+      const grandAvg = document.getElementById('labelGrandTotal').innerText || "0.0";
+      const p1 = document.getElementById('selectProdi1').value || "-";
+      const p2 = document.getElementById('selectProdi2').value || "-";
+      const slopeData = hitungSlopeSemester();
+
+      let csv = "Nama Siswa,Kelas,Rata Rapor Kumulatif,Smt 1,Smt 2,Smt 3,Smt 4,Smt 5,Kemiringan Slope,Pilihan 1 SNBP,Pilihan 2 SNBP,Tanggal Analisis\n";
+      csv += `"${nama}","${kelas}","${grandAvg}","${slopeData.semesters[0].toFixed(1)}","${slopeData.semesters[1].toFixed(1)}","${slopeData.semesters[2].toFixed(1)}","${slopeData.semesters[3].toFixed(1)}","${slopeData.semesters[4].toFixed(1)}","${slopeData.slope.toFixed(2)}","${p1}","${p2}","${new Date().toLocaleDateString('id-ID')}"\n`;
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement("a");
+      const url = URL.createObjectURL(blob);
+      link.setAttribute("href", url);
+      link.setAttribute("download", `Rekap_Pemetaan_PTN_${nama.replace(/\s+/g, '_')}.csv`);
+      link.style.visibility = 'hidden';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Fitur Import CSV Data Siswa
+    function importDataCsv(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const text = e.target.result;
+        const lines = text.split('\n');
+        if (lines.length > 1) {
+          const cols = lines[1].split(',');
+          if (cols.length >= 3) {
+            document.getElementById('inNama').value = cols[0].replace(/"/g, '');
+            document.getElementById('inKelas').value = cols[1].replace(/"/g, '');
+            isiContohSimulasi();
+            alert(`Berhasil memuat data: ${cols[0].replace(/"/g, '')} (${cols[1].replace(/"/g, '')})`);
+            checkCollisionInternal();
+          }
+        }
+      };
+      reader.readAsText(file);
     }
 
     renderTabel();
