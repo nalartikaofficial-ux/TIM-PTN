@@ -79,7 +79,7 @@
         </div>
       </div>
 
-      <!-- 3 Pilihan Jalur (Kotak SNBT dikembalikan ke gaya hover proper) -->
+      <!-- 3 Pilihan Jalur -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         <div onclick="showView('viewSNBP')" class="bg-white border-2 border-slate-200 hover:border-emerald-500 rounded-3xl p-7 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer group flex flex-col justify-between">
@@ -789,7 +789,7 @@
       { id: "UB_TIP", ptn: "Universitas Brawijaya", prodi: "Teknik Industri Pertanian", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 70, peminat: 1100, passingUTBK: 625, mandiri: "SMUB Brawijaya" },
       { id: "UB_INST", ptn: "Universitas Brawijaya", prodi: "Instrumentasi", rumpun: "Saintek", mapel1: "Fisika", mapel2: "Matematika Tingkat Lanjut", dayaTampung: 35, peminat: 620, passingUTBK: 630, mandiri: "SMUB Brawijaya" },
       { id: "UNS_HUKUM", ptn: "Universitas Sebelas Maret", prodi: "Ilmu Hukum", rumpun: "Soshum", mapel1: "Pendidikan Pancasila / PKn", mapel2: "Sosiologi", dayaTampung: 120, peminat: 2800, passingUTBK: 640, mandiri: "SM UNS" },
-      { id: "UPNJT_MED", ptn: "UPN Veteran Jawa Timur", prodi: "Kedokteran", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 50, peminat: 1650, passingUTBK: 675, mandiri: "Jalur Mandiri UPN Jatim" }
+      { id: "UPNJT_MED", ptn: "Universitas Veteran Jawa Timur", prodi: "Kedokteran", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 50, peminat: 1650, passingUTBK: 675, mandiri: "Jalur Mandiri UPN Jatim" }
     ];
 
     let currentFilterRumpun = "ALL";
@@ -988,7 +988,7 @@
     }
 
     function checkAlumniTrack(ptnName, prodiName) {
-      const match = alumniTrackRecord.filter(a => ptnName.toUpperCase().includes(a.ptn) || a.ptn.includes(ptnName.toUpperCase()));
+      const match = alumniTrackRecord.filter(a => ptnName.toUpperCase().includes(a.ptn) || a.ptn.includes(prodiName.toUpperCase()));
       if (match.length > 0) {
         const directProdi = match.find(a => prodiName.toUpperCase().includes(a.prodi) || a.prodi.includes(prodiName.toUpperCase()));
         if (directProdi) {
@@ -1150,7 +1150,7 @@
     }
 
     // ===============================================
-    // EKSEKUTOR LAPORAN SNBT (DENGAN GAMIFIKASI)
+    // EKSEKUTOR LAPORAN SNBT (DENGAN GAMIFIKASI & RENDER LENGKAP)
     // ===============================================
     function jalankanAnalisisSNBT() {
       activeJalur = "SNBT";
@@ -1267,7 +1267,7 @@
     }
 
     // ===============================================
-    // EKSEKUTOR LAPORAN MANDIRI
+    // EKSEKUTOR LAPORAN MANDIRI (DENGAN RENDER LENGKAP)
     // ===============================================
     function jalankanAnalisisMandiri() {
       activeJalur = "MANDIRI";
@@ -1290,6 +1290,17 @@
       document.getElementById('outKonselorReport').innerText = "Tim Sukses Mandiri M18";
       document.getElementById('outValSkorUtama').innerText = modal.toFixed(1);
       document.getElementById('outTanggalCetak').innerText = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+
+      // RENDER LENGKAP LAPORAN MANDIRI AGAR TIDAK KOSONG
+      document.getElementById('outMandiriModalVal').innerText = modal.toFixed(1);
+      document.getElementById('outMandiriBonusVal').innerText = `+${bonusPrestasi}%`;
+      document.getElementById('outMandiriPeluangVal').innerText = `${totalPeluang}%`;
+
+      document.getElementById('outProdiMandiriReport1').innerText = `${prodi1.prodi} - ${prodi1.ptn}`;
+      document.getElementById('outSkemaMandiri1').innerText = `Skema Ujian: ${prodi1.mandiri || 'Jalur Mandiri Terbuka'}`;
+
+      document.getElementById('outProdiMandiriReport2').innerText = `${prodi2.prodi} - ${prodi2.ptn}`;
+      document.getElementById('outSkemaMandiri2').innerText = `Skema Ujian: ${prodi2.mandiri || 'Jalur Mandiri Terbuka'}`;
 
       document.getElementById('contentReportSNBP').classList.add('hidden');
       document.getElementById('contentReportSNBT').classList.add('hidden');
