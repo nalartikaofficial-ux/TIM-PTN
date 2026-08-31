@@ -179,42 +179,35 @@
             </div>
           </div>
 
-          <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-4">
-            <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
-              <span class="flex h-5 w-5 items-center justify-center rounded bg-emerald-700 text-white text-[10px]">2</span>
-              Target Jurusan & PTN SNBP
-            </h3>
+          <!-- HTML SNBP: Target Jurusan & PTN -->
+<div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-4">
+  <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+    <span class="flex h-5 w-5 items-center justify-center rounded bg-emerald-700 text-white text-[10px]">2</span>
+    Target Jurusan & PTN SNBP
+  </h3>
 
-            <div>
-              <label class="block text-[11px] font-semibold text-slate-500 mb-1.5">Filter Kategori Rumpun:</label>
-              <div class="grid grid-cols-4 gap-1">
-                <button type="button" onclick="setRumpunFilter('ALL')" class="btn-rumpun px-2 py-1.5 bg-emerald-800 text-white text-[10.5px] font-bold rounded-lg transition" data-rumpun="ALL">Semua</button>
-                <button type="button" onclick="setRumpunFilter('Saintek')" class="btn-rumpun px-2 py-1.5 bg-slate-100 text-slate-700 text-[10.5px] font-semibold rounded-lg hover:bg-slate-200 transition" data-rumpun="Saintek">Saintek</button>
-                <button type="button" onclick="setRumpunFilter('Soshum')" class="btn-rumpun px-2 py-1.5 bg-slate-100 text-slate-700 text-[10.5px] font-semibold rounded-lg hover:bg-slate-200 transition" data-rumpun="Soshum">Soshum</button>
-                <button type="button" onclick="setRumpunFilter('Pendidikan')" class="btn-rumpun px-2 py-1.5 bg-slate-100 text-slate-700 text-[10.5px] font-semibold rounded-lg hover:bg-slate-200 transition" data-rumpun="Pendidikan">Pendidikan</button>
-              </div>
-            </div>
+  <div class="space-y-3">
+    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+      <span class="text-[11px] font-bold text-slate-800 block">Pilihan 1 (Prioritas Utama)</span>
+      <input id="inProdi1Nama" type="text" placeholder="Nama Jurusan / Prodi..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700 font-medium" />
+      <input id="inProdi1Kampus" type="text" placeholder="Nama Universitas / PTN..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700 font-medium" />
+      <div class="grid grid-cols-2 gap-2">
+        <input id="inProdi1DayaTampung" type="number" placeholder="Daya Tampung" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700" />
+        <input id="inProdi1Peminat" type="number" placeholder="Jumlah Peminat" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700" />
+      </div>
+    </div>
 
-            <div>
-              <label class="block text-[11px] font-semibold text-slate-500 mb-1">Cari Nama Jurusan / PTN:</label>
-              <div class="relative">
-                <input id="searchProdiInput" oninput="filterDropdownBySearch()" type="text" placeholder="🔍 Ketik cth: UI, Kedokteran, Brawijaya..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none pr-8" />
-                <span id="searchCountBadge" class="absolute right-2.5 top-2.5 text-[10px] text-slate-400 font-bold"></span>
-              </div>
-            </div>
-
-            <div class="space-y-3 pt-1">
-              <div>
-                <label class="block text-xs font-semibold text-slate-600 mb-1">Pilihan 1 (Prioritas Utama)</label>
-                <select id="selectProdi1" onchange="saveDraft(); checkCollisionInternal();" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none font-medium"></select>
-              </div>
-              <div>
-                <label class="block text-xs font-semibold text-slate-600 mb-1">Pilihan 2 (Cadangan)</label>
-                <select id="selectProdi2" onchange="saveDraft()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none font-medium"></select>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+      <span class="text-[11px] font-bold text-slate-800 block">Pilihan 2 (Cadangan)</span>
+      <input id="inProdi2Nama" type="text" placeholder="Nama Jurusan / Prodi..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700 font-medium" />
+      <input id="inProdi2Kampus" type="text" placeholder="Nama Universitas / PTN..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700 font-medium" />
+      <div class="grid grid-cols-2 gap-2">
+        <input id="inProdi2DayaTampung" type="number" placeholder="Daya Tampung" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700" />
+        <input id="inProdi2Peminat" type="number" placeholder="Jumlah Peminat" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700" />
+      </div>
+    </div>
+  </div>
+</div>
 
         <!-- Kolom Kanan: Input Nilai 12 Mapel & TKA -->
         <div class="lg:col-span-8 space-y-6">
@@ -313,23 +306,41 @@
       </div>
 
       <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
-        
-        <!-- Identitas Siswa SNBT -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pb-4 border-b border-slate-100">
-          <div>
-            <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Siswa</label>
-            <input id="inNamaSNBT" type="text" placeholder="Nama siswa..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-amber-700 focus:outline-none" />
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-600 mb-1">Pilihan 1 SNBT (Prioritas Utama)</label>
-            <select id="selectProdiSNBT1" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-amber-700 focus:outline-none font-medium"></select>
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-600 mb-1">Pilihan 2 SNBT (Cadangan)</label>
-            <select id="selectProdiSNBT2" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-amber-700 focus:outline-none font-medium"></select>
-          </div>
-        </div>
+  
+  <!-- Identitas Siswa & Pilihan SNBT -->
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pb-4 border-b border-slate-100">
+    <div>
+      <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Siswa</label>
+      <input id="inNamaSNBT" type="text" placeholder="Masukkan nama siswa..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-amber-700 focus:outline-none" />
+    </div>
+  </div>
 
+  <!-- Blok Pilihan 1 & 2 Manual (Daya Tampung & Peminat) -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pb-4 border-b border-slate-100">
+    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+      <label class="block text-xs font-bold text-slate-700">Pilihan 1 SNBT (Prioritas Utama)</label>
+      <input id="inSNBT1Nama" type="text" placeholder="Nama Jurusan / Prodi..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-amber-600 font-medium" />
+      <input id="inSNBT1Kampus" type="text" placeholder="Nama Universitas / PTN..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-amber-600 font-medium" />
+      <div class="grid grid-cols-3 gap-2">
+        <input id="inSNBT1Passing" type="number" placeholder="Passing Grade" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-1.5 text-xs focus:outline-none" />
+        <input id="inSNBT1DayaTampung" type="number" placeholder="Daya Tampung" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-1.5 text-xs focus:outline-none" />
+        <input id="inSNBT1Peminat" type="number" placeholder="Peminat" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-1.5 text-xs focus:outline-none" />
+      </div>
+    </div>
+
+    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+      <label class="block text-xs font-bold text-slate-700">Pilihan 2 SNBT (Cadangan)</label>
+      <input id="inSNBT2Nama" type="text" placeholder="Nama Jurusan / Prodi..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-amber-600 font-medium" />
+      <input id="inSNBT2Kampus" type="text" placeholder="Nama Universitas / PTN..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-amber-600 font-medium" />
+      <div class="grid grid-cols-3 gap-2">
+        <input id="inSNBT2Passing" type="number" placeholder="Passing Grade" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-1.5 text-xs focus:outline-none" />
+        <input id="inSNBT2DayaTampung" type="number" placeholder="Daya Tampung" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-1.5 text-xs focus:outline-none" />
+        <input id="inSNBT2Peminat" type="number" placeholder="Peminat" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-1.5 text-xs focus:outline-none" />
+      </div>
+    </div>
+  </div>
+
+</div>
         <div>
           <h3 class="text-sm font-bold text-slate-900 mb-3">Input Skor Hasil Try Out 7 Subtes UTBK (Skala 0–1000)</h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -1003,268 +1014,304 @@
     // EKSEKUTOR LAPORAN SNBP
     // ===============================================
     function jalankanAnalisisSNBP() {
-      activeJalur = "SNBP";
-      let grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText) || 0;
-      if (grandAvg === 0) {
-        isiContohSimulasi();
-        grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText);
-      }
-      const nama = document.getElementById('inNama').value.trim() || "Muhammad Umar";
-      const kelas = document.getElementById('inKelas').value.trim() || "XII - 1 (MIPA)";
-      const konselor = document.getElementById('inKonselor').value.trim() || "Tim Sukses PTN M18";
-      const p1Id = document.getElementById('selectProdi1').value || "UB_TIP";
-      const p2Id = document.getElementById('selectProdi2').value || "ITS_IF";
-      const prodi1 = databasePTN.find(p => p.id === p1Id);
-      const prodi2 = databasePTN.find(p => p.id === p2Id);
+  activeJalur = "SNBP";
+  let grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText) || 0;
+  if (grandAvg === 0) {
+    isiContohSimulasi();
+    grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText);
+  }
+  const nama = document.getElementById('inNama').value.trim() || "Muhammad Umar";
+  const kelas = document.getElementById('inKelas').value.trim() || "XII - 1 (MIPA)";
+  const konselor = document.getElementById('inKonselor').value.trim() || "Tim Sukses PTN M18";
 
-      const calculated = listMapel.map(m => ({
-        id: m.id, name: m.name, avg: parseFloat(document.getElementById(`${m.id}_avg`).innerText) || 0
-      })).sort((a, b) => b.avg - a.avg);
+  // Membaca input manual Pilihan 1 & Pilihan 2 SNBP
+  const prodi1 = {
+    prodi: document.getElementById('inProdi1Nama').value.trim() || "Pendidikan Dokter",
+    ptn: document.getElementById('inProdi1Kampus').value.trim() || "Universitas Indonesia",
+    mapel1: "Biologi",
+    mapel2: "Kimia",
+    dayaTampung: parseFloat(document.getElementById('inProdi1DayaTampung').value) || 75,
+    peminat: parseFloat(document.getElementById('inProdi1Peminat').value) || 3820
+  };
+  const prodi2 = {
+    prodi: document.getElementById('inProdi2Nama').value.trim() || "Kedokteran",
+    ptn: document.getElementById('inProdi2Kampus').value.trim() || "UPN Veteran Jakarta",
+    mapel1: "Biologi",
+    mapel2: "Kimia",
+    dayaTampung: parseFloat(document.getElementById('inProdi2DayaTampung').value) || 50,
+    peminat: parseFloat(document.getElementById('inProdi2Peminat').value) || 2400
+  };
 
-      const top1 = calculated[0];
-      const top2 = calculated[1];
-      const req1Obj = calculated.find(m => m.name === prodi1.mapel1) || { name: prodi1.mapel1, avg: 0 };
-      const req2Obj = calculated.find(m => m.name === prodi1.mapel2) || { name: prodi1.mapel2, avg: 0 };
+  const calculated = listMapel.map(m => ({
+    id: m.id, name: m.name, avg: parseFloat(document.getElementById(`${m.id}_avg`).innerText) || 0
+  })).sort((a, b) => b.avg - a.avg);
 
-      const slopeData = hitungSlopeSemester();
-      const slope = slopeData.slope;
-      let slopeBonus = slope > 0.3 ? 5 : (slope >= -0.3 ? 0 : -5);
-      const badgeSlope = document.getElementById('outBadgeTrenSlope');
-      if (slope > 0.3) {
-        badgeSlope.innerText = "📈 Kurva Meningkat Positif (+5 Poin)";
-        badgeSlope.className = "px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300";
-      } else if (slope >= -0.3) {
-        badgeSlope.innerText = "📊 Kurva Stabil (+0 Poin)";
-        badgeSlope.className = "px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-blue-100 text-blue-800 border border-blue-300";
-      } else {
-        badgeSlope.innerText = "📉 Kurva Menurun (-5 Poin Peringatan)";
-        badgeSlope.className = "px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-rose-100 text-rose-800 border border-rose-300";
-      }
+  const top1 = calculated[0];
+  const top2 = calculated[1];
+  const req1Obj = calculated.find(m => m.name === prodi1.mapel1) || { name: prodi1.mapel1, avg: 0 };
+  const req2Obj = calculated.find(m => m.name === prodi1.mapel2) || { name: prodi1.mapel2, avg: 0 };
 
-      document.getElementById('outGrid5Semester').innerHTML = slopeData.semesters.map((val, idx) => `
-        <div class="p-2 rounded-lg bg-white border border-slate-200">
-          <span class="text-[9px] text-slate-400 font-bold block">Smt ${idx + 1}${idx === 4 ? ' (Target)' : ''}</span>
-          <span class="font-extrabold text-slate-800">${val.toFixed(1)}</span>
-        </div>
-      `).join('');
+  const slopeData = hitungSlopeSemester();
+  const slope = slopeData.slope;
+  let slopeBonus = slope > 0.3 ? 5 : (slope >= -0.3 ? 0 : -5);
+  const badgeSlope = document.getElementById('outBadgeTrenSlope');
+  
+  if (slope > 0.3) {
+    badgeSlope.innerText = "📈 Kurva Meningkat Positif (+5 Poin)";
+    badgeSlope.className = "px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300";
+  } else if (slope >= -0.3) {
+    badgeSlope.innerText = "📊 Kurva Stabil (+0 Poin)";
+    badgeSlope.className = "px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-blue-100 text-blue-800 border border-blue-300";
+  } else {
+    badgeSlope.innerText = "📉 Kurva Menurun (-5 Poin Peringatan)";
+    badgeSlope.className = "px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-rose-100 text-rose-800 border border-rose-300";
+  }
 
-      document.getElementById('outReportBadgeJalur').innerText = "Rapor Analisis Khusus SNBP";
-      document.getElementById('outNamaReport').innerText = nama;
-      document.getElementById('outKelasReport').innerText = kelas;
-      document.getElementById('outKonselorReport').innerText = konselor;
-      document.getElementById('outLabelSkorUtama').innerText = "RATA-RATA RAPOR SMT 1-5";
-      document.getElementById('outValSkorUtama').innerText = grandAvg.toFixed(2);
-      document.getElementById('outTanggalCetak').innerText = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+  document.getElementById('outGrid5Semester').innerHTML = slopeData.semesters.map((val, idx) => `
+    <div class="p-2 rounded-lg bg-white border border-slate-200">
+      <span class="text-[9px] text-slate-400 font-bold block">Smt ${idx + 1}${idx === 4 ? ' (Target)' : ''}</span>
+      <span class="font-extrabold text-slate-800">${val.toFixed(1)}</span>
+    </div>
+  `).join('');
 
-      document.getElementById('outTopMapelSNBP').innerHTML = `
-        <div class="p-2.5 rounded-lg bg-blue-50 border border-blue-200 flex justify-between items-center">
-          <div><span class="text-[9px] text-slate-500 font-bold block">1. Nilai Puncak Siswa</span><span class="font-bold text-slate-800">${top1.name}</span></div>
-          <span class="font-black text-blue-900 text-sm">${top1.avg.toFixed(1)}</span>
-        </div>
-        <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex justify-between items-center">
-          <div><span class="text-[9px] text-slate-500 font-bold block">2. Nilai Puncak Siswa</span><span class="font-bold text-slate-800">${top2.name}</span></div>
-          <span class="font-black text-slate-700 text-sm">${top2.avg.toFixed(1)}</span>
-        </div>
-        <div class="p-2.5 rounded-lg bg-indigo-50 border border-indigo-200 flex justify-between items-center">
-          <div><span class="text-[9px] text-indigo-600 font-bold block">Mapel Wajib 1 (${prodi1.prodi})</span><span class="font-bold text-indigo-950">${req1Obj.name}</span></div>
-          <span class="font-black text-indigo-900 text-sm">${req1Obj.avg.toFixed(1)}</span>
-        </div>
-        <div class="p-2.5 rounded-lg bg-indigo-50 border border-indigo-200 flex justify-between items-center">
-          <div><span class="text-[9px] text-indigo-600 font-bold block">Mapel Wajib 2 (${prodi1.prodi})</span><span class="font-bold text-indigo-950">${req2Obj.name}</span></div>
-          <span class="font-black text-indigo-900 text-sm">${req2Obj.avg.toFixed(1)}</span>
-        </div>
-      `;
+  document.getElementById('outReportBadgeJalur').innerText = "Rapor Analisis Khusus SNBP";
+  document.getElementById('outNamaReport').innerText = nama;
+  document.getElementById('outKelasReport').innerText = kelas;
+  document.getElementById('outKonselorReport').innerText = konselor;
+  document.getElementById('outLabelSkorUtama').innerText = "RATA-RATA RAPOR SMT 1-5";
+  document.getElementById('outValSkorUtama').innerText = grandAvg.toFixed(2);
+  document.getElementById('outTanggalCetak').innerText = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
 
-      function calcSNBP(target) {
-        const ketetatan = (target.dayaTampung / target.peminat) * 100;
-        let match = 0;
-        if (target.mapel1 === top1.name || target.mapel1 === top2.name) match += 18;
-        if (target.mapel2 === top1.name || target.mapel2 === top2.name) match += 14;
-        let penalty = (match === 0) ? -12 : 0;
-        const track = checkAlumniTrack(target.ptn, target.prodi);
-        let bonus = track.hasAlumni ? (track.direct ? 8 : 4) : 0;
-        return Math.max(12, Math.min(Math.round((grandAvg * 0.38) + match + penalty + (ketetatan * 2.0) + bonus + slopeBonus), 95));
-      }
+  document.getElementById('outTopMapelSNBP').innerHTML = `
+    <div class="p-2.5 rounded-lg bg-blue-50 border border-blue-200 flex justify-between items-center">
+      <div><span class="text-[9px] text-slate-500 font-bold block">1. Nilai Puncak Siswa</span><span class="font-bold text-slate-800">${top1.name}</span></div>
+      <span class="font-black text-blue-900 text-sm">${top1.avg.toFixed(1)}</span>
+    </div>
+    <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex justify-between items-center">
+      <div><span class="text-[9px] text-slate-500 font-bold block">2. Nilai Puncak Siswa</span><span class="font-bold text-slate-800">${top2.name}</span></div>
+      <span class="font-black text-slate-700 text-sm">${top2.avg.toFixed(1)}</span>
+    </div>
+    <div class="p-2.5 rounded-lg bg-indigo-50 border border-indigo-200 flex justify-between items-center">
+      <div><span class="text-[9px] text-indigo-600 font-bold block">Mapel Wajib 1 (${prodi1.prodi})</span><span class="font-bold text-indigo-950">${req1Obj.name}</span></div>
+      <span class="font-black text-indigo-900 text-sm">${req1Obj.avg.toFixed(1)}</span>
+    </div>
+    <div class="p-2.5 rounded-lg bg-indigo-50 border border-indigo-200 flex justify-between items-center">
+      <div><span class="text-[9px] text-indigo-600 font-bold block">Mapel Wajib 2 (${prodi1.prodi})</span><span class="font-bold text-indigo-950">${req2Obj.name}</span></div>
+      <span class="font-black text-indigo-900 text-sm">${req2Obj.avg.toFixed(1)}</span>
+    </div>
+  `;
 
-      const score1 = calcSNBP(prodi1);
-      const score2 = calcSNBP(prodi2);
+  function calcSNBP(target) {
+    const ketetatan = (target.dayaTampung / target.peminat) * 100;
+    let match = 0;
+    if (target.mapel1 === top1.name || target.mapel1 === top2.name) match += 18;
+    if (target.mapel2 === top1.name || target.mapel2 === top2.name) match += 14;
+    let penalty = (match === 0) ? -12 : 0;
+    const track = checkAlumniTrack(target.ptn, target.prodi);
+    let bonus = track.hasAlumni ? (track.direct ? 8 : 4) : 0;
+    return Math.max(12, Math.min(Math.round((grandAvg * 0.38) + match + penalty + (ketetatan * 2.0) + bonus + slopeBonus), 95));
+  }
 
-      document.getElementById('outProdiSNBP1').innerText = `${prodi1.prodi} - ${prodi1.ptn}`;
-      document.getElementById('outMapelWajibSNBP1').innerText = `📌 Mapel Pendukung Resmi: ${prodi1.mapel1} & ${prodi1.mapel2}`;
-      document.getElementById('outStatSNBP1').innerText = `Daya Tampung: ${prodi1.dayaTampung} | Peminat: ${prodi1.peminat} (Keketatan: ${(prodi1.dayaTampung / prodi1.peminat * 100).toFixed(2)}%)`;
-      document.getElementById('outScoreSNBP1').innerText = `${score1}%`;
+  const score1 = calcSNBP(prodi1);
+  const score2 = calcSNBP(prodi2);
 
-      document.getElementById('outProdiSNBP2').innerText = `${prodi2.prodi} - ${prodi2.ptn}`;
-      document.getElementById('outMapelWajibSNBP2').innerText = `📌 Mapel Pendukung Resmi: ${prodi2.mapel1} & ${prodi2.mapel2}`;
-      document.getElementById('outStatSNBP2').innerText = `Daya Tampung: ${prodi2.dayaTampung} | Peminat: ${prodi2.peminat} (Keketatan: ${(prodi2.dayaTampung / prodi2.peminat * 100).toFixed(2)}%)`;
-      document.getElementById('outScoreSNBP2').innerText = `${score2}%`;
+  document.getElementById('outProdiSNBP1').innerText = `${prodi1.prodi} - ${prodi1.ptn}`;
+  document.getElementById('outMapelWajibSNBP1').innerText = `📌 Mapel Pendukung Resmi: ${prodi1.mapel1} & ${prodi1.mapel2}`;
+  document.getElementById('outStatSNBP1').innerText = `Daya Tampung: ${prodi1.dayaTampung} | Peminat: ${prodi1.peminat} (Keketatan: ${(prodi1.dayaTampung / prodi1.peminat * 100).toFixed(2)}%)`;
+  document.getElementById('outScoreSNBP1').innerText = `${score1}%`;
 
-      const track1 = checkAlumniTrack(prodi1.ptn, prodi1.prodi);
-      const track2 = checkAlumniTrack(prodi2.ptn, prodi2.prodi);
-      document.getElementById('outAlumniBadgeSNBP1').innerHTML = track1.hasAlumni ? `<span class="inline-block px-2 py-0.5 rounded text-[9px] font-bold bg-amber-50 text-amber-900 border border-amber-300 my-0.5">${track1.detail}</span>` : ``;
-      document.getElementById('outAlumniBadgeSNBP2').innerHTML = track2.hasAlumni ? `<span class="inline-block px-2 py-0.5 rounded text-[9px] font-bold bg-amber-50 text-amber-900 border border-amber-300 my-0.5">${track2.detail}</span>` : ``;
+  document.getElementById('outProdiSNBP2').innerText = `${prodi2.prodi} - ${prodi2.ptn}`;
+  document.getElementById('outMapelWajibSNBP2').innerText = `📌 Mapel Pendukung Resmi: ${prodi2.mapel1} & ${prodi2.mapel2}`;
+  document.getElementById('outStatSNBP2').innerText = `Daya Tampung: ${prodi2.dayaTampung} | Peminat: ${prodi2.peminat} (Keketatan: ${(prodi2.dayaTampung / prodi2.peminat * 100).toFixed(2)}%)`;
+  document.getElementById('outScoreSNBP2').innerText = `${score2}%`;
 
-      document.getElementById('outBadgeSNBP1').innerText = score1 >= 75 ? "Peluang Tinggi" : (score1 >= 50 ? "Kompetitif / Moderat" : "Risiko Tinggi");
-      document.getElementById('outBadgeSNBP1').className = score1 >= 75 ? "px-2 py-0.5 rounded text-[10px] font-extrabold bg-emerald-100 text-emerald-800" : (score1 >= 50 ? "px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-100 text-amber-800" : "px-2 py-0.5 rounded text-[10px] font-extrabold bg-rose-100 text-rose-800");
+  const track1 = checkAlumniTrack(prodi1.ptn, prodi1.prodi);
+  const track2 = checkAlumniTrack(prodi2.ptn, prodi2.prodi);
+  document.getElementById('outAlumniBadgeSNBP1').innerHTML = track1.hasAlumni ? `<span class="inline-block px-2 py-0.5 rounded text-[9px] font-bold bg-amber-50 text-amber-900 border border-amber-300 my-0.5">${track1.detail}</span>` : ``;
+  document.getElementById('outAlumniBadgeSNBP2').innerHTML = track2.hasAlumni ? `<span class="inline-block px-2 py-0.5 rounded text-[9px] font-bold bg-amber-50 text-amber-900 border border-amber-300 my-0.5">${track2.detail}</span>` : ``;
 
-      document.getElementById('outBadgeSNBP2').innerText = score2 >= 75 ? "Peluang Tinggi" : (score2 >= 50 ? "Kompetitif" : "Risiko Tinggi");
-      document.getElementById('outBadgeSNBP2').className = score2 >= 75 ? "px-2 py-0.5 rounded text-[10px] font-extrabold bg-blue-100 text-blue-800" : "px-2 py-0.5 rounded text-[10px] font-extrabold bg-slate-100 text-slate-800";
+  document.getElementById('outBadgeSNBP1').innerText = score1 >= 75 ? "Peluang Tinggi" : (score1 >= 50 ? "Kompetitif / Moderat" : "Risiko Tinggi");
+  document.getElementById('outBadgeSNBP1').className = score1 >= 75 ? "px-2 py-0.5 rounded text-[10px] font-extrabold bg-emerald-100 text-emerald-800" : (score1 >= 50 ? "px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-100 text-amber-800" : "px-2 py-0.5 rounded text-[10px] font-extrabold bg-rose-100 text-rose-800");
 
-      let matchDesc = (prodi1.mapel1 === top1.name || prodi1.mapel1 === top2.name || prodi1.mapel2 === top1.name || prodi1.mapel2 === top2.name) ? "+32 Poin (Mapel Wajib Sinkron)" : "-12 Poin (Mapel Wajib Tidak Sinkron)";
-      let alumniDesc = track1.hasAlumni ? (track1.direct ? "+8 Poin (Alumni Langsung)" : "+4 Poin (Alumni Kampus)") : "+0 Poin";
-      document.getElementById('outFormulaDetail').innerHTML = `
-        • Komponen Nilai Rata-Rata Rapor (38%): <b>${(grandAvg * 0.38).toFixed(2)}</b> (Permendikbudristek No. 48/2022 Ps. 5)<br>
-        • Keselarasan 2 Mapel Pendukung Wajib: <b>${matchDesc}</b> (Kepmendikbudristek No. 345/M/2022)<br>
-        • Rasio Keketatan Prodi (${(prodi1.dayaTampung/prodi1.peminat*100).toFixed(2)}%): <b>+${(prodi1.dayaTampung/prodi1.peminat*200).toFixed(2)} Poin</b> (Data Rasionalisasi SNPMB)<br>
-        • Indeks Rekam Jejak Sekolah M18: <b>${alumniDesc}</b> (Database Historis Kelulusan)<br>
-        • Kurva Tren Konsistensi Rapor (Slope m = ${slope.toFixed(2)}): <b>+${slopeBonus} Poin</b> (Evaluasi Progresif Semester 1–5)
-      `;
+  document.getElementById('outBadgeSNBP2').innerText = score2 >= 75 ? "Peluang Tinggi" : (score2 >= 50 ? "Kompetitif" : "Risiko Tinggi");
+  document.getElementById('outBadgeSNBP2').className = score2 >= 75 ? "px-2 py-0.5 rounded text-[10px] font-extrabold bg-blue-100 text-blue-800" : "px-2 py-0.5 rounded text-[10px] font-extrabold bg-slate-100 text-slate-800";
 
-      const isLinear = (prodi1.mapel1 === top1.name || prodi1.mapel1 === top2.name || prodi1.mapel2 === top1.name || prodi1.mapel2 === top2.name);
-      const alertBox = document.getElementById('outAlertBoxSNBP');
-      if (isLinear && score1 >= 60) {
-        alertBox.className = "p-3 rounded-xl border bg-emerald-50 border-emerald-200 text-emerald-900 text-xs";
-        document.getElementById('outAlertIconSNBP').innerText = "✅";
-        document.getElementById('outAlertTitleSNBP').innerText = "Kesesuaian Pilihan: Linear & Sangat Strategis";
-        document.getElementById('outAlertDescSNBP').innerText = `Nilai unggulan ananda (${top1.name} & ${top2.name}) selaras kuat dengan kriteria resmi prodi ${prodi1.prodi} (${prodi1.mapel1} & ${prodi1.mapel2}) sesuai Kepmendikbudristek No. 345/M/2022.`;
-      } else {
-        alertBox.className = "p-3 rounded-xl border bg-amber-50 border-amber-200 text-amber-900 text-xs";
-        document.getElementById('outAlertIconSNBP').innerText = "⚠️";
-        document.getElementById('outAlertTitleSNBP').innerText = "Peringatan Evaluasi: Mapel Unggulan Belum Sinkron";
-        document.getElementById('outAlertDescSNBP').innerText = `Berdasarkan Kepmendikbudristek No. 345/M/2022, prodi ${prodi1.prodi} memerlukan pembobotan pada [${prodi1.mapel1} & ${prodi1.mapel2}]. Sementara nilai tertinggi ananda saat ini adalah [${top1.name} & ${top2.name}]. Disarankan mempertimbangkan prodi alternatif linear di bawah.`;
-      }
+  let matchDesc = (prodi1.mapel1 === top1.name || prodi1.mapel1 === top2.name || prodi1.mapel2 === top1.name || prodi1.mapel2 === top2.name) ? "+32 Poin (Mapel Wajib Sinkron)" : "-12 Poin (Mapel Wajib Tidak Sinkron)";
+  let alumniDesc = track1.hasAlumni ? (track1.direct ? "+8 Poin (Alumni Langsung)" : "+4 Poin (Alumni Kampus)") : "+0 Poin";
+  document.getElementById('outFormulaDetail').innerHTML = `
+    • Komponen Nilai Rata-Rata Rapor (38%): <b>${(grandAvg * 0.38).toFixed(2)}</b> (Permendikbudristek No. 48/2022 Ps. 5)<br>
+    • Keselarasan 2 Mapel Pendukung Wajib: <b>${matchDesc}</b> (Kepmendikbudristek No. 345/M/2022)<br>
+    • Rasio Keketatan Prodi (${(prodi1.dayaTampung/prodi1.peminat*100).toFixed(2)}%): <b>+${(prodi1.dayaTampung/prodi1.peminat*200).toFixed(2)} Poin</b> (Data Rasionalisasi SNPMB)<br>
+    • Indeks Rekam Jejak Sekolah M18: <b>${alumniDesc}</b> (Database Historis Kelulusan)<br>
+    • Kurva Tren Konsistensi Rapor (Slope m = ${slope.toFixed(2)}): <b>+${slopeBonus} Poin</b> (Evaluasi Progresif Semester 1–5)
+  `;
 
-      const linear = databasePTN.filter(p => p.id !== p1Id && (p.mapel1 === top1.name || p.mapel1 === top2.name || p.mapel2 === top1.name || p.mapel2 === top2.name)).slice(0, 2);
-      document.getElementById('outRekomLinearSNBP').innerHTML = linear.map(r => `
-        <div class="p-2 bg-white rounded-lg border border-slate-200 flex justify-between items-center text-[10px]">
-          <div><p class="font-bold text-slate-800">${r.prodi}</p><p class="text-[9px] text-slate-500">${r.ptn}</p></div>
-          <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded font-extrabold text-[9px]">${calcSNBP(r)}% Peluang</span>
-        </div>
-      `).join('');
+  const isLinear = (prodi1.mapel1 === top1.name || prodi1.mapel1 === top2.name || prodi1.mapel2 === top1.name || prodi1.mapel2 === top2.name);
+  const alertBox = document.getElementById('outAlertBoxSNBP');
+  if (isLinear && score1 >= 60) {
+    alertBox.className = "p-3 rounded-xl border bg-emerald-50 border-emerald-200 text-emerald-900 text-xs";
+    document.getElementById('outAlertIconSNBP').innerText = "✅";
+    document.getElementById('outAlertTitleSNBP').innerText = "Kesesuaian Pilihan: Linear & Sangat Strategis";
+    document.getElementById('outAlertDescSNBP').innerText = `Nilai unggulan ananda (${top1.name} & ${top2.name}) selaras kuat dengan kriteria resmi prodi ${prodi1.prodi} (${prodi1.mapel1} & ${prodi1.mapel2}) sesuai Kepmendikbudristek No. 345/M/2022.`;
+  } else {
+    alertBox.className = "p-3 rounded-xl border bg-amber-50 border-amber-200 text-amber-900 text-xs";
+    document.getElementById('outAlertIconSNBP').innerText = "⚠️";
+    document.getElementById('outAlertTitleSNBP').innerText = "Peringatan Evaluasi: Mapel Unggulan Belum Sinkron";
+    document.getElementById('outAlertDescSNBP').innerText = `Berdasarkan Kepmendikbudristek No. 345/M/2022, prodi ${prodi1.prodi} memerlukan pembobotan pada [${prodi1.mapel1} & ${prodi1.mapel2}]. Sementara nilai tertinggi ananda saat ini adalah [${top1.name} & ${top2.name}]. Disarankan mempertimbangkan prodi alternatif linear di bawah.`;
+  }
 
-      document.getElementById('contentReportSNBP').classList.remove('hidden');
-      document.getElementById('contentReportSNBT').classList.add('hidden');
-      document.getElementById('contentReportMandiri').classList.add('hidden');
-      document.getElementById('reportSection').classList.remove('hidden');
-      document.getElementById('reportSection').scrollIntoView({ behavior: 'smooth' });
-    }
+  // 5 Referensi Alternatif Jurusan (Berdasarkan Nilai Tertinggi, Seluruh Kampus, Tanpa Persentase)
+  const referensiNasional = [
+    { prodi: `Studi ${top1.name} Murni`, fakultas: "Fakultas Matematika & Ilmu Pengetahuan Alam", univ: "Universitas Indonesia, Depok" },
+    { prodi: `Pendidikan ${top1.name}`, fakultas: "Fakultas Keguruan dan Ilmu Pendidikan", univ: "Universitas Negeri Jakarta, Jakarta" },
+    { prodi: `Teknologi & Riset ${top1.name}`, fakultas: "Fakultas Teknologi Industri", univ: "Institut Teknologi Bandung, Bandung" },
+    { prodi: `Terapan ${top2.name}`, fakultas: "Fakultas Vokasi / Terapan", univ: "Universitas Gadjah Mada, Yogyakarta" },
+    { prodi: `Manajemen Berbasis ${top2.name}`, fakultas: "Fakultas Ekonomi dan Bisnis", univ: "Universitas Airlangga, Surabaya" }
+  ];
+
+  document.getElementById('outRekomLinearSNBP').innerHTML = referensiNasional.slice(0, 5).map(r => `
+    <div class="p-2.5 bg-white rounded-lg border border-slate-200 text-[10px] space-y-0.5 shadow-sm">
+      <p class="font-bold text-slate-900">🎓 ${r.prodi}</p>
+      <p class="text-slate-600">Fakultas: ${r.fakultas}</p>
+      <p class="text-indigo-900 font-semibold">Kampus: ${r.univ}</p>
+    </div>
+  `).join('');
+
+  document.getElementById('contentReportSNBP').classList.remove('hidden');
+  document.getElementById('contentReportSNBT').classList.add('hidden');
+  document.getElementById('contentReportMandiri').classList.add('hidden');
+  document.getElementById('reportSection').classList.remove('hidden');
+  document.getElementById('reportSection').scrollIntoView({ behavior: 'smooth' });
+}
 
     // ===============================================
     // EKSEKUTOR LAPORAN SNBT (DENGAN GAMIFIKASI & RENDER LENGKAP)
     // ===============================================
     function jalankanAnalisisSNBT() {
-      activeJalur = "SNBT";
-      let pu = parseFloat(document.getElementById('utbk_pu').value) || 0;
-      if (pu === 0) {
-        isiContohUTBK();
-        pu = parseFloat(document.getElementById('utbk_pu').value);
-      }
+  activeJalur = "SNBT";
+  let pu = parseFloat(document.getElementById('utbk_pu').value) || 0;
+  if (pu === 0) {
+    isiContohUTBK();
+    pu = parseFloat(document.getElementById('utbk_pu').value);
+  }
 
-      const pk = parseFloat(document.getElementById('utbk_pk').value) || 0;
-      const pm = parseFloat(document.getElementById('utbk_pm').value) || 0;
-      const pbm = parseFloat(document.getElementById('utbk_pbm').value) || 0;
-      const ppu = parseFloat(document.getElementById('utbk_ppu').value) || 0;
-      const litIndo = parseFloat(document.getElementById('utbk_lit_indo').value) || 0;
-      const litIng = parseFloat(document.getElementById('utbk_lit_ing').value) || 0;
+  const pk = parseFloat(document.getElementById('utbk_pk').value) || 0;
+  const pm = parseFloat(document.getElementById('utbk_pm').value) || 0;
+  const pbm = parseFloat(document.getElementById('utbk_pbm').value) || 0;
+  const ppu = parseFloat(document.getElementById('utbk_ppu').value) || 0;
+  const litIndo = parseFloat(document.getElementById('utbk_lit_indo').value) || 0;
+  const litIng = parseFloat(document.getElementById('utbk_lit_ing').value) || 0;
 
-      const totalSkor = (pu + pk + pm + pbm + ppu + litIndo + litIng) / 7;
-      const nama = document.getElementById('inNamaSNBT').value.trim() || "Muhammad Umar";
-      const p1Id = document.getElementById('selectProdiSNBT1').value || "ITS_IF";
-      const p2Id = document.getElementById('selectProdiSNBT2').value || "UNDIP_PWK";
-      const prodi1 = databasePTN.find(p => p.id === p1Id);
-      const prodi2 = databasePTN.find(p => p.id === p2Id);
+  const totalSkor = (pu + pk + pm + pbm + ppu + litIndo + litIng) / 7;
+  const nama = document.getElementById('inNamaSNBT').value.trim() || "Muhammad Umar";
 
-      document.getElementById('outReportBadgeJalur').innerText = "Rapor Diagnostik Khusus SNBT Kelas XII";
-      document.getElementById('outNamaReport').innerText = nama;
-      document.getElementById('outKelasReport').innerText = "XII SMA (Peserta UTBK-SNBT)";
-      document.getElementById('outKonselorReport').innerText = "Tim Sukses UTBK M18";
-      document.getElementById('outValSkorUtama').innerText = totalSkor.toFixed(1);
-      document.getElementById('outTanggalCetak').innerText = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+  // Membaca input manual Pilihan 1 & 2 SNBT beserta daya tampung & peminatnya
+  const prodi1 = {
+    prodi: document.getElementById('inSNBT1Nama').value.trim() || "Teknik Informatika",
+    ptn: document.getElementById('inSNBT1Kampus').value.trim() || "Institut Teknologi Sepuluh Nopember",
+    passingUTBK: parseFloat(document.getElementById('inSNBT1Passing').value) || 695,
+    dayaTampung: parseFloat(document.getElementById('inSNBT1DayaTampung').value) || 90,
+    peminat: parseFloat(document.getElementById('inSNBT1Peminat').value) || 2580
+  };
+  const prodi2 = {
+    prodi: document.getElementById('inSNBT2Nama').value.trim() || "Perencanaan Wilayah dan Kota",
+    ptn: document.getElementById('inSNBT2Kampus').value.trim() || "Universitas Diponegoro",
+    passingUTBK: parseFloat(document.getElementById('inSNBT2Passing').value) || 655,
+    dayaTampung: parseFloat(document.getElementById('inSNBT2DayaTampung').value) || 60,
+    peminat: parseFloat(document.getElementById('inSNBT2Peminat').value) || 1350
+  };
 
-      // GAMIFIKASI & LEVEL MOTIVASI
-      const boxMotivasi = document.getElementById('boxMotivasiSNBT');
-      const badgeGamif = document.getElementById('outBadgeGamifikasi');
-      const statusMotiv = document.getElementById('outMotivasiStatus');
-      const pesanMotiv = document.getElementById('outMotivasiPesan');
+  document.getElementById('outReportBadgeJalur').innerText = "Rapor Diagnostik Khusus SNBT Kelas XII";
+  document.getElementById('outNamaReport').innerText = nama;
+  document.getElementById('outKelasReport').innerText = "XII SMA (Peserta UTBK-SNBT)";
+  document.getElementById('outKonselorReport').innerText = "Tim Sukses UTBK M18";
+  document.getElementById('outValSkorUtama').innerText = totalSkor.toFixed(1);
+  document.getElementById('outTanggalCetak').innerText = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
 
-      if (totalSkor >= 700) {
-        boxMotivasi.className = "p-4 rounded-2xl border-2 border-emerald-400 bg-emerald-50 shadow-sm space-y-2";
-        badgeGamif.innerText = "🏆 Level: Elite Garuda (Top Tier Ready)";
-        badgeGamif.className = "px-3 py-1 rounded-full text-xs font-black uppercase bg-emerald-200 text-emerald-900";
-        statusMotiv.innerText = "Performa Sangat Prima!";
-        pesanMotiv.innerText = `Luar biasa, ${nama}! Skor rata-rata UTBK kamu (${totalSkor.toFixed(1)}) sudah berada di level elite. Pertahankan ritme belajar dan fokus pada simulasi manajemen waktu ujian.`;
-      } else if (totalSkor >= 630) {
-        boxMotivasi.className = "p-4 rounded-2xl border-2 border-amber-400 bg-amber-50 shadow-sm space-y-2";
-        badgeGamif.innerText = "⚡ Level: Fighter Kompetitif";
-        badgeGamif.className = "px-3 py-1 rounded-full text-xs font-black uppercase bg-amber-200 text-amber-900";
-        statusMotiv.innerText = "Satu Langkah Lagi Menuju Kursi PTN!";
-        pesanMotiv.innerText = `Kerja bagus, ${nama}! Skor kamu sangat kompetitif. Tingkatkan porsi latihan soal pada subtes dengan akurasi terendah untuk mengamankan selisih poin di atas passing grade target.`;
-      } else {
-        boxMotivasi.className = "p-4 rounded-2xl border-2 border-indigo-400 bg-indigo-50 shadow-sm space-y-2";
-        badgeGamif.innerText = "🚀 Level: Pejuang Akselerasi";
-        badgeGamif.className = "px-3 py-1 rounded-full text-xs font-black uppercase bg-indigo-200 text-indigo-900";
-        statusMotiv.innerText = "Waktunya Lipat Gandakan Semangat!";
-        pesanMotiv.innerText = `Tetap semangat, ${nama}! Evaluasi titik lemah subtes harianmu. Dengan bimbingan intensif Tim PTN M18 dan drilling soal rutin, skor ini pasti bisa melonjak naik!`;
-      }
+  // Gamifikasi & Level Motivasi
+  const boxMotivasi = document.getElementById('boxMotivasiSNBT');
+  const badgeGamif = document.getElementById('outBadgeGamifikasi');
+  const statusMotiv = document.getElementById('outMotivasiStatus');
+  const pesanMotiv = document.getElementById('outMotivasiPesan');
 
-      // Render 7 Subtes Grid
-      const subtesData = [
-        { label: "PU", val: pu }, { label: "PK", val: pk }, { label: "PM", val: pm },
-        { label: "PBM", val: pbm }, { label: "PPU", val: ppu }, { label: "Lit Indo", val: litIndo }, { label: "Lit Ing", val: litIng }
-      ];
-      document.getElementById('outGrid7Subtes').innerHTML = subtesData.map(s => `
-        <div class="p-2 rounded-lg bg-slate-50 border border-slate-200">
-          <span class="text-[9px] font-bold text-slate-500 block">${s.label}</span>
-          <span class="font-black text-slate-900 text-sm">${s.val}</span>
-        </div>
-      `).join('');
+  if (totalSkor >= 700) {
+    boxMotivasi.className = "p-4 rounded-2xl border-2 border-emerald-400 bg-emerald-50 shadow-sm space-y-2";
+    badgeGamif.innerText = "🏆 Level: Elite Garuda (Top Tier Ready)";
+    badgeGamif.className = "px-3 py-1 rounded-full text-xs font-black uppercase bg-emerald-200 text-emerald-900";
+    statusMotiv.innerText = "Performa Sangat Prima!";
+    pesanMotiv.innerText = `Luar biasa, ${nama}! Skor rata-rata UTBK kamu (${totalSkor.toFixed(1)}) sudah berada di level elite. Pertahankan ritme belajar dan fokus pada manajemen waktu ujian.`;
+  } else if (totalSkor >= 630) {
+    boxMotivasi.className = "p-4 rounded-2xl border-2 border-amber-400 bg-amber-50 shadow-sm space-y-2";
+    badgeGamif.innerText = "⚡ Level: Fighter Kompetitif";
+    badgeGamif.className = "px-3 py-1 rounded-full text-xs font-black uppercase bg-amber-200 text-amber-900";
+    statusMotiv.innerText = "Satu Langkah Lagi Menuju Kursi PTN!";
+    pesanMotiv.innerText = `Kerja bagus, ${nama}! Skor kamu sangat kompetitif. Tingkatkan porsi latihan soal pada subtes dengan akurasi terendah untuk mengamankan selisih poin di atas passing grade target.`;
+  } else {
+    boxMotivasi.className = "p-4 rounded-2xl border-2 border-indigo-400 bg-indigo-50 shadow-sm space-y-2";
+    badgeGamif.innerText = "🚀 Level: Pejuang Akselerasi";
+    badgeGamif.className = "px-3 py-1 rounded-full text-xs font-black uppercase bg-indigo-200 text-indigo-900";
+    statusMotiv.innerText = "Waktunya Lipat Gandakan Semangat!";
+    pesanMotiv.innerText = `Tetap semangat, ${nama}! Evaluasi titik lemah subtes harianmu. Dengan bimbingan intensif Tim PTN M18 dan drilling soal rutin, skor ini pasti bisa melonjak naik!`;
+  }
 
-      // Gap Analysis & Probabilitas
-      const gap1 = totalSkor - prodi1.passingUTBK;
-      const gap2 = totalSkor - prodi2.passingUTBK;
-      const prob1 = Math.max(10, Math.min(95, Math.round(50 + (gap1 * 1.5))));
-      const prob2 = Math.max(10, Math.min(95, Math.round(50 + (gap2 * 1.5))));
+  // Render 7 Subtes Grid
+  const subtesData = [
+    { label: "PU", val: pu }, { label: "PK", val: pk }, { label: "PM", val: pm },
+    { label: "PBM", val: pbm }, { label: "PPU", val: ppu }, { label: "Lit Indo", val: litIndo }, { label: "Lit Ing", val: litIng }
+  ];
+  document.getElementById('outGrid7Subtes').innerHTML = subtesData.map(s => `
+    <div class="p-2 rounded-lg bg-slate-50 border border-slate-200">
+      <span class="text-[9px] font-bold text-slate-500 block">${s.label}</span>
+      <span class="font-black text-slate-900 text-sm">${s.val}</span>
+    </div>
+  `).join('');
 
-      document.getElementById('outProdiUTBK1').innerText = `${prodi1.prodi} - ${prodi1.ptn}`;
-      document.getElementById('outPassingUTBK1').innerText = prodi1.passingUTBK;
-      document.getElementById('outPeluangUTBK1').innerText = `${prob1}% Peluang Lolos`;
-      document.getElementById('outBadgeUTBK1').innerText = gap1 >= 10 ? "Sangat Aman" : (gap1 >= -10 ? "Kompetitif / Rasional" : "Risiko Tinggi");
-      document.getElementById('outBadgeUTBK1').className = gap1 >= 10 ? "px-2 py-0.5 rounded text-[9px] font-extrabold bg-emerald-100 text-emerald-800" : (gap1 >= -10 ? "px-2 py-0.5 rounded text-[9px] font-extrabold bg-amber-100 text-amber-800" : "px-2 py-0.5 rounded text-[9px] font-extrabold bg-rose-100 text-rose-800");
+  // Gap Analysis & Probabilitas
+  const gap1 = totalSkor - prodi1.passingUTBK;
+  const gap2 = totalSkor - prodi2.passingUTBK;
+  const prob1 = Math.max(10, Math.min(95, Math.round(50 + (gap1 * 1.5))));
+  const prob2 = Math.max(10, Math.min(95, Math.round(50 + (gap2 * 1.5))));
 
-      document.getElementById('outProdiUTBK2').innerText = `${prodi2.prodi} - ${prodi2.ptn}`;
-      document.getElementById('outPassingUTBK2').innerText = prodi2.passingUTBK;
-      document.getElementById('outPeluangUTBK2').innerText = `${prob2}% Peluang Lolos`;
-      document.getElementById('outBadgeUTBK2').innerText = gap2 >= 10 ? "Sangat Aman" : (gap2 >= -10 ? "Kompetitif" : "Risiko Tinggi");
-      document.getElementById('outBadgeUTBK2').className = gap2 >= 10 ? "px-2 py-0.5 rounded text-[9px] font-extrabold bg-emerald-100 text-emerald-800" : (gap2 >= -10 ? "px-2 py-0.5 rounded text-[9px] font-extrabold bg-amber-100 text-amber-800" : "px-2 py-0.5 rounded text-[9px] font-extrabold bg-rose-100 text-rose-800");
+  document.getElementById('outProdiUTBK1').innerText = `${prodi1.prodi} - ${prodi1.ptn}`;
+  document.getElementById('outPassingUTBK1').innerText = prodi1.passingUTBK;
+  document.getElementById('outPeluangUTBK1').innerText = `${prob1}% Peluang Lolos`;
+  document.getElementById('outBadgeUTBK1').innerText = gap1 >= 10 ? "Sangat Aman" : (gap1 >= -10 ? "Kompetitif / Rasional" : "Risiko Tinggi");
+  document.getElementById('outBadgeUTBK1').className = gap1 >= 10 ? "px-2 py-0.5 rounded text-[9px] font-extrabold bg-emerald-100 text-emerald-800" : (gap1 >= -10 ? "px-2 py-0.5 rounded text-[9px] font-extrabold bg-amber-100 text-amber-800" : "px-2 py-0.5 rounded text-[9px] font-extrabold bg-rose-100 text-rose-800");
 
-      // Smart Matching Kampus Alternatif Aman
-      const safeProdis = databasePTN.filter(p => totalSkor >= p.passingUTBK).slice(0, 3);
-      document.getElementById('outSmartMatchingKampus').innerHTML = safeProdis.length > 0 ? safeProdis.map(sp => `
-        <div class="p-2 bg-white rounded-lg border border-slate-200 text-[10px]">
-          <p class="font-bold text-slate-800">${sp.prodi}</p>
-          <p class="text-[9px] text-slate-500">${sp.ptn}</p>
-          <span class="text-emerald-700 font-extrabold text-[9px]">Passing Grade: ${sp.passingUTBK} (Aman)</span>
-        </div>
-      `).join('') : `<p class="text-[10px] text-slate-500 italic col-span-3">Tingkatkan skor UTBK di atas 605 untuk membuka rekomendasi kampus alternatif aman.</p>`;
+  document.getElementById('outProdiUTBK2').innerText = `${prodi2.prodi} - ${prodi2.ptn}`;
+  document.getElementById('outPassingUTBK2').innerText = prodi2.passingUTBK;
+  document.getElementById('outPeluangUTBK2').innerText = `${prob2}% Peluang Lolos`;
+  document.getElementById('outBadgeUTBK2').innerText = gap2 >= 10 ? "Sangat Aman" : (gap2 >= -10 ? "Kompetitif" : "Risiko Tinggi");
+  document.getElementById('outBadgeUTBK2').className = gap2 >= 10 ? "px-2 py-0.5 rounded text-[9px] font-extrabold bg-emerald-100 text-emerald-800" : (gap2 >= -10 ? "px-2 py-0.5 rounded text-[9px] font-extrabold bg-amber-100 text-amber-800" : "px-2 py-0.5 rounded text-[9px] font-extrabold bg-rose-100 text-rose-800");
 
-      // Roadmap
-      const roadmapItems = [
-        { name: "Penalaran Matematika (PM) & Kuantitatif (PK)", act: "Perbanyak drilling aljabar terapan, geometri analitis, dan kecukupan data (P vs Q)." },
-        { name: "Penalaran Umum (PU) & PBM", act: "Latih silogisme logika deduktif, perbaikan kalimat efektif, konjungsi, dan ide pokok paragraf." },
-        { name: "Literasi B. Indonesia & B. Inggris", act: "Latih teknik membaca cepat (skimming & scanning) untuk teks opini dan artikel ilmiah panjang." }
-      ];
-      document.getElementById('outRoadmapSNBT').innerHTML = roadmapItems.map(r => `
-        <div class="p-2 rounded-lg bg-slate-50 border border-slate-200 text-[10px]">
-          <span class="font-bold text-slate-800">${r.name}:</span> <span class="text-slate-600">${r.act}</span>
-        </div>
-      `).join('');
+  // Smart Matching Kampus Alternatif Berdasarkan Skor UTBK
+  const safeProdis = databasePTN.filter(p => totalSkor >= p.passingUTBK).slice(0, 3);
+  document.getElementById('outSmartMatchingKampus').innerHTML = safeProdis.length > 0 ? safeProdis.map(sp => `
+    <div class="p-2 bg-white rounded-lg border border-slate-200 text-[10px]">
+      <p class="font-bold text-slate-800">${sp.prodi}</p>
+      <p class="text-[9px] text-slate-500">${sp.ptn}</p>
+      <span class="text-emerald-700 font-extrabold text-[9px]">Passing Grade: ${sp.passingUTBK} (Aman)</span>
+    </div>
+  `).join('') : `<p class="text-[10px] text-slate-500 italic col-span-3">Tingkatkan skor UTBK di atas 605 untuk membuka rekomendasi kampus alternatif aman.</p>`;
 
-      document.getElementById('contentReportSNBP').classList.add('hidden');
-      document.getElementById('contentReportSNBT').classList.remove('hidden');
-      document.getElementById('contentReportMandiri').classList.add('hidden');
-      document.getElementById('reportSection').classList.remove('hidden');
-      document.getElementById('reportSection').scrollIntoView({ behavior: 'smooth' });
-    }
+  // Roadmap Subtes
+  const roadmapItems = [
+    { name: "Penalaran Matematika (PM) & Kuantitatif (PK)", act: "Perbanyak drilling aljabar terapan, geometri analitis, dan kecukupan data." },
+    { name: "Penalaran Umum (PU) & PBM", act: "Latih silogisme logika deduktif, perbaikan kalimat efektif, konjungsi, dan ide pokok paragraf." },
+    { name: "Literasi B. Indonesia & B. Inggris", act: "Latih teknik membaca cepat (skimming & scanning) untuk teks opini dan artikel ilmiah panjang." }
+  ];
+  document.getElementById('outRoadmapSNBT').innerHTML = roadmapItems.map(r => `
+    <div class="p-2 rounded-lg bg-slate-50 border border-slate-200 text-[10px]">
+      <span class="font-bold text-slate-800">${r.name}:</span> <span class="text-slate-600">${r.act}</span>
+    </div>
+  `).join('');
+
+  document.getElementById('contentReportSNBP').classList.add('hidden');
+  document.getElementById('contentReportSNBT').classList.remove('hidden');
+  document.getElementById('contentReportMandiri').classList.add('hidden');
+  document.getElementById('reportSection').classList.remove('hidden');
+  document.getElementById('reportSection').scrollIntoView({ behavior: 'smooth' });
+}
 
     // ===============================================
     // EKSEKUTOR LAPORAN MANDIRI (DENGAN RENDER LENGKAP)
