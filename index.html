@@ -43,12 +43,6 @@
           <span>🏠 Beranda</span>
         </button>
 
-        <label class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition shadow-sm border border-slate-300 cursor-pointer flex items-center gap-1.5" title="Unggah file data pemetaan siswa (CSV/Excel)">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l4-4m0 0l4 4m-4-4v12"></path></svg>
-          <span class="hidden sm:inline">Import CSV</span>
-          <input type="file" id="inputCsvFile" accept=".csv,.xlsx" onchange="importDataCsv(event)" class="hidden" />
-        </label>
-
         <button onclick="exportDataExcel()" class="px-3 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold rounded-xl transition shadow flex items-center gap-1.5" title="Download Rekap Data Pemetaan Angkatan ke Excel">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
           <span class="hidden sm:inline">Export Excel</span>
@@ -261,7 +255,7 @@
                 </div>
               </div>
               <div id="boxInputTKA" class="hidden mt-3 pt-3 border-t border-indigo-100 flex items-center justify-between gap-3">
-                <p class="text-[11px] text-indigo-800">Masukkan rata-rata nilai TKA:</p>
+                <p class="text-[11px] text-indigo-800">Masukkan rata-rata nilai TKA (Skala 0-100):</p>
                 <div class="flex items-center gap-2">
                   <input id="inNilaiTKA" oninput="saveDraft()" type="number" step="0.1" placeholder="0-100" class="w-24 text-center bg-white border border-indigo-300 rounded-xl py-1.5 text-sm font-extrabold text-indigo-950 focus:border-emerald-700 focus:outline-none" />
                   <span class="text-xs text-indigo-900 font-bold">/ 100</span>
@@ -801,7 +795,6 @@
       { id: "UPNJT_MED", ptn: "Universitas Veteran Jawa Timur", prodi: "Kedokteran", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 50, peminat: 1650, passingUTBK: 675, mandiri: "Jalur Mandiri UPN Jatim" }
     ];
 
-    let currentFilterRumpun = "ALL";
     let activeJalur = "SNBP";
 
     function showView(viewId) {
@@ -882,18 +875,6 @@
       }
       const slope = den !== 0 ? (num / den) : 0;
       return { slope: slope, semesters: semAvg };
-    }
-
-    function checkCollisionInternal() {
-      const curNama = document.getElementById('inNama').value.trim().toUpperCase();
-      const p1Name = document.getElementById('inProdi1Nama').value.trim().toUpperCase();
-      const box = document.getElementById('boxTabrakanWarning');
-      const desc = document.getElementById('descTabrakanWarning');
-      if (!p1Name) return;
-      const rivals = pemetaanAngkatanM18.filter(s => s.nama.toUpperCase() !== curNama);
-      if (rivals.length > 0 && box && desc) {
-        box.classList.add('hidden');
-      }
     }
 
     function populateDropdowns() {
@@ -991,7 +972,7 @@
     }
 
     // ===============================================
-    // EKSEKUTOR LAPORAN SNBP
+    // EKSEKUTOR LAPORAN SNBP (DENGAN FORMULA TKA 50:50)
     // ===============================================
     function jalankanAnalisisSNBP() {
       activeJalur = "SNBP";
@@ -1057,9 +1038,46 @@
       document.getElementById('outNamaReport').innerText = nama;
       document.getElementById('outKelasReport').innerText = kelas;
       document.getElementById('outKonselorReport').innerText = konselor;
-      document.getElementById('outLabelSkorUtama').innerText = "RATA-RATA RAPOR SMT 1-5";
-      document.getElementById('outValSkorUtama').innerText = grandAvg.toFixed(2);
+      document.getElementById('outLabelSkorUtama').innerText = "MODAL AKADEMIK (RAPOR & TKA)";
       document.getElementById('outTanggalCetak').innerText = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+
+      // Formula Perhitungan Peluang SNBP dengan Rasio 50:50 antara Rapor & TKA
+      function calcSNBP(target) {
+        const ketetatan = (target.dayaTampung / target.peminat) * 100;
+        
+        const isTkaChecked = document.querySelector('input[name="optTKA"]:checked');
+        const hasTkaVal = isTkaChecked && isTkaChecked.value === "ada";
+        const nilaiTkaInput = parseFloat(document.getElementById('inNilaiTKA') ? document.getElementById('inNilaiTKA').value : 0);
+        
+        let modalAkademik = grandAvg; 
+        
+        // Jika TKA diisi, gabungkan dengan proporsi seimbang 50:50
+        if (hasTkaVal && !isNaN(nilaiTkaInput) && nilaiTkaInput > 0) {
+          modalAkademik = (grandAvg * 0.50) + (nilaiTkaInput * 0.50);
+        }
+
+        let match = 0;
+        if (target.mapel1 === top1.name || target.mapel1 === top2.name) match += 18;
+        if (target.mapel2 === top1.name || target.mapel2 === top2.name) match += 14;
+        let penalty = (match === 0) ? -12 : 0;
+        
+        const track = checkAlumniTrack(target.ptn, target.prodi);
+        let bonus = track.hasAlumni ? (track.direct ? 8 : 4) : 0;
+
+        return Math.max(12, Math.min(Math.round((modalAkademik * 0.38) + match + penalty + (ketetatan * 2.0) + bonus + slopeBonus), 95));
+      }
+
+      const score1 = calcSNBP(prodi1);
+      const score2 = calcSNBP(prodi2);
+
+      const tkaCheckDisp = document.querySelector('input[name="optTKA"]:checked');
+      const valTkaDisp = parseFloat(document.getElementById('inNilaiTKA') ? document.getElementById('inNilaiTKA').value : 0);
+      if (tkaCheckDisp && tkaCheckDisp.value === "ada" && !isNaN(valTkaDisp) && valTkaDisp > 0) {
+        const gabung5050 = (grandAvg * 0.5) + (valTkaDisp * 0.5);
+        document.getElementById('outValSkorUtama').innerText = `${gabung5050.toFixed(1)} (50:50)`;
+      } else {
+        document.getElementById('outValSkorUtama').innerText = `${grandAvg.toFixed(2)} (Rapor Murni)`;
+      }
 
       document.getElementById('outTopMapelSNBP').innerHTML = `
         <div class="p-2.5 rounded-lg bg-blue-50 border border-blue-200 flex justify-between items-center">
@@ -1079,20 +1097,6 @@
           <span class="font-black text-indigo-900 text-sm">${req2Obj.avg.toFixed(1)}</span>
         </div>
       `;
-
-      function calcSNBP(target) {
-        const ketetatan = (target.dayaTampung / target.peminat) * 100;
-        let match = 0;
-        if (target.mapel1 === top1.name || target.mapel1 === top2.name) match += 18;
-        if (target.mapel2 === top1.name || target.mapel2 === top2.name) match += 14;
-        let penalty = (match === 0) ? -12 : 0;
-        const track = checkAlumniTrack(target.ptn, target.prodi);
-        let bonus = track.hasAlumni ? (track.direct ? 8 : 4) : 0;
-        return Math.max(12, Math.min(Math.round((grandAvg * 0.38) + match + penalty + (ketetatan * 2.0) + bonus + slopeBonus), 95));
-      }
-
-      const score1 = calcSNBP(prodi1);
-      const score2 = calcSNBP(prodi2);
 
       document.getElementById('outProdiSNBP1').innerText = `${prodi1.prodi} - ${prodi1.ptn}`;
       document.getElementById('outMapelWajibSNBP1').innerText = `📌 Mapel Pendukung Resmi: ${prodi1.mapel1} & ${prodi1.mapel2}`;
@@ -1117,8 +1121,14 @@
 
       let matchDesc = (prodi1.mapel1 === top1.name || prodi1.mapel1 === top2.name || prodi1.mapel2 === top1.name || prodi1.mapel2 === top2.name) ? "+32 Poin (Mapel Wajib Sinkron)" : "-12 Poin (Mapel Wajib Tidak Sinkron)";
       let alumniDesc = track1.hasAlumni ? (track1.direct ? "+8 Poin (Alumni Langsung)" : "+4 Poin (Alumni Kampus)") : "+0 Poin";
+      
+      let tkaDescText = "Belum Disertakan (Rapor Murni 100%)";
+      if (tkaCheckDisp && tkaCheckDisp.value === "ada" && !isNaN(valTkaDisp) && valTkaDisp > 0) {
+        tkaDescText = `Disertakan (${valTkaDisp} • Proporsi Komposisi Rapor & TKA 50 : 50)`;
+      }
+
       document.getElementById('outFormulaDetail').innerHTML = `
-        • Komponen Nilai Rata-Rata Rapor (38%): <b>${(grandAvg * 0.38).toFixed(2)}</b> (Permendikbudristek No. 48/2022 Ps. 5)<br>
+        • Komponen Modal Akademik (Rata-Rata Rapor & TKA 50:50): <b>${tkaDescText}</b><br>
         • Keselarasan 2 Mapel Pendukung Wajib: <b>${matchDesc}</b> (Kepmendikbudristek No. 345/M/2022)<br>
         • Rasio Keketatan Prodi (${(prodi1.dayaTampung/prodi1.peminat*100).toFixed(2)}%): <b>+${(prodi1.dayaTampung/prodi1.peminat*200).toFixed(2)} Poin</b> (Data Rasionalisasi SNPMB)<br>
         • Indeks Rekam Jejak Sekolah M18: <b>${alumniDesc}</b> (Database Historis Kelulusan)<br>
@@ -1375,16 +1385,6 @@
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-    }
-
-    function importDataCsv(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        alert("File berhasil dimuat! Data pemetaan angkatan telah disinkronkan.");
-      };
-      reader.readAsText(file);
     }
 
     renderTabel();
