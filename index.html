@@ -928,6 +928,112 @@
       saveDraft();
     }
 
+    // Generator Spesifik Berdasarkan Mata Pelajaran Tertinggi (Luar Jawa & Peluang Lolos Tinggi)
+    function generateReferensiSpesifikMapel(t1) {
+      const mapel = t1.name.toLowerCase();
+      let poolSpesifik = [];
+
+      if (mapel.includes("fisika") || mapel.includes("teknik")) {
+        poolSpesifik = [
+          { prodi: "S1 Teknik Fisika / Teknik Energi", fakultas: "Fakultas Teknik", univ: "Universitas Sumatera Utara, Medan (Sumut)" },
+          { prodi: "S1 Pendidikan Fisika", fakultas: "Fakultas Keguruan & Ilmu Pendidikan", univ: "Universitas Lampung, Bandar Lampung" },
+          { prodi: "S1 Teknik Pertambangan", fakultas: "Fakultas Teknik", univ: "Universitas Sriwijaya, Indralaya (Sumsel)" },
+          { prodi: "S1 Teknik Geofisika", fakultas: "Fakultas Teknik", univ: "Universitas Syiah Kuala, Banda Aceh" },
+          { prodi: "S1 Teknik Sistem Komputer", fakultas: "Fakultas Teknik", univ: "Universitas Udayana, Jimbaran (Bali)" }
+        ];
+      } else if (mapel.includes("biologi")) {
+        poolSpesifik = [
+          { prodi: "S1 Biologi Murni / Terapan", fakultas: "Fakultas MIPA", univ: "Universitas Andalas, Padang (Sumbar)" },
+          { prodi: "S1 Kehutanan", fakultas: "Fakultas Kehutanan", univ: "Universitas Mulawarman, Samarinda (Kaltim)" },
+          { prodi: "S1 Budidaya Perairan (Akuakultur)", fakultas: "Fakultas Perikanan & Kelautan", univ: "Universitas Riau, Pekanbaru (Riau)" },
+          { prodi: "S1 Pendidikan Biologi", fakultas: "Fakultas Keguruan & Ilmu Pendidikan", univ: "Universitas Bengkulu, Bengkulu" },
+          { prodi: "S1 Proteksi Tanaman (Hama Penyakit)", fakultas: "Fakultas Pertanian", univ: "Universitas Hasanuddin, Makassar (Sulsel)" }
+        ];
+      } else if (mapel.includes("kimia")) {
+        poolSpesifik = [
+          { prodi: "S1 Kimia Industri / Analisis", fakultas: "Fakultas MIPA", univ: "Universitas Sumatera Utara, Medan (Sumut)" },
+          { prodi: "S1 Teknologi Hasil Pertanian", fakultas: "Fakultas Teknologi Pertanian", univ: "Universitas Jambi, Jambi" },
+          { prodi: "S1 Teknik Kimia", fakultas: "Fakultas Teknik", univ: "Universitas Riau, Pekanbaru (Riau)" },
+          { prodi: "S1 Pendidikan Kimia", fakultas: "Fakultas Keguruan & Ilmu Pendidikan", univ: "Universitas Lampung, Bandar Lampung" },
+          { prodi: "S1 Ilmu dan Teknologi Pangan", fakultas: "Fakultas Pertanian", univ: "Universitas Udayana, Jimbaran (Bali)" }
+        ];
+      } else if (mapel.includes("matematika")) {
+        poolSpesifik = [
+          { prodi: "S1 Matematika Murni", fakultas: "Fakultas MIPA", univ: "Universitas Andalas, Padang (Sumbar)" },
+          { prodi: "S1 Statistika & Sains Data", fakultas: "Fakultas MIPA", univ: "Universitas Syiah Kuala, Banda Aceh" },
+          { prodi: "S1 Pendidikan Matematika", fakultas: "Fakultas Keguruan & Ilmu Pendidikan", univ: "Universitas Halu Oleo, Kendari (Sultra)" },
+          { prodi: "S1 Aktuaria", fakultas: "Fakultas MIPA", univ: "Universitas Sumatera Utara, Medan (Sumut)" },
+          { prodi: "S1 Sistem Informasi Regional", fakultas: "Fakultas Ilmu Komputer", univ: "Universitas Sriwijaya, Palembang (Sumsel)" }
+        ];
+      } else if (mapel.includes("ekonomi")) {
+        poolSpesifik = [
+          { prodi: "S1 Ekonomi Pembangunan", fakultas: "Fakultas Ekonomi & Bisnis", univ: "Universitas Syiah Kuala, Banda Aceh" },
+          { prodi: "S1 Agribisnis (Sosial Ekonomi Pertanian)", fakultas: "Fakultas Pertanian", univ: "Universitas Lampung, Bandar Lampung" },
+          { prodi: "S1 Manajemen Sumberdaya Perairan", fakultas: "Fakultas Perikanan", univ: "Universitas Riau, Pekanbaru (Riau)" },
+          { prodi: "S1 Akuntansi Sektor Publik", fakultas: "Fakultas Ekonomi & Bisnis", univ: "Universitas Udayana, Denpasar (Bali)" },
+          { prodi: "S1 Ekonomi Syariah", fakultas: "Fakultas Ekonomi & Bisnis Islam", univ: "UIN Ar-Raniry, Banda Aceh" }
+        ];
+      } else if (mapel.includes("sosiologi")) {
+        poolSpesifik = [
+          { prodi: "S1 Sosiologi Pedesaan & Agraria", fakultas: "Fakultas Ilmu Sosial & Politik", univ: "Universitas Lampung, Bandar Lampung" },
+          { prodi: "S1 Ilmu Kesejahteraan Sosial", fakultas: "Fakultas Ilmu Sosial & Politik", univ: "Universitas Sumatera Utara, Medan (Sumut)" },
+          { prodi: "S1 Antropologi Sosial", fakultas: "Fakultas Ilmu Budaya", univ: "Universitas Andalas, Padang (Sumbar)" },
+          { prodi: "S1 Pembangunan Sosial", fakultas: "Fakultas Ilmu Sosial & Politik", univ: "Universitas Hasanuddin, Makassar (Sulsel)" },
+          { prodi: "S1 Sosiologi Agama", fakultas: "Fakultas Ushuluddin & Sosiologi", univ: "UIN Imam Bonjol, Padang (Sumbar)" }
+        ];
+      } else if (mapel.includes("geografi")) {
+        poolSpesifik = [
+          { prodi: "S1 Survei Pemetaan & Informasi Geografis", fakultas: "Fakultas Teknik / MIPA", univ: "Universitas Lampung, Bandar Lampung" },
+          { prodi: "S1 Pendidikan Geografi", fakultas: "Fakultas Keguruan & Ilmu Pendidikan", univ: "Universitas Syiah Kuala, Banda Aceh" },
+          { prodi: "S1 Geografi Lingkungan", fakultas: "Fakultas MIPA / Keguruan", univ: "Universitas Halu Oleo, Kendari (Sultra)" },
+          { prodi: "S1 Perencanaan Wilayah Pesisir", fakultas: "Fakultas Kelautan", univ: "Universitas Riau, Pekanbaru (Riau)" },
+          { prodi: "S1 Pengelolaan Sumberdaya Alam", fakultas: "Fakultas Pertanian", univ: "Universitas Mulawarman, Samarinda (Kaltim)" }
+        ];
+      } else if (mapel.includes("sejarah")) {
+        poolSpesifik = [
+          { prodi: "S1 Ilmu Sejarah Peradaban", fakultas: "Fakultas Ilmu Budaya", univ: "Universitas Andalas, Padang (Sumbar)" },
+          { prodi: "S1 Pendidikan Sejarah", fakultas: "Fakultas Keguruan & Ilmu Pendidikan", univ: "Universitas Jambi, Jambi" },
+          { prodi: "S1 Arkeologi & Sejarah Kuno", fakultas: "Fakultas Ilmu Budaya", univ: "Universitas Hasanuddin, Makassar (Sulsel)" },
+          { prodi: "S1 Sejarah Kebudayaan Islam", fakultas: "Fakultas Adab & Humaniora", univ: "UIN Raden Intan, Lampung" },
+          { prodi: "S1 Antropologi & Etnografi", fakultas: "Fakultas Ilmu Budaya", univ: "Universitas Udayana, Denpasar (Bali)" }
+        ];
+      } else if (mapel.includes("pancasila") || mapel.includes("pkn")) {
+        poolSpesifik = [
+          { prodi: "S1 Pendidikan Pancasila & Kewarganegaraan", fakultas: "Fakultas Keguruan & Ilmu Pendidikan", univ: "Universitas Sriwijaya, Palembang (Sumsel)" },
+          { prodi: "S1 Hukum Tata Negara & Konstitusi", fakultas: "Fakultas Hukum", univ: "Universitas Syiah Kuala, Banda Aceh" },
+          { prodi: "S1 Ilmu Pemerintahan", fakultas: "Fakultas Ilmu Sosial & Politik", univ: "Universitas Lampung, Bandar Lampung" },
+          { prodi: "S1 Politik Lokal & Otonomi Daerah", fakultas: "Fakultas Ilmu Sosial & Politik", univ: "Universitas Tadulako, Palu (Sulteng)" },
+          { prodi: "S1 Kewarganegaraan & Studi Demokrasi", fakultas: "Fakultas Keguruan & Ilmu Pendidikan", univ: "Universitas Bengkulu, Bengkulu" }
+        ];
+      } else if (mapel.includes("bahasa indonesia")) {
+        poolSpesifik = [
+          { prodi: "S1 Sastra Indonesia", fakultas: "Fakultas Ilmu Budaya", univ: "Universitas Andalas, Padang (Sumbar)" },
+          { prodi: "S1 Pendidikan Bahasa & Sastra Indonesia", fakultas: "Fakultas Keguruan & Ilmu Pendidikan", univ: "Universitas Riau, Pekanbaru (Riau)" },
+          { prodi: "S1 Ilmu Komunikasi Massa", fakultas: "Fakultas Ilmu Sosial & Politik", univ: "Universitas Bengkulu, Bengkulu" },
+          { prodi: "S1 Jurnalistik & Penyiaran", fakultas: "Fakultas Dakwah / ISIP", univ: "Universitas Islam Negeri Ar-Raniry, Aceh" },
+          { prodi: "S1 Sastra Minangkabau / Daerah", fakultas: "Fakultas Ilmu Budaya", univ: "Universitas Andalas, Padang (Sumbar)" }
+        ];
+      } else if (mapel.includes("bahasa inggris")) {
+        poolSpesifik = [
+          { prodi: "S1 Sastra Inggris", fakultas: "Fakultas Ilmu Budaya", univ: "Universitas Udayana, Denpasar (Bali)" },
+          { prodi: "S1 Pendidikan Bahasa Inggris", fakultas: "Fakultas Keguruan & Ilmu Pendidikan", univ: "Universitas Lampung, Bandar Lampung" },
+          { prodi: "S1 Pariwisata & Hospitality Bahasa", fakultas: "Fakultas Pariwisata", univ: "Universitas Udayana, Bali" },
+          { prodi: "S1 Komunikasi Internasional", fakultas: "Fakultas Ilmu Sosial & Politik", univ: "Universitas Hasanuddin, Makassar (Sulsel)" },
+          { prodi: "S1 Pendidikan Bahasa Asing", fakultas: "Fakultas Keguruan & Ilmu Pendidikan", univ: "Universitas Sriwijaya, Palembang (Sumsel)" }
+        ];
+      } else {
+        poolSpesifik = [
+          { prodi: "S1 Administrasi Publik", fakultas: "Fakultas Ilmu Sosial & Politik", univ: "Universitas Lampung, Bandar Lampung" },
+          { prodi: "S1 Agroteknologi", fakultas: "Fakultas Pertanian", univ: "Universitas Bengkulu, Bengkulu" },
+          { prodi: "S1 Ilmu Tanah", fakultas: "Fakultas Pertanian", univ: "Universitas Syiah Kuala, Banda Aceh" },
+          { prodi: "S1 Penyuluhan & Komunikasi Pertanian", fakultas: "Fakultas Pertanian", univ: "Universitas Halu Oleo, Kendari (Sultra)" },
+          { prodi: "S1 Manajemen Sumberdaya Lahan", fakultas: "Fakultas Pertanian", univ: "Universitas Andalas, Padang (Sumbar)" }
+        ];
+      }
+
+      return poolSpesifik;
+    }
+    
     function isiContohUTBK() {
       if(document.getElementById('inNamaSNBT')) document.getElementById('inNamaSNBT').value = "Muhammad Umar";
       if(document.getElementById('utbk_pu')) document.getElementById('utbk_pu').value = 685;
@@ -972,7 +1078,7 @@
     }
 
     // ===============================================
-    // EKSEKUTOR LAPORAN SNBP (DENGAN FORMULA TKA 50:50)
+    // EKSEKUTOR LAPORAN SNBP
     // ===============================================
     function jalankanAnalisisSNBP() {
       activeJalur = "SNBP";
@@ -985,19 +1091,64 @@
       const kelas = document.getElementById('inKelas').value.trim() || "XII - 1 (MIPA)";
       const konselor = document.getElementById('inKonselor').value.trim() || "Tim Sukses PTN M18";
 
+      const prodiInput1 = document.getElementById('inProdi1Nama').value.trim() || "Pendidikan Dokter";
+      const prodiInput2 = document.getElementById('inProdi2Nama').value.trim() || "Kedokteran";
+
+      // --- TAMBAHKAN / GANTI DI BAGIAN INI ---
+      // Fungsi Cerdas Deteksi Mapel Pendukung Kementerian untuk Semua Rumpun (Saintek, Soshum, Pendidikan)
+      function detectMapelPendukung(namaProdi) {
+        const p = namaProdi.toLowerCase();
+        
+        // 1. Rumpun Kesehatan & Kedokteran
+        if (p.includes("kedokteran") || p.includes("farmasi") || p.includes("gizi") || p.includes("biologi") || p.includes("keperawatan") || p.includes("kebidanan")) {
+          return { mapel1: "Biologi", mapel2: "Kimia" };
+        } 
+        // 2. Rumpun Teknik, Sains Murni & Komputer (Saintek)
+        else if (p.includes("teknik") || p.includes("ilmu komputer") || p.includes("informatika") || p.includes("sains data") || p.includes("arsitektur") || p.includes("fisika") || p.includes("matematika") || p.includes("statistik") || p.includes("sipil") || p.includes("mesin") || p.includes("elektro")) {
+          return { mapel1: "Fisika", mapel2: "Matematika Tingkat Lanjut" };
+        } 
+        // 3. Rumpun Hukum, Politik & Hubungan Internasional (Soshum)
+        else if (p.includes("hukum") || p.includes("politik") || p.includes("hubungan internasional") || p.includes("sosiologi") || p.includes("pemerintahan") || p.includes("kriminologi")) {
+          return { mapel1: "Pendidikan Pancasila / PKn", mapel2: "Sosiologi" };
+        } 
+        // 4. Rumpun Ekonomi, Bisnis & Manajemen (Soshum)
+        else if (p.includes("ekonomi") || p.includes("manajemen") || p.includes("akuntansi") || p.includes("bisnis") || p.includes("perbankan")) {
+          return { mapel1: "Ekonomi", mapel2: "Matematika Umum" };
+        } 
+        // 5. Rumpun Pendidikan / Keguruan (Pendidikan MIPA / Sosial)
+        else if (p.includes("pendidikan fisika") || p.includes("pendidikan kimia") || p.includes("pendidikan biologi")) {
+          return { mapel1: "Biologi", mapel2: "Kimia" };
+        } else if (p.includes("pendidikan matematika") || p.includes("pendidikan komputer")) {
+          return { mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum" };
+        } else if (p.includes("pendidikan sejarah") || p.includes("pendidikan sosiologi") || p.includes("pendidikan pancasila") || p.includes("ppkn") || p.includes("pendidikan kewarganegaraan")) {
+          return { mapel1: "Sejarah", mapel2: "Pendidikan Pancasila / PKn" };
+        } else if (p.includes("pendidikan bahasa") || p.includes("sastra") || p.includes("jurnalistik") || p.includes("ilmu komunikasi")) {
+          return { mapel1: "Bahasa Indonesia", mapel2: "Bahasa Inggris" };
+        } else if (p.includes("geografi") || p.includes("pendidikan geografi")) {
+          return { mapel1: "Geografi", mapel2: "Sejarah" };
+        } 
+        // Default Umum
+        else {
+          return { mapel1: "Bahasa Indonesia", mapel2: "Matematika Umum" };
+        }
+      }
+
+      const m1 = detectMapelPendukung(prodiInput1);
+      const m2 = detectMapelPendukung(prodiInput2);
+
       const prodi1 = {
-        prodi: document.getElementById('inProdi1Nama').value.trim() || "Pendidikan Dokter",
+        prodi: prodiInput1,
         ptn: document.getElementById('inProdi1Kampus').value.trim() || "Universitas Indonesia",
-        mapel1: "Biologi",
-        mapel2: "Kimia",
+        mapel1: m1.mapel1,
+        mapel2: m1.mapel2,
         dayaTampung: parseFloat(document.getElementById('inProdi1DayaTampung').value) || 75,
         peminat: parseFloat(document.getElementById('inProdi1Peminat').value) || 3820
       };
       const prodi2 = {
-        prodi: document.getElementById('inProdi2Nama').value.trim() || "Kedokteran",
+        prodi: prodiInput2,
         ptn: document.getElementById('inProdi2Kampus').value.trim() || "UPN Veteran Jakarta",
-        mapel1: "Biologi",
-        mapel2: "Kimia",
+        mapel1: m2.mapel1,
+        mapel2: m2.mapel2,
         dayaTampung: parseFloat(document.getElementById('inProdi2DayaTampung').value) || 50,
         peminat: parseFloat(document.getElementById('inProdi2Peminat').value) || 2400
       };
@@ -1149,13 +1300,15 @@
         document.getElementById('outAlertDescSNBP').innerText = `Berdasarkan Kepmendikbudristek No. 345/M/2022, prodi ${prodi1.prodi} memerlukan pembobotan pada [${prodi1.mapel1} & ${prodi1.mapel2}]. Sementara nilai tertinggi ananda saat ini adalah [${top1.name} & ${top2.name}]. Disarankan mempertimbangkan prodi alternatif linear di bawah.`;
       }
 
-      const referensiNasional = [
-        { prodi: `Studi ${top1.name} Murni`, fakultas: "Fakultas Matematika & Ilmu Pengetahuan Alam", univ: "Universitas Indonesia, Depok" },
-        { prodi: `Pendidikan ${top1.name}`, fakultas: "Fakultas Keguruan dan Ilmu Pendidikan", univ: "Universitas Negeri Jakarta, Jakarta" },
-        { prodi: `Teknologi & Riset ${top1.name}`, fakultas: "Fakultas Teknologi Industri", univ: "Institut Teknologi Bandung, Bandung" },
-        { prodi: `Terapan ${top2.name}`, fakultas: "Fakultas Vokasi / Terapan", univ: "Universitas Gadjah Mada, Yogyakarta" },
-        { prodi: `Manajemen Berbasis ${top2.name}`, fakultas: "Fakultas Ekonomi dan Bisnis", univ: "Universitas Airlangga, Surabaya" }
-      ];
+      const referensiNasional = generateReferensiSpesifikMapel(top1);
+
+      document.getElementById('outRekomLinearSNBP').innerHTML = referensiNasional.map(r => `
+        <div class="p-2.5 bg-white rounded-lg border border-slate-200 text-[10px] space-y-0.5 shadow-sm">
+          <p class="font-bold text-slate-900">🎓 ${r.prodi}</p>
+          <p class="text-slate-600">Fakultas: ${r.fakultas}</p>
+          <p class="text-indigo-900 font-semibold">Kampus: ${r.univ} <span class="text-emerald-700 font-extrabold ml-1">(Peluang Tinggi & Luar Jawa)</span></p>
+        </div>
+      `).join('');
 
       document.getElementById('outRekomLinearSNBP').innerHTML = referensiNasional.slice(0, 5).map(r => `
         <div class="p-2.5 bg-white rounded-lg border border-slate-200 text-[10px] space-y-0.5 shadow-sm">
