@@ -187,23 +187,25 @@
   </h3>
 
   <div class="space-y-3">
+    <!-- Pilihan 1 -->
     <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
       <span class="text-[11px] font-bold text-slate-800 block">Pilihan 1 (Prioritas Utama)</span>
-      <input id="inProdi1Nama" type="text" placeholder="Nama Jurusan / Prodi..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700 font-medium" />
-      <input id="inProdi1Kampus" type="text" placeholder="Nama Universitas / PTN..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700 font-medium" />
+      <input id="inProdi1Nama" type="text" placeholder="Nama Jurusan / Prodi (Cth: Teknik Industri Pertanian)" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700 font-medium text-slate-800" />
+      <input id="inProdi1Kampus" type="text" placeholder="Nama Universitas / PTN (Cth: Universitas Brawijaya)" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700 font-medium text-slate-800" />
       <div class="grid grid-cols-2 gap-2">
-        <input id="inProdi1DayaTampung" type="number" placeholder="Daya Tampung" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700" />
-        <input id="inProdi1Peminat" type="number" placeholder="Jumlah Peminat" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700" />
+        <input id="inProdi1DayaTampung" type="number" placeholder="Daya Tampung (Cth: 70)" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700 text-slate-800" />
+        <input id="inProdi1Peminat" type="number" placeholder="Jumlah Peminat (Cth: 1100)" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700 text-slate-800" />
       </div>
     </div>
 
+    <!-- Pilihan 2 -->
     <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
       <span class="text-[11px] font-bold text-slate-800 block">Pilihan 2 (Cadangan)</span>
-      <input id="inProdi2Nama" type="text" placeholder="Nama Jurusan / Prodi..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700 font-medium" />
-      <input id="inProdi2Kampus" type="text" placeholder="Nama Universitas / PTN..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700 font-medium" />
+      <input id="inProdi2Nama" type="text" placeholder="Nama Jurusan / Prodi (Cth: Teknik Informatika)" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700 font-medium text-slate-800" />
+      <input id="inProdi2Kampus" type="text" placeholder="Nama Universitas / PTN (Cth: ITS)" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700 font-medium text-slate-800" />
       <div class="grid grid-cols-2 gap-2">
-        <input id="inProdi2DayaTampung" type="number" placeholder="Daya Tampung" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700" />
-        <input id="inProdi2Peminat" type="number" placeholder="Jumlah Peminat" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700" />
+        <input id="inProdi2DayaTampung" type="number" placeholder="Daya Tampung (Cth: 90)" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700 text-slate-800" />
+        <input id="inProdi2Peminat" type="number" placeholder="Jumlah Peminat (Cth: 2580)" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-emerald-700 text-slate-800" />
       </div>
     </div>
   </div>
@@ -307,7 +309,7 @@
 
       <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
   
-  <!-- Identitas Siswa & Pilihan SNBT -->
+  <!-- Identitas Siswa SNBT -->
   <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pb-4 border-b border-slate-100">
     <div>
       <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Siswa</label>
@@ -315,32 +317,35 @@
     </div>
   </div>
 
-  <!-- Blok Pilihan 1 & 2 Manual (Daya Tampung & Peminat) -->
+  <!-- Blok Pilihan 1 & 2 Manual SNBT (Nama, Kampus, Passing Grade, Daya Tampung, Peminat) -->
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pb-4 border-b border-slate-100">
+    
+    <!-- Pilihan 1 SNBT -->
     <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
       <label class="block text-xs font-bold text-slate-700">Pilihan 1 SNBT (Prioritas Utama)</label>
-      <input id="inSNBT1Nama" type="text" placeholder="Nama Jurusan / Prodi..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-amber-600 font-medium" />
-      <input id="inSNBT1Kampus" type="text" placeholder="Nama Universitas / PTN..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-amber-600 font-medium" />
+      <input id="inSNBT1Nama" type="text" placeholder="Nama Jurusan / Prodi (Cth: Teknik Informatika)" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-amber-600 font-medium text-slate-800" />
+      <input id="inSNBT1Kampus" type="text" placeholder="Nama Universitas / PTN (Cth: ITS)" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-amber-600 font-medium text-slate-800" />
       <div class="grid grid-cols-3 gap-2">
-        <input id="inSNBT1Passing" type="number" placeholder="Passing Grade" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-1.5 text-xs focus:outline-none" />
-        <input id="inSNBT1DayaTampung" type="number" placeholder="Daya Tampung" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-1.5 text-xs focus:outline-none" />
-        <input id="inSNBT1Peminat" type="number" placeholder="Peminat" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-1.5 text-xs focus:outline-none" />
+        <input id="inSNBT1Passing" type="number" placeholder="Passing Grade" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-1.5 text-xs focus:outline-none text-slate-800" />
+        <input id="inSNBT1DayaTampung" type="number" placeholder="Daya Tampung" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-1.5 text-xs focus:outline-none text-slate-800" />
+        <input id="inSNBT1Peminat" type="number" placeholder="Peminat" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-1.5 text-xs focus:outline-none text-slate-800" />
       </div>
     </div>
 
+    <!-- Pilihan 2 SNBT -->
     <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
       <label class="block text-xs font-bold text-slate-700">Pilihan 2 SNBT (Cadangan)</label>
-      <input id="inSNBT2Nama" type="text" placeholder="Nama Jurusan / Prodi..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-amber-600 font-medium" />
-      <input id="inSNBT2Kampus" type="text" placeholder="Nama Universitas / PTN..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-amber-600 font-medium" />
+      <input id="inSNBT2Nama" type="text" placeholder="Nama Jurusan / Prodi (Cth: Perencanaan Wilayah)" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-amber-600 font-medium text-slate-800" />
+      <input id="inSNBT2Kampus" type="text" placeholder="Nama Universitas / PTN (Cth: UNDIP)" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-amber-600 font-medium text-slate-800" />
       <div class="grid grid-cols-3 gap-2">
-        <input id="inSNBT2Passing" type="number" placeholder="Passing Grade" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-1.5 text-xs focus:outline-none" />
-        <input id="inSNBT2DayaTampung" type="number" placeholder="Daya Tampung" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-1.5 text-xs focus:outline-none" />
-        <input id="inSNBT2Peminat" type="number" placeholder="Peminat" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-1.5 text-xs focus:outline-none" />
+        <input id="inSNBT2Passing" type="number" placeholder="Passing Grade" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-1.5 text-xs focus:outline-none text-slate-800" />
+        <input id="inSNBT2DayaTampung" type="number" placeholder="Daya Tampung" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-1.5 text-xs focus:outline-none text-slate-800" />
+        <input id="inSNBT2Peminat" type="number" placeholder="Peminat" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-1.5 text-xs focus:outline-none text-slate-800" />
       </div>
     </div>
+
   </div>
 
-</div>
         <div>
           <h3 class="text-sm font-bold text-slate-900 mb-3">Input Skor Hasil Try Out 7 Subtes UTBK (Skala 0–1000)</h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -953,42 +958,66 @@
     }
 
     function isiContohSimulasi() {
-      const sample = [
-        { id: "mtk_umum", val: [88, 89, 91, 92, 95] }, { id: "mtk_lanjut", val: [86, 88, 89, 91, 93] },
-        { id: "fisika", val: [86, 88, 90, 92, 94] }, { id: "kimia", val: [84, 85, 87, 88, 90] },
-        { id: "biologi", val: [83, 85, 86, 88, 90] }, { id: "ekonomi", val: [80, 82, 83, 84, 85] },
-        { id: "sosiologi", val: [90, 91, 92, 93, 94] }, { id: "geografi", val: [80, 81, 82, 84, 85] },
-        { id: "ppkn", val: [91, 92, 93, 94, 96] }, { id: "sejarah", val: [85, 86, 87, 88, 89] },
-        { id: "bindo", val: [88, 89, 90, 91, 92] }, { id: "bing", val: [86, 87, 89, 90, 92] }
-      ];
-      sample.forEach(s => {
-        for (let i = 1; i <= 5; i++) {
-          const el = document.getElementById(`${s.id}_s${i}`);
-          if(el) el.value = s.val[i - 1];
-        }
-        hitungRataRow(s.id);
-      });
-      if(document.getElementById('inNama')) document.getElementById('inNama').value = "Muhammad Umar";
-      if(document.getElementById('inKelas')) document.getElementById('inKelas').value = "XII - 1 (MIPA)";
-      if(document.getElementById('inKonselor')) document.getElementById('inKonselor').value = "Tim Sukses PTN M18";
-      if(document.getElementById('selectProdi1')) document.getElementById('selectProdi1').value = "UB_TIP";
-      if(document.getElementById('selectProdi2')) document.getElementById('selectProdi2').value = "ITS_IF";
-      saveDraft();
-      checkCollisionInternal();
+  const sample = [
+    { id: "mtk_umum", val: [88, 89, 91, 92, 95] }, { id: "mtk_lanjut", val: [86, 88, 89, 91, 93] },
+    { id: "fisika", val: [86, 88, 90, 92, 94] }, { id: "kimia", val: [84, 85, 87, 88, 90] },
+    { id: "biologi", val: [83, 85, 86, 88, 90] }, { id: "ekonomi", val: [80, 82, 83, 84, 85] },
+    { id: "sosiologi", val: [90, 91, 92, 93, 94] }, { id: "geografi", val: [80, 81, 82, 84, 85] },
+    { id: "ppkn", val: [91, 92, 93, 94, 96] }, { id: "sejarah", val: [85, 86, 87, 88, 89] },
+    { id: "bindo", val: [88, 89, 90, 91, 92] }, { id: "bing", val: [86, 87, 89, 90, 92] }
+  ];
+  
+  sample.forEach(s => {
+    for (let i = 1; i <= 5; i++) {
+      const el = document.getElementById(`${s.id}_s${i}`);
+      if(el) el.value = s.val[i - 1];
     }
+    hitungRataRow(s.id);
+  });
+
+  // Mengisi Identitas & Input Manual Target Jurusan SNBP secara otomatis
+  if(document.getElementById('inNama')) document.getElementById('inNama').value = "Muhammad Umar";
+  if(document.getElementById('inKelas')) document.getElementById('inKelas').value = "XII - 1 (MIPA)";
+  if(document.getElementById('inKonselor')) document.getElementById('inKonselor').value = "Tim Sukses PTN M18";
+
+  // Pengisian otomatis kolom input manual Lampiran 1 & 2 SNBP
+  if(document.getElementById('inProdi1Nama')) document.getElementById('inProdi1Nama').value = "Teknik Industri Pertanian";
+  if(document.getElementById('inProdi1Kampus')) document.getElementById('inProdi1Kampus').value = "Universitas Brawijaya";
+  if(document.getElementById('inProdi1DayaTampung')) document.getElementById('inProdi1DayaTampung').value = 70;
+  if(document.getElementById('inProdi1Peminat')) document.getElementById('inProdi1Peminat').value = 1100;
+
+  if(document.getElementById('inProdi2Nama')) document.getElementById('inProdi2Nama').value = "Teknik Informatika";
+  if(document.getElementById('inProdi2Kampus')) document.getElementById('inProdi2Kampus').value = "Institut Teknologi Sepuluh Nopember";
+  if(document.getElementById('inProdi2DayaTampung')) document.getElementById('inProdi2DayaTampung').value = 90;
+  if(document.getElementById('inProdi2Peminat')) document.getElementById('inProdi2Peminat').value = 2580;
+
+  saveDraft();
+}
 
     function isiContohUTBK() {
-      document.getElementById('inNamaSNBT').value = "Muhammad Umar";
-      document.getElementById('utbk_pu').value = 685;
-      document.getElementById('utbk_pk').value = 710;
-      document.getElementById('utbk_pm').value = 695;
-      document.getElementById('utbk_pbm').value = 665;
-      document.getElementById('utbk_ppu').value = 650;
-      document.getElementById('utbk_lit_indo').value = 690;
-      document.getElementById('utbk_lit_ing').value = 660;
-      document.getElementById('selectProdiSNBT1').value = "ITS_IF";
-      document.getElementById('selectProdiSNBT2').value = "UNDIP_PWK";
-    }
+  // Mengisi Identitas Siswa & Skor 7 Subtes UTBK
+  document.getElementById('inNamaSNBT').value = "Muhammad Umar";
+  document.getElementById('utbk_pu').value = 685;
+  document.getElementById('utbk_pk').value = 710;
+  document.getElementById('utbk_pm').value = 695;
+  document.getElementById('utbk_pbm').value = 665;
+  document.getElementById('utbk_ppu').value = 650;
+  document.getElementById('utbk_lit_indo').value = 690;
+  document.getElementById('utbk_lit_ing').value = 660;
+
+  // Mengisi Otomatis Input Manual Pilihan 1 & 2 SNBT beserta Passing Grade, Daya Tampung, dan Peminat
+  if(document.getElementById('inSNBT1Nama')) document.getElementById('inSNBT1Nama').value = "Teknik Informatika";
+  if(document.getElementById('inSNBT1Kampus')) document.getElementById('inSNBT1Kampus').value = "Institut Teknologi Sepuluh Nopember";
+  if(document.getElementById('inSNBT1Passing')) document.getElementById('inSNBT1Passing').value = 695;
+  if(document.getElementById('inSNBT1DayaTampung')) document.getElementById('inSNBT1DayaTampung').value = 90;
+  if(document.getElementById('inSNBT1Peminat')) document.getElementById('inSNBT1Peminat').value = 2580;
+
+  if(document.getElementById('inSNBT2Nama')) document.getElementById('inSNBT2Nama').value = "Perencanaan Wilayah dan Kota";
+  if(document.getElementById('inSNBT2Kampus')) document.getElementById('inSNBT2Kampus').value = "Universitas Diponegoro";
+  if(document.getElementById('inSNBT2Passing')) document.getElementById('inSNBT2Passing').value = 655;
+  if(document.getElementById('inSNBT2DayaTampung')) document.getElementById('inSNBT2DayaTampung').value = 60;
+  if(document.getElementById('inSNBT2Peminat')) document.getElementById('inSNBT2Peminat').value = 1350;
+}
 
     function isiContohMandiri() {
       document.getElementById('inNamaMandiri').value = "Muhammad Umar";
