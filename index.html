@@ -1095,39 +1095,49 @@
       const prodiInput2 = document.getElementById('inProdi2Nama').value.trim() || "Kedokteran";
 
       // --- TAMBAHKAN / GANTI DI BAGIAN INI ---
-      // Fungsi Cerdas Deteksi Mapel Pendukung Kementerian untuk Semua Rumpun (Saintek, Soshum, Pendidikan)
+      // Fungsi Cerdas Deteksi Mapel Pendukung Kementerian (Sangat Spesifik & Presisi Sesuai Kepmen)
       function detectMapelPendukung(namaProdi) {
         const p = namaProdi.toLowerCase();
         
-        // 1. Rumpun Kesehatan & Kedokteran
-        if (p.includes("kedokteran") || p.includes("farmasi") || p.includes("gizi") || p.includes("biologi") || p.includes("keperawatan") || p.includes("kebidanan")) {
+        // 1. Rumpun Kesehatan, Kedokteran, Farmasi, & Biomedis
+        if (p.includes("biomedis") || p.includes("kedokteran") || p.includes("farmasi") || p.includes("gizi") || p.includes("biologi") || p.includes("keperawatan") || p.includes("kebidanan") || p.includes("veteriner") || p.includes("kedokteran hewan")) {
           return { mapel1: "Biologi", mapel2: "Kimia" };
         } 
-        // 2. Rumpun Teknik, Sains Murni & Komputer (Saintek)
-        else if (p.includes("teknik") || p.includes("ilmu komputer") || p.includes("informatika") || p.includes("sains data") || p.includes("arsitektur") || p.includes("fisika") || p.includes("matematika") || p.includes("statistik") || p.includes("sipil") || p.includes("mesin") || p.includes("elektro")) {
+        // 2. Rumpun Teknik, Sains Murni, Komputer & IT (Saintek)
+        else if (p.includes("teknik") || p.includes("ilmu komputer") || p.includes("informatika") || p.includes("sains data") || p.includes("arsitektur") || p.includes("fisika") || p.includes("matematika") || p.includes("statistik") || p.includes("aktuaria") || p.includes("sipil") || p.includes("mesin") || p.includes("elektro") || p.includes("geofisika") || p.includes("geodesi")) {
           return { mapel1: "Fisika", mapel2: "Matematika Tingkat Lanjut" };
         } 
-        // 3. Rumpun Hukum, Politik & Hubungan Internasional (Soshum)
-        else if (p.includes("hukum") || p.includes("politik") || p.includes("hubungan internasional") || p.includes("sosiologi") || p.includes("pemerintahan") || p.includes("kriminologi")) {
+        // 3. Rumpun Pertanian, Kehutanan, Perikanan, & Teknologi Pangan
+        else if (p.includes("pertanian") || p.includes("kehutanan") || p.includes("perikanan") || p.includes("pangan") || p.includes("agroteknologi") || p.includes("agribisnis") || p.includes("peternakan") || p.includes("akuakultur")) {
+          return { mapel1: "Biologi", mapel2: "Kimia" };
+        }
+        // 4. Rumpun Hukum, Politik & Hubungan Internasional (Soshum)
+        else if (p.includes("hukum") || p.includes("politik") || p.includes("hubungan internasional") || p.includes("sosiologi") || p.includes("pemerintahan") || p.includes("kriminologi") || p.includes("administrasi publik")) {
           return { mapel1: "Pendidikan Pancasila / PKn", mapel2: "Sosiologi" };
         } 
-        // 4. Rumpun Ekonomi, Bisnis & Manajemen (Soshum)
-        else if (p.includes("ekonomi") || p.includes("manajemen") || p.includes("akuntansi") || p.includes("bisnis") || p.includes("perbankan")) {
+        // 5. Rumpun Ekonomi, Bisnis, Manajemen & Akuntansi (Soshum)
+        else if (p.includes("ekonomi") || p.includes("manajemen") || p.includes("akuntansi") || p.includes("bisnis") || p.includes("perbankan") || p.includes("kewirausahaan")) {
           return { mapel1: "Ekonomi", mapel2: "Matematika Umum" };
         } 
-        // 5. Rumpun Pendidikan / Keguruan (Pendidikan MIPA / Sosial)
-        else if (p.includes("pendidikan fisika") || p.includes("pendidikan kimia") || p.includes("pendidikan biologi")) {
+        // 6. Rumpun Psikologi & Ilmu Komunikasi
+        else if (p.includes("psikologi")) {
+          return { mapel1: "Biologi", mapel2: "Sosiologi" };
+        } else if (p.includes("komunikasi") || p.includes("jurnalistik") || p.includes("humas") || p.includes("public relations")) {
+          return { mapel1: "Bahasa Indonesia", mapel2: "Sosiologi" };
+        }
+        // 7. Rumpun Pendidikan / Keguruan
+        else if (p.includes("pendidikan fisika") || p.includes("pendidikan kimia") || p.includes("pendidikan biologi") || p.includes("pendidikan IPA")) {
           return { mapel1: "Biologi", mapel2: "Kimia" };
         } else if (p.includes("pendidikan matematika") || p.includes("pendidikan komputer")) {
           return { mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum" };
         } else if (p.includes("pendidikan sejarah") || p.includes("pendidikan sosiologi") || p.includes("pendidikan pancasila") || p.includes("ppkn") || p.includes("pendidikan kewarganegaraan")) {
           return { mapel1: "Sejarah", mapel2: "Pendidikan Pancasila / PKn" };
-        } else if (p.includes("pendidikan bahasa") || p.includes("sastra") || p.includes("jurnalistik") || p.includes("ilmu komunikasi")) {
+        } else if (p.includes("pendidikan bahasa") || p.includes("sastra")) {
           return { mapel1: "Bahasa Indonesia", mapel2: "Bahasa Inggris" };
         } else if (p.includes("geografi") || p.includes("pendidikan geografi")) {
           return { mapel1: "Geografi", mapel2: "Sejarah" };
         } 
-        // Default Umum
+        // Default Umum Soshum/Saintek
         else {
           return { mapel1: "Bahasa Indonesia", mapel2: "Matematika Umum" };
         }
