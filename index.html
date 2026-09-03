@@ -465,7 +465,7 @@
   <!-- SKRIP LOGIKA UTAMA & DATABASE              -->
   <!-- ========================================== -->
   <script>
-    const GOOGLE_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbydCEJXoxiQmlPx9O4yDqfR30FhcCiubTcodigX-Z7J77nwCIC4Uw4l__p4N2dq7KMj/exec";
+    const GOOGLE_SHEET_WEBAPP_URL ="https://script.google.com/macros/s/AKfycbydCEJXoxiQmlPx9O4yDqfR30FhcCiubTcodigX-Z7J77nwCIC4Uw4l__p4N2dq7KMj/exec";
 
     const mapelSaintek = [
       { id: "mtk_lanjut", name: "Matematika Tingkat Lanjut" },
@@ -643,7 +643,6 @@
       });
     }
 
-    // Tombol Terpisah untuk Mengisi Data Contoh atau Mengosongkan Form
     function isiSimulasiRumpunAktif() {
       const kelompok = document.getElementById('inKelompokJurusan') ? document.getElementById('inKelompokJurusan').value : "SAINTEK";
       const currentList = getActiveMapelList();
@@ -758,24 +757,24 @@
       }
     }
 
-    // Generator Referensi Spesifik: Variasi Kampus Low Competition Luar Jawa Sesuai Rumpun
-    function generateReferensiSpesifikMapel(t1) {
-      const prodiText = t1.name.toLowerCase();
+    // Generator Referensi Spesifik: Variasi Kampus Low Competition Sesuai Rumpun Prodi Pilihan
+    function generateReferensiSpesifikMapel(targetProdi) {
+      const prodiText = targetProdi.prodi.toLowerCase();
       let pool = [];
 
       if (prodiText.includes("kedokteran") || prodiText.includes("kesehatan") || prodiText.includes("biologi")) {
         pool = [
-          { prodi: "S1 Keperawatan", fakultas: "Fakultas Kedokteran", univ: "Universitas Teuku Umar, Aceh (Low Competition)" },
+          { prodi: "S1 Keperawatan", fakultas: "Fakultas Kedokteran", univ: "Universitas Teuku Umar, Aceh" },
           { prodi: "S1 Kesehatan Masyarakat", fakultas: "Fakultas Kesmas", univ: "Universitas Sulawesi Barat, Majene" },
           { prodi: "S1 Gizi", fakultas: "Fakultas Kesehatan", univ: "Universitas Papua, Manokwari" },
           { prodi: "S1 Kedokteran Hewan", fakultas: "Kedokteran Hewan", univ: "Universitas Nusa Cendana, Kupang" }
         ];
-      } else if (prodiText.includes("teknik") || prodiText.includes("komputer") || prodiText.includes("statistika") || prodiText.includes("informatika")) {
+      } else if (prodiText.includes("teknik") || prodiText.includes("komputer") || prodiText.includes("statistika") || prodiText.includes("informatika") || prodiText.includes("matematika")) {
         pool = [
           { prodi: "S1 Teknik Sipil / Arsitektur", fakultas: "Fakultas Teknik", univ: "Universitas Malikussaleh, Aceh Utara" },
-          { prodi: "S1 Teknik Elektro", fakultas: "Fakultas Teknik", univ: "Universitas Borneo Tarakan, Kalimantan Utara" },
+          { prodi: "S1 Teknik Elektro", fakultas: "Fakultas Teknik", univ: "Universitas Borneo Tarakan, Kaltara" },
           { prodi: "S1 Ilmu Komputer / Informatika", fakultas: "Fakultas MIPA", univ: "Universitas Sam Ratulangi, Manado" },
-          { prodi: "D4 Instrumentasi & Klimatologi", fakultas: "Sekolah Kedinasan", univ: "STMKG, Tangerang Selatan (Ikatan Dinas)" }
+          { prodi: "D4 Instrumentasi & Klimatologi", fakultas: "Sekolah Kedinasan", univ: "STMKG, Tangerang Selatan" }
         ];
       } else if (prodiText.includes("pendidikan") || prodiText.includes("guru")) {
         pool = [
@@ -784,7 +783,7 @@
           { prodi: "S1 Pend. Guru SD (PGSD)", fakultas: "FKIP", univ: "Universitas Pattimura, Ambon" },
           { prodi: "S1 Pend. Pancasila & Kewarganegaraan", fakultas: "FKIP", univ: "Universitas Cenderawasih, Jayapura" }
         ];
-      } else if (prodiText.includes("akuntansi") || prodiText.includes("manajemen") || prodiText.includes("ekonomi") || prodiText.includes("pemerintahan")) {
+      } else if (prodiText.includes("akuntansi") || prodiText.includes("manajemen") || prodiText.includes("ekonomi") || prodiText.includes("pemerintahan") || prodiText.includes("politik")) {
         pool = [
           { prodi: "S1 Ekonomi Pembangunan", fakultas: "FEB", univ: "Universitas Timor, NTT (Peminat Sangat Longgar)" },
           { prodi: "S1 Administrasi Publik", fakultas: "FISIP", univ: "Universitas Bangka Belitung, Belitung" },
