@@ -36,7 +36,7 @@
             <h1 class="text-sm sm:text-base font-black text-blue-950 leading-tight tracking-tight">SMA MUHAMMADIYAH 18 JAKARTA</h1>
             <span class="px-2 py-0.5 bg-amber-100 border border-amber-300 text-amber-900 text-[10px] font-black rounded">SCHOOL OF CHAMPION</span>
           </div>
-          <p class="text-[11px] text-slate-500 font-medium">EduAnalytics PTN • Ultimate Paripurna Edition (Multirumpun & Low Competition)</p>
+          <p class="text-[11px] text-slate-500 font-medium">EduAnalytics PTN • Ultimate Paripurna Edition (Multirumpun & Auto-Sync)</p>
         </div>
       </div>
       
@@ -91,8 +91,8 @@
           <div>
             <div class="h-14 w-14 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">📝</div>
             <span class="inline-block mt-4 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-100 text-amber-800 uppercase tracking-wide">Fokus UTBK & Kedinasan</span>
-            <h3 class="text-xl font-black text-slate-900 mt-2 group-hover:text-amber-700 transition-colors">Modul SNBT (7 Subtes + IRT)</h3>
-            <p class="text-slate-500 text-xs mt-2 leading-relaxed">Simulasi skor UTBK dengan algoritma IRT, mendukung analisis prodi PTN, FKIP, Sekolah Kedinasan, maupun Seni.</p>
+            <h3 class="text-xl font-black text-slate-900 mt-2 group-hover:text-amber-700 transition-colors">Modul SNBT (Multi-TO & IRT)</h3>
+            <p class="text-slate-500 text-xs mt-2 leading-relaxed">Tracking progres Multi-Try Out (TO 1, 2, 3), diagnostik subtes lemah, dan rekomendasi zona aman kampus otomatis.</p>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-amber-700">
             <span>Buka Modul SNBT</span><span>→</span>
@@ -250,16 +250,16 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- 3. VIEW FORMULIR SNBT                      -->
+    <!-- 3. VIEW FORMULIR SNBT (MULTI-TRY OUT)      -->
     <!-- ========================================== -->
     <div id="viewSNBT" class="hidden no-print space-y-6">
       <div class="flex items-center justify-between bg-amber-900 rounded-2xl p-5 text-white shadow-md">
         <div>
-          <span class="text-[10px] font-extrabold bg-amber-400 text-amber-950 px-2.5 py-0.5 rounded uppercase">Modul Khusus SNBT / UTBK & Kedinasan</span>
-          <h2 class="text-xl font-black mt-1">Diagnostik Skor UTBK (PTN, Pendidikan, Kedinasan, Seni)</h2>
+          <span class="text-[10px] font-extrabold bg-amber-400 text-amber-950 px-2.5 py-0.5 rounded uppercase">Modul SNBT Lanjutan (Multi-Try Out & IRT)</span>
+          <h2 class="text-xl font-black mt-1">Diagnostik Progres Berkala UTBK Siswa</h2>
         </div>
         <div class="flex items-center gap-2">
-          <button type="button" onclick="isiContohUTBK()" class="px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-amber-950 rounded-xl text-xs font-extrabold transition shadow-sm">⚡ Simulasi UTBK</button>
+          <button type="button" onclick="isiContohUTBK()" class="px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-amber-950 rounded-xl text-xs font-extrabold transition shadow-sm">⚡ Simulasi Multi-TO</button>
           <button onclick="showView('viewLanding')" class="px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-xl text-xs font-bold border border-white/20 transition">← Ganti Jalur</button>
         </div>
       </div>
@@ -275,19 +275,19 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pb-4 border-b border-slate-100">
           <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2.5">
             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide">Pilihan 1 (Wajib)</label>
-            <input id="inSNBT1Nama" type="text" placeholder="Nama Jurusan / Prodi..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-amber-600 font-medium text-slate-800" />
-            <input id="inSNBT1Kampus" type="text" placeholder="Nama Kampus / FKIP / Kedinasan / Seni..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-amber-600 font-medium text-slate-800" />
+            <input id="inSNBT1Nama" type="text" placeholder="Nama Jurusan / Prodi..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800" />
+            <input id="inSNBT1Kampus" type="text" placeholder="Nama Kampus / PTN / Kedinasan..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800" />
             <div class="grid grid-cols-3 gap-2">
-              <input id="inSNBT1Passing" type="number" placeholder="Passing" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-2 text-xs text-slate-800" />
+              <input id="inSNBT1Passing" type="number" placeholder="Passing Grade" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-2 text-xs text-slate-800" />
               <input id="inSNBT1DayaTampung" type="number" placeholder="Daya Tampung" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-2 text-xs text-slate-800" />
               <input id="inSNBT1Peminat" type="number" placeholder="Peminat" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-2 text-xs text-slate-800" />
             </div>
           </div>
 
           <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2.5">
-            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide">Pilihan 2 (Opsional / Kosongkan jika 1)</label>
-            <input id="inSNBT2Nama" type="text" placeholder="Kosongkan jika tidak ada..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-amber-600 font-medium text-slate-800" />
-            <input id="inSNBT2Kampus" type="text" placeholder="Nama Kampus / Kedinasan / Seni..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-amber-600 font-medium text-slate-800" />
+            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide">Pilihan 2 (Opsional / Kosongkan)</label>
+            <input id="inSNBT2Nama" type="text" placeholder="Kosongkan jika tidak ada..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800" />
+            <input id="inSNBT2Kampus" type="text" placeholder="Nama Kampus..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800" />
             <div class="grid grid-cols-3 gap-2">
               <input id="inSNBT2Passing" type="number" placeholder="Passing" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-2 text-xs text-slate-800" />
               <input id="inSNBT2DayaTampung" type="number" placeholder="Daya Tampung" class="w-full bg-white border border-slate-200 rounded-xl px-2 py-2 text-xs text-slate-800" />
@@ -297,20 +297,34 @@
         </div>
 
         <div>
-          <h3 class="text-sm font-bold text-slate-900 mb-3">Input Skor Try Out 7 Subtes UTBK (Skala 0–1000)</h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200"><label class="block text-xs font-bold text-slate-700 mb-1">PU</label><input id="utbk_pu" type="number" placeholder="680" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs font-bold text-slate-800" /></div>
-            <div class="p-3 bg-amber-50 rounded-xl border border-amber-200"><label class="block text-xs font-bold text-amber-950 mb-1">PK (IRT)</label><input id="utbk_pk" type="number" placeholder="700" class="w-full bg-white border border-amber-300 rounded-lg px-3 py-2 text-xs font-bold text-amber-950" /></div>
-            <div class="p-3 bg-amber-50 rounded-xl border border-amber-200"><label class="block text-xs font-bold text-amber-950 mb-1">PM (IRT)</label><input id="utbk_pm" type="number" placeholder="690" class="w-full bg-white border border-amber-300 rounded-lg px-3 py-2 text-xs font-bold text-amber-950" /></div>
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200"><label class="block text-xs font-bold text-slate-700 mb-1">PBM</label><input id="utbk_pbm" type="number" placeholder="660" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs font-bold text-slate-800" /></div>
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200"><label class="block text-xs font-bold text-slate-700 mb-1">PPU</label><input id="utbk_ppu" type="number" placeholder="650" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs font-bold text-slate-800" /></div>
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200"><label class="block text-xs font-bold text-slate-700 mb-1">Lit Indo</label><input id="utbk_lit_indo" type="number" placeholder="680" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs font-bold text-slate-800" /></div>
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200"><label class="block text-xs font-bold text-slate-700 mb-1">Lit Ing</label><input id="utbk_lit_ing" type="number" placeholder="660" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs font-bold text-slate-800" /></div>
-            <div class="p-3 bg-slate-100 rounded-xl border border-slate-300 flex flex-col justify-center text-center"><span class="text-[10px] font-bold text-slate-700 uppercase">Model IRT Aktif</span></div>
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-bold text-slate-900">Input Progres Try Out Berkala (Skala 0–1000)</h3>
+            <span class="text-[11px] font-bold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200">Melacak Kurva Peningkatan Siswa</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border border-slate-200 rounded-xl overflow-hidden">
+              <thead class="bg-slate-100 text-slate-700">
+                <tr>
+                  <th class="p-2.5">Subtes UTBK</th>
+                  <th class="p-2.5 text-center">Try Out 1 (Awal)</th>
+                  <th class="p-2.5 text-center">Try Out 2 (Mid)</th>
+                  <th class="p-2.5 text-center bg-amber-100 text-amber-950 font-black">Try Out 3 (Terakhir)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200">
+                <tr><td class="p-2.5 font-bold">Penalaran Umum (PU)</td><td class="p-2 text-center"><input id="to1_pu" type="number" class="w-20 text-center border rounded p-1" placeholder="650"></td><td class="p-2 text-center"><input id="to2_pu" type="number" class="w-20 text-center border rounded p-1" placeholder="670"></td><td class="p-2 text-center bg-amber-50"><input id="to3_pu" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="700"></td></tr>
+                <tr><td class="p-2.5 font-bold">Pengetahuan Kuantitatif (PK - IRT)</td><td class="p-2 text-center"><input id="to1_pk" type="number" class="w-20 text-center border rounded p-1" placeholder="660"></td><td class="p-2 text-center"><input id="to2_pk" type="number" class="w-20 text-center border rounded p-1" placeholder="680"></td><td class="p-2 text-center bg-amber-50"><input id="to3_pk" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="715"></td></tr>
+                <tr><td class="p-2.5 font-bold">Penalaran Matematika (PM - IRT)</td><td class="p-2 text-center"><input id="to1_pm" type="number" class="w-20 text-center border rounded p-1" placeholder="640"></td><td class="p-2 text-center"><input id="to2_pm" type="number" class="w-20 text-center border rounded p-1" placeholder="675"></td><td class="p-2 text-center bg-amber-50"><input id="to3_pm" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="705"></td></tr>
+                <tr><td class="p-2.5 font-bold">PBM</td><td class="p-2 text-center"><input id="to1_pbm" type="number" class="w-20 text-center border rounded p-1" placeholder="630"></td><td class="p-2 text-center"><input id="to2_pbm" type="number" class="w-20 text-center border rounded p-1" placeholder="650"></td><td class="p-2 text-center bg-amber-50"><input id="to3_pbm" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="680"></td></tr>
+                <tr><td class="p-2.5 font-bold">PPU</td><td class="p-2 text-center"><input id="to1_ppu" type="number" class="w-20 text-center border rounded p-1" placeholder="620"></td><td class="p-2 text-center"><input id="to2_ppu" type="number" class="w-20 text-center border rounded p-1" placeholder="640"></td><td class="p-2 text-center bg-amber-50"><input id="to3_ppu" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="670"></td></tr>
+                <tr><td class="p-2.5 font-bold">Literasi Bahasa Indonesia</td><td class="p-2 text-center"><input id="to1_indo" type="number" class="w-20 text-center border rounded p-1" placeholder="650"></td><td class="p-2 text-center"><input id="to2_indo" type="number" class="w-20 text-center border rounded p-1" placeholder="680"></td><td class="p-2 text-center bg-amber-50"><input id="to3_indo" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="710"></td></tr>
+                <tr><td class="p-2.5 font-bold">Literasi Bahasa Inggris</td><td class="p-2 text-center"><input id="to1_ing" type="number" class="w-20 text-center border rounded p-1" placeholder="640"></td><td class="p-2 text-center"><input id="to2_ing" type="number" class="w-20 text-center border rounded p-1" placeholder="660"></td><td class="p-2 text-center bg-amber-50"><input id="to3_ing" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="690"></td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
-        <button onclick="jalankanAnalisisSNBT()" class="w-full py-3 bg-amber-700 hover:bg-amber-800 text-white font-bold rounded-xl transition text-xs shadow-sm">Jalankan Analisis Khusus SNBT & Buka Laporan</button>
+        <button onclick="jalankanAnalisisSNBT()" class="w-full py-3 bg-amber-700 hover:bg-amber-800 text-white font-bold rounded-xl transition text-xs shadow-sm">Jalankan Analisis Multi-TO SNBT & Buka Laporan</button>
       </div>
     </div>
 
@@ -378,7 +392,7 @@
           <div><span class="text-[10px] text-slate-400 block font-semibold">NAMA SISWA / KELAS</span><p id="outNamaReport" class="font-bold text-slate-900">-</p></div>
           <div><span class="text-[10px] text-slate-400 block font-semibold">RANKING INTERNAL</span><p id="outRankingReport" class="font-bold text-emerald-800">-</p></div>
           <div><span class="text-[10px] text-slate-400 block font-semibold">GURU PEMBIMBING</span><p id="outKonselorReport" class="font-bold text-slate-900">-</p></div>
-          <div><span id="outLabelSkorUtama" class="text-[10px] text-slate-400 block font-semibold">MODAL NILAI (50:50)</span><p id="outValSkorUtama" class="font-black text-blue-900 text-sm">-</p></div>
+          <div><span id="outLabelSkorUtama" class="text-[10px] text-slate-400 block font-semibold">SKOR UTAMA</span><p id="outValSkorUtama" class="font-black text-blue-900 text-sm">-</p></div>
         </div>
 
         <!-- KONTEN SNBP -->
@@ -416,26 +430,30 @@
           </div>
         </div>
 
-        <!-- KONTEN SNBT -->
+        <!-- KONTEN SNBT (MULTI-TRY OUT REPORT) -->
         <div id="contentReportSNBT" class="hidden space-y-4">
-          <div id="boxMotivasiSNBT" class="p-4 rounded-2xl border-2 shadow-sm space-y-2">
-            <div class="flex items-center justify-between">
-              <span id="outBadgeGamifikasi" class="px-3 py-1 rounded-full text-xs font-black uppercase"></span>
-              <span id="outMotivasiStatus" class="text-xs font-bold"></span>
+          <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-extrabold bg-amber-500 text-amber-950 px-2 py-0.5 rounded uppercase">Analisis Progres Kurva Belajar</span>
+              <h4 id="outSnbtDelta" class="text-base font-black text-amber-950 mt-1">Delta Peningkatan: +0 Poin</h4>
             </div>
-            <p id="outMotivasiPesan" class="text-xs leading-relaxed font-medium"></p>
+            <div class="text-right">
+              <span class="text-[10px] text-slate-500 block">Skor Akhir TO 3 (IRT)</span>
+              <span id="outSnbtFinalSkor" class="text-2xl font-black text-amber-900">-</span>
+            </div>
           </div>
 
           <div>
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-600 block mb-1.5">Rekap Skor 7 Subtes UTBK (Bobot IRT):</span>
-            <div id="outGrid7Subtes" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 text-center"></div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-600 block mb-1.5">Tracking Performa 3 Kali Try Out UTBK:</span>
+            <div id="outGridMultiTO" class="grid grid-cols-1 sm:grid-cols-7 gap-2 text-center text-xs"></div>
           </div>
 
           <div id="outGridProdiSNBT" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
 
+          <!-- Smart Matching Kampus Zona Aman SNBT -->
           <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50 print-card">
-            <span class="text-[10px] font-bold text-slate-700 uppercase block mb-1.5">Rekomendasi Kampus Alternatif 100% Aman Berdasarkan Skor UTBK:</span>
-            <div id="outSmartMatchingKampus" class="grid grid-cols-1 sm:grid-cols-3 gap-2"></div>
+            <span class="text-[10px] font-bold text-slate-700 uppercase block mb-1.5">🎯 Smart Matching: Kampus Zona Aman Berdasarkan Skor UTBK Anda:</span>
+            <div id="outSmartMatchingKampus" class="grid grid-cols-1 sm:grid-cols-2 gap-2"></div>
           </div>
         </div>
 
@@ -532,10 +550,10 @@
 
     const databasePTN = [
       { id: "UI_MED", ptn: "Universitas Indonesia", prodi: "Pendidikan Dokter", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 75, peminat: 3820, passingUTBK: 735, mandiri: "SIMAK UI" },
-      { id: "STAN_AKD", ptn: "PKN STAN (Sekolah Kedinasan)", prodi: "D4 Akuntansi Sektor Publik", rumpun: "Kedinasan", mapel1: "Matematika Umum", mapel2: "Ekonomi / Akuntansi", dayaTampung: 300, peminat: 5200, passingUTBK: 720, mandiri: "SPMB STAN (USM)" },
+      { id: "STAN_AKD", ptn: "PKN STAN", prodi: "D4 Akuntansi Sektor Publik", rumpun: "Kedinasan", mapel1: "Matematika Umum", mapel2: "Ekonomi", dayaTampung: 300, peminat: 5200, passingUTBK: 720, mandiri: "SPMB STAN" },
       { id: "STIS_STAT", ptn: "Politeknik Statistika STIS", prodi: "D4 Statistika", rumpun: "Kedinasan", mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum", dayaTampung: 400, peminat: 7800, passingUTBK: 710, mandiri: "PMB STIS" },
-      { id: "UPI_PEND", ptn: "Universitas Pendidikan Indonesia (UPI)", prodi: "S1 Pendidikan Matematika", rumpun: "Pendidikan", mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum", dayaTampung: 120, peminat: 3100, passingUTBK: 660, mandiri: "SNBT / Mandiri UPI" },
-      { id: "ISI_YOGYA", ptn: "Institut Seni Indonesia (ISI) Yogyakarta", prodi: "S1 Desain Komunikasi Visual", rumpun: "Seni", mapel1: "Bahasa Indonesia", mapel2: "Seni Budaya & Rupa", dayaTampung: 80, peminat: 2100, passingUTBK: 620, mandiri: "Mandiri Seni ISI" }
+      { id: "UPI_PEND", ptn: "Universitas Pendidikan Indonesia", prodi: "S1 Pendidikan Matematika", rumpun: "Pendidikan", mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum", dayaTampung: 120, peminat: 3100, passingUTBK: 660, mandiri: "Mandiri UPI" },
+      { id: "ISI_YOGYA", ptn: "Institut Seni Indonesia (ISI)", prodi: "S1 Desain Komunikasi Visual", rumpun: "Seni", mapel1: "Bahasa Indonesia", mapel2: "Seni Budaya & Rupa", dayaTampung: 80, peminat: 2100, passingUTBK: 620, mandiri: "Mandiri Seni" }
     ];
 
     let activeJalur = "SNBP";
@@ -722,13 +740,17 @@
 
     function isiContohUTBK() {
       if(document.getElementById('inNamaSNBT')) document.getElementById('inNamaSNBT').value = "Muhammad Umar";
-      if(document.getElementById('utbk_pu')) document.getElementById('utbk_pu').value = 685;
-      if(document.getElementById('utbk_pk')) document.getElementById('utbk_pk').value = 710;
-      if(document.getElementById('utbk_pm')) document.getElementById('utbk_pm').value = 695;
-      if(document.getElementById('utbk_pbm')) document.getElementById('utbk_pbm').value = 665;
-      if(document.getElementById('utbk_ppu')) document.getElementById('utbk_ppu').value = 650;
-      if(document.getElementById('utbk_lit_indo')) document.getElementById('utbk_lit_indo').value = 690;
-      if(document.getElementById('utbk_lit_ing')) document.getElementById('utbk_lit_ing').value = 660;
+      
+      const sub = ['pu', 'pk', 'pm', 'pbm', 'ppu', 'indo', 'ing'];
+      const valTO1 = [620, 630, 610, 600, 590, 630, 610];
+      const valTO2 = [650, 670, 660, 640, 630, 670, 650];
+      const valTO3 = [685, 710, 695, 665, 650, 690, 660];
+
+      sub.forEach((s, idx) => {
+        document.getElementById(`to1_${s}`).value = valTO1[idx];
+        document.getElementById(`to2_${s}`).value = valTO2[idx];
+        document.getElementById(`to3_${s}`).value = valTO3[idx];
+      });
 
       if(document.getElementById('inSNBT1Nama')) document.getElementById('inSNBT1Nama').value = "D4 Statistika";
       if(document.getElementById('inSNBT1Kampus')) document.getElementById('inSNBT1Kampus').value = "Politeknik Statistika STIS";
@@ -757,7 +779,6 @@
       }
     }
 
-    // Generator Referensi Spesifik: Variasi Kampus Low Competition Sesuai Rumpun Prodi Pilihan
     function generateReferensiSpesifikMapel(targetProdi) {
       const prodiText = targetProdi.prodi.toLowerCase();
       let pool = [];
@@ -939,15 +960,23 @@
         <div class="p-2.5 bg-white rounded-lg border border-slate-200 text-[10px] space-y-0.5 shadow-sm"><p class="font-bold text-slate-900">🎓 ${r.prodi}</p><p class="text-slate-600">${r.fakultas}</p><p class="text-indigo-900 font-semibold">${r.univ}</p></div>
       `).join('');
 
-      const tglSekarang = new Date().toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' });
+      // Tanggal Otomatis dari Kalender Perangkat Asli
+      const tglAsliPerangkat = new Date().toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' });
       document.getElementById('outTanggalCetak').innerText = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
 
       currentFixPayload = {
-        tanggal: tglSekarang,
-        nama: nama, kelas: `${kelas} (${kelompok})`, ranking: rankingSiswa, jalur: `SNBP ${kelompok}`,
-        pilihan1: `${prodi1.prodi} (${prodi1.ptn})`, pilihan2: prodi2 ? `${prodi2.prodi} (${prodi2.ptn})` : "Pilihan Tunggal",
-        rataRapor: grandAvg.toFixed(1), targetTKA: valTkaDisp,
-        peluang1: `${score1}%`, peluang2: prodi2 ? `${score2}%` : "-", catatanBK: catatanBK
+        tanggal: tglAsliPerangkat,
+        nama: nama, 
+        kelas: `${kelas} (${kelompok})`, 
+        ranking: rankingSiswa, 
+        jalur: `SNBP ${kelompok}`,
+        pilihan1: `${prodi1.prodi} (${prodi1.ptn})`, 
+        pilihan2: prodi2 ? `${prodi2.prodi} (${prodi2.ptn})` : "Pilihan Tunggal",
+        rataRapor: grandAvg.toFixed(1), 
+        targetTKA: valTkaDisp,
+        peluang1: `${score1}%`, 
+        peluang2: prodi2 ? `${score2}%` : "-", 
+        catatanBK: catatanBK
       };
 
       document.getElementById('contentReportSNBP').classList.remove('hidden');
@@ -958,83 +987,116 @@
     }
 
     // ===============================================
-    // EKSEKUTOR LAPORAN SNBT
+    // EKSEKUTOR LAPORAN SNBT (MULTI-TRY OUT)
     // ===============================================
     function jalankanAnalisisSNBT() {
       activeJalur = "SNBT";
-      let pu = parseFloat(document.getElementById('utbk_pu').value) || 0;
-      if (pu === 0) { isiContohUTBK(); pu = parseFloat(document.getElementById('utbk_pu').value); }
+      let testPu = parseFloat(document.getElementById('to3_pu').value) || 0;
+      if (testPu === 0) { isiContohUTBK(); }
 
-      const pk = (parseFloat(document.getElementById('utbk_pk').value) || 0) * 1.10;
-      const pm = (parseFloat(document.getElementById('utbk_pm').value) || 0) * 1.10;
-      const pbm = parseFloat(document.getElementById('utbk_pbm').value) || 0;
-      const ppu = parseFloat(document.getElementById('utbk_ppu').value) || 0;
-      const litIndo = parseFloat(document.getElementById('utbk_lit_indo').value) || 0;
-      const litIng = parseFloat(document.getElementById('utbk_lit_ing').value) || 0;
+      const subKeys = ['pu', 'pk', 'pm', 'pbm', 'ppu', 'indo', 'ing'];
+      const subNames = ['Penalaran Umum', 'Pengetahuan Kuantitatif', 'Penalaran Matematika', 'PBM', 'PPU', 'Lit. Bahasa Indonesia', 'Lit. Bahasa Inggris'];
+      
+      let totalTO1 = 0, totalTO2 = 0, totalTO3 = 0;
+      let gridMultiTOHtml = "";
+      
+      subKeys.forEach((k, i) => {
+        let v1 = parseFloat(document.getElementById(`to1_${k}`).value) || 0;
+        let v2 = parseFloat(document.getElementById(`to2_${k}`).value) || 0;
+        let v3 = parseFloat(document.getElementById(`to3_${k}`).value) || 0;
+        
+        if(k === 'pk' || k === 'pm') { v1 *= 1.1; v2 *= 1.1; v3 *= 1.1; }
 
-      const totalSkor = (pu + pk + pm + pbm + ppu + litIndo + litIng) / 7.2;
+        totalTO1 += v1; totalTO2 += v2; totalTO3 += v3;
+
+        gridMultiTOHtml += `
+          <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200">
+            <span class="text-[9px] font-bold text-slate-500 block truncate">${subNames[i]}</span>
+            <div class="flex justify-between items-center mt-1 text-[10px]">
+              <span class="text-slate-400">TO1: ${Math.round(v1)}</span>
+              <span class="text-slate-600">TO2: ${Math.round(v2)}</span>
+              <span class="font-black text-amber-900">TO3: ${Math.round(v3)}</span>
+            </div>
+          </div>
+        `;
+      });
+
+      const avgTO3 = totalTO3 / 7;
+      const deltaPoin = Math.round(avgTO3 - (totalTO1 / 7));
+
       const nama = document.getElementById('inNamaSNBT').value.trim() || "Muhammad Umar";
-
       const p1Nama = document.getElementById('inSNBT1Nama').value.trim() || "D4 Statistika";
+      const p1Kampus = document.getElementById('inSNBT1Kampus').value.trim() || "Politeknik Statistika STIS";
+      const passing1 = parseFloat(document.getElementById('inSNBT1Passing').value) || 710;
+
       const p2Nama = document.getElementById('inSNBT2Nama').value.trim();
+      const p2Kampus = document.getElementById('inSNBT2Kampus').value.trim();
+      const passing2 = parseFloat(document.getElementById('inSNBT2Passing').value) || 670;
 
-      const prodi1 = {
-        prodi: p1Nama, ptn: document.getElementById('inSNBT1Kampus').value.trim() || "Politeknik Statistika STIS",
-        passingUTBK: parseFloat(document.getElementById('inSNBT1Passing').value) || 710
-      };
-
-      let prodi2 = null;
-      if (p2Nama) {
-        prodi2 = {
-          prodi: p2Nama, ptn: document.getElementById('inSNBT2Kampus').value.trim() || "STAN",
-          passingUTBK: parseFloat(document.getElementById('inSNBT2Passing').value) || 720
-        };
-      }
-
-      document.getElementById('outReportBadgeJalur').innerText = "Rapor Diagnostik UTBK & Kedinasan (IRT)";
-      document.getElementById('outNamaReport').innerText = `${nama} (UTBK)`;
-      document.getElementById('outRankingReport').innerText = "Peserta UTBK";
-      document.getElementById('outKonselorReport').innerText = "Tim Sukses M18";
-      document.getElementById('outValSkorUtama').innerText = `${totalSkor.toFixed(1)} (IRT Score)`;
-
-      const gap1 = totalSkor - prodi1.passingUTBK;
+      const gap1 = avgTO3 - passing1;
       const prob1 = Math.max(10, Math.min(95, Math.round(50 + (gap1 * 1.5))));
 
       let gridSNBTHTML = `
         <div class="p-3.5 rounded-xl border border-amber-200 bg-amber-50/50 print-card space-y-2">
-          <div class="flex justify-between items-center border-b border-amber-200 pb-1.5"><span class="text-xs font-bold text-amber-900 uppercase">Target Pilihan 1 UTBK/Kedinasan</span></div>
-          <p class="font-bold text-slate-900 text-xs">${prodi1.prodi} - ${prodi1.ptn}</p>
-          <div class="flex justify-between items-center text-xs pt-1"><span class="text-slate-500">Passing Grade: <b>${prodi1.passingUTBK}</b></span><span class="text-slate-500">Peluang: <b class="text-emerald-700">${prob1}%</b></span></div>
+          <div class="flex justify-between items-center border-b border-amber-200 pb-1.5"><span class="text-xs font-bold text-amber-900 uppercase">Target Pilihan 1 UTBK</span></div>
+          <p class="font-bold text-slate-900 text-xs">${p1Nama} - ${p1Kampus}</p>
+          <div class="flex justify-between items-center text-xs pt-1"><span class="text-slate-500">Passing Grade: <b>${passing1}</b></span><span class="text-slate-500">Peluang Lolos: <b class="text-emerald-700">${prob1}%</b></span></div>
         </div>
       `;
 
       let prob2 = 0;
-      if (prodi2) {
-        const gap2 = totalSkor - prodi2.passingUTBK;
+      if (p2Nama) {
+        const gap2 = avgTO3 - passing2;
         prob2 = Math.max(10, Math.min(95, Math.round(50 + (gap2 * 1.5))));
         gridSNBTHTML += `
           <div class="p-3.5 rounded-xl border border-slate-200 bg-white print-card space-y-2">
-            <div class="flex justify-between items-center border-b border-slate-100 pb-1.5"><span class="text-xs font-bold text-slate-800 uppercase">Target Pilihan 2 UTBK/Kedinasan</span></div>
-            <p class="font-bold text-slate-900 text-xs">${prodi2.prodi} - ${prodi2.ptn}</p>
-            <div class="flex justify-between items-center text-xs pt-1"><span class="text-slate-500">Passing Grade: <b>${prodi2.passingUTBK}</b></span><span class="text-slate-500">Peluang: <b class="text-blue-700">${prob2}%</b></span></div>
+            <div class="flex justify-between items-center border-b border-slate-100 pb-1.5"><span class="text-xs font-bold text-slate-800 uppercase">Target Pilihan 2 UTBK</span></div>
+            <p class="font-bold text-slate-900 text-xs">${p2Nama} - ${p2Kampus}</p>
+            <div class="flex justify-between items-center text-xs pt-1"><span class="text-slate-500">Passing Grade: <b>${passing2}</b></span><span class="text-slate-500">Peluang Lolos: <b class="text-blue-700">${prob2}%</b></span></div>
           </div>
         `;
       }
-      document.getElementById('outGridProdiSNBT').innerHTML = gridSNBTHTML;
-      document.getElementById('outGrid7Subtes').innerHTML = [
-        { label: "PU", val: Math.round(pu) }, { label: "PK", val: Math.round(pk) }, { label: "PM", val: Math.round(pm) },
-        { label: "PBM", val: Math.round(pbm) }, { label: "PPU", val: Math.round(ppu) }, { label: "Lit Indo", val: Math.round(litIndo) }, { label: "Lit Ing", val: Math.round(litIng) }
-      ].map(s => `<div class="p-2 rounded-lg bg-slate-50 border border-slate-200"><span class="text-[9px] font-bold text-slate-500 block">${s.label}</span><span class="font-black text-slate-900 text-sm">${s.val}</span></div>`).join('');
 
-      const tglSekarang = new Date().toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' });
+      document.getElementById('outSnbtFinalSkor').innerText = Math.round(avgTO3);
+      document.getElementById('outSnbtDelta').innerText = `Delta Peningkatan: ${deltaPoin >= 0 ? '+' : ''}${deltaPoin} Poin dari TO 1 ke TO 3`;
+      document.getElementById('outGridMultiTO').innerHTML = gridMultiTOHtml;
+      document.getElementById('outGridProdiSNBT').innerHTML = gridSNBTHTML;
+
+      const smartMatchingPool = [
+        { prodi: "S1 Statistika", univ: "Universitas Halu Oleo (~620)" },
+        { prodi: "D4 Akuntansi Sektor Publik", univ: "PKN STAN - Afirmasi (~650)" },
+        { prodi: "S1 Teknik Sipil", univ: "Universitas Malikussaleh (~610)" },
+        { prodi: "S1 Agroteknologi", univ: "Universitas Papua (~590)" }
+      ];
+      document.getElementById('outSmartMatchingKampus').innerHTML = smartMatchingPool.map(m => `
+        <div class="p-2.5 bg-white rounded-lg border border-slate-200 text-[10px] space-y-0.5 shadow-sm">
+          <p class="font-bold text-slate-900">🎓 ${m.prodi}</p>
+          <p class="text-indigo-900 font-semibold">${m.univ} <span class="text-emerald-700 font-extrabold">(Zona Aman)</span></p>
+        </div>
+      `).join('');
+
+      document.getElementById('outReportBadgeJalur').innerText = "Rapor Multi-Try Out SNBT";
+      document.getElementById('outNamaReport').innerText = `${nama} (SNBT)`;
+      document.getElementById('outRankingReport').innerText = "Evaluasi Berkala";
+      document.getElementById('outKonselorReport').innerText = "Tim UTBK M18";
+      document.getElementById('outValSkorUtama').innerText = `${Math.round(avgTO3)} (Rata-rata TO 3)`;
+
+      const tglAsliPerangkat = new Date().toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' });
       document.getElementById('outTanggalCetak').innerText = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
 
       currentFixPayload = {
-        tanggal: tglSekarang,
-        nama: nama, kelas: "XII SNBT", ranking: 0, jalur: "SNBT",
-        pilihan1: `${prodi1.prodi} (${prodi1.ptn})`, pilihan2: prodi2 ? `${prodi2.prodi} (${prodi2.ptn})` : "Pilihan Tunggal",
-        rataRapor: "-", targetTKA: totalSkor.toFixed(1),
-        peluang1: `${prob1}%`, peluang2: prodi2 ? `${prob2}%` : "-", catatanBK: "UTBK/Kedinasan"
+        tanggal: tglAsliPerangkat,
+        nama: nama, 
+        kelas: "XII SNBT", 
+        ranking: 0, 
+        jalur: "SNBT Multi-TO",
+        pilihan1: `${p1Nama} (${p1Kampus})`, 
+        pilihan2: p2Nama ? `${p2Nama} (${p2Kampus})` : "Pilihan Tunggal",
+        rataRapor: "-", 
+        targetTKA: Math.round(avgTO3),
+        peluang1: `${prob1}%`, 
+        peluang2: p2Nama ? `${prob2}%` : "-", 
+        catatanBK: `Delta TO: +${deltaPoin}`
       };
 
       document.getElementById('contentReportSNBP').classList.add('hidden');
@@ -1089,15 +1151,22 @@
       }
       document.getElementById('outGridProdiMandiri').innerHTML = gridMandiriHTML;
 
-      const tglSekarang = new Date().toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' });
+      const tglAsliPerangkat = new Date().toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' });
       document.getElementById('outTanggalCetak').innerText = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
 
       currentFixPayload = {
-        tanggal: tglSekarang,
-        nama: nama, kelas: "XII Kedinasan/Seni", ranking: 0, jalur: "Kedinasan/Seni",
-        pilihan1: `${prodi1.prodi} (${prodi1.ptn})`, pilihan2: prodi2 ? `${prodi2.prodi} (${prodi2.ptn})` : "Pilihan Tunggal",
-        rataRapor: modal.toFixed(1), targetTKA: `+${bonusPrestasi}%`,
-        peluang1: `${totalPeluang}%`, peluang2: prodi2 ? "Mitigasi" : "-", catatanBK: "Kedinasan/Seni"
+        tanggal: tglAsliPerangkat,
+        nama: nama, 
+        kelas: "XII Kedinasan/Seni", 
+        ranking: 0, 
+        jalur: "Kedinasan/Seni",
+        pilihan1: `${prodi1.prodi} (${prodi1.ptn})`, 
+        pilihan2: prodi2 ? `${prodi2.prodi} (${prodi2.ptn})` : "Pilihan Tunggal",
+        rataRapor: modal.toFixed(1), 
+        targetTKA: `+${bonusPrestasi}%`,
+        peluang1: `${totalPeluang}%`, 
+        peluang2: prodi2 ? "Mitigasi" : "-", 
+        catatanBK: "Kedinasan/Seni"
       };
 
       document.getElementById('contentReportSNBP').classList.add('hidden');
