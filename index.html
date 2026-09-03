@@ -36,7 +36,7 @@
             <h1 class="text-sm sm:text-base font-black text-blue-950 leading-tight tracking-tight">SMA MUHAMMADIYAH 18 JAKARTA</h1>
             <span class="px-2 py-0.5 bg-amber-100 border border-amber-300 text-amber-900 text-[10px] font-black rounded">SCHOOL OF CHAMPION</span>
           </div>
-          <p class="text-[11px] text-slate-500 font-medium">EduAnalytics PTN • Ultimate Paripurna Edition (Saintek, Soshum, Pendidikan, Kedinasan & Seni)</p>
+          <p class="text-[11px] text-slate-500 font-medium">EduAnalytics PTN • Ultimate Paripurna Edition (Multirumpun & Low Competition)</p>
         </div>
       </div>
       
@@ -70,7 +70,7 @@
             <span>Official Portal Sukses PTN, Keguruan & Kedinasan</span> • <span>Kelas XII</span>
           </div>
           <h2 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">Ultimate Decision Support System M18</h2>
-          <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">Sistem cerdas terlengkap dengan pemisahan kurikulum Saintek, Soshum, Pendidikan (FKIP), Sekolah Kedinasan, dan Institut Seni.</p>
+          <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">Sistem cerdas pemetaan PTN, Pendidikan (FKIP), Sekolah Kedinasan, Institut Seni, dan generator kampus alternatif rendah persaingan.</p>
         </div>
       </div>
 
@@ -79,8 +79,8 @@
           <div>
             <div class="h-14 w-14 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">📊</div>
             <span class="inline-block mt-4 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800 uppercase tracking-wide">Fokus Utama SNBP</span>
-            <h3 class="text-xl font-black text-slate-900 mt-2 group-hover:text-emerald-700 transition-colors">Modul SNBP (5 Rumpun Peminatan)</h3>
-            <p class="text-slate-500 text-xs mt-2 leading-relaxed">Kalkulasi 50% TKA & 50% Rapor dengan simulasi khusus rumpun Saintek, Soshum, Pendidikan (FKIP), Kedinasan, dan Seni.</p>
+            <h3 class="text-xl font-black text-slate-900 mt-2 group-hover:text-emerald-700 transition-colors">Modul SNBP (Multirumpun)</h3>
+            <p class="text-slate-500 text-xs mt-2 leading-relaxed">Kalkulasi 50% TKA & 50% Rapor dengan tabel kurikulum terstruktur (Saintek, Soshum, Pendidikan, Kedinasan, Seni).</p>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-emerald-700">
             <span>Buka Modul SNBP</span><span>→</span>
@@ -104,7 +104,7 @@
             <div class="h-14 w-14 rounded-2xl bg-indigo-50 border border-indigo-200 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🛡️</div>
             <span class="inline-block mt-4 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-indigo-100 text-indigo-800 uppercase tracking-wide">Jalur Pengaman</span>
             <h3 class="text-xl font-black text-slate-900 mt-2 group-hover:text-indigo-700 transition-colors">Modul Mandiri, Kedinasan & Seni</h3>
-            <p class="text-slate-500 text-xs mt-2 leading-relaxed">Kalkulator konversi portofolio, sertifikat, dan pemetaan pilihan instansi kedinasan (PKN STAN, STIS, IPDN, UM-PTKIN).</p>
+            <p class="text-slate-500 text-xs mt-2 leading-relaxed">Kalkulator konversi portofolio, sertifikat, dan pemetaan pilihan instansi kedinasan (PKN STAN, STIS, IPDN).</p>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-indigo-700">
             <span>Buka Modul Mandiri</span><span>→</span>
@@ -200,12 +200,9 @@
                   <span class="flex h-5 w-5 items-center justify-center rounded bg-emerald-700 text-white text-[10px]">3</span> Nilai Rapor Semester 1 s/d 5 (Sesuai Kurikulum)
                 </h3>
               </div>
-              <div class="flex flex-wrap items-center gap-1.5">
-                <button type="button" onclick="isiSimulasiSaintek()" class="px-2 py-1 bg-emerald-50 text-emerald-800 border border-emerald-300 rounded text-[10px] font-extrabold hover:bg-emerald-100 transition">Saintek</button>
-                <button type="button" onclick="isiSimulasiSoshum()" class="px-2 py-1 bg-indigo-50 text-indigo-800 border border-indigo-300 rounded text-[10px] font-extrabold hover:bg-indigo-100 transition">Soshum</button>
-                <button type="button" onclick="isiSimulasiPendidikan()" class="px-2 py-1 bg-amber-50 text-amber-900 border border-amber-300 rounded text-[10px] font-extrabold hover:bg-amber-100 transition">Pendidikan</button>
-                <button type="button" onclick="isiSimulasiKedinasan()" class="px-2 py-1 bg-blue-50 text-blue-900 border border-blue-300 rounded text-[10px] font-extrabold hover:bg-blue-100 transition">Kedinasan</button>
-                <button type="button" onclick="isiSimulasiSeni()" class="px-2 py-1 bg-rose-50 text-rose-900 border border-rose-300 rounded text-[10px] font-extrabold hover:bg-rose-100 transition">Seni</button>
+              <div class="flex items-center gap-2">
+                <button type="button" onclick="isiSimulasiRumpunAktif()" class="px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-300 rounded-lg text-xs font-bold hover:bg-emerald-100 transition shadow-sm">⚡ Isi Contoh Data</button>
+                <button type="button" onclick="kosongkanFormRapor()" class="px-3 py-1 bg-slate-100 text-slate-700 border border-slate-300 rounded-lg text-xs font-bold hover:bg-slate-200 transition">🧹 Kosongkan Form</button>
               </div>
             </div>
 
@@ -468,9 +465,8 @@
   <!-- SKRIP LOGIKA UTAMA & DATABASE              -->
   <!-- ========================================== -->
   <script>
-    const GOOGLE_SHEET_WEBAPP_URL ="https://script.google.com/macros/s/AKfycbydCEJXoxiQmlPx9O4yDqfR30FhcCiubTcodigX-Z7J77nwCIC4Uw4l__p4N2dq7KMj/exec";
+    const GOOGLE_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbydCEJXoxiQmlPx9O4yDqfR30FhcCiubTcodigX-Z7J77nwCIC4Uw4l__p4N2dq7KMj/exec";
 
-    // Definisi Mata Pelajaran Terpisah 5 Rumpun Peminatan
     const mapelSaintek = [
       { id: "mtk_lanjut", name: "Matematika Tingkat Lanjut" },
       { id: "fisika", name: "Fisika" },
@@ -647,151 +643,81 @@
       });
     }
 
-    // Fungsi Pengisian Simulasi Cepat Berdasarkan 5 Rumpun
-    function isiSimulasiSaintek() {
-      if(document.getElementById('inKelompokJurusan')) document.getElementById('inKelompokJurusan').value = "SAINTEK";
-      renderTabel();
-      const sample = [
-        { id: "mtk_lanjut", val: [88, 90, 91, 92, 95] }, { id: "fisika", val: [86, 88, 90, 92, 94] },
-        { id: "kimia", val: [85, 87, 88, 90, 92] }, { id: "biologi", val: [84, 86, 88, 89, 91] },
-        { id: "mtk_umum", val: [89, 90, 92, 93, 95] }, { id: "bindo", val: [88, 89, 90, 91, 93] },
-        { id: "bing", val: [87, 88, 90, 91, 92] }
-      ];
-      sample.forEach(s => {
+    // Tombol Terpisah untuk Mengisi Data Contoh atau Mengosongkan Form
+    function isiSimulasiRumpunAktif() {
+      const kelompok = document.getElementById('inKelompokJurusan') ? document.getElementById('inKelompokJurusan').value : "SAINTEK";
+      const currentList = getActiveMapelList();
+      
+      currentList.forEach(m => {
         for (let i = 1; i <= 5; i++) {
-          const el = document.getElementById(`${s.id}_s${i}`);
-          if(el) el.value = s.val[i - 1];
+          const el = document.getElementById(`${m.id}_s${i}`);
+          if(el) el.value = Math.floor(86 + Math.random() * 9);
         }
-        hitungRataRow(s.id);
+        hitungRataRow(m.id);
       });
-      if(document.getElementById('inNama')) document.getElementById('inNama').value = "Ahmad Zaki (Saintek)";
-      if(document.getElementById('inKelas')) document.getElementById('inKelas').value = "XII - MIPA 1";
-      if(document.getElementById('inRankingSiswa')) document.getElementById('inRankingSiswa').value = 3;
-      if(document.getElementById('inKonselor')) document.getElementById('inKonselor').value = "Tim Sukses PTN M18";
-      if(document.getElementById('inNilaiTKA')) document.getElementById('inNilaiTKA').value = 90.0;
-      if(document.getElementById('inCatatanBK')) document.getElementById('inCatatanBK').value = "Siswa Saintek memiliki nilai eksakta sangat konsisten.";
 
-      if(document.getElementById('inProdi1Nama')) document.getElementById('inProdi1Nama').value = "D4 Statistika";
-      if(document.getElementById('inProdi1Kampus')) document.getElementById('inProdi1Kampus').value = "Politeknik Statistika STIS";
-      if(document.getElementById('inProdi1DayaTampung')) document.getElementById('inProdi1DayaTampung').value = 400;
-      if(document.getElementById('inProdi1Peminat')) document.getElementById('inProdi1Peminat').value = 7800;
-      saveDraft();
-    }
+      if(kelompok === "SAINTEK") {
+        if(document.getElementById('inNama')) document.getElementById('inNama').value = "Ahmad Zaki (Saintek)";
+        if(document.getElementById('inProdi1Nama')) document.getElementById('inProdi1Nama').value = "D4 Statistika";
+        if(document.getElementById('inProdi1Kampus')) document.getElementById('inProdi1Kampus').value = "Politeknik Statistika STIS";
+        if(document.getElementById('inProdi1DayaTampung')) document.getElementById('inProdi1DayaTampung').value = 400;
+        if(document.getElementById('inProdi1Peminat')) document.getElementById('inProdi1Peminat').value = 7800;
+      } else if(kelompok === "SOSHUM") {
+        if(document.getElementById('inNama')) document.getElementById('inNama').value = "Siti Aisyah (Soshum)";
+        if(document.getElementById('inProdi1Nama')) document.getElementById('inProdi1Nama').value = "D4 Akuntansi Sektor Publik";
+        if(document.getElementById('inProdi1Kampus')) document.getElementById('inProdi1Kampus').value = "PKN STAN";
+        if(document.getElementById('inProdi1DayaTampung')) document.getElementById('inProdi1DayaTampung').value = 300;
+        if(document.getElementById('inProdi1Peminat')) document.getElementById('inProdi1Peminat').value = 5200;
+      } else if(kelompok === "PENDIDIKAN") {
+        if(document.getElementById('inNama')) document.getElementById('inNama').value = "Rian Pratama (Pendidikan)";
+        if(document.getElementById('inProdi1Nama')) document.getElementById('inProdi1Nama').value = "S1 Pendidikan Matematika";
+        if(document.getElementById('inProdi1Kampus')) document.getElementById('inProdi1Kampus').value = "Universitas Pendidikan Indonesia (UPI)";
+        if(document.getElementById('inProdi1DayaTampung')) document.getElementById('inProdi1DayaTampung').value = 120;
+        if(document.getElementById('inProdi1Peminat')) document.getElementById('inProdi1Peminat').value = 3100;
+      } else if(kelompok === "KEDINASAN") {
+        if(document.getElementById('inNama')) document.getElementById('inNama').value = "Fauzan Al-Ghifari (Kedinasan)";
+        if(document.getElementById('inProdi1Nama')) document.getElementById('inProdi1Nama').value = "S1 Politik Pemerintahan";
+        if(document.getElementById('inProdi1Kampus')) document.getElementById('inProdi1Kampus').value = "IPDN Jatinangor";
+        if(document.getElementById('inProdi1DayaTampung')) document.getElementById('inProdi1DayaTampung').value = 500;
+        if(document.getElementById('inProdi1Peminat')) document.getElementById('inProdi1Peminat').value = 12000;
+      } else {
+        if(document.getElementById('inNama')) document.getElementById('inNama').value = "Kirana Larasati (Seni)";
+        if(document.getElementById('inProdi1Nama')) document.getElementById('inProdi1Nama').value = "S1 Desain Komunikasi Visual";
+        if(document.getElementById('inProdi1Kampus')) document.getElementById('inProdi1Kampus').value = "ISI Yogyakarta";
+        if(document.getElementById('inProdi1DayaTampung')) document.getElementById('inProdi1DayaTampung').value = 80;
+        if(document.getElementById('inProdi1Peminat')) document.getElementById('inProdi1Peminat').value = 2100;
+      }
 
-    function isiSimulasiSoshum() {
-      if(document.getElementById('inKelompokJurusan')) document.getElementById('inKelompokJurusan').value = "SOSHUM";
-      renderTabel();
-      const sample = [
-        { id: "ekonomi", val: [90, 91, 92, 94, 96] }, { id: "sosiologi", val: [88, 89, 91, 92, 94] },
-        { id: "geografi", val: [87, 88, 90, 91, 93] }, { id: "sejarah", val: [89, 90, 91, 93, 95] },
-        { id: "ppkn", val: [91, 92, 93, 95, 97] }, { id: "mtk_umum", val: [85, 86, 88, 89, 90] },
-        { id: "bindo", val: [90, 91, 93, 94, 96] }, { id: "bing", val: [88, 89, 91, 92, 94] }
-      ];
-      sample.forEach(s => {
-        for (let i = 1; i <= 5; i++) {
-          const el = document.getElementById(`${s.id}_s${i}`);
-          if(el) el.value = s.val[i - 1];
-        }
-        hitungRataRow(s.id);
-      });
-      if(document.getElementById('inNama')) document.getElementById('inNama').value = "Siti Aisyah (Soshum)";
-      if(document.getElementById('inKelas')) document.getElementById('inKelas').value = "XII - IPS 1";
-      if(document.getElementById('inRankingSiswa')) document.getElementById('inRankingSiswa').value = 2;
-      if(document.getElementById('inKonselor')) document.getElementById('inKonselor').value = "Tim Sukses PTN M18";
-      if(document.getElementById('inNilaiTKA')) document.getElementById('inNilaiTKA').value = 89.5;
-      if(document.getElementById('inCatatanBK')) document.getElementById('inCatatanBK').value = "Siswa Soshum unggul di bidang Ekonomi dan Sosiologi.";
-
-      if(document.getElementById('inProdi1Nama')) document.getElementById('inProdi1Nama').value = "D4 Akuntansi Sektor Publik";
-      if(document.getElementById('inProdi1Kampus')) document.getElementById('inProdi1Kampus').value = "PKN STAN";
-      if(document.getElementById('inProdi1DayaTampung')) document.getElementById('inProdi1DayaTampung').value = 300;
-      if(document.getElementById('inProdi1Peminat')) document.getElementById('inProdi1Peminat').value = 5200;
-      saveDraft();
-    }
-
-    function isiSimulasiPendidikan() {
-      if(document.getElementById('inKelompokJurusan')) document.getElementById('inKelompokJurusan').value = "PENDIDIKAN";
-      renderTabel();
-      const sample = [
-        { id: "pend_pancasila", val: [90, 92, 93, 94, 95] }, { id: "pbd", val: [88, 90, 91, 93, 94] },
-        { id: "bindo", val: [89, 91, 92, 94, 95] }, { id: "bing", val: [87, 88, 90, 91, 93] },
-        { id: "mtk_umum", val: [85, 87, 88, 90, 92] }, { id: "sejarah", val: [88, 89, 90, 92, 93] }
-      ];
-      sample.forEach(s => {
-        for (let i = 1; i <= 5; i++) {
-          const el = document.getElementById(`${s.id}_s${i}`);
-          if(el) el.value = s.val[i - 1];
-        }
-        hitungRataRow(s.id);
-      });
-      if(document.getElementById('inNama')) document.getElementById('inNama').value = "Rian Pratama (Pendidikan)";
-      if(document.getElementById('inKelas')) document.getElementById('inKelas').value = "XII - MIPA 2";
+      if(document.getElementById('inKelas')) document.getElementById('inKelas').value = "XII - 1";
       if(document.getElementById('inRankingSiswa')) document.getElementById('inRankingSiswa').value = 4;
       if(document.getElementById('inKonselor')) document.getElementById('inKonselor').value = "Tim Sukses PTN M18";
-      if(document.getElementById('inNilaiTKA')) document.getElementById('inNilaiTKA').value = 88.0;
-      if(document.getElementById('inCatatanBK')) document.getElementById('inCatatanBK').value = "Siswa memiliki bakat pendidik dan stabil di FKIP UPI.";
+      if(document.getElementById('inNilaiTKA')) document.getElementById('inNilaiTKA').value = 89.0;
+      if(document.getElementById('inCatatanBK')) document.getElementById('inCatatanBK').value = "Siswa menunjukkan konsistensi belajar yang sangat baik pada rumpun terkait.";
 
-      if(document.getElementById('inProdi1Nama')) document.getElementById('inProdi1Nama').value = "S1 Pendidikan Matematika";
-      if(document.getElementById('inProdi1Kampus')) document.getElementById('inProdi1Kampus').value = "Universitas Pendidikan Indonesia (UPI)";
-      if(document.getElementById('inProdi1DayaTampung')) document.getElementById('inProdi1DayaTampung').value = 120;
-      if(document.getElementById('inProdi1Peminat')) document.getElementById('inProdi1Peminat').value = 3100;
+      if(document.getElementById('inProdi2Nama')) document.getElementById('inProdi2Nama').value = "";
+      if(document.getElementById('inProdi2Kampus')) document.getElementById('inProdi2Kampus').value = "";
       saveDraft();
     }
 
-    function isiSimulasiKedinasan() {
-      if(document.getElementById('inKelompokJurusan')) document.getElementById('inKelompokJurusan').value = "KEDINASAN";
-      renderTabel();
-      const sample = [
-        { id: "mtk_umum", val: [90, 92, 94, 95, 97] }, { id: "mtk_lanjut", val: [88, 90, 92, 93, 95] },
-        { id: "bing", val: [89, 90, 91, 93, 95] }, { id: "bindo", val: [88, 89, 90, 92, 94] },
-        { id: "ekonomi", val: [91, 92, 93, 95, 96] }, { id: "ppkn", val: [90, 91, 92, 94, 95] }
-      ];
-      sample.forEach(s => {
+    function kosongkanFormRapor() {
+      const currentList = getActiveMapelList();
+      currentList.forEach(m => {
         for (let i = 1; i <= 5; i++) {
-          const el = document.getElementById(`${s.id}_s${i}`);
-          if(el) el.value = s.val[i - 1];
+          const el = document.getElementById(`${m.id}_s${i}`);
+          if(el) el.value = "";
         }
-        hitungRataRow(s.id);
+        hitungRataRow(m.id);
       });
-      if(document.getElementById('inNama')) document.getElementById('inNama').value = "Fauzan Al-Ghifari (Kedinasan)";
-      if(document.getElementById('inKelas')) document.getElementById('inKelas').value = "XII - MIPA 3";
-      if(document.getElementById('inRankingSiswa')) document.getElementById('inRankingSiswa').value = 1;
-      if(document.getElementById('inKonselor')) document.getElementById('inKonselor').value = "Tim Sukses PTN M18";
-      if(document.getElementById('inNilaiTKA')) document.getElementById('inNilaiTKA').value = 92.5;
-      if(document.getElementById('inCatatanBK')) document.getElementById('inCatatanBK').value = "Siswa sangat siap menghadapi SKD STAN dan STIS.";
-
-      if(document.getElementById('inProdi1Nama')) document.getElementById('inProdi1Nama').value = "D4 Akuntansi Sektor Publik";
-      if(document.getElementById('inProdi1Kampus')) document.getElementById('inProdi1Kampus').value = "PKN STAN";
-      if(document.getElementById('inProdi1DayaTampung')) document.getElementById('inProdi1DayaTampung').value = 300;
-      if(document.getElementById('inProdi1Peminat')) document.getElementById('inProdi1Peminat').value = 5200;
-      saveDraft();
-    }
-
-    function isiSimulasiSeni() {
-      if(document.getElementById('inKelompokJurusan')) document.getElementById('inKelompokJurusan').value = "SENI";
-      renderTabel();
-      const sample = [
-        { id: "seni_budaya", val: [92, 94, 95, 97, 98] }, { id: "bindo", val: [89, 90, 92, 93, 95] },
-        { id: "bing", val: [88, 90, 91, 93, 94] }, { id: "sejarah", val: [87, 88, 90, 91, 93] },
-        { id: "prakarya", val: [93, 94, 95, 96, 98] }
-      ];
-      sample.forEach(s => {
-        for (let i = 1; i <= 5; i++) {
-          const el = document.getElementById(`${s.id}_s${i}`);
-          if(el) el.value = s.val[i - 1];
-        }
-        hitungRataRow(s.id);
-      });
-      if(document.getElementById('inNama')) document.getElementById('inNama').value = "Kirana Larasati (Seni)";
-      if(document.getElementById('inKelas')) document.getElementById('inKelas').value = "XII - IPS 2";
-      if(document.getElementById('inRankingSiswa')) document.getElementById('inRankingSiswa').value = 3;
-      if(document.getElementById('inKonselor')) document.getElementById('inKonselor').value = "Tim Sukses PTN M18";
-      if(document.getElementById('inNilaiTKA')) document.getElementById('inNilaiTKA').value = 87.0;
-      if(document.getElementById('inCatatanBK')) document.getElementById('inCatatanBK').value = "Portofolio seni dan nilai Seni Budaya sangat menonjol di ISI Yogyakarta.";
-
-      if(document.getElementById('inProdi1Nama')) document.getElementById('inProdi1Nama').value = "S1 Desain Komunikasi Visual";
-      if(document.getElementById('inProdi1Kampus')) document.getElementById('inProdi1Kampus').value = "Institut Seni Indonesia (ISI) Yogyakarta";
-      if(document.getElementById('inProdi1DayaTampung')) document.getElementById('inProdi1DayaTampung').value = 80;
-      if(document.getElementById('inProdi1Peminat')) document.getElementById('inProdi1Peminat').value = 2100;
+      if(document.getElementById('inNama')) document.getElementById('inNama').value = "";
+      if(document.getElementById('inKelas')) document.getElementById('inKelas').value = "";
+      if(document.getElementById('inRankingSiswa')) document.getElementById('inRankingSiswa').value = "";
+      if(document.getElementById('inNilaiTKA')) document.getElementById('inNilaiTKA').value = "";
+      if(document.getElementById('inProdi1Nama')) document.getElementById('inProdi1Nama').value = "";
+      if(document.getElementById('inProdi1Kampus')) document.getElementById('inProdi1Kampus').value = "";
+      if(document.getElementById('inProdi1DayaTampung')) document.getElementById('inProdi1DayaTampung').value = "";
+      if(document.getElementById('inProdi1Peminat')) document.getElementById('inProdi1Peminat').value = "";
+      if(document.getElementById('inProdi2Nama')) document.getElementById('inProdi2Nama').value = "";
+      if(document.getElementById('inProdi2Kampus')) document.getElementById('inProdi2Kampus').value = "";
       saveDraft();
     }
 
@@ -832,15 +758,47 @@
       }
     }
 
-    // Generator Referensi Spesifik: Kampus Low Competition (Sepi Peminat tapi Linear)
+    // Generator Referensi Spesifik: Variasi Kampus Low Competition Luar Jawa Sesuai Rumpun
     function generateReferensiSpesifikMapel(t1) {
-      const mapel = t1.name.toLowerCase();
-      let pool = [
-        { prodi: "S1 Statistika", fakultas: "Fakultas MIPA", univ: "Universitas Halu Oleo, Kendari" },
-        { prodi: "D4 Akuntansi Sektor Publik", fakultas: "Sekolah Kedinasan", univ: "PKN STAN (Afirmasi Daerah)" },
-        { prodi: "S1 Pendidikan Matematika", fakultas: "FKIP", univ: "Universitas Tadulako, Palu" },
-        { prodi: "S1 Seni Rupa Murni", fakultas: "Institut Seni", univ: "ISI Padang Panjang, Sumatera Barat" }
-      ];
+      const prodiText = t1.name.toLowerCase();
+      let pool = [];
+
+      if (prodiText.includes("kedokteran") || prodiText.includes("kesehatan") || prodiText.includes("biologi")) {
+        pool = [
+          { prodi: "S1 Keperawatan", fakultas: "Fakultas Kedokteran", univ: "Universitas Teuku Umar, Aceh (Low Competition)" },
+          { prodi: "S1 Kesehatan Masyarakat", fakultas: "Fakultas Kesmas", univ: "Universitas Sulawesi Barat, Majene" },
+          { prodi: "S1 Gizi", fakultas: "Fakultas Kesehatan", univ: "Universitas Papua, Manokwari" },
+          { prodi: "S1 Kedokteran Hewan", fakultas: "Kedokteran Hewan", univ: "Universitas Nusa Cendana, Kupang" }
+        ];
+      } else if (prodiText.includes("teknik") || prodiText.includes("komputer") || prodiText.includes("statistika") || prodiText.includes("informatika")) {
+        pool = [
+          { prodi: "S1 Teknik Sipil / Arsitektur", fakultas: "Fakultas Teknik", univ: "Universitas Malikussaleh, Aceh Utara" },
+          { prodi: "S1 Teknik Elektro", fakultas: "Fakultas Teknik", univ: "Universitas Borneo Tarakan, Kalimantan Utara" },
+          { prodi: "S1 Ilmu Komputer / Informatika", fakultas: "Fakultas MIPA", univ: "Universitas Sam Ratulangi, Manado" },
+          { prodi: "D4 Instrumentasi & Klimatologi", fakultas: "Sekolah Kedinasan", univ: "STMKG, Tangerang Selatan (Ikatan Dinas)" }
+        ];
+      } else if (prodiText.includes("pendidikan") || prodiText.includes("guru")) {
+        pool = [
+          { prodi: "S1 Pend. Matematika / Saintek", fakultas: "FKIP", univ: "Universitas Halu Oleo, Kendari" },
+          { prodi: "S1 Pend. Bahasa Inggris", fakultas: "FKIP", univ: "Universitas Khairun, Ternate" },
+          { prodi: "S1 Pend. Guru SD (PGSD)", fakultas: "FKIP", univ: "Universitas Pattimura, Ambon" },
+          { prodi: "S1 Pend. Pancasila & Kewarganegaraan", fakultas: "FKIP", univ: "Universitas Cenderawasih, Jayapura" }
+        ];
+      } else if (prodiText.includes("akuntansi") || prodiText.includes("manajemen") || prodiText.includes("ekonomi") || prodiText.includes("pemerintahan")) {
+        pool = [
+          { prodi: "S1 Ekonomi Pembangunan", fakultas: "FEB", univ: "Universitas Timor, NTT (Peminat Sangat Longgar)" },
+          { prodi: "S1 Administrasi Publik", fakultas: "FISIP", univ: "Universitas Bangka Belitung, Belitung" },
+          { prodi: "S1 Manajemen", fakultas: "FEB", univ: "Universitas Sembilanbelas November Kolaka, Sultra" },
+          { prodi: "D4 Akuntansi Sektor Publik", fakultas: "Sekolah Kedinasan", univ: "PKN STAN (Jalur Afirmasi Wilayah)" }
+        ];
+      } else {
+        pool = [
+          { prodi: "S1 Seni Kriya & Desain", fakultas: "Institut Seni", univ: "ISI Padang Panjang, Sumatera Barat" },
+          { prodi: "S1 Sastra Indonesia", fakultas: "Ilmu Budaya", univ: "Universitas Sam Ratulangi, Manado" },
+          { prodi: "S1 Ilmu Komunikasi", fakultas: "FISIP", univ: "Universitas Teuku Umar, Meulaboh" },
+          { prodi: "S1 Sosiologi", fakultas: "FISIP", univ: "Universitas Tadulako, Palu, Sulteng" }
+        ];
+      }
       return pool;
     }
 
@@ -859,7 +817,7 @@
     function jalankanAnalisisSNBP() {
       activeJalur = "SNBP";
       let grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText) || 0;
-      if (grandAvg === 0) { isiSimulasiSaintek(); grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText); }
+      if (grandAvg === 0) { isiSimulasiRumpunAktif(); grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText); }
       
       const nama = document.getElementById('inNama').value.trim() || "Muhammad Umar";
       const kelas = document.getElementById('inKelas').value.trim() || "XII - 1";
@@ -977,7 +935,7 @@
       document.getElementById('outGridProdiSNBP').innerHTML = gridProdiHTML;
       document.getElementById('outFormulaDetail').innerHTML = `• Modal Akademik (50% TKA & 50% Rapor): <b>TKA (${valTkaDisp}) & Rapor (${grandAvg.toFixed(1)})</b><br>• Peringkat Internal Sekolah (#${rankingSiswa}) & Keketatan Instansi Terkalkulasi Presisi.`;
 
-      const referensiNasional = generateReferensiSpesifikMapel(top1);
+      const referensiNasional = generateReferensiSpesifikMapel(prodi1);
       document.getElementById('outRekomLinearSNBP').innerHTML = referensiNasional.map(r => `
         <div class="p-2.5 bg-white rounded-lg border border-slate-200 text-[10px] space-y-0.5 shadow-sm"><p class="font-bold text-slate-900">🎓 ${r.prodi}</p><p class="text-slate-600">${r.fakultas}</p><p class="text-indigo-900 font-semibold">${r.univ}</p></div>
       `).join('');
@@ -1093,7 +1051,7 @@
     function jalankanAnalisisMandiri() {
       activeJalur = "MANDIRI";
       let modal = parseFloat(document.getElementById('inModalMandiri').value) || 0;
-      if (modal === 0) { isiSimulasiSaintek(); modal = parseFloat(document.getElementById('labelGrandTotal').innerText) || 85; }
+      if (modal === 0) { isiSimulasiRumpunAktif(); modal = parseFloat(document.getElementById('labelGrandTotal').innerText) || 85; }
       const nama = document.getElementById('inNamaMandiri').value.trim() || "Muhammad Umar";
       const p1Id = document.getElementById('selectProdiMandiri1').value || "STAN_AKD";
       const p2Id = document.getElementById('selectProdiMandiri2').value;
