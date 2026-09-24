@@ -41,7 +41,6 @@
       </div>
       
       <div class="flex items-center gap-2 sm:gap-3">
-        <!-- Status Indikator Cloud Database -->
         <span id="syncStatusBadge" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600 border border-slate-200">
           <span class="h-2 w-2 rounded-full bg-slate-400"></span> Inisialisasi DB
         </span>
@@ -125,7 +124,7 @@
       <div class="flex items-center justify-between bg-emerald-900 rounded-2xl p-5 text-white shadow-md">
         <div>
           <span class="text-[10px] font-extrabold bg-emerald-400 text-emerald-950 px-2.5 py-0.5 rounded uppercase">Modul Khusus SNBP</span>
-          <h2 class="text-xl font-black mt-1">Diagnostik Rapor, Ranking & TKA (Multirumpun Terstruktur)</h2>
+          <h2 class="text-xl font-black mt-1">Diagnostik Rapor, Ranking & TKA (Skala Murni IRT 200–800)</h2>
         </div>
         <button onclick="showView('viewLanding')" class="px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-xl text-xs font-bold border border-white/20 transition">← Ganti Jalur</button>
       </div>
@@ -241,38 +240,45 @@
               </table>
             </div>
 
-            <!-- Input TKA Skala IRT Murni -->
-<div class="mt-4 p-4 rounded-xl bg-indigo-50 border border-indigo-200 space-y-3">
-  <div class="flex items-center justify-between">
-    <span class="text-xs font-extrabold text-indigo-950 uppercase tracking-wide">🎯 Skor TKA Siswa (Skala IRT 200–800)</span>
-    <span class="px-2 py-0.5 bg-amber-400 text-amber-950 text-[10px] font-black rounded uppercase">Bobot 50%</span>
-  </div>
-  <p class="text-[11px] text-indigo-800 leading-relaxed">
-    Rapor semester 1–5 dikonversi otomatis ke standar IRT (200–800) agar setara dan presisi saat dihitung 50:50 dengan TKA.
-  </p>
-  <div class="flex items-center gap-3">
-    <input id="inNilaiTKA" oninput="updatePreviewModalIRT(); saveDraft();" type="number" min="200" max="800" placeholder="Cth: 680" class="w-32 text-center bg-white border-2 border-indigo-300 rounded-xl py-2 text-sm font-black text-indigo-950 focus:border-emerald-700 focus:outline-none shadow-sm" />
-    <span class="text-xs text-indigo-900 font-bold">Skor IRT (200 – 800)</span>
-  </div>
-</div>
+            <div class="mt-4 p-4 rounded-xl bg-indigo-50 border border-indigo-200 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-extrabold text-indigo-950 uppercase tracking-wide">🎯 Skor TKA Siswa (Skala IRT 200–800)</span>
+                <span class="px-2 py-0.5 bg-amber-400 text-amber-950 text-[10px] font-black rounded uppercase">Bobot 50%</span>
+              </div>
+              <p class="text-[11px] text-indigo-800 leading-relaxed">
+                Rapor semester 1–5 dikonversi otomatis ke standar IRT (200–800) agar setara dan presisi saat dihitung 50:50 dengan TKA.
+              </p>
+              <div class="flex items-center gap-3">
+                <input id="inNilaiTKA" oninput="updatePreviewModalIRT(); saveDraft();" type="number" min="200" max="800" placeholder="Cth: 680" class="w-32 text-center bg-white border-2 border-indigo-300 rounded-xl py-2 text-sm font-black text-indigo-950 focus:border-emerald-700 focus:outline-none shadow-sm" />
+                <span class="text-xs text-indigo-900 font-bold">Skor IRT (200 – 800)</span>
+              </div>
+            </div>
 
-<!-- Cukup pasang 1 blok ini saja di bawah tabel rapor -->
-<div class="mt-5 p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-wrap items-center justify-between gap-4">
-  <div class="space-y-1">
-    <p class="text-xs font-bold text-slate-700">
-      Rata-Rata Rapor: 
-      <span id="labelGrandTotal" class="text-slate-900 font-extrabold">0.0</span> 
-      <span id="labelRaporIRT" class="text-[11px] text-indigo-700 font-bold">(~0 IRT)</span>
-    </p>
-    <p class="text-xs font-bold text-slate-700">
-      Estimasi Modal 50:50: 
-      <span id="labelModalAkademikPreview" class="text-emerald-700 text-sm font-black">0 Poin IRT</span>
-    </p>
-  </div>
-  <button type="button" onclick="jalankanAnalisisSNBP()" class="px-6 py-2.5 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold rounded-xl transition shadow">
-    Jalankan Analisis SNBP & Buka Laporan
-  </button>
-</div>
+            <div class="mt-4 p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <label class="block text-xs font-bold text-slate-800 uppercase tracking-wide">Catatan & Rencana Aksi Konseling BK:</label>
+              <textarea id="inCatatanBK" rows="2" placeholder="Tuliskan catatan khusus konselor..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:border-emerald-700 focus:outline-none text-slate-800"></textarea>
+            </div>
+
+            <div class="mt-5 p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-wrap items-center justify-between gap-4">
+              <div class="space-y-1">
+                <p class="text-xs font-bold text-slate-700">
+                  Rata-Rata Rapor: 
+                  <span id="labelGrandTotal" class="text-slate-900 font-extrabold">0.0</span> 
+                  <span id="labelRaporIRT" class="text-[11px] text-indigo-700 font-bold">(~0 IRT)</span>
+                </p>
+                <p class="text-xs font-bold text-slate-700">
+                  Estimasi Modal 50:50: 
+                  <span id="labelModalAkademikPreview" class="text-emerald-700 text-sm font-black">0 Poin IRT</span>
+                </p>
+              </div>
+              <button type="button" onclick="jalankanAnalisisSNBP()" class="px-6 py-2.5 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold rounded-xl transition shadow">
+                Jalankan Analisis SNBP & Buka Laporan
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- ========================================== -->
     <!-- 3. VIEW FORMULIR SNBT (MULTI-TRY OUT)      -->
@@ -426,11 +432,11 @@
         </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs bg-slate-50 p-3 rounded-xl border border-slate-200 mb-4 print-card">
-  <div><span class="text-[10px] text-slate-400 block font-semibold">NAMA SISWA / KELAS</span><p id="outNamaReport" class="font-bold text-slate-900">-</p></div>
-  <div><span class="text-[10px] text-slate-400 block font-semibold">RANKING INTERNAL</span><p id="outRankingReport" class="font-bold text-emerald-800">-</p></div>
-  <div><span class="text-[10px] text-slate-400 block font-semibold">GURU PEMBIMBING</span><p id="outKonselorReport" class="font-bold text-slate-900">-</p></div>
-  <div><span class="text-[10px] text-slate-400 block font-semibold">MODAL AKADEMIK (IRT)</span><p id="outValSkorUtama" class="font-black text-indigo-900 text-sm">-</p></div>
-</div>
+          <div><span class="text-[10px] text-slate-400 block font-semibold">NAMA SISWA / KELAS</span><p id="outNamaReport" class="font-bold text-slate-900">-</p></div>
+          <div><span class="text-[10px] text-slate-400 block font-semibold">RANKING INTERNAL</span><p id="outRankingReport" class="font-bold text-emerald-800">-</p></div>
+          <div><span class="text-[10px] text-slate-400 block font-semibold">GURU PEMBIMBING</span><p id="outKonselorReport" class="font-bold text-slate-900">-</p></div>
+          <div><span id="outLabelSkorUtama" class="text-[10px] text-slate-400 block font-semibold">MODAL AKADEMIK (IRT)</span><p id="outValSkorUtama" class="font-black text-indigo-900 text-sm">-</p></div>
+        </div>
 
         <!-- KONTEN SNBP -->
         <div id="contentReportSNBP" class="hidden space-y-4">
@@ -449,7 +455,6 @@
 
           <div id="outGridProdiSNBP" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
 
-          <!-- Kotak Rekomendasi Kampus Low Competition & Catatan Konselor -->
           <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50 print-card">
             <span class="text-[10px] font-bold text-slate-700 uppercase block mb-1.5">💡 Strategi Cerdas: Rekomendasi Kampus "Low Competition" (Sepi Peminat tapi Linear):</span>
             <div id="outRekomLinearSNBP" class="grid grid-cols-1 sm:grid-cols-2 gap-2"></div>
@@ -487,7 +492,6 @@
 
           <div id="outGridProdiSNBT" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
 
-          <!-- Smart Matching Kampus Zona Aman SNBT -->
           <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50 print-card">
             <span class="text-[10px] font-bold text-slate-700 uppercase block mb-1.5">🎯 Smart Matching: Kampus Zona Aman Berdasarkan Skor UTBK Siswa:</span>
             <div id="outSmartMatchingKampus" class="grid grid-cols-1 sm:grid-cols-2 gap-2"></div>
@@ -520,10 +524,8 @@
   <!-- SKRIP LOGIKA UTAMA & CLOUD SYNC            -->
   <!-- ========================================== -->
   <script>
-    // GANTI DENGAN URL DEPLOYMENT APPS SCRIPT ANDA
-    const GOOGLE_SHEET_WEBAPP_URL ="https://script.google.com/macros/s/AKfycbwtO86WOv6wx3QiFyWk3gGQ7B8JZiMCsljaQzNe1SHkugaH0evcBaV-sNONkAfcudEVRg/exec";
+    const GOOGLE_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxAUnQAEcUyvLO6nbsmHvVjpxuiOIugbPCBziYBWDuhlrd6MjMFPKa_avKfkpcNjASh/exec";
 
-    // Master Siswa & Kampus (Fallback Lokal bila Offline / Belum Terkoneksi)
     let databaseSiswa = [
       { nisn: "0061234561", nama: "Ahmad Zaki", kelas: "XII - 1", rumpun: "SAINTEK", ranking: 4 },
       { nisn: "0061234562", nama: "Siti Aisyah", kelas: "XII - 2", rumpun: "SOSHUM", ranking: 2 },
@@ -598,9 +600,6 @@
     let activeJalur = "SNBP";
     let currentFixPayload = null;
 
-    // ===============================================
-    // FUNGSI SINKRONISASI CLOUD (GOOGLE SHEETS)
-    // ===============================================
     async function loadCloudDatabase() {
       const badge = document.getElementById('syncStatusBadge');
       if (!GOOGLE_SHEET_WEBAPP_URL || !GOOGLE_SHEET_WEBAPP_URL.startsWith("http")) return;
@@ -619,7 +618,6 @@
           badge.innerHTML = `<span class="h-2 w-2 rounded-full bg-emerald-500"></span> Google Sheets Terhubung`;
         }
       } catch (err) {
-        console.warn("Gagal terhubung ke Cloud Sheet, menggunakan data lokal:", err);
         badge.className = "hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-300";
         badge.innerHTML = `<span class="h-2 w-2 rounded-full bg-slate-400"></span> Mode Offline (Data Lokal)`;
       }
@@ -627,27 +625,26 @@
     }
 
     async function syncDataToGoogleSheets(payload) {
-      if (!GOOGLE_SHEET_WEBAPP_URL || !GOOGLE_SHEET_WEBAPP_URL.startsWith("http")) return;
+      if (!GOOGLE_SHEET_WEBAPP_URL || !GOOGLE_SHEET_WEBAPP_URL.startsWith("http")) return false;
       try {
         await fetch(GOOGLE_SHEET_WEBAPP_URL, {
           method: "POST",
           mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify(payload)
         });
+        return true;
       } catch (e) {
-        console.error("Gagal sinkronisasi data:", e);
+        return false;
       }
     }
 
     function refreshDataBindings() {
-      // Perbarui DataList Siswa
       const datalist = document.getElementById('listDataSiswa');
       if (datalist) {
         datalist.innerHTML = databaseSiswa.map(s => `<option value="${s.nama}">${s.kelas} • Rank #${s.ranking} (${s.rumpun})</option>`).join('');
       }
 
-      // Perbarui Preset Prodi SNBP
       const p1 = document.getElementById('selectPresetProdi1');
       const p2 = document.getElementById('selectPresetProdi2');
       const optHtml = `<option value="">-- Pilih dari Database PTN/Prodi --</option>` + databasePTN.map(k => `
@@ -656,13 +653,11 @@
       if (p1) p1.innerHTML = optHtml;
       if (p2) p2.innerHTML = optHtml;
 
-      // Perbarui Preset Prodi SNBT
       const snbt1 = document.getElementById('selectSNBTPreset1');
       const snbt2 = document.getElementById('selectSNBTPreset2');
       if (snbt1) snbt1.innerHTML = optHtml;
       if (snbt2) snbt2.innerHTML = optHtml;
 
-      // Perbarui Dropdown Mandiri
       populateDropdowns();
     }
 
@@ -773,6 +768,28 @@
       hitungGrandTotal();
     }
 
+    function updatePreviewModalIRT() {
+      const grandAvg = parseFloat(document.getElementById('labelGrandTotal')?.innerText) || 0;
+      const raporIRT = grandAvg > 0 ? Math.round(200 + ((grandAvg / 100) * 600)) : 0;
+      
+      const elRaporIRT = document.getElementById('labelRaporIRT');
+      if (elRaporIRT) elRaporIRT.innerText = raporIRT > 0 ? `(~${raporIRT} IRT)` : "(~0 IRT)";
+
+      const inTKA = document.getElementById('inNilaiTKA');
+      let tkaIRT = parseFloat(inTKA?.value);
+
+      let modalPreview = 0;
+      if (!isNaN(tkaIRT) && tkaIRT >= 200) {
+        if (tkaIRT > 800) tkaIRT = 800;
+        modalPreview = Math.round((tkaIRT * 0.5) + (raporIRT * 0.5));
+      } else {
+        modalPreview = raporIRT;
+      }
+
+      const elModal = document.getElementById('labelModalAkademikPreview');
+      if (elModal) elModal.innerText = `${modalPreview} Poin IRT`;
+    }
+
     function hitungGrandTotal() {
       let sum = 0, count = 0;
       const currentList = getActiveMapelList();
@@ -786,6 +803,7 @@
       const grand = count > 0 ? (sum / count) : 0;
       const grandLabel = document.getElementById('labelGrandTotal');
       if(grandLabel) grandLabel.innerText = grand.toFixed(1);
+      
       updatePreviewModalIRT();
     }
 
@@ -858,8 +876,10 @@
       if(document.getElementById('inKelas')) document.getElementById('inKelas').value = "XII - 1";
       if(document.getElementById('inRankingSiswa')) document.getElementById('inRankingSiswa').value = 4;
       if(document.getElementById('inKonselor')) document.getElementById('inKonselor').value = "Tim Sukses PTN M18";
-      if(document.getElementById('inNilaiTKA')) document.getElementById('inNilaiTKA').value = 89.0;
+      if(document.getElementById('inNilaiTKA')) document.getElementById('inNilaiTKA').value = 720;
       if(document.getElementById('inCatatanBK')) document.getElementById('inCatatanBK').value = "Siswa menunjukkan konsistensi belajar yang sangat baik pada rumpun terkait.";
+      
+      updatePreviewModalIRT();
       saveDraft();
     }
 
@@ -875,6 +895,7 @@
       ['inNama', 'inKelas', 'inRankingSiswa', 'inNilaiTKA', 'inProdi1Nama', 'inProdi1Kampus', 'inProdi1DayaTampung', 'inProdi1Peminat', 'inProdi2Nama', 'inProdi2Kampus', 'inProdi2DayaTampung', 'inProdi2Peminat'].forEach(id => {
         if(document.getElementById(id)) document.getElementById(id).value = "";
       });
+      updatePreviewModalIRT();
       saveDraft();
     }
 
@@ -952,151 +973,197 @@
     }
 
     // ===============================================
-    // EKSEKUTOR LAPORAN SNBP
+    // EKSEKUTOR LAPORAN SNBP (SKALA IRT MURNI)
     // ===============================================
     function jalankanAnalisisSNBP() {
-  activeJalur = "SNBP";
-  let grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText) || 0;
-  if (grandAvg === 0) { 
-    isiSimulasiRumpunAktif(); 
-    grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText); 
-  }
-  
-  const nama = document.getElementById('inNama').value.trim() || "Ahmad Zaki";
-  const kelas = document.getElementById('inKelas').value.trim() || "XII - 1";
-  const kelompok = document.getElementById('inKelompokJurusan').value || "SAINTEK";
-  const rankingSiswa = parseInt(document.getElementById('inRankingSiswa').value) || 5;
-  const konselor = document.getElementById('inKonselor').value.trim() || "Tim Sukses PTN M18";
-  const catatanBK = document.getElementById('inCatatanBK').value.trim() || "-";
+      activeJalur = "SNBP";
+      let grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText) || 0;
+      if (grandAvg === 0) { 
+        isiSimulasiRumpunAktif(); 
+        grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText); 
+      }
+      
+      const nama = document.getElementById('inNama').value.trim() || "Ahmad Zaki";
+      const kelas = document.getElementById('inKelas').value.trim() || "XII - 1";
+      const kelompok = document.getElementById('inKelompokJurusan').value || "SAINTEK";
+      const rankingSiswa = parseInt(document.getElementById('inRankingSiswa').value) || 5;
+      const konselor = document.getElementById('inKonselor').value.trim() || "Tim Sukses PTN M18";
+      const catatanBK = document.getElementById('inCatatanBK').value.trim() || "-";
 
-  const p1Nama = document.getElementById('inProdi1Nama').value.trim();
-  const p2Nama = document.getElementById('inProdi2Nama').value.trim();
+      const p1Nama = document.getElementById('inProdi1Nama').value.trim();
+      const p2Nama = document.getElementById('inProdi2Nama').value.trim();
 
-  if (!p1Nama) { alert("Mohon isi minimal Pilihan 1 Prodi terlebih dahulu!"); return; }
+      if (!p1Nama) { alert("Mohon isi minimal Pilihan 1 Prodi terlebih dahulu!"); return; }
 
-  // 1. Ambil Skor TKA (IRT 200-800) & Normalisasi ke Skala 0-100
-  let rawTKA = parseFloat(document.getElementById('inNilaiTKA').value);
-  if (isNaN(rawTKA) || rawTKA < 200) rawTKA = 500; // Default median IRT
-  if (rawTKA > 800) rawTKA = 800;
+      // 1. Ambil Skor TKA (Skala Murni IRT 200–800)
+      let tkaIRT = parseFloat(document.getElementById('inNilaiTKA').value);
+      if (isNaN(tkaIRT) || tkaIRT < 200) tkaIRT = 550;
+      if (tkaIRT > 800) tkaIRT = 800;
 
-  const tkaNormalized = ((rawTKA - 200) / 600) * 100;
-  const modalAkademik = (grandAvg * 0.50) + (tkaNormalized * 0.50);
+      // 2. Konversi Rata Rapor ke Skala IRT (200–800)
+      const raporIRT = Math.round(200 + ((grandAvg / 100) * 600));
 
-  const m1 = detectMapelPendukung(p1Nama);
-  const prodi1 = {
-    prodi: p1Nama, 
-    ptn: document.getElementById('inProdi1Kampus').value.trim() || "PTN Pilihan",
-    mapel1: m1.mapel1, mapel2: m1.mapel2,
-    dayaTampung: parseFloat(document.getElementById('inProdi1DayaTampung').value) || 100,
-    peminat: parseFloat(document.getElementById('inProdi1Peminat').value) || 2000
-  };
+      // 3. Modal Akademik 50% TKA IRT : 50% Rapor IRT
+      const modalAkademikIRT = Math.round((tkaIRT * 0.50) + (raporIRT * 0.50));
 
-  let prodi2 = null;
-  if (p2Nama) {
-    const m2 = detectMapelPendukung(p2Nama);
-    prodi2 = {
-      prodi: p2Nama, 
-      ptn: document.getElementById('inProdi2Kampus').value.trim() || "PTN Pilihan",
-      mapel1: m2.mapel1, mapel2: m2.mapel2,
-      dayaTampung: parseFloat(document.getElementById('inProdi2DayaTampung').value) || 100,
-      peminat: parseFloat(document.getElementById('inProdi2Peminat').value) || 2000
-    };
-  }
+      const m1 = detectMapelPendukung(p1Nama);
+      const prodi1 = {
+        prodi: p1Nama, 
+        ptn: document.getElementById('inProdi1Kampus').value.trim() || "PTN Pilihan",
+        mapel1: m1.mapel1, mapel2: m1.mapel2,
+        dayaTampung: parseFloat(document.getElementById('inProdi1DayaTampung').value) || 100,
+        peminat: parseFloat(document.getElementById('inProdi1Peminat').value) || 2000
+      };
 
-  const activeList = getActiveMapelList();
-  const calculated = activeList.map(m => {
-    const avgNode = document.getElementById(`${m.id}_avg`);
-    return { id: m.id, name: m.name, avg: avgNode ? (parseFloat(avgNode.innerText) || 0) : 0 };
-  }).sort((a, b) => b.avg - a.avg);
+      let prodi2 = null;
+      if (p2Nama) {
+        const m2 = detectMapelPendukung(p2Nama);
+        prodi2 = {
+          prodi: p2Nama, 
+          ptn: document.getElementById('inProdi2Kampus').value.trim() || "PTN Pilihan",
+          mapel1: m2.mapel1, mapel2: m2.mapel2,
+          dayaTampung: parseFloat(document.getElementById('inProdi2DayaTampung').value) || 100,
+          peminat: parseFloat(document.getElementById('inProdi2Peminat').value) || 2000
+        };
+      }
 
-  const top1 = calculated[0], top2 = calculated[1];
-  const slopeData = hitungSlopeSemester();
-  let slopeBonus = slopeData.slope > 0.3 ? 5 : (slopeData.slope >= -0.3 ? 0 : -5);
+      const activeList = getActiveMapelList();
+      const calculated = activeList.map(m => {
+        const avgNode = document.getElementById(`${m.id}_avg`);
+        return { id: m.id, name: m.name, avg: avgNode ? (parseFloat(avgNode.innerText) || 0) : 0 };
+      }).sort((a, b) => b.avg - a.avg);
 
-  // 2. Fungsi Hitung Peluang Kelulusan
-  function calcScore(target) {
-    const keketatanRatio = target.dayaTampung / target.peminat;
+      const top1 = calculated[0], top2 = calculated[1];
+      const req1Obj = calculated.find(m => m.name === prodi1.mapel1) || { name: prodi1.mapel1, avg: 0 };
+      const req2Obj = calculated.find(m => m.name === prodi1.mapel2) || { name: prodi1.mapel2, avg: 0 };
 
-    // Evaluasi Keselarasan Mapel Pendukung (Kepmen 345/M/2022)
-    let match = 0;
-    if (target.mapel1 === top1.name || target.mapel1 === top2.name) match += 10;
-    if (target.mapel2 === top1.name || target.mapel2 === top2.name) match += 8;
-    let mapelPenalty = (match === 0) ? -15 : 0;
-    
-    // Track record alumni sekolah & kuota ranking
-    const track = checkAlumniTrack(target.ptn, target.prodi);
-    let bonusAlumni = track.hasAlumni ? 4 : 0;
-    let rankBonus = rankingSiswa <= 15 ? 6 : (rankingSiswa <= 40 ? 2 : -15);
+      const slopeData = hitungSlopeSemester();
+      let slopeBonusIRT = slopeData.slope > 0.3 ? 15 : (slopeData.slope >= -0.3 ? 0 : -15);
 
-    let rawScore = (modalAkademik * 0.60) + (keketatanRatio * 150) + match + mapelPenalty + bonusAlumni + rankBonus + slopeBonus;
-    return Math.max(10, Math.min(Math.round(rawScore), 92));
-  }
+      function estimasiPassingTarget(target) {
+        const matchedDB = databasePTN.find(p => p.prodi.toLowerCase() === target.prodi.toLowerCase());
+        if (matchedDB && matchedDB.passingGrade) return matchedDB.passingGrade;
+        
+        const rasio = target.dayaTampung / target.peminat;
+        if (rasio < 0.03) return 725;
+        if (rasio < 0.07) return 680;
+        if (rasio < 0.12) return 640;
+        return 600;
+      }
 
-  const score1 = calcScore(prodi1);
-  const score2 = prodi2 ? calcScore(prodi2) : 0;
+      function calcScoreIRT(target) {
+        const passingTarget = estimasiPassingTarget(target);
+        const keketatanBonus = (target.dayaTampung / target.peminat) * 100;
 
-  // Render Label & Detail Skor
-  document.getElementById('outValSkorUtama').innerText = `${modalAkademik.toFixed(1)} / 100`;
-  document.getElementById('outFormulaDetail').innerHTML = `
-    • <b>Komposisi Modal Akademik 50:50:</b> Rapor (${grandAvg.toFixed(1)}) + TKA IRT (${rawTKA} &rarr; Setara ${tkaNormalized.toFixed(1)}/100)<br>
-    • <b>Mapel Pendukung Wajib (Kepmen 345/M/2022):</b> ${prodi1.mapel1} & ${prodi1.mapel2}<br>
-    • Peringkat Kuota Eligible (#${rankingSiswa}) & Rasio Keketatan Terhitung.
-  `;
+        let matchBonusIRT = 0;
+        if (target.mapel1 === top1.name || target.mapel1 === top2.name) matchBonusIRT += 15;
+        if (target.mapel2 === top1.name || target.mapel2 === top2.name) matchBonusIRT += 10;
+        if (matchBonusIRT === 0) matchBonusIRT = -20;
 
-  // Render Output ke View Laporan Cetak
-  document.getElementById('outNamaReport').innerText = `${nama} (${kelas})`;
-  document.getElementById('outRankingReport').innerText = `Peringkat #${rankingSiswa}`;
-  document.getElementById('outKonselorReport').innerText = konselor;
-  document.getElementById('outCatatanBKReport').innerText = `"${catatanBK}"`;
+        const track = checkAlumniTrack(target.ptn, target.prodi);
+        let alumniBonusIRT = track.hasAlumni ? 12 : 0;
+        let rankingBonusIRT = rankingSiswa <= 10 ? 15 : (rankingSiswa <= 40 ? 5 : -25);
 
-  let gridProdiHTML = `
-    <div class="p-3.5 rounded-xl border border-slate-200 bg-white print-card space-y-2">
-      <div class="flex justify-between items-center border-b border-slate-100 pb-1.5"><span class="text-xs font-bold text-emerald-800 uppercase">Pilihan 1 (Prioritas Utama)</span></div>
-      <p class="font-bold text-slate-900 text-xs">${prodi1.prodi} - ${prodi1.ptn}</p>
-      <p class="text-[9.5px] text-blue-950 font-bold bg-blue-50 px-2 py-1 rounded border border-blue-200">📌 Mapel Pendukung: ${prodi1.mapel1} & ${prodi1.mapel2}</p>
-      <p class="text-[9.5px] text-slate-500">Daya Tampung: ${prodi1.dayaTampung} | Peminat: ${prodi1.peminat}</p>
-      <div class="flex items-baseline gap-1 mt-1"><span class="text-2xl font-black text-emerald-600">${score1}%</span><span class="text-[10px] text-slate-500 font-medium">Peluang Lolos</span></div>
-    </div>
-  `;
+        const totalSkorIRT = modalAkademikIRT + matchBonusIRT + alumniBonusIRT + rankingBonusIRT + slopeBonusIRT + (keketatanBonus * 0.2);
+        const gapIRT = totalSkorIRT - passingTarget;
+        let persenPeluang = Math.round(55 + (gapIRT * 0.45));
+        
+        return {
+          persen: Math.max(10, Math.min(persenPeluang, 94)),
+          targetPassing: passingTarget,
+          totalSiswaIRT: Math.round(totalSkorIRT)
+        };
+      }
 
-  if (prodi2) {
-    gridProdiHTML += `
-      <div class="p-3.5 rounded-xl border border-slate-200 bg-white print-card space-y-2">
-        <div class="flex justify-between items-center border-b border-slate-100 pb-1.5"><span class="text-xs font-bold text-blue-900 uppercase">Pilihan 2 (Cadangan)</span></div>
-        <p class="font-bold text-slate-900 text-xs">${prodi2.prodi} - ${prodi2.ptn}</p>
-        <p class="text-[9.5px] text-blue-950 font-bold bg-blue-50 px-2 py-1 rounded border border-blue-200">📌 Mapel Pendukung: ${prodi2.mapel1} & ${prodi2.mapel2}</p>
-        <p class="text-[9.5px] text-slate-500">Daya Tampung: ${prodi2.dayaTampung} | Peminat: ${prodi2.peminat}</p>
-        <div class="flex items-baseline gap-1 mt-1"><span class="text-2xl font-black text-blue-900">${score2}%</span><span class="text-[10px] text-slate-500 font-medium">Peluang Lolos</span></div>
-      </div>
-    `;
-  }
-  document.getElementById('outGridProdiSNBP').innerHTML = gridProdiHTML;
+      const resP1 = calcScoreIRT(prodi1);
+      const resP2 = prodi2 ? calcScoreIRT(prodi2) : null;
 
-  // Payload Log Sinkronisasi Google Sheets
-  const tglAsli = new Date().toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' });
-  document.getElementById('outTanggalCetak').innerText = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+      document.getElementById('outValSkorUtama').innerText = `${modalAkademikIRT} Poin IRT`;
+      document.getElementById('outFormulaDetail').innerHTML = `
+        • <b>Komposisi Modal IRT Murni (50:50):</b> TKA (${tkaIRT} IRT) + Rapor (${grandAvg.toFixed(1)} &rarr; ${raporIRT} IRT) = <b>${modalAkademikIRT} IRT</b><br>
+        • <b>Benchmark Target Pilihan 1:</b> Passing Grade Standar ~${resP1.targetPassing} Poin IRT<br>
+        • <b>Mapel Pendukung Wajib (Kepmen 345/M/2022):</b> ${prodi1.mapel1} & ${prodi1.mapel2}
+      `;
 
-  currentFixPayload = {
-    tanggal: tglAsli,
-    nama: nama,
-    kelas: `${kelas} (${kelompok})`,
-    ranking: rankingSiswa,
-    jalur: `SNBP ${kelompok}`,
-    pilihan1: `${prodi1.prodi} (${prodi1.ptn})`,
-    pilihan2: prodi2 ? `${prodi2.prodi} (${prodi2.ptn})` : "Pilihan Tunggal",
-    rataRapor: grandAvg.toFixed(1),
-    targetTKA: `${rawTKA} (IRT)`,
-    peluang1: `${score1}%`,
-    peluang2: prodi2 ? `${score2}%` : "-",
-    catatanBK: catatanBK
-  };
+      document.getElementById('outNamaReport').innerText = `${nama} (${kelas})`;
+      document.getElementById('outRankingReport').innerText = `Peringkat #${rankingSiswa}`;
+      document.getElementById('outKonselorReport').innerText = konselor;
+      document.getElementById('outCatatanBKReport').innerText = `"${catatanBK}"`;
 
-  document.getElementById('contentReportSNBP').classList.remove('hidden');
-  document.getElementById('contentReportSNBT').classList.add('hidden');
-  document.getElementById('contentReportMandiri').classList.add('hidden');
-  document.getElementById('reportSection').classList.remove('hidden');
-  document.getElementById('reportSection').scrollIntoView({ behavior: 'smooth' });
-}
+      document.getElementById('outBadgeJurusanGroup').innerText = `Kelompok Rapor: ${kelompok}`;
+      const badgeSlope = document.getElementById('outBadgeTrenSlope');
+      badgeSlope.innerText = `Modal IRT: ${modalAkademikIRT} • ${rankingSiswa <= 40 ? '✅ ELIGIBLE KUOTA UTAMA' : '⚠️ DI LUAR KUOTA UTAMA'}`;
+      badgeSlope.className = rankingSiswa <= 40 ? "px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300" : "px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-100 text-amber-900 border border-amber-300";
+
+      document.getElementById('outGrid5Semester').innerHTML = slopeData.semesters.map((val, idx) => `
+        <div class="p-2 rounded-lg bg-white border border-slate-200"><span class="text-[9px] text-slate-400 font-bold block">Smt ${idx + 1}</span><span class="font-extrabold text-slate-800">${val.toFixed(1)}</span></div>
+      `).join('');
+
+      document.getElementById('outTopMapelSNBP').innerHTML = `
+        <div class="p-2.5 rounded-lg bg-blue-50 border border-blue-200 flex justify-between items-center"><div><span class="text-[9px] text-slate-500 font-bold block">1. Nilai Puncak</span><span class="font-bold text-slate-800">${top1.name}</span></div><span class="font-black text-blue-900 text-sm">${top1.avg.toFixed(1)}</span></div>
+        <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex justify-between items-center"><div><span class="text-[9px] text-slate-500 font-bold block">2. Nilai Puncak</span><span class="font-bold text-slate-700 text-sm">${top2.avg.toFixed(1)}</span></div><span class="font-black text-slate-700 text-sm">${top2.avg.toFixed(1)}</span></div>
+        <div class="p-2.5 rounded-lg bg-indigo-50 border border-indigo-200 flex justify-between items-center"><div><span class="text-[9px] text-indigo-600 font-bold block">Mapel Pendukung 1</span><span class="font-bold text-indigo-950">${req1Obj.name}</span></div><span class="font-black text-indigo-900 text-sm">${req1Obj.avg.toFixed(1)}</span></div>
+        <div class="p-2.5 rounded-lg bg-indigo-50 border border-indigo-200 flex justify-between items-center"><div><span class="text-[9px] text-indigo-600 font-bold block">Mapel Pendukung 2</span><span class="font-bold text-indigo-950">${req2Obj.name}</span></div><span class="font-black text-indigo-900 text-sm">${req2Obj.avg.toFixed(1)}</span></div>
+      `;
+
+      let gridProdiHTML = `
+        <div class="p-3.5 rounded-xl border border-slate-200 bg-white print-card space-y-2">
+          <div class="flex justify-between items-center border-b border-slate-100 pb-1.5">
+            <span class="text-xs font-bold text-emerald-800 uppercase">Pilihan 1 (Prioritas Utama)</span>
+            <span class="text-[10px] font-bold text-slate-500">Passing Target: ~${resP1.targetPassing}</span>
+          </div>
+          <p class="font-bold text-slate-900 text-xs">${prodi1.prodi} - ${prodi1.ptn}</p>
+          <p class="text-[9.5px] text-blue-950 font-bold bg-blue-50 px-2 py-1 rounded border border-blue-200">📌 Mapel Pendukung: ${prodi1.mapel1} & ${prodi1.mapel2}</p>
+          <p class="text-[9.5px] text-slate-500">Daya Tampung: ${prodi1.dayaTampung} | Peminat: ${prodi1.peminat}</p>
+          <div class="flex items-baseline gap-1 mt-1"><span class="text-2xl font-black text-emerald-600">${resP1.persen}%</span><span class="text-[10px] text-slate-500 font-medium">Peluang Lolos</span></div>
+        </div>
+      `;
+
+      if (prodi2 && resP2) {
+        gridProdiHTML += `
+          <div class="p-3.5 rounded-xl border border-slate-200 bg-white print-card space-y-2">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-1.5">
+              <span class="text-xs font-bold text-blue-900 uppercase">Pilihan 2 (Cadangan)</span>
+              <span class="text-[10px] font-bold text-slate-500">Passing Target: ~${resP2.targetPassing}</span>
+            </div>
+            <p class="font-bold text-slate-900 text-xs">${prodi2.prodi} - ${prodi2.ptn}</p>
+            <p class="text-[9.5px] text-blue-950 font-bold bg-blue-50 px-2 py-1 rounded border border-blue-200">📌 Mapel Pendukung: ${prodi2.mapel1} & ${prodi2.mapel2}</p>
+            <p class="text-[9.5px] text-slate-500">Daya Tampung: ${prodi2.dayaTampung} | Peminat: ${prodi2.peminat}</p>
+            <div class="flex items-baseline gap-1 mt-1"><span class="text-2xl font-black text-blue-900">${resP2.persen}%</span><span class="text-[10px] text-slate-500 font-medium">Peluang Lolos</span></div>
+          </div>
+        `;
+      }
+      document.getElementById('outGridProdiSNBP').innerHTML = gridProdiHTML;
+
+      const referensiNasional = generateReferensiSpesifikMapel(prodi1);
+      document.getElementById('outRekomLinearSNBP').innerHTML = referensiNasional.map(r => `
+        <div class="p-2.5 bg-white rounded-lg border border-slate-200 text-[10px] space-y-0.5 shadow-sm"><p class="font-bold text-slate-900">🎓 ${r.prodi}</p><p class="text-slate-600">${r.fakultas}</p><p class="text-indigo-900 font-semibold">${r.univ}</p></div>
+      `).join('');
+
+      const tglAsli = new Date().toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' });
+      document.getElementById('outTanggalCetak').innerText = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+
+      currentFixPayload = {
+        tanggal: tglAsli,
+        nama: nama,
+        kelas: `${kelas} (${kelompok})`,
+        ranking: rankingSiswa,
+        jalur: `SNBP ${kelompok}`,
+        pilihan1: `${prodi1.prodi} (${prodi1.ptn})`,
+        pilihan2: prodi2 ? `${prodi2.prodi} (${prodi2.ptn})` : "Pilihan Tunggal",
+        rataRapor: `${grandAvg.toFixed(1)} (${raporIRT} IRT)`,
+        targetTKA: `${tkaIRT} (IRT)`,
+        peluang1: `${resP1.persen}%`,
+        peluang2: resP2 ? `${resP2.persen}%` : "-",
+        catatanBK: catatanBK
+      };
+
+      document.getElementById('contentReportSNBP').classList.remove('hidden');
+      document.getElementById('contentReportSNBT').classList.add('hidden');
+      document.getElementById('contentReportMandiri').classList.add('hidden');
+      document.getElementById('reportSection').classList.remove('hidden');
+      document.getElementById('reportSection').scrollIntoView({ behavior: 'smooth' });
+    }
 
     // ===============================================
     // EKSEKUTOR LAPORAN SNBT (MULTI-TRY OUT)
@@ -1344,33 +1411,6 @@
       document.body.appendChild(link); link.click(); document.body.removeChild(link);
     }
 
-    function updatePreviewModalIRT() {
-  const grandAvg = parseFloat(document.getElementById('labelGrandTotal')?.innerText) || 0;
-  
-  // Konversi Rapor ke Skala 200 - 800
-  const raporIRT = grandAvg > 0 ? Math.round(200 + ((grandAvg / 100) * 600)) : 0;
-  
-  const elRaporIRT = document.getElementById('labelRaporIRT');
-  if (elRaporIRT) elRaporIRT.innerText = raporIRT > 0 ? `(~${raporIRT} IRT)` : "(~0 IRT)";
-
-  const inTKA = document.getElementById('inNilaiTKA');
-  let tkaIRT = parseFloat(inTKA?.value);
-
-  let modalPreview = 0;
-  // Jika TKA sudah diisi dengan benar (antara 200 - 800)
-  if (!isNaN(tkaIRT) && tkaIRT >= 200) {
-    if (tkaIRT > 800) tkaIRT = 800;
-    modalPreview = Math.round((tkaIRT * 0.5) + (raporIRT * 0.5));
-  } else {
-    // Jika TKA belum diisi, tampilkan nilai rapor IRT murni sebagai modal awal
-    modalPreview = raporIRT;
-  }
-
-  const elModal = document.getElementById('labelModalAkademikPreview');
-  if (elModal) elModal.innerText = `${modalPreview} Poin IRT`;
-}
-
-    // Inisialisasi awal saat halaman dibuka
     renderTabel();
     loadDraft();
     refreshDataBindings();
