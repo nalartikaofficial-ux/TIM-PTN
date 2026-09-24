@@ -256,23 +256,23 @@
   </div>
 </div>
 
-<!-- Ringkasan Nilai Rapor & Modal IRT Real-time -->
+<!-- Cukup pasang 1 blok ini saja di bawah tabel rapor -->
 <div class="mt-5 p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-wrap items-center justify-between gap-4">
   <div class="space-y-1">
-    <p class="text-xs font-bold text-slate-700">Rata-Rata Rapor: <span id="labelGrandTotal" class="text-slate-900 font-extrabold">0.0</span> <span id="labelRaporIRT" class="text-[11px] text-indigo-700 font-bold">(~0 IRT)</span></p>
-    <p class="text-xs font-bold text-slate-700">Estimasi Modal 50:50: <span id="labelModalAkademikPreview" class="text-emerald-700 text-sm font-black">0 Poin IRT</span></p>
+    <p class="text-xs font-bold text-slate-700">
+      Rata-Rata Rapor: 
+      <span id="labelGrandTotal" class="text-slate-900 font-extrabold">0.0</span> 
+      <span id="labelRaporIRT" class="text-[11px] text-indigo-700 font-bold">(~0 IRT)</span>
+    </p>
+    <p class="text-xs font-bold text-slate-700">
+      Estimasi Modal 50:50: 
+      <span id="labelModalAkademikPreview" class="text-emerald-700 text-sm font-black">0 Poin IRT</span>
+    </p>
   </div>
-  <button onclick="jalankanAnalisisSNBP()" class="px-6 py-2.5 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold rounded-xl transition shadow">Jalankan Analisis SNBP & Buka Laporan</button>
+  <button type="button" onclick="jalankanAnalisisSNBP()" class="px-6 py-2.5 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold rounded-xl transition shadow">
+    Jalankan Analisis SNBP & Buka Laporan
+  </button>
 </div>
-
-            <div class="mt-5 p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-wrap items-center justify-between gap-4">
-              <p class="text-xs font-bold text-slate-800">Rata-Rata Rapor: <span id="labelGrandTotal" class="text-emerald-800 text-sm font-black ml-1">0.0</span></p>
-              <button onclick="jalankanAnalisisSNBP()" class="px-6 py-2.5 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold rounded-xl transition shadow">Jalankan Analisis SNBP & Buka Laporan</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- ========================================== -->
     <!-- 3. VIEW FORMULIR SNBT (MULTI-TRY OUT)      -->
@@ -1345,16 +1345,27 @@
     }
 
     function updatePreviewModalIRT() {
-  const grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText) || 0;
-  const raporIRT = Math.round(200 + ((grandAvg / 100) * 600));
+  const grandAvg = parseFloat(document.getElementById('labelGrandTotal')?.innerText) || 0;
+  
+  // Konversi Rapor ke Skala 200 - 800
+  const raporIRT = grandAvg > 0 ? Math.round(200 + ((grandAvg / 100) * 600)) : 0;
   
   const elRaporIRT = document.getElementById('labelRaporIRT');
-  if (elRaporIRT) elRaporIRT.innerText = `(~${raporIRT} IRT)`;
+  if (elRaporIRT) elRaporIRT.innerText = raporIRT > 0 ? `(~${raporIRT} IRT)` : "(~0 IRT)";
 
-  let tkaIRT = parseFloat(document.getElementById('inNilaiTKA').value);
-  if (isNaN(tkaIRT)) tkaIRT = 0;
+  const inTKA = document.getElementById('inNilaiTKA');
+  let tkaIRT = parseFloat(inTKA?.value);
 
-  const modalPreview = tkaIRT > 0 ? Math.round((tkaIRT * 0.5) + (raporIRT * 0.5)) : raporIRT;
+  let modalPreview = 0;
+  // Jika TKA sudah diisi dengan benar (antara 200 - 800)
+  if (!isNaN(tkaIRT) && tkaIRT >= 200) {
+    if (tkaIRT > 800) tkaIRT = 800;
+    modalPreview = Math.round((tkaIRT * 0.5) + (raporIRT * 0.5));
+  } else {
+    // Jika TKA belum diisi, tampilkan nilai rapor IRT murni sebagai modal awal
+    modalPreview = raporIRT;
+  }
+
   const elModal = document.getElementById('labelModalAkademikPreview');
   if (elModal) elModal.innerText = `${modalPreview} Poin IRT`;
 }
