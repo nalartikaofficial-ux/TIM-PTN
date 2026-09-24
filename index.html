@@ -947,155 +947,148 @@
     // EKSEKUTOR LAPORAN SNBP
     // ===============================================
     function jalankanAnalisisSNBP() {
-      activeJalur = "SNBP";
-      let grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText) || 0;
-      if (grandAvg === 0) { isiSimulasiRumpunAktif(); grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText); }
-      
-      const nama = document.getElementById('inNama').value.trim() || "Ahmad Zaki";
-      const kelas = document.getElementById('inKelas').value.trim() || "XII - 1";
-      const kelompok = document.getElementById('inKelompokJurusan').value || "SAINTEK";
-      const rankingSiswa = parseInt(document.getElementById('inRankingSiswa').value) || 5;
-      const konselor = document.getElementById('inKonselor').value.trim() || "Tim Sukses PTN M18";
-      const catatanBK = document.getElementById('inCatatanBK').value.trim() || "-";
+  activeJalur = "SNBP";
+  let grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText) || 0;
+  if (grandAvg === 0) { 
+    isiSimulasiRumpunAktif(); 
+    grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText); 
+  }
+  
+  const nama = document.getElementById('inNama').value.trim() || "Ahmad Zaki";
+  const kelas = document.getElementById('inKelas').value.trim() || "XII - 1";
+  const kelompok = document.getElementById('inKelompokJurusan').value || "SAINTEK";
+  const rankingSiswa = parseInt(document.getElementById('inRankingSiswa').value) || 5;
+  const konselor = document.getElementById('inKonselor').value.trim() || "Tim Sukses PTN M18";
+  const catatanBK = document.getElementById('inCatatanBK').value.trim() || "-";
 
-      const p1Nama = document.getElementById('inProdi1Nama').value.trim();
-      const p2Nama = document.getElementById('inProdi2Nama').value.trim();
+  const p1Nama = document.getElementById('inProdi1Nama').value.trim();
+  const p2Nama = document.getElementById('inProdi2Nama').value.trim();
 
-      if (!p1Nama) { alert("Mohon isi minimal Pilihan 1 Prodi terlebih dahulu!"); return; }
+  if (!p1Nama) { alert("Mohon isi minimal Pilihan 1 Prodi terlebih dahulu!"); return; }
 
-      const m1 = detectMapelPendukung(p1Nama);
-      const prodi1 = {
-        prodi: p1Nama, ptn: document.getElementById('inProdi1Kampus').value.trim() || "PKN STAN",
-        mapel1: m1.mapel1, mapel2: m1.mapel2,
-        dayaTampung: parseFloat(document.getElementById('inProdi1DayaTampung').value) || 300,
-        peminat: parseFloat(document.getElementById('inProdi1Peminat').value) || 5200
-      };
+  // 1. Ambil Skor TKA (IRT 200-800) & Normalisasi ke Skala 0-100
+  let rawTKA = parseFloat(document.getElementById('inNilaiTKA').value);
+  if (isNaN(rawTKA) || rawTKA < 200) rawTKA = 500; // Default median IRT
+  if (rawTKA > 800) rawTKA = 800;
 
-      let prodi2 = null;
-      if (p2Nama) {
-        const m2 = detectMapelPendukung(p2Nama);
-        prodi2 = {
-          prodi: p2Nama, ptn: document.getElementById('inProdi2Kampus').value.trim() || "STIS",
-          mapel1: m2.mapel1, mapel2: m2.mapel2,
-          dayaTampung: parseFloat(document.getElementById('inProdi2DayaTampung').value) || 400,
-          peminat: parseFloat(document.getElementById('inProdi2Peminat').value) || 7800
-        };
-      }
+  const tkaNormalized = ((rawTKA - 200) / 600) * 100;
+  const modalAkademik = (grandAvg * 0.50) + (tkaNormalized * 0.50);
 
-      const activeList = getActiveMapelList();
-      const calculated = activeList.map(m => {
-        const avgNode = document.getElementById(`${m.id}_avg`);
-        return { id: m.id, name: m.name, avg: avgNode ? (parseFloat(avgNode.innerText) || 0) : 0 };
-      }).sort((a, b) => b.avg - a.avg);
+  const m1 = detectMapelPendukung(p1Nama);
+  const prodi1 = {
+    prodi: p1Nama, 
+    ptn: document.getElementById('inProdi1Kampus').value.trim() || "PTN Pilihan",
+    mapel1: m1.mapel1, mapel2: m1.mapel2,
+    dayaTampung: parseFloat(document.getElementById('inProdi1DayaTampung').value) || 100,
+    peminat: parseFloat(document.getElementById('inProdi1Peminat').value) || 2000
+  };
 
-      const top1 = calculated[0], top2 = calculated[1];
-      const req1Obj = calculated.find(m => m.name === prodi1.mapel1) || { name: prodi1.mapel1, avg: 0 };
-      const req2Obj = calculated.find(m => m.name === prodi1.mapel2) || { name: prodi1.mapel2, avg: 0 };
+  let prodi2 = null;
+  if (p2Nama) {
+    const m2 = detectMapelPendukung(p2Nama);
+    prodi2 = {
+      prodi: p2Nama, 
+      ptn: document.getElementById('inProdi2Kampus').value.trim() || "PTN Pilihan",
+      mapel1: m2.mapel1, mapel2: m2.mapel2,
+      dayaTampung: parseFloat(document.getElementById('inProdi2DayaTampung').value) || 100,
+      peminat: parseFloat(document.getElementById('inProdi2Peminat').value) || 2000
+    };
+  }
 
-      const slopeData = hitungSlopeSemester();
-      let slopeBonus = slopeData.slope > 0.3 ? 5 : (slopeData.slope >= -0.3 ? 0 : -5);
-      
-      const badgeSlope = document.getElementById('outBadgeTrenSlope');
-      badgeSlope.innerText = `Ranking #${rankingSiswa} • ${rankingSiswa <= 40 ? '✅ ELIGIBLE KUOTA UTAMA' : '⚠️ DI LUAR KUOTA UTAMA'}`;
-      badgeSlope.className = rankingSiswa <= 40 ? "px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300" : "px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-100 text-amber-900 border border-amber-300";
+  const activeList = getActiveMapelList();
+  const calculated = activeList.map(m => {
+    const avgNode = document.getElementById(`${m.id}_avg`);
+    return { id: m.id, name: m.name, avg: avgNode ? (parseFloat(avgNode.innerText) || 0) : 0 };
+  }).sort((a, b) => b.avg - a.avg);
 
-      document.getElementById('outBadgeJurusanGroup').innerText = `Kelompok Rapor: ${kelompok}`;
+  const top1 = calculated[0], top2 = calculated[1];
+  const slopeData = hitungSlopeSemester();
+  let slopeBonus = slopeData.slope > 0.3 ? 5 : (slopeData.slope >= -0.3 ? 0 : -5);
 
-      document.getElementById('outGrid5Semester').innerHTML = slopeData.semesters.map((val, idx) => `
-        <div class="p-2 rounded-lg bg-white border border-slate-200"><span class="text-[9px] text-slate-400 font-bold block">Smt ${idx + 1}</span><span class="font-extrabold text-slate-800">${val.toFixed(1)}</span></div>
-      `).join('');
+  // 2. Fungsi Hitung Peluang Kelulusan
+  function calcScore(target) {
+    const keketatanRatio = target.dayaTampung / target.peminat;
 
-      document.getElementById('outReportBadgeJalur').innerText = `Rapor Analisis SNBP (${kelompok})`;
-      document.getElementById('outNamaReport').innerText = `${nama} (${kelas})`;
-      document.getElementById('outRankingReport').innerText = `Peringkat #${rankingSiswa}`;
-      document.getElementById('outKonselorReport').innerText = konselor;
-      document.getElementById('outCatatanBKReport').innerText = `"${catatanBK}"`;
+    // Evaluasi Keselarasan Mapel Pendukung (Kepmen 345/M/2022)
+    let match = 0;
+    if (target.mapel1 === top1.name || target.mapel1 === top2.name) match += 10;
+    if (target.mapel2 === top1.name || target.mapel2 === top2.name) match += 8;
+    let mapelPenalty = (match === 0) ? -15 : 0;
+    
+    // Track record alumni sekolah & kuota ranking
+    const track = checkAlumniTrack(target.ptn, target.prodi);
+    let bonusAlumni = track.hasAlumni ? 4 : 0;
+    let rankBonus = rankingSiswa <= 15 ? 6 : (rankingSiswa <= 40 ? 2 : -15);
 
-      function calcScore(target) {
-        const ketetatanRatio = target.dayaTampung / target.peminat;
-        const nilaiTkaInput = parseFloat(document.getElementById('inNilaiTKA').value) || 0;
-        let modalAkademik = (grandAvg * 0.50) + (nilaiTkaInput * 0.50);
+    let rawScore = (modalAkademik * 0.60) + (keketatanRatio * 150) + match + mapelPenalty + bonusAlumni + rankBonus + slopeBonus;
+    return Math.max(10, Math.min(Math.round(rawScore), 92));
+  }
 
-        let match = 0;
-        if (target.mapel1 === top1.name || target.mapel1 === top2.name) match += 10;
-        if (target.mapel2 === top1.name || target.mapel2 === top2.name) match += 8;
-        let mapelPenalty = (match === 0) ? -15 : 0;
-        
-        const track = checkAlumniTrack(target.ptn, target.prodi);
-        let bonusAlumni = track.hasAlumni ? 4 : 0;
-        let rankBonus = rankingSiswa <= 15 ? 6 : (rankingSiswa <= 40 ? 2 : -15);
+  const score1 = calcScore(prodi1);
+  const score2 = prodi2 ? calcScore(prodi2) : 0;
 
-        let rawScore = (modalAkademik * 0.60) + (ketetatanRatio * 150) + match + mapelPenalty + bonusAlumni + rankBonus + slopeBonus;
-        return Math.max(8, Math.min(Math.round(rawScore), 85));
-      }
+  // Render Label & Detail Skor
+  document.getElementById('outValSkorUtama').innerText = `${modalAkademik.toFixed(1)} / 100`;
+  document.getElementById('outFormulaDetail').innerHTML = `
+    • <b>Komposisi Modal Akademik 50:50:</b> Rapor (${grandAvg.toFixed(1)}) + TKA IRT (${rawTKA} &rarr; Setara ${tkaNormalized.toFixed(1)}/100)<br>
+    • <b>Mapel Pendukung Wajib (Kepmen 345/M/2022):</b> ${prodi1.mapel1} & ${prodi1.mapel2}<br>
+    • Peringkat Kuota Eligible (#${rankingSiswa}) & Rasio Keketatan Terhitung.
+  `;
 
-      const score1 = calcScore(prodi1);
-      const score2 = prodi2 ? calcScore(prodi2) : 0;
+  // Render Output ke View Laporan Cetak
+  document.getElementById('outNamaReport').innerText = `${nama} (${kelas})`;
+  document.getElementById('outRankingReport').innerText = `Peringkat #${rankingSiswa}`;
+  document.getElementById('outKonselorReport').innerText = konselor;
+  document.getElementById('outCatatanBKReport').innerText = `"${catatanBK}"`;
 
-      const valTkaDisp = parseFloat(document.getElementById('inNilaiTKA').value) || 0;
-      const finalModal5050 = (grandAvg * 0.5) + (valTkaDisp * 0.5);
-      document.getElementById('outValSkorUtama').innerText = `${finalModal5050.toFixed(1)} (50% TKA : 50% Rapor)`;
+  let gridProdiHTML = `
+    <div class="p-3.5 rounded-xl border border-slate-200 bg-white print-card space-y-2">
+      <div class="flex justify-between items-center border-b border-slate-100 pb-1.5"><span class="text-xs font-bold text-emerald-800 uppercase">Pilihan 1 (Prioritas Utama)</span></div>
+      <p class="font-bold text-slate-900 text-xs">${prodi1.prodi} - ${prodi1.ptn}</p>
+      <p class="text-[9.5px] text-blue-950 font-bold bg-blue-50 px-2 py-1 rounded border border-blue-200">📌 Mapel Pendukung: ${prodi1.mapel1} & ${prodi1.mapel2}</p>
+      <p class="text-[9.5px] text-slate-500">Daya Tampung: ${prodi1.dayaTampung} | Peminat: ${prodi1.peminat}</p>
+      <div class="flex items-baseline gap-1 mt-1"><span class="text-2xl font-black text-emerald-600">${score1}%</span><span class="text-[10px] text-slate-500 font-medium">Peluang Lolos</span></div>
+    </div>
+  `;
 
-      document.getElementById('outTopMapelSNBP').innerHTML = `
-        <div class="p-2.5 rounded-lg bg-blue-50 border border-blue-200 flex justify-between items-center"><div><span class="text-[9px] text-slate-500 font-bold block">1. Nilai Puncak</span><span class="font-bold text-slate-800">${top1.name}</span></div><span class="font-black text-blue-900 text-sm">${top1.avg.toFixed(1)}</span></div>
-        <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex justify-between items-center"><div><span class="text-[9px] text-slate-500 font-bold block">2. Nilai Puncak</span><span class="font-bold text-slate-700 text-sm">${top2.avg.toFixed(1)}</span></div><span class="font-black text-slate-700 text-sm">${top2.avg.toFixed(1)}</span></div>
-        <div class="p-2.5 rounded-lg bg-indigo-50 border border-indigo-200 flex justify-between items-center"><div><span class="text-[9px] text-indigo-600 font-bold block">Mapel Pendukung 1</span><span class="font-bold text-indigo-950">${req1Obj.name}</span></div><span class="font-black text-indigo-900 text-sm">${req1Obj.avg.toFixed(1)}</span></div>
-        <div class="p-2.5 rounded-lg bg-indigo-50 border border-indigo-200 flex justify-between items-center"><div><span class="text-[9px] text-indigo-600 font-bold block">Mapel Pendukung 2</span><span class="font-bold text-indigo-950">${req2Obj.name}</span></div><span class="font-black text-indigo-900 text-sm">${req2Obj.avg.toFixed(1)}</span></div>
-      `;
+  if (prodi2) {
+    gridProdiHTML += `
+      <div class="p-3.5 rounded-xl border border-slate-200 bg-white print-card space-y-2">
+        <div class="flex justify-between items-center border-b border-slate-100 pb-1.5"><span class="text-xs font-bold text-blue-900 uppercase">Pilihan 2 (Cadangan)</span></div>
+        <p class="font-bold text-slate-900 text-xs">${prodi2.prodi} - ${prodi2.ptn}</p>
+        <p class="text-[9.5px] text-blue-950 font-bold bg-blue-50 px-2 py-1 rounded border border-blue-200">📌 Mapel Pendukung: ${prodi2.mapel1} & ${prodi2.mapel2}</p>
+        <p class="text-[9.5px] text-slate-500">Daya Tampung: ${prodi2.dayaTampung} | Peminat: ${prodi2.peminat}</p>
+        <div class="flex items-baseline gap-1 mt-1"><span class="text-2xl font-black text-blue-900">${score2}%</span><span class="text-[10px] text-slate-500 font-medium">Peluang Lolos</span></div>
+      </div>
+    `;
+  }
+  document.getElementById('outGridProdiSNBP').innerHTML = gridProdiHTML;
 
-      let gridProdiHTML = `
-        <div class="p-3.5 rounded-xl border border-slate-200 bg-white print-card space-y-2">
-          <div class="flex justify-between items-center border-b border-slate-100 pb-1.5"><span class="text-xs font-bold text-emerald-800 uppercase">Pilihan 1 (Prioritas Utama)</span></div>
-          <p class="font-bold text-slate-900 text-xs">${prodi1.prodi} - ${prodi1.ptn}</p>
-          <p class="text-[9.5px] text-blue-950 font-bold bg-blue-50 px-2 py-1 rounded border border-blue-200">📌 Mapel Acuan: ${prodi1.mapel1} & ${prodi1.mapel2}</p>
-          <p class="text-[9.5px] text-slate-500">Daya Tampung: ${prodi1.dayaTampung} | Peminat: ${prodi1.peminat}</p>
-          <div class="flex items-baseline gap-1 mt-1"><span class="text-2xl font-black text-emerald-600">${score1}%</span><span class="text-[10px] text-slate-500 font-medium">Peluang Lolos</span></div>
-        </div>
-      `;
+  // Payload Log Sinkronisasi Google Sheets
+  const tglAsli = new Date().toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' });
+  document.getElementById('outTanggalCetak').innerText = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
 
-      if (prodi2) {
-        gridProdiHTML += `
-          <div class="p-3.5 rounded-xl border border-slate-200 bg-white print-card space-y-2">
-            <div class="flex justify-between items-center border-b border-slate-100 pb-1.5"><span class="text-xs font-bold text-blue-900 uppercase">Pilihan 2 (Cadangan)</span></div>
-            <p class="font-bold text-slate-900 text-xs">${prodi2.prodi} - ${prodi2.ptn}</p>
-            <p class="text-[9.5px] text-blue-950 font-bold bg-blue-50 px-2 py-1 rounded border border-blue-200">📌 Mapel Acuan: ${prodi2.mapel1} & ${prodi2.mapel2}</p>
-            <p class="text-[9.5px] text-slate-500">Daya Tampung: ${prodi2.dayaTampung} | Peminat: ${prodi2.peminat}</p>
-            <div class="flex items-baseline gap-1 mt-1"><span class="text-2xl font-black text-blue-900">${score2}%</span><span class="text-[10px] text-slate-500 font-medium">Peluang Lolos</span></div>
-          </div>
-        `;
-      }
-      document.getElementById('outGridProdiSNBP').innerHTML = gridProdiHTML;
-      document.getElementById('outFormulaDetail').innerHTML = `• Modal Akademik (50% TKA & 50% Rapor): <b>TKA (${valTkaDisp}) & Rapor (${grandAvg.toFixed(1)})</b><br>• Peringkat Internal Sekolah (#${rankingSiswa}) & Keketatan Instansi Terkalkulasi Presisi.`;
+  currentFixPayload = {
+    tanggal: tglAsli,
+    nama: nama,
+    kelas: `${kelas} (${kelompok})`,
+    ranking: rankingSiswa,
+    jalur: `SNBP ${kelompok}`,
+    pilihan1: `${prodi1.prodi} (${prodi1.ptn})`,
+    pilihan2: prodi2 ? `${prodi2.prodi} (${prodi2.ptn})` : "Pilihan Tunggal",
+    rataRapor: grandAvg.toFixed(1),
+    targetTKA: `${rawTKA} (IRT)`,
+    peluang1: `${score1}%`,
+    peluang2: prodi2 ? `${score2}%` : "-",
+    catatanBK: catatanBK
+  };
 
-      const referensiNasional = generateReferensiSpesifikMapel(prodi1);
-      document.getElementById('outRekomLinearSNBP').innerHTML = referensiNasional.map(r => `
-        <div class="p-2.5 bg-white rounded-lg border border-slate-200 text-[10px] space-y-0.5 shadow-sm"><p class="font-bold text-slate-900">🎓 ${r.prodi}</p><p class="text-slate-600">${r.fakultas}</p><p class="text-indigo-900 font-semibold">${r.univ}</p></div>
-      `).join('');
-
-      const tglAsliPerangkat = new Date().toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' });
-      document.getElementById('outTanggalCetak').innerText = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
-
-      currentFixPayload = {
-        tanggal: tglAsliPerangkat,
-        nama: nama, 
-        kelas: `${kelas} (${kelompok})`, 
-        ranking: rankingSiswa, 
-        jalur: `SNBP ${kelompok}`,
-        pilihan1: `${prodi1.prodi} (${prodi1.ptn})`, 
-        pilihan2: prodi2 ? `${prodi2.prodi} (${prodi2.ptn})` : "Pilihan Tunggal",
-        rataRapor: grandAvg.toFixed(1), 
-        targetTKA: valTkaDisp,
-        peluang1: `${score1}%`, 
-        peluang2: prodi2 ? `${score2}%` : "-", 
-        catatanBK: catatanBK
-      };
-
-      document.getElementById('contentReportSNBP').classList.remove('hidden');
-      document.getElementById('contentReportSNBT').classList.add('hidden');
-      document.getElementById('contentReportMandiri').classList.add('hidden');
-      document.getElementById('reportSection').classList.remove('hidden');
-      document.getElementById('reportSection').scrollIntoView({ behavior: 'smooth' });
-    }
+  document.getElementById('contentReportSNBP').classList.remove('hidden');
+  document.getElementById('contentReportSNBT').classList.add('hidden');
+  document.getElementById('contentReportMandiri').classList.add('hidden');
+  document.getElementById('reportSection').classList.remove('hidden');
+  document.getElementById('reportSection').scrollIntoView({ behavior: 'smooth' });
+}
 
     // ===============================================
     // EKSEKUTOR LAPORAN SNBT (MULTI-TRY OUT)
