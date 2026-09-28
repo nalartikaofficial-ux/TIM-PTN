@@ -243,7 +243,7 @@
                 <span class="px-2 py-0.5 bg-amber-400 text-amber-950 text-[10px] font-black rounded uppercase">Bobot 50%</span>
               </div>
               <p class="text-[11px] text-indigo-800 leading-relaxed">
-                Rapor semester 1–5 dikonversi otomatis ke standar IRT dan presisi saat dihitung 50:50 dengan TKA.
+                Rapor semester 1–5 distandarisasi otomatis dengan Z-Score ke skala normal dan presisi saat dihitung 50:50 dengan TKA.
               </p>
               <div class="flex items-center gap-3">
                 <input id="inNilaiTKA" oninput="updatePreviewModalIRT(); saveDraft();" type="number" min="200" max="800" placeholder="200 - 800" class="w-32 text-center bg-white border-2 border-indigo-300 rounded-xl py-2 text-sm font-black text-indigo-950 focus:border-emerald-700 focus:outline-none shadow-sm" />
@@ -261,11 +261,11 @@
                 <p class="text-xs font-bold text-slate-700">
                   Rata-Rata Rapor: 
                   <span id="labelGrandTotal" class="text-slate-900 font-extrabold">0.0</span> 
-                  <span id="labelRaporIRT" class="text-[11px] text-indigo-700 font-bold">(~0 IRT)</span>
+                  <span id="labelRaporIRT" class="text-[11px] text-indigo-700 font-bold">(~0 Standar)</span>
                 </p>
                 <p class="text-xs font-bold text-slate-700">
                   Estimasi Akhir: 
-                  <span id="labelModalAkademikPreview" class="text-emerald-700 text-sm font-black">0 Poin IRT</span>
+                  <span id="labelModalAkademikPreview" class="text-emerald-700 text-sm font-black">0 Poin</span>
                 </p>
               </div>
               <button type="button" onclick="jalankanAnalisisSNBP()" class="px-6 py-2.5 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold rounded-xl transition shadow">
@@ -432,7 +432,7 @@
           <div><span class="text-[10px] text-slate-400 block font-semibold">NAMA SISWA / KELAS</span><p id="outNamaReport" class="font-bold text-slate-900">-</p></div>
           <div><span class="text-[10px] text-slate-400 block font-semibold">RANKING INTERNAL</span><p id="outRankingReport" class="font-bold text-emerald-800">-</p></div>
           <div><span class="text-[10px] text-slate-400 block font-semibold">GURU PEMBIMBING</span><p id="outKonselorReport" class="font-bold text-slate-900">-</p></div>
-          <div><span id="outLabelSkorUtama" class="text-[10px] text-slate-400 block font-semibold">MODAL AKADEMIK (IRT)</span><p id="outValSkorUtama" class="font-black text-indigo-900 text-sm">-</p></div>
+          <div><span id="outLabelSkorUtama" class="text-[10px] text-slate-400 block font-semibold">MODAL AKADEMIK</span><p id="outValSkorUtama" class="font-black text-indigo-900 text-sm">-</p></div>
         </div>
 
         <!-- KONTEN SNBP -->
@@ -521,7 +521,7 @@
   <!-- SKRIP LOGIKA UTAMA & CLOUD SYNC            -->
   <!-- ========================================== -->
   <script>
-    const GOOGLE_SHEET_WEBAPP_URL ="https://script.google.com/macros/s/AKfycbwtO86WOv6wx3QiFyWk3gGQ7B8JZiMCsljaQzNe1SHkugaH0evcBaV-sNONkAfcudEVRg/exec";
+    const GOOGLE_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwtO86WOv6wx3QiFyWk3gGQ7B8JZiMCsljaQzNe1SHkugaH0evcBaV-sNONkAfcudEVRg/exec";
 
     let databaseSiswa = [
       { nisn: "0061234561", nama: "Ahmad Zaki", kelas: "XII - 1", rumpun: "SAINTEK", ranking: 4 },
@@ -563,6 +563,7 @@
       { id: "sosiologi", name: "Sosiologi" },
       { id: "geografi", name: "Geografi" },
       { id: "sejarah", name: "Sejarah" },
+      { id: "sejarah_lanjut", name: "Sejarah Tingkat Lanjut" },
       { id: "ppkn", name: "Pendidikan Pancasila / PKn" },
       { id: "bindo", name: "Bahasa Indonesia" },
       { id: "bing", name: "Bahasa Inggris" }
@@ -570,6 +571,19 @@
 
     let activeJalur = "SNBP";
     let currentFixPayload = null;
+
+    // ===============================================
+    // PARAMETER & FUNGSI Z-SCORE NORMALISASI RAPOR
+    // ===============================================
+    const MEAN_RAPOR_ANGKATAN = 82.0; // Rerata rapor paralel kelas XII
+    const STDEV_RAPOR_ANGKATAN = 3.5;  // Standar deviasi nilai rapor paralel
+
+    function hitungZScoreIRT(nilaiRapor) {
+      if (!nilaiRapor || nilaiRapor <= 0) return 0;
+      const zScore = (nilaiRapor - MEAN_RAPOR_ANGKATAN) / STDEV_RAPOR_ANGKATAN;
+      let skorStandar = Math.round(500 + (zScore * 100));
+      return Math.max(200, Math.min(800, skorStandar));
+    }
 
     async function loadCloudDatabase() {
       const badge = document.getElementById('syncStatusBadge');
@@ -685,9 +699,6 @@
     function getActiveMapelList() {
       const kelompok = document.getElementById('inKelompokJurusan') ? document.getElementById('inKelompokJurusan').value : "SAINTEK";
       if (kelompok === "SOSHUM") return mapelSoshum;
-      if (kelompok === "PENDIDIKAN") return mapelPendidikan;
-      if (kelompok === "KEDINASAN") return mapelKedinasan;
-      if (kelompok === "SENI") return mapelSeni;
       return mapelSaintek;
     }
 
@@ -741,10 +752,11 @@
 
     function updatePreviewModalIRT() {
       const grandAvg = parseFloat(document.getElementById('labelGrandTotal')?.innerText) || 0;
-      const raporIRT = grandAvg > 0 ? Math.round(200 + ((grandAvg / 100) * 600)) : 0;
+      // Perhitungan menggunakan Z-Score Standar
+      const raporIRT = hitungZScoreIRT(grandAvg);
       
       const elRaporIRT = document.getElementById('labelRaporIRT');
-      if (elRaporIRT) elRaporIRT.innerText = raporIRT > 0 ? `(~${raporIRT} IRT)` : "(~0 IRT)";
+      if (elRaporIRT) elRaporIRT.innerText = raporIRT > 0 ? `(~${raporIRT} Standar)` : "(~0 Standar)";
 
       const inTKA = document.getElementById('inNilaiTKA');
       let tkaIRT = parseFloat(inTKA?.value);
@@ -758,7 +770,7 @@
       }
 
       const elModal = document.getElementById('labelModalAkademikPreview');
-      if (elModal) elModal.innerText = `${modalPreview} Poin IRT`;
+      if (elModal) elModal.innerText = `${modalPreview} Poin`;
     }
 
     function hitungGrandTotal() {
@@ -833,15 +845,6 @@
       } else if(kelompok === "SOSHUM") {
         if(document.getElementById('inNama')) document.getElementById('inNama').value = "Siti Aisyah";
         applyPresetProdi(1, "STAN_AKD");
-      } else if(kelompok === "PENDIDIKAN") {
-        if(document.getElementById('inNama')) document.getElementById('inNama').value = "Rian Pratama";
-        applyPresetProdi(1, "UPI_PEND");
-      } else if(kelompok === "KEDINASAN") {
-        if(document.getElementById('inNama')) document.getElementById('inNama').value = "Fauzan Al-Ghifari";
-        applyPresetProdi(1, "IPDN_JAT");
-      } else {
-        if(document.getElementById('inNama')) document.getElementById('inNama').value = "Kirana Larasati";
-        applyPresetProdi(1, "ISI_YOGYA");
       }
 
       if(document.getElementById('inKelas')) document.getElementById('inKelas').value = "XII - 1";
@@ -944,7 +947,7 @@
     }
 
     // ===============================================
-    // EKSEKUTOR LAPORAN SNBP (SKALA IRT MURNI)
+    // EKSEKUTOR LAPORAN SNBP (DENGAN SKOR STANDAR Z-SCORE)
     // ===============================================
     function jalankanAnalisisSNBP() {
       activeJalur = "SNBP";
@@ -971,10 +974,10 @@
       if (isNaN(tkaIRT) || tkaIRT < 200) tkaIRT = 550;
       if (tkaIRT > 800) tkaIRT = 800;
 
-      // 2. Konversi Rata Rapor ke Skala IRT (200–800)
-      const raporIRT = Math.round(200 + ((grandAvg / 100) * 600));
+      // 2. Konversi Rata Rapor ke Skala Standar Menggunakan Z-Score (Mean 500, SD 100)
+      const raporIRT = hitungZScoreIRT(grandAvg);
 
-      // 3. Modal Akademik 50% TKA IRT : 50% Rapor IRT
+      // 3. Modal Akademik 50% TKA : 50% Rapor Standar
       const modalAkademikIRT = Math.round((tkaIRT * 0.50) + (raporIRT * 0.50));
 
       const m1 = detectMapelPendukung(p1Nama);
@@ -1049,10 +1052,10 @@
       const resP1 = calcScoreIRT(prodi1);
       const resP2 = prodi2 ? calcScoreIRT(prodi2) : null;
 
-      document.getElementById('outValSkorUtama').innerText = `${modalAkademikIRT} Poin IRT`;
+      document.getElementById('outValSkorUtama').innerText = `${modalAkademikIRT} Poin`;
       document.getElementById('outFormulaDetail').innerHTML = `
-        • <b>Komposisi Modal IRT Murni (50:50):</b> TKA (${tkaIRT} IRT) + Rapor (${grandAvg.toFixed(1)} &rarr; ${raporIRT} IRT) = <b>${modalAkademikIRT} IRT</b><br>
-        • <b>Benchmark Target Pilihan 1:</b> Passing Grade Standar ~${resP1.targetPassing} Poin IRT<br>
+        • <b>Komposisi Modal Akademik Terstandarisasi (50:50):</b> TKA (${tkaIRT}) + Rapor (${grandAvg.toFixed(1)} &rarr; Z-Score Skor: ${raporIRT}) = <b>${modalAkademikIRT} Poin</b><br>
+        • <b>Benchmark Target Pilihan 1:</b> Passing Grade Standar ~${resP1.targetPassing} Poin<br>
         • <b>Mapel Pendukung Wajib (Kepmen 345/M/2022):</b> ${prodi1.mapel1} & ${prodi1.mapel2}
       `;
 
@@ -1063,7 +1066,7 @@
 
       document.getElementById('outBadgeJurusanGroup').innerText = `Kelompok Rapor: ${kelompok}`;
       const badgeSlope = document.getElementById('outBadgeTrenSlope');
-      badgeSlope.innerText = `Modal IRT: ${modalAkademikIRT} • ${rankingSiswa <= 40 ? '✅ ELIGIBLE KUOTA UTAMA' : '⚠️ DI LUAR KUOTA UTAMA'}`;
+      badgeSlope.innerText = `Modal Akademik: ${modalAkademikIRT} • ${rankingSiswa <= 40 ? '✅ ELIGIBLE KUOTA UTAMA' : '⚠️ DI LUAR KUOTA UTAMA'}`;
       badgeSlope.className = rankingSiswa <= 40 ? "px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300" : "px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-100 text-amber-900 border border-amber-300";
 
       document.getElementById('outGrid5Semester').innerHTML = slopeData.semesters.map((val, idx) => `
@@ -1122,8 +1125,8 @@
         jalur: `SNBP ${kelompok}`,
         pilihan1: `${prodi1.prodi} (${prodi1.ptn})`,
         pilihan2: prodi2 ? `${prodi2.prodi} (${prodi2.ptn})` : "Pilihan Tunggal",
-        rataRapor: `${grandAvg.toFixed(1)} (${raporIRT} IRT)`,
-        targetTKA: `${tkaIRT} (IRT)`,
+        rataRapor: `${grandAvg.toFixed(1)} (${raporIRT} Standar)`,
+        targetTKA: `${tkaIRT}`,
         peluang1: `${resP1.persen}%`,
         peluang2: resP2 ? `${resP2.persen}%` : "-",
         catatanBK: catatanBK
