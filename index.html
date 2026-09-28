@@ -74,7 +74,7 @@
             <span>Official Portal Sukses PTN, Keguruan & Kedinasan</span> • <span>Kelas XII</span>
           </div>
           <h2 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">TIM PTN SMA MUHAMMADIYAH 18 JAKARTA</h2>
-          <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">Sistem pendampingan Tim PTN SMA Muhammadiyah 18 Jakarta untuk pemetaan peluang jalur SNBP, SNBT, dan Seleksi Mandiri.</p>
+          <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">Sistem pendampingan untuk pemetaan peluang jalur SNBP, SNBT, dan Seleksi Mandiri.</p>
         </div>
       </div>
 
@@ -153,8 +153,8 @@
             <div>
               <label class="block text-xs font-semibold text-slate-600 mb-1">Kelompok Jurusan</label>
               <select id="inKelompokJurusan" onchange="gantiKelompokJurusan()" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-800">
-                <option value="SAINTEK">Saintek (Eksakta: Mtk Lanjut, Fisika, Kimia, Biologi)</option>
-                <option value="SOSHUM">Soshum (Humaniora: Ekonomi, Sosiologi, Geografi, Sejarah)</option>
+                <option value="SAINTEK">SAINTEK</option>
+                <option value="SOSHUM">SOSHUM</option>
                 <option value="PENDIDIKAN">Pendidikan / FKIP (Keguruan & Ilmu Kependidikan)</option>
                 <option value="KEDINASAN">Sekolah Kedinasan (STAN, STIS, IPDN, STMKG)</option>
                 <option value="SENI">Institut Seni & Desain (DKV, Kriya, Seni Rupa)</option>
@@ -551,50 +551,24 @@
     ];
 
     const mapelSaintek = [
+      { id: "mtk_umum", name: "Matematika Umum" },
       { id: "mtk_lanjut", name: "Matematika Tingkat Lanjut" },
       { id: "fisika", name: "Fisika" },
       { id: "kimia", name: "Kimia" },
       { id: "biologi", name: "Biologi" },
-      { id: "mtk_umum", name: "Matematika Umum" },
       { id: "bindo", name: "Bahasa Indonesia" },
       { id: "bing", name: "Bahasa Inggris" }
     ];
 
     const mapelSoshum = [
+      { id: "mtk_umum", name: "Matematika Umum" },
       { id: "ekonomi", name: "Ekonomi" },
       { id: "sosiologi", name: "Sosiologi" },
       { id: "geografi", name: "Geografi" },
       { id: "sejarah", name: "Sejarah" },
       { id: "ppkn", name: "Pendidikan Pancasila / PKn" },
-      { id: "mtk_umum", name: "Matematika Umum" },
       { id: "bindo", name: "Bahasa Indonesia" },
       { id: "bing", name: "Bahasa Inggris" }
-    ];
-
-    const mapelPendidikan = [
-      { id: "pend_pancasila", name: "Pendidikan Pancasila / PKn" },
-      { id: "pbd", name: "Pengantar Ilmu Pendidikan / Psikologi" },
-      { id: "bindo", name: "Bahasa Indonesia" },
-      { id: "bing", name: "Bahasa Inggris" },
-      { id: "mtk_umum", name: "Matematika Umum" },
-      { id: "sejarah", name: "Sejarah" }
-    ];
-
-    const mapelKedinasan = [
-      { id: "mtk_umum", name: "Matematika Umum" },
-      { id: "mtk_lanjut", name: "Matematika Tingkat Lanjut" },
-      { id: "bing", name: "Bahasa Inggris" },
-      { id: "bindo", name: "Bahasa Indonesia" },
-      { id: "ekonomi", name: "Ekonomi / Akuntansi" },
-      { id: "ppkn", name: "Pendidikan Pancasila / PKn" }
-    ];
-
-    const mapelSeni = [
-      { id: "seni_budaya", name: "Seni Budaya & Rupa" },
-      { id: "bindo", name: "Bahasa Indonesia" },
-      { id: "bing", name: "Bahasa Inggris" },
-      { id: "sejarah", name: "Sejarah Peradaban Seni" },
-      { id: "prakarya", name: "Prakarya & Kewirausahaan" }
     ];
 
     let activeJalur = "SNBP";
