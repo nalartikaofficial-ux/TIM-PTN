@@ -521,24 +521,15 @@
   <!-- SKRIP LOGIKA UTAMA & CLOUD SYNC            -->
   <!-- ========================================== -->
   <script>
-    const GOOGLE_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwtO86WOv6wx3QiFyWk3gGQ7B8JZiMCsljaQzNe1SHkugaH0evcBaV-sNONkAfcudEVRg/exec";
+    const GOOGLE_SHEET_WEBAPP_URL ="https://script.google.com/macros/s/AKfycbwtO86WOv6wx3QiFyWk3gGQ7B8JZiMCsljaQzNe1SHkugaH0evcBaV-sNONkAfcudEVRg/exec";
 
     let databaseSiswa = [
-      { nisn: "0061234561", nama: "Ahmad Zaki", kelas: "XII - 1", rumpun: "SAINTEK", ranking: 4 },
-      { nisn: "0061234562", nama: "Siti Aisyah", kelas: "XII - 2", rumpun: "SOSHUM", ranking: 2 },
-      { nisn: "0061234563", nama: "Rian Pratama", kelas: "XII - 1", rumpun: "PENDIDIKAN", ranking: 7 },
-      { nisn: "0061234564", nama: "Fauzan Al-Ghifari", kelas: "XII - 3", rumpun: "KEDINASAN", ranking: 3 },
-      { nisn: "0061234565", nama: "Kirana Larasati", kelas: "XII - 2", rumpun: "SENI", ranking: 8 }
+      { nisn: "0061234561", nama: "Fadhillah Umar", kelas: "XII - 1", rumpun: "SAINTEK", ranking: 1 },
+      
     ];
 
-    let databasePTN = [
-      { id: "UI_MED", kampus: "Universitas Indonesia", prodi: "Pendidikan Dokter", rumpun: "Saintek", mapel1: "Biologi", mapel2: "Kimia", dayaTampung: 75, peminat: 3820, passingGrade: 735, mandiri: "SIMAK UI" },
-      { id: "STAN_AKD", kampus: "PKN STAN", prodi: "D4 Akuntansi Sektor Publik", rumpun: "Kedinasan", mapel1: "Matematika Umum", mapel2: "Ekonomi / Akuntansi", dayaTampung: 300, peminat: 5200, passingGrade: 720, mandiri: "SPMB STAN" },
-      { id: "STIS_STAT", kampus: "Politeknik Statistika STIS", prodi: "D4 Statistika", rumpun: "Kedinasan", mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum", dayaTampung: 400, peminat: 7800, passingGrade: 710, mandiri: "PMB STIS" },
-      { id: "UPI_PEND", kampus: "Universitas Pendidikan Indonesia", prodi: "S1 Pendidikan Matematika", rumpun: "Pendidikan", mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum", dayaTampung: 120, peminat: 3100, passingGrade: 660, mandiri: "Mandiri UPI" },
-      { id: "ISI_YOGYA", kampus: "Institut Seni Indonesia (ISI)", prodi: "S1 Desain Komunikasi Visual", rumpun: "Seni", mapel1: "Bahasa Indonesia", mapel2: "Seni Budaya & Rupa", dayaTampung: 80, peminat: 2100, passingGrade: 620, mandiri: "Mandiri Seni" },
-      { id: "IPDN_JAT", kampus: "IPDN Jatinangor", prodi: "S1 Politik Pemerintahan", rumpun: "Kedinasan", mapel1: "Pendidikan Pancasila / PKn", mapel2: "Bahasa Indonesia", dayaTampung: 500, peminat: 12000, passingGrade: 690, mandiri: "SPCP IPDN" }
-    ];
+    let databaseSNBP = []; // Khusus menampung sheet DATA_KAMPUS_SNBP
+    let databaseSNBT = []; // Khusus menampung sheet DATA_KAMPUS_SNBT
 
     const alumniTrackRecord = [
       { ptn: "UPN VETERAN JAWA TIMUR", prodi: "KEDOKTERAN", avg: 89.23, tahun: "SNBP 2026" },
@@ -597,7 +588,8 @@
         
         if (json.status === "success") {
           if (json.siswa && json.siswa.length > 0) databaseSiswa = json.siswa;
-          if (json.kampus && json.kampus.length > 0) databasePTN = json.kampus;
+          if (json.kampusSNBP && json.kampusSNBP.length > 0) databaseSNBP = json.kampusSNBP;
+          if (json.kampusSNBT && json.kampusSNBT.length > 0) databaseSNBT = json.kampusSNBT;
           
           badge.className = "hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300";
           badge.innerHTML = `<span class="h-2 w-2 rounded-full bg-emerald-500"></span> ONLINE`;
@@ -609,39 +601,70 @@
       refreshDataBindings();
     }
 
-    async function syncDataToGoogleSheets(payload) {
-      if (!GOOGLE_SHEET_WEBAPP_URL || !GOOGLE_SHEET_WEBAPP_URL.startsWith("http")) return false;
-      try {
-        await fetch(GOOGLE_SHEET_WEBAPP_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(payload)
-        });
-        return true;
-      } catch (e) {
-        return false;
-      }
-    }
-
     function refreshDataBindings() {
+      // 1. Data Siswa Dropdown
       const datalist = document.getElementById('listDataSiswa');
-      if (datalist) {
+      if (datalist && databaseSiswa.length > 0) {
         datalist.innerHTML = databaseSiswa.map(s => `<option value="${s.nama}">${s.kelas} • Rank #${s.ranking} (${s.rumpun})</option>`).join('');
       }
 
+      // 2. Dropdown Khusus SNBP
       const p1 = document.getElementById('selectPresetProdi1');
       const p2 = document.getElementById('selectPresetProdi2');
-      const optHtml = `<option value="">-- Pilih dari Database PTN/Prodi --</option>` + databasePTN.map(k => `
-        <option value="${k.id}">${k.prodi} - ${k.kampus} (Daya: ${k.dayaTampung} | Peminat: ${k.peminat})</option>
-      `).join('');
-      if (p1) p1.innerHTML = optHtml;
-      if (p2) p2.innerHTML = optHtml;
+      if (databaseSNBP.length > 0) {
+        const optHtmlSNBP = `<option value="">-- Pilih dari Database SNBP --</option>` + databaseSNBP.map(k => `
+          <option value="${k.id}">${k.prodi} - ${k.kampus} (Daya: ${k.dayaTampung} | Peminat: ${k.peminat})</option>
+        `).join('');
+        if (p1) p1.innerHTML = optHtmlSNBP;
+        if (p2) p2.innerHTML = optHtmlSNBP;
+      }
 
+      // 3. Dropdown Khusus SNBT
       const snbt1 = document.getElementById('selectSNBTPreset1');
       const snbt2 = document.getElementById('selectSNBTPreset2');
-      if (snbt1) snbt1.innerHTML = optHtml;
-      if (snbt2) snbt2.innerHTML = optHtml;
+      if (databaseSNBT.length > 0) {
+        const optHtmlSNBT = `<option value="">-- Pilih dari Database SNBT --</option>` + databaseSNBT.map(k => `
+          <option value="${k.id}">${k.prodi} - ${k.kampus} (Daya: ${k.dayaTampung} | Peminat: ${k.peminat})</option>
+        `).join('');
+        if (snbt1) snbt1.innerHTML = optHtmlSNBT;
+        if (snbt2) snbt2.innerHTML = optHtmlSNBT;
+      }
+    }
+
+    // Penyesuaian applyPreset agar membaca database masing-masing:
+    function applyPresetProdi(pilihanKe, prodiId) {
+      const k = databaseSNBP.find(item => String(item.id) === String(prodiId));
+      if (!k) return;
+      if (pilihanKe === 1) {
+        document.getElementById('inProdi1Nama').value = k.prodi;
+        document.getElementById('inProdi1Kampus').value = k.kampus;
+        document.getElementById('inProdi1DayaTampung').value = k.dayaTampung;
+        document.getElementById('inProdi1Peminat').value = k.peminat;
+      } else {
+        document.getElementById('inProdi2Nama').value = k.prodi;
+        document.getElementById('inProdi2Kampus').value = k.kampus;
+        document.getElementById('inProdi2DayaTampung').value = k.dayaTampung;
+        document.getElementById('inProdi2Peminat').value = k.peminat;
+      }
+    }
+
+    function applyPresetSNBT(pilihanKe, prodiId) {
+      const k = databaseSNBT.find(item => String(item.id) === String(prodiId));
+      if (!k) return;
+      if (pilihanKe === 1) {
+        document.getElementById('inSNBT1Nama').value = k.prodi;
+        document.getElementById('inSNBT1Kampus').value = k.kampus;
+        document.getElementById('inSNBT1Passing').value = k.passingGrade || 650;
+        document.getElementById('inSNBT1DayaTampung').value = k.dayaTampung;
+        document.getElementById('inSNBT1Peminat').value = k.peminat;
+      } else {
+        document.getElementById('inSNBT2Nama').value = k.prodi;
+        document.getElementById('inSNBT2Kampus').value = k.kampus;
+        document.getElementById('inSNBT2Passing').value = k.passingGrade || 630;
+        document.getElementById('inSNBT2DayaTampung').value = k.dayaTampung;
+        document.getElementById('inSNBT2Peminat').value = k.peminat;
+      }
+    }
 
       populateDropdowns();
     }
