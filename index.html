@@ -230,7 +230,7 @@
                     <th class="py-2 text-center font-bold">Smt 3</th>
                     <th class="py-2 text-center font-bold">Smt 4</th>
                     <th class="py-2 text-center font-bold text-amber-800 bg-amber-50 rounded">Smt 5</th>
-                    <th class="py-2 text-center font-bold text-emerald-900 bg-emerald-50/80 rounded">Rata-rata</th>
+                    <th class="py-2 text-center font-bold text-emerald-950 bg-emerald-50/80 rounded">Rata-rata</th>
                   </tr>
                 </thead>
                 <tbody id="tableBodyInput" class="divide-y divide-slate-100"></tbody>
@@ -349,7 +349,7 @@
                 <tr><td class="p-2.5 font-bold">Penalaran Umum (PU)</td><td class="p-2 text-center"><input id="to1_pu" type="number" class="w-20 text-center border rounded p-1" placeholder="650"></td><td class="p-2 text-center"><input id="to2_pu" type="number" class="w-20 text-center border rounded p-1" placeholder="670"></td><td class="p-2 text-center bg-amber-50"><input id="to3_pu" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="700"></td></tr>
                 <tr><td class="p-2.5 font-bold">Pengetahuan Kuantitatif (PK - IRT)</td><td class="p-2 text-center"><input id="to1_pk" type="number" class="w-20 text-center border rounded p-1" placeholder="660"></td><td class="p-2 text-center"><input id="to2_pk" type="number" class="w-20 text-center border rounded p-1" placeholder="680"></td><td class="p-2 text-center bg-amber-50"><input id="to3_pk" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="715"></td></tr>
                 <tr><td class="p-2.5 font-bold">Penalaran Matematika (PM - IRT)</td><td class="p-2 text-center"><input id="to1_pm" type="number" class="w-20 text-center border rounded p-1" placeholder="640"></td><td class="p-2 text-center"><input id="to2_pm" type="number" class="w-20 text-center border rounded p-1" placeholder="675"></td><td class="p-2 text-center bg-amber-50"><input id="to3_pm" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="705"></td></tr>
-                <tr><td class="p-2.5 font-bold">PBM</td><td class="p-2 text-center"><input id="to1_pbm" type="number" class="w-20 text-center border rounded p-1" placeholder="630"></td><td class="p-2 text-center"><input id="to2_pbm" type="number" class="w-20 text-center border rounded p-1" placeholder="650"></td><td class="p-2 text-center bg-amber-50"><input id="to3_pbm" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="680"></td></tr>
+                <tr><td class="p-2.5 font-bold">PBM</td><td class="p-2 text-center"><input id="to1_pbm" type="number" class="w-20 text-center border rounded p-1" placeholder="630"></td><td class="p-2 text-center"><input id="to2_pbm" type="number" class="w-20 text-center border rounded p-1" placeholder="650"></td><td class="p-2 text-center bg-amber-50"><input id="to3_pbm" type="number" class="w-20 text-center border rounded p-1" font-bold" placeholder="680"></td></tr>
                 <tr><td class="p-2.5 font-bold">PPU</td><td class="p-2 text-center"><input id="to1_ppu" type="number" class="w-20 text-center border rounded p-1" placeholder="620"></td><td class="p-2 text-center"><input id="to2_ppu" type="number" class="w-20 text-center border rounded p-1" placeholder="640"></td><td class="p-2 text-center bg-amber-50"><input id="to3_ppu" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="670"></td></tr>
                 <tr><td class="p-2.5 font-bold">Literasi Bahasa Indonesia</td><td class="p-2 text-center"><input id="to1_indo" type="number" class="w-20 text-center border rounded p-1" placeholder="650"></td><td class="p-2 text-center"><input id="to2_indo" type="number" class="w-20 text-center border rounded p-1" placeholder="680"></td><td class="p-2 text-center bg-amber-50"><input id="to3_indo" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="710"></td></tr>
                 <tr><td class="p-2.5 font-bold">Literasi Bahasa Inggris</td><td class="p-2 text-center"><input id="to1_ing" type="number" class="w-20 text-center border rounded p-1" placeholder="640"></td><td class="p-2 text-center"><input id="to2_ing" type="number" class="w-20 text-center border rounded p-1" placeholder="660"></td><td class="p-2 text-center bg-amber-50"><input id="to3_ing" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="690"></td></tr>
@@ -521,15 +521,14 @@
   <!-- SKRIP LOGIKA UTAMA & CLOUD SYNC            -->
   <!-- ========================================== -->
   <script>
-    const GOOGLE_SHEET_WEBAPP_URL ="https://script.google.com/macros/s/AKfycbwtO86WOv6wx3QiFyWk3gGQ7B8JZiMCsljaQzNe1SHkugaH0evcBaV-sNONkAfcudEVRg/exec";
+    const GOOGLE_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwtO86WOv6wx3QiFyWk3gGQ7B8JZiMCsljaQzNe1SHkugaH0evcBaV-sNONkAfcudEVRg/exec";
 
     let databaseSiswa = [
-      { nisn: "0061234561", nama: "Fadhillah Umar", kelas: "XII - 1", rumpun: "SAINTEK", ranking: 1 },
-      
+      { nisn: "0061234561", nama: "Fadhillah Umar", kelas: "XII - 1", rumpun: "SAINTEK", ranking: 1 }
     ];
 
-    let databaseSNBP = []; // Khusus menampung sheet DATA_KAMPUS_SNBP
-    let databaseSNBT = []; // Khusus menampung sheet DATA_KAMPUS_SNBT
+    let databaseSNBP = [];
+    let databaseSNBT = [];
 
     const alumniTrackRecord = [
       { ptn: "UPN VETERAN JAWA TIMUR", prodi: "KEDOKTERAN", avg: 89.23, tahun: "SNBP 2026" },
@@ -563,11 +562,9 @@
     let activeJalur = "SNBP";
     let currentFixPayload = null;
 
-    // ===============================================
-    // PARAMETER & FUNGSI Z-SCORE NORMALISASI RAPOR
-    // ===============================================
-    const MEAN_RAPOR_ANGKATAN = 82.0; // Rerata rapor paralel kelas XII
-    const STDEV_RAPOR_ANGKATAN = 3.5;  // Standar deviasi nilai rapor paralel
+    // Parameter statistik rapor paralel (Z-Score)
+    const MEAN_RAPOR_ANGKATAN = 82.0;
+    const STDEV_RAPOR_ANGKATAN = 3.5;
 
     function hitungZScoreIRT(nilaiRapor) {
       if (!nilaiRapor || nilaiRapor <= 0) return 0;
@@ -601,14 +598,29 @@
       refreshDataBindings();
     }
 
+    async function syncDataToGoogleSheets(payload) {
+      if (!GOOGLE_SHEET_WEBAPP_URL || !GOOGLE_SHEET_WEBAPP_URL.startsWith("http")) return false;
+      try {
+        await fetch(GOOGLE_SHEET_WEBAPP_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
     function refreshDataBindings() {
-      // 1. Data Siswa Dropdown
+      // 1. Data Siswa
       const datalist = document.getElementById('listDataSiswa');
       if (datalist && databaseSiswa.length > 0) {
         datalist.innerHTML = databaseSiswa.map(s => `<option value="${s.nama}">${s.kelas} • Rank #${s.ranking} (${s.rumpun})</option>`).join('');
       }
 
-      // 2. Dropdown Khusus SNBP
+      // 2. Dropdown SNBP
       const p1 = document.getElementById('selectPresetProdi1');
       const p2 = document.getElementById('selectPresetProdi2');
       if (databaseSNBP.length > 0) {
@@ -619,7 +631,7 @@
         if (p2) p2.innerHTML = optHtmlSNBP;
       }
 
-      // 3. Dropdown Khusus SNBT
+      // 3. Dropdown SNBT
       const snbt1 = document.getElementById('selectSNBTPreset1');
       const snbt2 = document.getElementById('selectSNBTPreset2');
       if (databaseSNBT.length > 0) {
@@ -629,41 +641,8 @@
         if (snbt1) snbt1.innerHTML = optHtmlSNBT;
         if (snbt2) snbt2.innerHTML = optHtmlSNBT;
       }
-    }
 
-    // Penyesuaian applyPreset agar membaca database masing-masing:
-    function applyPresetProdi(pilihanKe, prodiId) {
-      const k = databaseSNBP.find(item => String(item.id) === String(prodiId));
-      if (!k) return;
-      if (pilihanKe === 1) {
-        document.getElementById('inProdi1Nama').value = k.prodi;
-        document.getElementById('inProdi1Kampus').value = k.kampus;
-        document.getElementById('inProdi1DayaTampung').value = k.dayaTampung;
-        document.getElementById('inProdi1Peminat').value = k.peminat;
-      } else {
-        document.getElementById('inProdi2Nama').value = k.prodi;
-        document.getElementById('inProdi2Kampus').value = k.kampus;
-        document.getElementById('inProdi2DayaTampung').value = k.dayaTampung;
-        document.getElementById('inProdi2Peminat').value = k.peminat;
-      }
-    }
-
-    function applyPresetSNBT(pilihanKe, prodiId) {
-      const k = databaseSNBT.find(item => String(item.id) === String(prodiId));
-      if (!k) return;
-      if (pilihanKe === 1) {
-        document.getElementById('inSNBT1Nama').value = k.prodi;
-        document.getElementById('inSNBT1Kampus').value = k.kampus;
-        document.getElementById('inSNBT1Passing').value = k.passingGrade || 650;
-        document.getElementById('inSNBT1DayaTampung').value = k.dayaTampung;
-        document.getElementById('inSNBT1Peminat').value = k.peminat;
-      } else {
-        document.getElementById('inSNBT2Nama').value = k.prodi;
-        document.getElementById('inSNBT2Kampus').value = k.kampus;
-        document.getElementById('inSNBT2Passing').value = k.passingGrade || 630;
-        document.getElementById('inSNBT2DayaTampung').value = k.dayaTampung;
-        document.getElementById('inSNBT2Peminat').value = k.peminat;
-      }
+      populateDropdowns();
     }
 
     function pilihSiswaOtomatis(namaTerpilih) {
@@ -683,7 +662,7 @@
     }
 
     function applyPresetProdi(pilihanKe, prodiId) {
-      const k = databasePTN.find(item => item.id === prodiId);
+      const k = databaseSNBP.find(item => String(item.id) === String(prodiId));
       if (!k) return;
       if (pilihanKe === 1) {
         document.getElementById('inProdi1Nama').value = k.prodi;
@@ -699,7 +678,7 @@
     }
 
     function applyPresetSNBT(pilihanKe, prodiId) {
-      const k = databasePTN.find(item => item.id === prodiId);
+      const k = databaseSNBT.find(item => String(item.id) === String(prodiId));
       if (!k) return;
       if (pilihanKe === 1) {
         document.getElementById('inSNBT1Nama').value = k.prodi;
@@ -772,7 +751,6 @@
 
     function updatePreviewModalIRT() {
       const grandAvg = parseFloat(document.getElementById('labelGrandTotal')?.innerText) || 0;
-      // Perhitungan menggunakan Z-Score Standar
       const raporIRT = hitungZScoreIRT(grandAvg);
       
       const elRaporIRT = document.getElementById('labelRaporIRT');
@@ -840,8 +818,9 @@
       if(pMandiri1) pMandiri1.innerHTML = "";
       if(pMandiri2) pMandiri2.innerHTML = '<option value="">-- Tidak Ada / Pilihan Tunggal --</option>';
 
-      databasePTN.forEach(p => {
-        const labelMandiri = `${p.prodi} - ${p.kampus} [${p.mandiri || 'Mandiri/Kedinasan'}]`;
+      const combined = [...databaseSNBP, ...databaseSNBT];
+      combined.forEach(p => {
+        const labelMandiri = `${p.prodi} - ${p.kampus}`;
         if (pMandiri1) pMandiri1.add(new Option(labelMandiri, p.id));
         if (pMandiri2) pMandiri2.add(new Option(labelMandiri, p.id));
       });
@@ -859,16 +838,14 @@
         hitungRataRow(m.id);
       });
 
-      if(kelompok === "SAINTEK") {
-        if(document.getElementById('inNama')) document.getElementById('inNama').value = "Ahmad Zaki";
-        applyPresetProdi(1, "STIS_STAT");
-      } else if(kelompok === "SOSHUM") {
-        if(document.getElementById('inNama')) document.getElementById('inNama').value = "Siti Aisyah";
-        applyPresetProdi(1, "STAN_AKD");
+      if (databaseSNBP.length > 0) {
+        applyPresetProdi(1, databaseSNBP[0].id);
+        const p1Sel = document.getElementById('selectPresetProdi1');
+        if (p1Sel) p1Sel.value = databaseSNBP[0].id;
       }
 
       if(document.getElementById('inKelas')) document.getElementById('inKelas').value = "XII - 1";
-      if(document.getElementById('inRankingSiswa')) document.getElementById('inRankingSiswa').value = 4;
+      if(document.getElementById('inRankingSiswa')) document.getElementById('inRankingSiswa').value = 1;
       if(document.getElementById('inKonselor')) document.getElementById('inKonselor').value = "Tim Sukses PTN M18";
       if(document.getElementById('inNilaiTKA')) document.getElementById('inNilaiTKA').value = 720;
       if(document.getElementById('inCatatanBK')) document.getElementById('inCatatanBK').value = "Siswa menunjukkan konsistensi belajar yang sangat baik pada rumpun terkait.";
@@ -894,7 +871,7 @@
     }
 
     function isiContohUTBK() {
-      if(document.getElementById('inNamaSNBT')) document.getElementById('inNamaSNBT').value = "Ahmad Zaki";
+      if(document.getElementById('inNamaSNBT')) document.getElementById('inNamaSNBT').value = "Fadhillah Umar";
       const sub = ['pu', 'pk', 'pm', 'pbm', 'ppu', 'indo', 'ing'];
       const valTO1 = [620, 630, 610, 600, 590, 630, 610];
       const valTO2 = [650, 670, 660, 640, 630, 670, 650];
@@ -905,7 +882,12 @@
         document.getElementById(`to2_${s}`).value = valTO2[idx];
         document.getElementById(`to3_${s}`).value = valTO3[idx];
       });
-      applyPresetSNBT(1, "STIS_STAT");
+
+      if (databaseSNBT.length > 0) {
+        applyPresetSNBT(1, databaseSNBT[0].id);
+        const sel1 = document.getElementById('selectSNBTPreset1');
+        if (sel1) sel1.value = databaseSNBT[0].id;
+      }
     }
 
     function checkAlumniTrack(ptnName, prodiName) {
@@ -916,13 +898,11 @@
     function detectMapelPendukung(namaProdi) {
       const p = namaProdi.toLowerCase();
       if (p.includes("akuntansi") || p.includes("keuangan") || p.includes("ekonomi")) {
-        return { mapel1: "Matematika Umum", mapel2: "Ekonomi / Akuntansi" };
+        return { mapel1: "Matematika Umum", mapel2: "Ekonomi" };
       } else if (p.includes("statistika") || p.includes("matematika") || p.includes("teknik")) {
-        return { mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum" };
-      } else if (p.includes("pendidikan")) {
-        return { mapel1: "Bahasa Indonesia", mapel2: "Pendidikan Pancasila / PKn" };
-      } else if (p.includes("seni") || p.includes("desain") || p.includes("dkv")) {
-        return { mapel1: "Seni Budaya & Rupa", mapel2: "Bahasa Indonesia" };
+        return { mapel1: "Matematika Tingkat Lanjut", mapel2: "Fisika" };
+      } else if (p.includes("dokter") || p.includes("biologi") || p.includes("farmasi")) {
+        return { mapel1: "Biologi", mapel2: "Kimia" };
       } else {
         return { mapel1: "Bahasa Indonesia", mapel2: "Matematika Umum" };
       }
@@ -935,39 +915,19 @@
       if (prodiText.includes("kedokteran") || prodiText.includes("kesehatan") || prodiText.includes("biologi")) {
         pool = [
           { prodi: "S1 Keperawatan", fakultas: "Fakultas Kedokteran", univ: "Universitas Teuku Umar, Aceh" },
-          { prodi: "S1 Kesehatan Masyarakat", fakultas: "Fakultas Kesmas", univ: "Universitas Sulawesi Barat, Majene" },
-          { prodi: "S1 Gizi", fakultas: "Fakultas Kesehatan", univ: "Universitas Papua, Manokwari" }
-        ];
-      } else if (prodiText.includes("teknik") || prodiText.includes("komputer") || prodiText.includes("statistika") || prodiText.includes("informatika") || prodiText.includes("matematika")) {
-        pool = [
-          { prodi: "S1 Teknik Sipil / Arsitektur", fakultas: "Fakultas Teknik", univ: "Universitas Malikussaleh, Aceh Utara" },
-          { prodi: "S1 Teknik Elektro", fakultas: "Fakultas Teknik", univ: "Universitas Borneo Tarakan, Kaltara" },
-          { prodi: "S1 Ilmu Komputer / Informatika", fakultas: "Fakultas MIPA", univ: "Universitas Sam Ratulangi, Manado" }
-        ];
-      } else if (prodiText.includes("pendidikan") || prodiText.includes("guru")) {
-        pool = [
-          { prodi: "S1 Pend. Matematika / Saintek", fakultas: "FKIP", univ: "Universitas Halu Oleo, Kendari" },
-          { prodi: "S1 Pend. Bahasa Inggris", fakultas: "FKIP", univ: "Universitas Khairun, Ternate" },
-          { prodi: "S1 Pend. Guru SD (PGSD)", fakultas: "FKIP", univ: "Universitas Pattimura, Ambon" }
-        ];
-      } else if (prodiText.includes("akuntansi") || prodiText.includes("manajemen") || prodiText.includes("ekonomi") || prodiText.includes("pemerintahan") || prodiText.includes("politik")) {
-        pool = [
-          { prodi: "S1 Ekonomi Pembangunan", fakultas: "FEB", univ: "Universitas Timor, NTT (Peminat Sangat Longgar)" },
-          { prodi: "S1 Administrasi Publik", fakultas: "FISIP", univ: "Universitas Bangka Belitung, Belitung" },
-          { prodi: "S1 Manajemen", fakultas: "FEB", univ: "Universitas Sembilanbelas November Kolaka, Sultra" }
+          { prodi: "S1 Kesehatan Masyarakat", fakultas: "Fakultas Kesmas", univ: "Universitas Sulawesi Barat, Majene" }
         ];
       } else {
         pool = [
-          { prodi: "S1 Seni Kriya & Desain", fakultas: "Institut Seni", univ: "ISI Padang Panjang, Sumatera Barat" },
-          { prodi: "S1 Sastra Indonesia", fakultas: "Ilmu Budaya", univ: "Universitas Sam Ratulangi, Manado" },
-          { prodi: "S1 Ilmu Komunikasi", fakultas: "FISIP", univ: "Universitas Teuku Umar, Meulaboh" }
+          { prodi: "S1 Teknik Sipil", fakultas: "Fakultas Teknik", univ: "Universitas Malikussaleh, Aceh Utara" },
+          { prodi: "S1 Ekonomi Pembangunan", fakultas: "FEB", univ: "Universitas Bangka Belitung" }
         ];
       }
       return pool;
     }
 
     // ===============================================
-    // EKSEKUTOR LAPORAN SNBP (DENGAN SKOR STANDAR Z-SCORE)
+    // EKSEKUTOR LAPORAN SNBP
     // ===============================================
     function jalankanAnalisisSNBP() {
       activeJalur = "SNBP";
@@ -977,10 +937,10 @@
         grandAvg = parseFloat(document.getElementById('labelGrandTotal').innerText); 
       }
       
-      const nama = document.getElementById('inNama').value.trim() || "Ahmad Zaki";
+      const nama = document.getElementById('inNama').value.trim() || "Fadhillah Umar";
       const kelas = document.getElementById('inKelas').value.trim() || "XII - 1";
       const kelompok = document.getElementById('inKelompokJurusan').value || "SAINTEK";
-      const rankingSiswa = parseInt(document.getElementById('inRankingSiswa').value) || 5;
+      const rankingSiswa = parseInt(document.getElementById('inRankingSiswa').value) || 1;
       const konselor = document.getElementById('inKonselor').value.trim() || "Tim Sukses PTN M18";
       const catatanBK = document.getElementById('inCatatanBK').value.trim() || "-";
 
@@ -989,15 +949,11 @@
 
       if (!p1Nama) { alert("Mohon isi minimal Pilihan 1 Prodi terlebih dahulu!"); return; }
 
-      // 1. Ambil Skor TKA (Skala Murni IRT 200–800)
       let tkaIRT = parseFloat(document.getElementById('inNilaiTKA').value);
       if (isNaN(tkaIRT) || tkaIRT < 200) tkaIRT = 550;
       if (tkaIRT > 800) tkaIRT = 800;
 
-      // 2. Konversi Rata Rapor ke Skala Standar Menggunakan Z-Score (Mean 500, SD 100)
       const raporIRT = hitungZScoreIRT(grandAvg);
-
-      // 3. Modal Akademik 50% TKA : 50% Rapor Standar
       const modalAkademikIRT = Math.round((tkaIRT * 0.50) + (raporIRT * 0.50));
 
       const m1 = detectMapelPendukung(p1Nama);
@@ -1027,7 +983,8 @@
         return { id: m.id, name: m.name, avg: avgNode ? (parseFloat(avgNode.innerText) || 0) : 0 };
       }).sort((a, b) => b.avg - a.avg);
 
-      const top1 = calculated[0], top2 = calculated[1];
+      const top1 = calculated[0] || { name: "Umum", avg: 0 };
+      const top2 = calculated[1] || { name: "Umum", avg: 0 };
       const req1Obj = calculated.find(m => m.name === prodi1.mapel1) || { name: prodi1.mapel1, avg: 0 };
       const req2Obj = calculated.find(m => m.name === prodi1.mapel2) || { name: prodi1.mapel2, avg: 0 };
 
@@ -1035,9 +992,6 @@
       let slopeBonusIRT = slopeData.slope > 0.3 ? 15 : (slopeData.slope >= -0.3 ? 0 : -15);
 
       function estimasiPassingTarget(target) {
-        const matchedDB = databasePTN.find(p => p.prodi.toLowerCase() === target.prodi.toLowerCase());
-        if (matchedDB && matchedDB.passingGrade) return matchedDB.passingGrade;
-        
         const rasio = target.dayaTampung / target.peminat;
         if (rasio < 0.03) return 725;
         if (rasio < 0.07) return 680;
@@ -1160,7 +1114,7 @@
     }
 
     // ===============================================
-    // EKSEKUTOR LAPORAN SNBT (MULTI-TRY OUT)
+    // EKSEKUTOR LAPORAN SNBT
     // ===============================================
     function jalankanAnalisisSNBT() {
       activeJalur = "SNBT";
@@ -1197,14 +1151,14 @@
       const avgTO3 = totalTO3 / 7;
       const deltaPoin = Math.round(avgTO3 - (totalTO1 / 7));
 
-      const nama = document.getElementById('inNamaSNBT').value.trim() || "Ahmad Zaki";
-      const p1Nama = document.getElementById('inSNBT1Nama').value.trim() || "D4 Statistika";
-      const p1Kampus = document.getElementById('inSNBT1Kampus').value.trim() || "Politeknik Statistika STIS";
-      const passing1 = parseFloat(document.getElementById('inSNBT1Passing').value) || 710;
+      const nama = document.getElementById('inNamaSNBT').value.trim() || "Fadhillah Umar";
+      const p1Nama = document.getElementById('inSNBT1Nama').value.trim() || "Prodi Target 1";
+      const p1Kampus = document.getElementById('inSNBT1Kampus').value.trim() || "PTN Pilihan";
+      const passing1 = parseFloat(document.getElementById('inSNBT1Passing').value) || 650;
 
       const p2Nama = document.getElementById('inSNBT2Nama').value.trim();
       const p2Kampus = document.getElementById('inSNBT2Kampus').value.trim();
-      const passing2 = parseFloat(document.getElementById('inSNBT2Passing').value) || 670;
+      const passing2 = parseFloat(document.getElementById('inSNBT2Passing').value) || 630;
 
       const gap1 = avgTO3 - passing1;
       const prob1 = Math.max(10, Math.min(95, Math.round(50 + (gap1 * 1.5))));
@@ -1237,9 +1191,7 @@
 
       const smartMatchingPool = [
         { prodi: "S1 Statistika", univ: "Universitas Halu Oleo (~620)" },
-        { prodi: "D4 Akuntansi Sektor Publik", univ: "PKN STAN - Afirmasi (~650)" },
-        { prodi: "S1 Teknik Sipil", univ: "Universitas Malikussaleh (~610)" },
-        { prodi: "S1 Agroteknologi", univ: "Universitas Papua (~590)" }
+        { prodi: "S1 Teknik Sipil", univ: "Universitas Malikussaleh (~610)" }
       ];
       document.getElementById('outSmartMatchingKampus').innerHTML = smartMatchingPool.map(m => `
         <div class="p-2.5 bg-white rounded-lg border border-slate-200 text-[10px] space-y-0.5 shadow-sm">
@@ -1286,13 +1238,14 @@
       activeJalur = "MANDIRI";
       let modal = parseFloat(document.getElementById('inModalMandiri').value) || 0;
       if (modal === 0) { isiSimulasiRumpunAktif(); modal = parseFloat(document.getElementById('labelGrandTotal').innerText) || 85; }
-      const nama = document.getElementById('inNamaMandiri').value.trim() || "Ahmad Zaki";
-      const p1Id = document.getElementById('selectProdiMandiri1').value || "STAN_AKD";
+      const nama = document.getElementById('inNamaMandiri').value.trim() || "Fadhillah Umar";
+      const p1Id = document.getElementById('selectProdiMandiri1').value;
       const p2Id = document.getElementById('selectProdiMandiri2').value;
       const bonusPrestasi = parseFloat(document.getElementById('selectPrestasiMandiri').value) || 0;
       
-      const prodi1 = databasePTN.find(p => p.id === p1Id) || { prodi: "Akuntansi Sektor Publik", kampus: "PKN STAN", mandiri: "SPMB" };
-      let prodi2 = p2Id ? databasePTN.find(p => p.id === p2Id) : null;
+      const combined = [...databaseSNBP, ...databaseSNBT];
+      const prodi1 = combined.find(p => String(p.id) === String(p1Id)) || { prodi: "Pilihan Utama", kampus: "PTN Pilihan" };
+      let prodi2 = p2Id ? combined.find(p => String(p.id) === String(p2Id)) : null;
       
       let totalPeluang = Math.min(95, Math.round(((modal >= 85 ? (modal - 80) * 4.5 : 25)) + bonusPrestasi + 15));
 
@@ -1310,7 +1263,6 @@
         <div class="p-3.5 rounded-xl border border-indigo-200 bg-indigo-50/40 print-card space-y-2">
           <span class="text-xs font-bold text-indigo-950 uppercase block">Pilihan Utama (Kedinasan / Seni)</span>
           <p class="font-bold text-slate-900 text-xs">${prodi1.prodi} - ${prodi1.kampus}</p>
-          <p class="text-[10px] text-indigo-800 font-semibold">Seleksi: ${prodi1.mandiri || 'Jalur Khusus'}</p>
         </div>
       `;
       if (prodi2) {
@@ -1318,7 +1270,6 @@
           <div class="p-3.5 rounded-xl border border-slate-200 bg-white print-card space-y-2">
             <span class="text-xs font-bold text-slate-800 uppercase block">Pilihan Cadangan</span>
             <p class="font-bold text-slate-900 text-xs">${prodi2.prodi} - ${prodi2.kampus}</p>
-            <p class="text-[10px] text-slate-600 font-semibold">Seleksi: ${prodi2.mandiri || 'Jalur Mandiri'}</p>
           </div>
         `;
       }
@@ -1387,12 +1338,12 @@
     function exportDataExcel() {
       const payload = currentFixPayload || {
         tanggal: new Date().toLocaleDateString('id-ID'),
-        nama: "Ahmad Zaki",
+        nama: "Fadhillah Umar",
         kelas: "XII - 1 (SAINTEK)",
-        ranking: "4",
+        ranking: "1",
         jalur: "SNBP SAINTEK",
-        pilihan1: "D4 Statistika (STIS)",
-        peluang1: "78%"
+        pilihan1: "Pendidikan Dokter (UI)",
+        peluang1: "88%"
       };
 
       let html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
@@ -1405,6 +1356,7 @@
       document.body.appendChild(link); link.click(); document.body.removeChild(link);
     }
 
+    // Inisialisasi awal saat halaman selesai dimuat
     renderTabel();
     loadDraft();
     refreshDataBindings();
