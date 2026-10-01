@@ -6,7 +6,7 @@
   <title>EduAnalytics PTN - SMA Muhammadiyah 18 Jakarta</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
@@ -23,9 +23,32 @@
 <body class="bg-slate-50 text-slate-800 min-h-screen antialiased selection:bg-blue-600 selection:text-white pb-20">
 
   <!-- ========================================== -->
+  <!-- SPLASH / INITIAL LOADING SCREEN            -->
+  <!-- ========================================== -->
+  <div id="appSplashScreen" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-slate-50 transition-opacity duration-700">
+    <div class="flex flex-col items-center text-center px-4 max-w-md w-full animate-fade">
+      <div class="h-20 w-20 rounded-full border-2 border-slate-200 bg-white p-1.5 shadow-md flex items-center justify-center mb-6 overflow-hidden">
+        <img src="Desain tanpa judul (16).png" alt="Logo M18" class="w-full h-full object-contain" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-blue-950 font-black text-sm\'>M18</div>';">
+      </div>
+      <div class="flex items-center gap-2 mb-2">
+        <span class="h-2 w-2 rounded-full bg-blue-600 animate-pulse"></span>
+        <span class="text-[11px] font-extrabold tracking-widest text-blue-600 uppercase">DSS ENGINE INITIALIZING</span>
+      </div>
+      <h2 class="text-base sm:text-lg font-black tracking-wider text-slate-900 uppercase">TIM SISTEM INFORMASI & MANAJEMEN</h2>
+      <p class="text-xs text-slate-500 font-semibold mt-0.5">SMA Muhammadiyah 18 Jakarta</p>
+      <div class="w-48 h-1 bg-slate-200 rounded-full overflow-hidden mt-6 mb-3">
+        <div id="splashProgressBar" class="h-full bg-blue-600 rounded-full w-1/4 transition-all duration-500 ease-out"></div>
+      </div>
+      <p id="splashProgressText" class="text-[10px] tracking-widest text-slate-400 uppercase font-mono font-medium">
+        SYNCING DATABASE • CALIBRATING
+      </p>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
   <!-- HEADER NAVIGASI UTAMA                      -->
   <!-- ========================================== -->
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-50 backdrop-blur-md bg-white/95 no-print shadow-sm">
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 backdrop-blur-md bg-white/95 no-print shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-2.5 flex items-center justify-between">
       <div class="flex items-center gap-3 cursor-pointer" onclick="showView('viewLanding')">
         <div class="h-11 w-11 rounded-full border-2 border-amber-400 bg-blue-900 flex items-center justify-center shadow-sm overflow-hidden shrink-0">
@@ -84,7 +107,7 @@
             <div class="h-14 w-14 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">📊</div>
             <span class="inline-block mt-4 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800 uppercase tracking-wide">Fokus SNBP</span>
             <h3 class="text-xl font-black text-slate-900 mt-2 group-hover:text-emerald-700 transition-colors">Modul SNBP (Multirumpun)</h3>
-            <p class="text-slate-500 text-xs mt-2 leading-relaxed">Kalkulasi 50% TKA & 50% Rapor dengan tabel kurikulum terstruktur (Saintek, Soshum, Pendidikan, Kedinasan, Seni).</p>
+            <p class="text-slate-500 text-xs mt-2 leading-relaxed">Kalkulasi 50% TKA & 50% Rapor dengan standardisasi Z-Score serta evaluasi mapel pendukung.</p>
           </div>
           <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-emerald-700">
             <span>Buka Modul SNBP</span><span>→</span>
@@ -137,7 +160,7 @@
             </h3>
             <div>
               <label class="block text-xs font-semibold text-slate-600 mb-1">Cari / Pilih Nama Siswa</label>
-              <input id="inNama" list="listDataSiswa" oninput="pilihSiswaOtomatis(this.value); saveDraft();" type="text" placeholder="Ketik nama untuk mencari ..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none" />
+              <input id="inNama" list="listDataSiswa" oninput="pilihSiswaOtomatis(this.value); saveDraft();" type="text" placeholder="Ketik nama untuk mencari..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs focus:bg-white focus:border-emerald-700 focus:outline-none" />
               <datalist id="listDataSiswa"></datalist>
             </div>
             <div class="grid grid-cols-2 gap-3">
@@ -168,65 +191,62 @@
               <span class="flex h-5 w-5 items-center justify-center rounded bg-emerald-700 text-white text-[10px]">2</span> Target Jurusan & Kampus
             </h3>
 
-            <div class="space-y-3"><!-- Pilihan 1 -->
-<div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2.5">
-  <span class="text-[11px] font-extrabold text-slate-800 uppercase block tracking-wide">Pilihan 1 (Prioritas Utama)</span>
-  
-  <div class="relative">
-    <label class="block text-[10px] text-slate-500 mb-0.5">Cari & Pilih dari Database Kampus:</label>
-    <div class="relative">
-      <input 
-        id="searchProdi1" 
-        type="text" 
-        autocomplete="off"
-        placeholder="🔍 Ketik nama prodi atau kampus (cth: Statistika / UI)..." 
-        onfocus="tampilkanDropdownCari(1)" 
-        oninput="filterPencarianKampus(1, this.value)" 
-        class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-700 shadow-sm"
-      />
-      <button type="button" onclick="toggleDropdownCari(1)" class="absolute right-2.5 top-2.5 text-slate-400 hover:text-slate-600 text-xs">▼</button>
-    </div>
-    <!-- Dropdown List Hasil Pencarian -->
-    <div id="dropdownList1" class="hidden absolute left-0 right-0 top-full mt-1 bg-white border border-slate-200 rounded-xl shadow-xl max-h-56 overflow-y-auto z-50 divide-y divide-slate-100"></div>
-  </div>
+            <div class="space-y-3">
+              <!-- Pilihan 1 SNBP -->
+              <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2.5">
+                <span class="text-[11px] font-extrabold text-slate-800 uppercase block tracking-wide">Pilihan 1 (Prioritas Utama)</span>
+                <div class="relative">
+                  <label class="block text-[10px] text-slate-500 mb-0.5">Cari dari Database SNBP:</label>
+                  <div class="relative">
+                    <input 
+                      id="searchProdi1" 
+                      type="text" 
+                      autocomplete="off"
+                      placeholder="🔍 Ketik nama prodi atau kampus (cth: Statistika / UI)..." 
+                      onfocus="tampilkanDropdownCari(1)" 
+                      oninput="filterPencarianKampus(1, this.value)" 
+                      class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-700 shadow-sm"
+                    />
+                    <button type="button" onclick="toggleDropdownCari(1)" class="absolute right-2.5 top-2.5 text-slate-400 hover:text-slate-600 text-xs">▼</button>
+                  </div>
+                  <div id="dropdownList1" class="hidden absolute left-0 right-0 top-full mt-1 bg-white border border-slate-200 rounded-xl shadow-xl max-h-56 overflow-y-auto z-50 divide-y divide-slate-100"></div>
+                </div>
 
-  <input id="inProdi1Nama" type="text" placeholder="Nama Jurusan / Prodi..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-700 font-medium text-slate-800" />
-  <input id="inProdi1Kampus" type="text" placeholder="Nama Kampus / Kedinasan / Institut Seni..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-700 font-medium text-slate-800" />
-  <div class="grid grid-cols-2 gap-2">
-    <input id="inProdi1DayaTampung" type="number" placeholder="Daya Tampung" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-700 text-slate-800" />
-    <input id="inProdi1Peminat" type="number" placeholder="Jumlah Peminat" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-700 text-slate-800" />
-  </div>
-</div>
+                <input id="inProdi1Nama" type="text" placeholder="Nama Jurusan / Prodi..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-700 font-medium text-slate-800" />
+                <input id="inProdi1Kampus" type="text" placeholder="Nama Kampus / Kedinasan / Institut..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-700 font-medium text-slate-800" />
+                <div class="grid grid-cols-2 gap-2">
+                  <input id="inProdi1DayaTampung" type="number" placeholder="Daya Tampung" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-700 text-slate-800" />
+                  <input id="inProdi1Peminat" type="number" placeholder="Jumlah Peminat" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-700 text-slate-800" />
+                </div>
+              </div>
 
-<!-- Pilihan 2 -->
-<div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2.5">
-  <span class="text-[11px] font-extrabold text-slate-500 uppercase block tracking-wide">Pilihan 2 (Opsional - Kosongkan jika hanya 1)</span>
-  
-  <div class="relative">
-    <label class="block text-[10px] text-slate-500 mb-0.5">Cari & Pilih dari Database Kampus:</label>
-    <div class="relative">
-      <input 
-        id="searchProdi2" 
-        type="text" 
-        autocomplete="off"
-        placeholder="🔍 Ketik nama prodi atau kampus (cth: STAN / Informatika)..." 
-        onfocus="tampilkanDropdownCari(2)" 
-        oninput="filterPencarianKampus(2, this.value)" 
-        class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-700 shadow-sm"
-      />
-      <button type="button" onclick="toggleDropdownCari(2)" class="absolute right-2.5 top-2.5 text-slate-400 hover:text-slate-600 text-xs">▼</button>
-    </div>
-    <!-- Dropdown List Hasil Pencarian -->
-    <div id="dropdownList2" class="hidden absolute left-0 right-0 top-full mt-1 bg-white border border-slate-200 rounded-xl shadow-xl max-h-56 overflow-y-auto z-50 divide-y divide-slate-100"></div>
-  </div>
+              <!-- Pilihan 2 SNBP -->
+              <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2.5">
+                <span class="text-[11px] font-extrabold text-slate-500 uppercase block tracking-wide">Pilihan 2 (Opsional - Kosongkan jika hanya 1)</span>
+                <div class="relative">
+                  <label class="block text-[10px] text-slate-500 mb-0.5">Cari dari Database SNBP:</label>
+                  <div class="relative">
+                    <input 
+                      id="searchProdi2" 
+                      type="text" 
+                      autocomplete="off"
+                      placeholder="🔍 Ketik nama prodi atau kampus (cth: Akuntansi / STAN)..." 
+                      onfocus="tampilkanDropdownCari(2)" 
+                      oninput="filterPencarianKampus(2, this.value)" 
+                      class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-800 focus:outline-none focus:border-emerald-700 shadow-sm"
+                    />
+                    <button type="button" onclick="toggleDropdownCari(2)" class="absolute right-2.5 top-2.5 text-slate-400 hover:text-slate-600 text-xs">▼</button>
+                  </div>
+                  <div id="dropdownList2" class="hidden absolute left-0 right-0 top-full mt-1 bg-white border border-slate-200 rounded-xl shadow-xl max-h-56 overflow-y-auto z-50 divide-y divide-slate-100"></div>
+                </div>
 
-  <input id="inProdi2Nama" type="text" placeholder="Kosongkan jika tidak ada..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-700 font-medium text-slate-800" />
-  <input id="inProdi2Kampus" type="text" placeholder="Nama Kampus / Kedinasan / Seni..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-700 font-medium text-slate-800" />
-  <div class="grid grid-cols-2 gap-2">
-    <input id="inProdi2DayaTampung" type="number" placeholder="Daya Tampung" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-700 text-slate-800" />
-    <input id="inProdi2Peminat" type="number" placeholder="Jumlah Peminat" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-700 text-slate-800" />
-  </div>
-</div>
+                <input id="inProdi2Nama" type="text" placeholder="Kosongkan jika tidak ada..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-700 font-medium text-slate-800" />
+                <input id="inProdi2Kampus" type="text" placeholder="Nama Kampus / Kedinasan / Institut..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-700 font-medium text-slate-800" />
+                <div class="grid grid-cols-2 gap-2">
+                  <input id="inProdi2DayaTampung" type="number" placeholder="Daya Tampung" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-700 text-slate-800" />
+                  <input id="inProdi2Peminat" type="number" placeholder="Jumlah Peminat" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-emerald-700 text-slate-800" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -240,7 +260,7 @@
                 </h3>
               </div>
               <div class="flex items-center gap-2">
-                <button type="button" onclick="isiSimulasiRumpunAktif()" class="px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-300 rounded-lg text-xs font-bold hover:bg-emerald-100 transition shadow-sm">⚡Contoh Data</button>
+                <button type="button" onclick="isiSimulasiRumpunAktif()" class="px-3 py-1 bg-emerald-50 text-emerald-800 border border-emerald-300 rounded-lg text-xs font-bold hover:bg-emerald-100 transition shadow-sm">⚡ Contoh Data</button>
                 <button type="button" onclick="kosongkanFormRapor()" class="px-3 py-1 bg-slate-100 text-slate-700 border border-slate-300 rounded-lg text-xs font-bold hover:bg-slate-200 transition">🧹 Reset Data</button>
               </div>
             </div>
@@ -326,11 +346,26 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pb-4 border-b border-slate-100">
+          <!-- Pilihan 1 SNBT -->
           <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2.5">
             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide">Pilihan 1 (Wajib)</label>
-            <select id="selectSNBTPreset1" onchange="applyPresetSNBT(1, this.value)" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-700">
-              <option value="">-- Pilih dari Database Kampus --</option>
-            </select>
+            <div class="relative">
+              <label class="block text-[10px] text-slate-500 mb-0.5">Cari dari Database SNBT:</label>
+              <div class="relative">
+                <input 
+                  id="searchSNBT1" 
+                  type="text" 
+                  autocomplete="off"
+                  placeholder="🔍 Ketik nama prodi atau kampus SNBT..." 
+                  onfocus="tampilkanDropdownCariSNBT(1)" 
+                  oninput="filterPencarianKampusSNBT(1, this.value)" 
+                  class="w-full bg-white border border-slate-300 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-800 focus:outline-none focus:border-amber-700 shadow-sm"
+                />
+                <button type="button" onclick="toggleDropdownCariSNBT(1)" class="absolute right-2.5 top-2 text-slate-400 hover:text-slate-600 text-xs">▼</button>
+              </div>
+              <div id="dropdownListSNBT1" class="hidden absolute left-0 right-0 top-full mt-1 bg-white border border-slate-200 rounded-xl shadow-xl max-h-56 overflow-y-auto z-50 divide-y divide-slate-100"></div>
+            </div>
+
             <input id="inSNBT1Nama" type="text" placeholder="Nama Jurusan / Prodi..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800" />
             <input id="inSNBT1Kampus" type="text" placeholder="Nama Kampus / PTN / Kedinasan..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800" />
             <div class="grid grid-cols-3 gap-2">
@@ -340,11 +375,26 @@
             </div>
           </div>
 
+          <!-- Pilihan 2 SNBT -->
           <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 space-y-2.5">
             <label class="block text-xs font-bold text-slate-500 uppercase tracking-wide">Pilihan 2 (Opsional / Kosongkan)</label>
-            <select id="selectSNBTPreset2" onchange="applyPresetSNBT(2, this.value)" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-700">
-              <option value="">-- Pilih dari Database Kampus --</option>
-            </select>
+            <div class="relative">
+              <label class="block text-[10px] text-slate-500 mb-0.5">Cari dari Database SNBT:</label>
+              <div class="relative">
+                <input 
+                  id="searchSNBT2" 
+                  type="text" 
+                  autocomplete="off"
+                  placeholder="🔍 Ketik nama prodi atau kampus SNBT..." 
+                  onfocus="tampilkanDropdownCariSNBT(2)" 
+                  oninput="filterPencarianKampusSNBT(2, this.value)" 
+                  class="w-full bg-white border border-slate-300 rounded-xl px-3 py-1.5 text-xs font-semibold text-slate-800 focus:outline-none focus:border-amber-700 shadow-sm"
+                />
+                <button type="button" onclick="toggleDropdownCariSNBT(2)" class="absolute right-2.5 top-2 text-slate-400 hover:text-slate-600 text-xs">▼</button>
+              </div>
+              <div id="dropdownListSNBT2" class="hidden absolute left-0 right-0 top-full mt-1 bg-white border border-slate-200 rounded-xl shadow-xl max-h-56 overflow-y-auto z-50 divide-y divide-slate-100"></div>
+            </div>
+
             <input id="inSNBT2Nama" type="text" placeholder="Kosongkan jika tidak ada..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800" />
             <input id="inSNBT2Kampus" type="text" placeholder="Nama Kampus..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800" />
             <div class="grid grid-cols-3 gap-2">
@@ -374,7 +424,7 @@
                 <tr><td class="p-2.5 font-bold">Penalaran Umum (PU)</td><td class="p-2 text-center"><input id="to1_pu" type="number" class="w-20 text-center border rounded p-1" placeholder="650"></td><td class="p-2 text-center"><input id="to2_pu" type="number" class="w-20 text-center border rounded p-1" placeholder="670"></td><td class="p-2 text-center bg-amber-50"><input id="to3_pu" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="700"></td></tr>
                 <tr><td class="p-2.5 font-bold">Pengetahuan Kuantitatif (PK - IRT)</td><td class="p-2 text-center"><input id="to1_pk" type="number" class="w-20 text-center border rounded p-1" placeholder="660"></td><td class="p-2 text-center"><input id="to2_pk" type="number" class="w-20 text-center border rounded p-1" placeholder="680"></td><td class="p-2 text-center bg-amber-50"><input id="to3_pk" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="715"></td></tr>
                 <tr><td class="p-2.5 font-bold">Penalaran Matematika (PM - IRT)</td><td class="p-2 text-center"><input id="to1_pm" type="number" class="w-20 text-center border rounded p-1" placeholder="640"></td><td class="p-2 text-center"><input id="to2_pm" type="number" class="w-20 text-center border rounded p-1" placeholder="675"></td><td class="p-2 text-center bg-amber-50"><input id="to3_pm" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="705"></td></tr>
-                <tr><td class="p-2.5 font-bold">PBM</td><td class="p-2 text-center"><input id="to1_pbm" type="number" class="w-20 text-center border rounded p-1" placeholder="630"></td><td class="p-2 text-center"><input id="to2_pbm" type="number" class="w-20 text-center border rounded p-1" placeholder="650"></td><td class="p-2 text-center bg-amber-50"><input id="to3_pbm" type="number" class="w-20 text-center border rounded p-1" font-bold" placeholder="680"></td></tr>
+                <tr><td class="p-2.5 font-bold">PBM</td><td class="p-2 text-center"><input id="to1_pbm" type="number" class="w-20 text-center border rounded p-1" placeholder="630"></td><td class="p-2 text-center"><input id="to2_pbm" type="number" class="w-20 text-center border rounded p-1" placeholder="650"></td><td class="p-2 text-center bg-amber-50"><input id="to3_pbm" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="680"></td></tr>
                 <tr><td class="p-2.5 font-bold">PPU</td><td class="p-2 text-center"><input id="to1_ppu" type="number" class="w-20 text-center border rounded p-1" placeholder="620"></td><td class="p-2 text-center"><input id="to2_ppu" type="number" class="w-20 text-center border rounded p-1" placeholder="640"></td><td class="p-2 text-center bg-amber-50"><input id="to3_ppu" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="670"></td></tr>
                 <tr><td class="p-2.5 font-bold">Literasi Bahasa Indonesia</td><td class="p-2 text-center"><input id="to1_indo" type="number" class="w-20 text-center border rounded p-1" placeholder="650"></td><td class="p-2 text-center"><input id="to2_indo" type="number" class="w-20 text-center border rounded p-1" placeholder="680"></td><td class="p-2 text-center bg-amber-50"><input id="to3_indo" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="710"></td></tr>
                 <tr><td class="p-2.5 font-bold">Literasi Bahasa Inggris</td><td class="p-2 text-center"><input id="to1_ing" type="number" class="w-20 text-center border rounded p-1" placeholder="640"></td><td class="p-2 text-center"><input id="to2_ing" type="number" class="w-20 text-center border rounded p-1" placeholder="660"></td><td class="p-2 text-center bg-amber-50"><input id="to3_ing" type="number" class="w-20 text-center border rounded p-1 font-bold" placeholder="690"></td></tr>
@@ -552,8 +602,19 @@
       { nisn: "0061234561", nama: "Fadhillah Umar", kelas: "XII - 1", rumpun: "SAINTEK", ranking: 1 }
     ];
 
-    let databaseSNBP = [];
-    let databaseSNBT = [];
+    let databaseSNBP = [
+      { id: "1", kampus: "Universitas Indonesia", kategori: "PTN", prodi: "Pendidikan Dokter", rumpun: "SAINTEK", dayaTampung: 75, peminat: 3820, passingGrade: 735, mapel1: "Biologi", mapel2: "Kimia" },
+      { id: "2", kampus: "Politeknik Statistika STIS", kategori: "Kedinasan", prodi: "D4 Statistika", rumpun: "SAINTEK", dayaTampung: 400, peminat: 7800, passingGrade: 710, mapel1: "Matematika Tingkat Lanjut", mapel2: "Matematika Umum" },
+      { id: "3", kampus: "PKN STAN", kategori: "Kedinasan", prodi: "D4 Akuntansi Sektor Publik", rumpun: "SOSHUM", dayaTampung: 300, peminat: 5200, passingGrade: 720, mapel1: "Matematika Umum", mapel2: "Ekonomi" },
+      { id: "4", kampus: "Universitas Gadjah Mada", kategori: "PTN", prodi: "Ilmu Hukum", rumpun: "SOSHUM", dayaTampung: 130, peminat: 4500, passingGrade: 695, mapel1: "Sosiologi", mapel2: "Pendidikan Pancasila / PKn" }
+    ];
+
+    let databaseSNBT = [
+      { id: "101", kampus: "Universitas Indonesia", kategori: "PTN", prodi: "Pendidikan Dokter", rumpun: "SAINTEK", dayaTampung: 75, peminat: 3820, passingGrade: 735 },
+      { id: "102", kampus: "Politeknik Statistika STIS", kategori: "Kedinasan", prodi: "D4 Statistika", rumpun: "SAINTEK", dayaTampung: 400, peminat: 7800, passingGrade: 710 },
+      { id: "103", kampus: "PKN STAN", kategori: "Kedinasan", prodi: "D4 Akuntansi Sektor Publik", rumpun: "SOSHUM", dayaTampung: 300, peminat: 5200, passingGrade: 720 },
+      { id: "104", kampus: "Institut Teknologi Bandung", kategori: "PTN", prodi: "Teknik Informatika", rumpun: "SAINTEK", dayaTampung: 90, peminat: 4100, passingGrade: 740 }
+    ];
 
     const alumniTrackRecord = [
       { ptn: "UPN VETERAN JAWA TIMUR", prodi: "KEDOKTERAN", avg: 89.23, tahun: "SNBP 2026" },
@@ -587,7 +648,6 @@
     let activeJalur = "SNBP";
     let currentFixPayload = null;
 
-    // Parameter statistik rapor paralel (Z-Score)
     const MEAN_RAPOR_ANGKATAN = 82.0;
     const STDEV_RAPOR_ANGKATAN = 3.5;
 
@@ -598,12 +658,41 @@
       return Math.max(200, Math.min(800, skorStandar));
     }
 
+    function hideSplashScreen(statusText) {
+      const splash = document.getElementById('appSplashScreen');
+      const bar = document.getElementById('splashProgressBar');
+      const txt = document.getElementById('splashProgressText');
+
+      if (bar) bar.style.width = "100%";
+      if (txt && statusText) txt.innerText = statusText;
+
+      setTimeout(() => {
+        if (splash) {
+          splash.classList.add('opacity-0', 'pointer-events-none');
+          setTimeout(() => splash.remove(), 700);
+        }
+      }, 500);
+    }
+
     async function loadCloudDatabase() {
       const badge = document.getElementById('syncStatusBadge');
-      if (!GOOGLE_SHEET_WEBAPP_URL || !GOOGLE_SHEET_WEBAPP_URL.startsWith("http")) return;
+      const bar = document.getElementById('splashProgressBar');
+      const txt = document.getElementById('splashProgressText');
+
+      if (bar) bar.style.width = "40%";
+
+      if (!GOOGLE_SHEET_WEBAPP_URL || !GOOGLE_SHEET_WEBAPP_URL.startsWith("http")) {
+        hideSplashScreen("READY • LOCAL DATA LOADED");
+        return;
+      }
+
       try {
-        badge.classList.remove('hidden');
-        badge.innerHTML = `<span class="h-2 w-2 rounded-full bg-amber-400 animate-pulse"></span> Mengambil Data Sheet...`;
+        if (badge) {
+          badge.classList.remove('hidden');
+          badge.innerHTML = `<span class="h-2 w-2 rounded-full bg-amber-400 animate-pulse"></span> Mengambil Data Sheet...`;
+        }
+        if (txt) txt.innerText = "FETCHING CLOUD SPREADSHEET...";
+        if (bar) bar.style.width = "75%";
         
         const res = await fetch(`${GOOGLE_SHEET_WEBAPP_URL}?action=getDatabase`);
         const json = await res.json();
@@ -613,12 +702,18 @@
           if (json.kampusSNBP && json.kampusSNBP.length > 0) databaseSNBP = json.kampusSNBP;
           if (json.kampusSNBT && json.kampusSNBT.length > 0) databaseSNBT = json.kampusSNBT;
           
-          badge.className = "hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300";
-          badge.innerHTML = `<span class="h-2 w-2 rounded-full bg-emerald-500"></span> ONLINE`;
+          if (badge) {
+            badge.className = "hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300";
+            badge.innerHTML = `<span class="h-2 w-2 rounded-full bg-emerald-500"></span> ONLINE`;
+          }
         }
+        hideSplashScreen("SYSTEM READY • CONNECTED");
       } catch (err) {
-        badge.className = "hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-300";
-        badge.innerHTML = `<span class="h-2 w-2 rounded-full bg-slate-400"></span> OFFLINE`;
+        if (badge) {
+          badge.className = "hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-300";
+          badge.innerHTML = `<span class="h-2 w-2 rounded-full bg-slate-400"></span> OFFLINE`;
+        }
+        hideSplashScreen("READY • OFFLINE CACHE");
       }
       refreshDataBindings();
     }
@@ -639,36 +734,151 @@
     }
 
     function refreshDataBindings() {
-      // 1. Data Siswa
       const datalist = document.getElementById('listDataSiswa');
       if (datalist && databaseSiswa.length > 0) {
         datalist.innerHTML = databaseSiswa.map(s => `<option value="${s.nama}">${s.kelas} • Rank #${s.ranking} (${s.rumpun})</option>`).join('');
       }
-
-      // 2. Dropdown SNBP
-      const p1 = document.getElementById('selectPresetProdi1');
-      const p2 = document.getElementById('selectPresetProdi2');
-      if (databaseSNBP.length > 0) {
-        const optHtmlSNBP = `<option value="">-- Pilih dari Database SNBP --</option>` + databaseSNBP.map(k => `
-          <option value="${k.id}">${k.prodi} - ${k.kampus} (Daya: ${k.dayaTampung} | Peminat: ${k.peminat})</option>
-        `).join('');
-        if (p1) p1.innerHTML = optHtmlSNBP;
-        if (p2) p2.innerHTML = optHtmlSNBP;
-      }
-
-      // 3. Dropdown SNBT
-      const snbt1 = document.getElementById('selectSNBTPreset1');
-      const snbt2 = document.getElementById('selectSNBTPreset2');
-      if (databaseSNBT.length > 0) {
-        const optHtmlSNBT = `<option value="">-- Pilih dari Database SNBT --</option>` + databaseSNBT.map(k => `
-          <option value="${k.id}">${k.prodi} - ${k.kampus} (Daya: ${k.dayaTampung} | Peminat: ${k.peminat})</option>
-        `).join('');
-        if (snbt1) snbt1.innerHTML = optHtmlSNBT;
-        if (snbt2) snbt2.innerHTML = optHtmlSNBT;
-      }
-
       populateDropdowns();
     }
+
+    // ===============================================
+    // SEARCHABLE DROPDOWN UNTUK SNBP
+    // ===============================================
+    function filterPencarianKampus(idx, keyword) {
+      const container = document.getElementById(`dropdownList${idx}`);
+      if (!container) return;
+
+      const key = (keyword || "").toLowerCase().trim();
+      const listHasil = databaseSNBP.filter(k => 
+        (k.prodi && k.prodi.toLowerCase().includes(key)) || 
+        (k.kampus && k.kampus.toLowerCase().includes(key)) ||
+        (k.kategori && k.kategori.toLowerCase().includes(key))
+      );
+
+      if (listHasil.length === 0) {
+        container.innerHTML = `<div class="p-3 text-xs text-slate-400 text-center italic">Tidak ditemukan di Database SNBP</div>`;
+      } else {
+        container.innerHTML = listHasil.map(k => `
+          <div 
+            onclick="pilihItemKampusSNBP(${idx}, '${k.id}')" 
+            class="p-2.5 hover:bg-emerald-50 cursor-pointer transition text-left space-y-0.5"
+          >
+            <p class="text-xs font-bold text-slate-800 leading-tight">${k.prodi}</p>
+            <div class="flex items-center justify-between text-[10.5px]">
+              <span class="text-indigo-900 font-semibold">${k.kampus}</span>
+              <span class="text-slate-400">Daya: ${k.dayaTampung} | Peminat: ${k.peminat}</span>
+            </div>
+          </div>
+        `).join('');
+      }
+      container.classList.remove('hidden');
+    }
+
+    function tampilkanDropdownCari(idx) {
+      const inputEl = document.getElementById(`searchProdi${idx}`);
+      filterPencarianKampus(idx, inputEl ? inputEl.value : "");
+    }
+
+    function toggleDropdownCari(idx) {
+      const container = document.getElementById(`dropdownList${idx}`);
+      if (!container) return;
+      if (container.classList.contains('hidden')) {
+        tampilkanDropdownCari(idx);
+      } else {
+        container.classList.add('hidden');
+      }
+    }
+
+    function pilihItemKampusSNBP(idx, prodiId) {
+      const k = databaseSNBP.find(item => String(item.id) === String(prodiId));
+      if (!k) return;
+
+      const searchInput = document.getElementById(`searchProdi${idx}`);
+      if (searchInput) searchInput.value = `${k.prodi} - ${k.kampus}`;
+
+      applyPresetProdi(idx, prodiId);
+
+      const container = document.getElementById(`dropdownList${idx}`);
+      if (container) container.classList.add('hidden');
+    }
+
+    // ===============================================
+    // SEARCHABLE DROPDOWN UNTUK SNBT
+    // ===============================================
+    function filterPencarianKampusSNBT(idx, keyword) {
+      const container = document.getElementById(`dropdownListSNBT${idx}`);
+      if (!container) return;
+
+      const key = (keyword || "").toLowerCase().trim();
+      const listHasil = databaseSNBT.filter(k => 
+        (k.prodi && k.prodi.toLowerCase().includes(key)) || 
+        (k.kampus && k.kampus.toLowerCase().includes(key)) ||
+        (k.kategori && k.kategori.toLowerCase().includes(key))
+      );
+
+      if (listHasil.length === 0) {
+        container.innerHTML = `<div class="p-3 text-xs text-slate-400 text-center italic">Tidak ditemukan di Database SNBT</div>`;
+      } else {
+        container.innerHTML = listHasil.map(k => `
+          <div 
+            onclick="pilihItemKampusSNBT(${idx}, '${k.id}')" 
+            class="p-2.5 hover:bg-amber-50 cursor-pointer transition text-left space-y-0.5"
+          >
+            <p class="text-xs font-bold text-slate-800 leading-tight">${k.prodi}</p>
+            <div class="flex items-center justify-between text-[10.5px]">
+              <span class="text-indigo-900 font-semibold">${k.kampus}</span>
+              <span class="text-slate-400">Passing: ~${k.passingGrade}</span>
+            </div>
+          </div>
+        `).join('');
+      }
+      container.classList.remove('hidden');
+    }
+
+    function tampilkanDropdownCariSNBT(idx) {
+      const inputEl = document.getElementById(`searchSNBT${idx}`);
+      filterPencarianKampusSNBT(idx, inputEl ? inputEl.value : "");
+    }
+
+    function toggleDropdownCariSNBT(idx) {
+      const container = document.getElementById(`dropdownListSNBT${idx}`);
+      if (!container) return;
+      if (container.classList.contains('hidden')) {
+        tampilkanDropdownCariSNBT(idx);
+      } else {
+        container.classList.add('hidden');
+      }
+    }
+
+    function pilihItemKampusSNBT(idx, prodiId) {
+      const k = databaseSNBT.find(item => String(item.id) === String(prodiId));
+      if (!k) return;
+
+      const searchInput = document.getElementById(`searchSNBT${idx}`);
+      if (searchInput) searchInput.value = `${k.prodi} - ${k.kampus}`;
+
+      applyPresetSNBT(idx, prodiId);
+
+      const container = document.getElementById(`dropdownListSNBT${idx}`);
+      if (container) container.classList.add('hidden');
+    }
+
+    // Tutup dropdown otomatis jika klik di luar area
+    document.addEventListener('click', function(e) {
+      [1, 2].forEach(idx => {
+        const boxSNBP = document.getElementById(`searchProdi${idx}`);
+        const dropdownSNBP = document.getElementById(`dropdownList${idx}`);
+        if (boxSNBP && dropdownSNBP && !boxSNBP.contains(e.target) && !dropdownSNBP.contains(e.target)) {
+          dropdownSNBP.classList.add('hidden');
+        }
+
+        const boxSNBT = document.getElementById(`searchSNBT${idx}`);
+        const dropdownSNBT = document.getElementById(`dropdownListSNBT${idx}`);
+        if (boxSNBT && dropdownSNBT && !boxSNBT.contains(e.target) && !dropdownSNBT.contains(e.target)) {
+          dropdownSNBT.classList.add('hidden');
+        }
+      });
+    });
 
     function pilihSiswaOtomatis(namaTerpilih) {
       const siswa = databaseSiswa.find(s => s.nama.toLowerCase() === namaTerpilih.trim().toLowerCase());
@@ -864,14 +1074,12 @@
       });
 
       if (databaseSNBP.length > 0) {
-        applyPresetProdi(1, databaseSNBP[0].id);
-        const p1Sel = document.getElementById('selectPresetProdi1');
-        if (p1Sel) p1Sel.value = databaseSNBP[0].id;
+        pilihItemKampusSNBP(1, databaseSNBP[0].id);
       }
 
       if(document.getElementById('inKelas')) document.getElementById('inKelas').value = "XII - 1";
       if(document.getElementById('inRankingSiswa')) document.getElementById('inRankingSiswa').value = 1;
-      if(document.getElementById('inKonselor')) document.getElementById('inKonselor').value = "Tim Sukses PTN M18";
+      if(document.getElementById('inKonselor')) document.getElementById('inKonselor').value = "Fadhillah Umar, S.Pd.";
       if(document.getElementById('inNilaiTKA')) document.getElementById('inNilaiTKA').value = 720;
       if(document.getElementById('inCatatanBK')) document.getElementById('inCatatanBK').value = "Siswa menunjukkan konsistensi belajar yang sangat baik pada rumpun terkait.";
       
@@ -888,7 +1096,7 @@
         }
         hitungRataRow(m.id);
       });
-      ['inNama', 'inKelas', 'inRankingSiswa', 'inNilaiTKA', 'inProdi1Nama', 'inProdi1Kampus', 'inProdi1DayaTampung', 'inProdi1Peminat', 'inProdi2Nama', 'inProdi2Kampus', 'inProdi2DayaTampung', 'inProdi2Peminat'].forEach(id => {
+      ['inNama', 'inKelas', 'inRankingSiswa', 'inNilaiTKA', 'searchProdi1', 'inProdi1Nama', 'inProdi1Kampus', 'inProdi1DayaTampung', 'inProdi1Peminat', 'searchProdi2', 'inProdi2Nama', 'inProdi2Kampus', 'inProdi2DayaTampung', 'inProdi2Peminat'].forEach(id => {
         if(document.getElementById(id)) document.getElementById(id).value = "";
       });
       updatePreviewModalIRT();
@@ -909,9 +1117,7 @@
       });
 
       if (databaseSNBT.length > 0) {
-        applyPresetSNBT(1, databaseSNBT[0].id);
-        const sel1 = document.getElementById('selectSNBTPreset1');
-        if (sel1) sel1.value = databaseSNBT[0].id;
+        pilihItemKampusSNBT(1, databaseSNBT[0].id);
       }
     }
 
@@ -966,7 +1172,7 @@
       const kelas = document.getElementById('inKelas').value.trim() || "XII - 1";
       const kelompok = document.getElementById('inKelompokJurusan').value || "SAINTEK";
       const rankingSiswa = parseInt(document.getElementById('inRankingSiswa').value) || 1;
-      const konselor = document.getElementById('inKonselor').value.trim() || "Tim Sukses PTN M18";
+      const konselor = document.getElementById('inKonselor').value.trim() || "Fadhillah Umar, S.Pd.";
       const catatanBK = document.getElementById('inCatatanBK').value.trim() || "-";
 
       const p1Nama = document.getElementById('inProdi1Nama').value.trim();
@@ -1017,6 +1223,9 @@
       let slopeBonusIRT = slopeData.slope > 0.3 ? 15 : (slopeData.slope >= -0.3 ? 0 : -15);
 
       function estimasiPassingTarget(target) {
+        const matched = databaseSNBP.find(p => p.prodi.toLowerCase() === target.prodi.toLowerCase());
+        if (matched && matched.passingGrade) return matched.passingGrade;
+
         const rasio = target.dayaTampung / target.peminat;
         if (rasio < 0.03) return 725;
         if (rasio < 0.07) return 680;
@@ -1381,7 +1590,6 @@
       document.body.appendChild(link); link.click(); document.body.removeChild(link);
     }
 
-    // Inisialisasi awal saat halaman selesai dimuat
     renderTabel();
     loadDraft();
     refreshDataBindings();
