@@ -666,9 +666,6 @@
       }
     }
 
-      populateDropdowns();
-    }
-
     function pilihSiswaOtomatis(namaTerpilih) {
       const siswa = databaseSiswa.find(s => s.nama.toLowerCase() === namaTerpilih.trim().toLowerCase());
       if (siswa) {
